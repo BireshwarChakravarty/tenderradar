@@ -89,7 +89,7 @@ Respond ONLY with a JSON object (no markdown, no explanation):
     tender.score   = round(float(data.get("score", 5.0)), 1)
     tender.summary = (
         f"**Fit:** {data.get('fit','')}\n\n"
-        f"**Risk:** {data.get('risk','')}\n\n"
+        f"**Opportunity:** {data.get('opportunity','')}\n\n"
         f"**Recommendation:** {data.get('recommendation','')}"
     )
 
