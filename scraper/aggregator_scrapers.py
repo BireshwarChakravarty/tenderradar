@@ -1,6 +1,10 @@
 """
 TenderRadar — TenderDetail.com Scraper
-Only source that works from GitHub Actions.
+Structure per tender on listing page:
+  <h2>location info</h2>
+  <a href="/TenderNotice/...">title</a>
+  "Due Date : Apr 11, 2026"   ← plain text sibling after the link
+  "Tender Value : ..."
 """
 import re
 import time
@@ -44,13 +48,15 @@ class TenderDetailScraper(BaseScraper):
                 if not soup:
                     continue
 
-                links = soup.select("h2 a[href*='/TenderNotice/']")
-                if not links:
-                    links = soup.select("a[href*='/TenderNotice/']")
+                # Each tender: h2 (location) > sibling a (link) > sibling text (Due Date)
+                # Find all TenderNotice links
+                links = soup.select("a[href*='/TenderNotice/']")
+                # Exclude "View Notice" duplicates — keep only the descriptive ones
+                links = [l for l in links if len(l.get_text(strip=True)) > 15]
 
                 found = 0
                 for link in links:
-                    t = self._parse_link(link)
+                    t = self._parse_tender(link)
                     if t and t.id not in seen_ids:
                         seen_ids.add(t.id)
                         tenders.append(t)
@@ -64,7 +70,7 @@ class TenderDetailScraper(BaseScraper):
         self.logger.info(f"TenderDetail total: {len(tenders)}")
         return tenders
 
-    def _parse_link(self, link) -> Tender | None:
+    def _parse_tender(self, link) -> Tender | None:
         try:
             title = link.get_text(strip=True)
             if not title or len(title) < 8:
@@ -73,38 +79,79 @@ class TenderDetailScraper(BaseScraper):
             href = link.get("href", "")
             url  = href if href.startswith("http") else (BASE + href)
 
-            # Walk up the DOM to find the container with Due Date
-            container_text = ""
-            node = link.parent
-            for _ in range(8):
-                if node is None:
+            # ── Get Due Date ─────────────────────────────────────
+            # The due date is a text node that appears AFTER the link element
+            # at the same level (sibling). We scan next siblings for it.
+            deadline = self._dd(30)  # fallback
+
+            # Method 1: check next siblings of the link itself
+            for sibling in link.next_siblings:
+                text = sibling.get_text(strip=True) if hasattr(sibling, 'get_text') else str(sibling).strip()
+                if not text:
+                    continue
+                if "Due Date" in text or "due date" in text.lower():
+                    m = re.search(r"[A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}", text)
+                    if m:
+                        deadline = self._pd(m.group(0))
+                        break
+                    m2 = re.search(r"\d{1,2}[/-]\d{1,2}[/-]\d{2,4}", text)
+                    if m2:
+                        deadline = self._pd(m2.group(0))
+                        break
+                # Stop if we hit another tender link
+                if hasattr(sibling, 'find') and sibling.find("a", href=lambda h: h and "/TenderNotice/" in h):
                     break
-                text = node.get_text(" ", strip=True)
-                if "Due" in text or "due" in text:
-                    container_text = text
+
+            # Method 2: if not found, check parent's text for Due Date
+            if deadline == self._dd(30):
+                parent = link.parent
+                if parent:
+                    parent_text = parent.get_text(" ", strip=True)
+                    m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", parent_text, re.IGNORECASE)
+                    if m:
+                        deadline = self._pd(m.group(1).strip())
+
+            # Method 3: check grandparent container
+            if deadline == self._dd(30):
+                gp = link.parent.parent if link.parent else None
+                if gp:
+                    gp_text = gp.get_text(" ", strip=True)
+                    m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", gp_text, re.IGNORECASE)
+                    if m:
+                        deadline = self._pd(m.group(1).strip())
+
+            # ── Get Value ─────────────────────────────────────────
+            value_str = "N/A"
+            for sibling in link.next_siblings:
+                text = sibling.get_text(strip=True) if hasattr(sibling, 'get_text') else str(sibling).strip()
+                if not text:
+                    continue
+                m = re.search(r"([\d,\.]+)\s*(Crore|Lakh|L\b|Cr\b)", text, re.IGNORECASE)
+                if m:
+                    value_str = f"₹{m.group(1)} {m.group(2)}"
                     break
-                node = node.parent
-            if not container_text:
-                # Try getting the full page section around this link
-                container_text = link.find_parent(["div","tr","li","section"]).get_text(" ", strip=True) if link.find_parent(["div","tr","li","section"]) else ""
+                if "Tender Value" in text:
+                    break
 
-            date_m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", container_text, re.IGNORECASE)
-            deadline = self._pd(date_m.group(1).strip()) if date_m else self._dd(30)
+            # ── Ref number ────────────────────────────────────────
+            # Extract from link title attribute or URL
+            title_attr = link.get("title", "")
+            ref_m = re.search(r"GEM/\d+/\w/\d+|[\w]+/\d{4}[-/]\w+|[\w/\-]{5,}/\d{4}", title_attr or url, re.IGNORECASE)
+            ref = ref_m.group(0)[:100] if ref_m else f"TD-{title[:20].replace(' ','')}"
 
-            val_m = re.search(r"([\d,\.]+)\s*(Crore|Lakh|L|Cr)", container_text, re.IGNORECASE)
-            value_str = f"₹{val_m.group(1)} {val_m.group(2)}" if val_m else "N/A"
-
-            ref_m = re.search(r"GEM/\d+/\w/\d+|[\w]+/\d{4}[/-]\w+/\d+", title + " " + url, re.IGNORECASE)
-            ref = ref_m.group(0) if ref_m else f"TD-{title[:20].replace(' ','')}"
-
-            portal = self._detect_portal(title + container_text)
+            # ── Portal from ref ───────────────────────────────────
+            portal = self._detect_portal(title_attr + " " + title)
             self.PORTAL_NAME = portal
 
             return self.make_tender(
-                title=title[:250], ref_no=ref[:100],
-                category=self._cat(title), description=title,
-                value_raw=0.0, value_str=value_str,
-                deadline=deadline, url=url,
+                title=title[:250],
+                ref_no=ref,
+                category=self._cat(title),
+                description=title,
+                value_raw=0.0,
+                value_str=value_str,
+                deadline=deadline,
+                url=url,
             )
         except Exception as e:
             self.logger.debug(f"TenderDetail parse: {e}")
@@ -121,17 +168,12 @@ class TenderDetailScraper(BaseScraper):
 
     def _pd(self, s: str) -> str:
         s = s.strip().rstrip(".")
-        # Remove leading/trailing noise
-        import re as _re
-        s = _re.sub(r"[Dd]ue\s*[Dd]ate\s*:?\s*", "", s).strip()
-        # Try all common formats
         for fmt in ("%b %d, %Y", "%b %d %Y", "%B %d, %Y", "%B %d %Y",
                     "%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d/%m/%y",
                     "%d-%m-%y", "%d %b %Y", "%d %B %Y"):
             try:
-                parsed = datetime.strptime(s[:15], fmt)
-                # Sanity check — must be in 2024-2027
-                if 2024 <= parsed.year <= 2027:
+                parsed = datetime.strptime(s[:20], fmt)
+                if 2024 <= parsed.year <= 2028:
                     return parsed.strftime("%Y-%m-%d")
             except: pass
         return self._dd(30)
@@ -152,7 +194,7 @@ class TenderDetailScraper(BaseScraper):
         if any(k in t for k in ["advertising", "media buying", "ad agency"]): return "Campaign Execution"
         if any(k in t for k in ["website", "web development", "web design", "portal development"]): return "Website Development"
         if any(k in t for k in ["seo", "search engine", "search optimization"]): return "SEO Services"
-        if any(k in t for k in ["geo", "geospatial", "gis", "geographic", "location service"]): return "GEO Services"
+        if any(k in t for k in ["geo", "geospatial", "gis", "geographic"]): return "GEO Services"
         return "Communication Support"
 
 
