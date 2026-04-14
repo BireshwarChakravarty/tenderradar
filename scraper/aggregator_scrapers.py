@@ -1,10 +1,8 @@
 """
 TenderRadar — TenderDetail.com Scraper
-Structure per tender on listing page:
-  <h2>location info</h2>
-  <a href="/TenderNotice/...">title</a>
-  "Due Date : Apr 11, 2026"   ← plain text sibling after the link
-  "Tender Value : ..."
+Date extraction uses full-page text positioning — pairs each tender link
+with the nearest "Due Date" text that follows it in the page.
+This is DOM-structure-agnostic and works regardless of how tenderdetail.com wraps their HTML.
 """
 import re
 import time
@@ -30,6 +28,10 @@ SEARCH_KEYWORDS = [
 ]
 
 BASE = "https://www.tenderdetail.com"
+DATE_PATTERN = re.compile(
+    r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[./-]\d{1,2}[./-]\d{2,4})",
+    re.IGNORECASE
+)
 
 
 class TenderDetailScraper(BaseScraper):
@@ -48,15 +50,71 @@ class TenderDetailScraper(BaseScraper):
                 if not soup:
                     continue
 
-                # Each tender: h2 (location) > sibling a (link) > sibling text (Due Date)
-                # Find all TenderNotice links
-                links = soup.select("a[href*='/TenderNotice/']")
-                # Exclude "View Notice" duplicates — keep only the descriptive ones
-                links = [l for l in links if len(l.get_text(strip=True)) > 15]
+                # ── Build a deadline map using text positions ──────
+                # Get the full raw text of the page once
+                full_text = soup.get_text(" ")
+
+                # Find ALL "Due Date : Apr 21, 2026" occurrences and their char positions
+                date_hits = [(m.start(), m.group(1).strip()) for m in DATE_PATTERN.finditer(full_text)]
+
+                # Get all meaningful TenderNotice links
+                links = [
+                    l for l in soup.select("a[href*='/TenderNotice/']")
+                    if len(l.get_text(strip=True)) > 15
+                ]
 
                 found = 0
                 for link in links:
-                    t = self._parse_tender(link)
+                    title = link.get_text(strip=True)
+                    href  = link.get("href", "")
+                    url_t = href if href.startswith("http") else (BASE + href)
+
+                    # Find where this title appears in the full text
+                    title_pos = full_text.find(title[:40])
+                    if title_pos == -1:
+                        title_pos = full_text.find(title[:20])
+
+                    # Find the nearest Due Date that comes AFTER this title
+                    deadline = self._dd(30)
+                    for pos, date_str in date_hits:
+                        if pos > title_pos:
+                            parsed = self._pd(date_str)
+                            if parsed != self._dd(30):
+                                deadline = parsed
+                            break
+
+                    # Value
+                    value_str = "N/A"
+                    val_m = re.search(
+                        r"([\d,\.]+)\s*(Crore|Lakh|L\b|Cr\b)",
+                        full_text[title_pos:title_pos+500],
+                        re.IGNORECASE
+                    )
+                    if val_m:
+                        value_str = f"₹{val_m.group(1)} {val_m.group(2)}"
+
+                    # Ref number from link title attribute
+                    title_attr = link.get("title", "")
+                    ref_m = re.search(
+                        r"GEM/\d+/\w/\d+|[\w]+/\d{4}[-/]\w+|[\w/\-]{5,}/\d{4}",
+                        title_attr or url_t,
+                        re.IGNORECASE
+                    )
+                    ref = ref_m.group(0)[:100] if ref_m else f"TD-{title[:20].replace(' ','')}"
+
+                    portal = self._detect_portal(title_attr + " " + title)
+                    self.PORTAL_NAME = portal
+
+                    t = self.make_tender(
+                        title=title[:250],
+                        ref_no=ref,
+                        category=self._cat(title),
+                        description=title,
+                        value_raw=0.0,
+                        value_str=value_str,
+                        deadline=deadline,
+                        url=url_t,
+                    )
                     if t and t.id not in seen_ids:
                         seen_ids.add(t.id)
                         tenders.append(t)
@@ -69,93 +127,6 @@ class TenderDetailScraper(BaseScraper):
 
         self.logger.info(f"TenderDetail total: {len(tenders)}")
         return tenders
-
-    def _parse_tender(self, link) -> Tender | None:
-        try:
-            title = link.get_text(strip=True)
-            if not title or len(title) < 8:
-                return None
-
-            href = link.get("href", "")
-            url  = href if href.startswith("http") else (BASE + href)
-
-            # ── Get Due Date ─────────────────────────────────────
-            # The due date is a text node that appears AFTER the link element
-            # at the same level (sibling). We scan next siblings for it.
-            deadline = self._dd(30)  # fallback
-
-            # Method 1: check next siblings of the link itself
-            for sibling in link.next_siblings:
-                text = sibling.get_text(strip=True) if hasattr(sibling, 'get_text') else str(sibling).strip()
-                if not text:
-                    continue
-                if "Due Date" in text or "due date" in text.lower():
-                    m = re.search(r"[A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}", text)
-                    if m:
-                        deadline = self._pd(m.group(0))
-                        break
-                    m2 = re.search(r"\d{1,2}[/-]\d{1,2}[/-]\d{2,4}", text)
-                    if m2:
-                        deadline = self._pd(m2.group(0))
-                        break
-                # Stop if we hit another tender link
-                if hasattr(sibling, 'find') and sibling.find("a", href=lambda h: h and "/TenderNotice/" in h):
-                    break
-
-            # Method 2: if not found, check parent's text for Due Date
-            if deadline == self._dd(30):
-                parent = link.parent
-                if parent:
-                    parent_text = parent.get_text(" ", strip=True)
-                    m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", parent_text, re.IGNORECASE)
-                    if m:
-                        deadline = self._pd(m.group(1).strip())
-
-            # Method 3: check grandparent container
-            if deadline == self._dd(30):
-                gp = link.parent.parent if link.parent else None
-                if gp:
-                    gp_text = gp.get_text(" ", strip=True)
-                    m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", gp_text, re.IGNORECASE)
-                    if m:
-                        deadline = self._pd(m.group(1).strip())
-
-            # ── Get Value ─────────────────────────────────────────
-            value_str = "N/A"
-            for sibling in link.next_siblings:
-                text = sibling.get_text(strip=True) if hasattr(sibling, 'get_text') else str(sibling).strip()
-                if not text:
-                    continue
-                m = re.search(r"([\d,\.]+)\s*(Crore|Lakh|L\b|Cr\b)", text, re.IGNORECASE)
-                if m:
-                    value_str = f"₹{m.group(1)} {m.group(2)}"
-                    break
-                if "Tender Value" in text:
-                    break
-
-            # ── Ref number ────────────────────────────────────────
-            # Extract from link title attribute or URL
-            title_attr = link.get("title", "")
-            ref_m = re.search(r"GEM/\d+/\w/\d+|[\w]+/\d{4}[-/]\w+|[\w/\-]{5,}/\d{4}", title_attr or url, re.IGNORECASE)
-            ref = ref_m.group(0)[:100] if ref_m else f"TD-{title[:20].replace(' ','')}"
-
-            # ── Portal from ref ───────────────────────────────────
-            portal = self._detect_portal(title_attr + " " + title)
-            self.PORTAL_NAME = portal
-
-            return self.make_tender(
-                title=title[:250],
-                ref_no=ref,
-                category=self._cat(title),
-                description=title,
-                value_raw=0.0,
-                value_str=value_str,
-                deadline=deadline,
-                url=url,
-            )
-        except Exception as e:
-            self.logger.debug(f"TenderDetail parse: {e}")
-            return None
 
     def _detect_portal(self, text: str) -> str:
         t = text.upper()
@@ -170,12 +141,14 @@ class TenderDetailScraper(BaseScraper):
         s = s.strip().rstrip(".")
         for fmt in ("%b %d, %Y", "%b %d %Y", "%B %d, %Y", "%B %d %Y",
                     "%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d/%m/%y",
-                    "%d-%m-%y", "%d %b %Y", "%d %B %Y"):
+                    "%d-%m-%y", "%d %b %Y", "%d %B %Y",
+                    "%d.%m.%Y", "%d.%m.%y"):
             try:
                 parsed = datetime.strptime(s[:20], fmt)
                 if 2024 <= parsed.year <= 2028:
                     return parsed.strftime("%Y-%m-%d")
-            except: pass
+            except:
+                pass
         return self._dd(30)
 
     def _dd(self, d: int) -> str:
