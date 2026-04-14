@@ -73,16 +73,23 @@ class TenderDetailScraper(BaseScraper):
             href = link.get("href", "")
             url  = href if href.startswith("http") else (BASE + href)
 
-            parent = link.parent
-            for _ in range(4):
-                if parent is None:
+            # Walk up the DOM to find the container with Due Date
+            container_text = ""
+            node = link.parent
+            for _ in range(8):
+                if node is None:
                     break
-                parent = parent.parent
+                text = node.get_text(" ", strip=True)
+                if "Due" in text or "due" in text:
+                    container_text = text
+                    break
+                node = node.parent
+            if not container_text:
+                # Try getting the full page section around this link
+                container_text = link.find_parent(["div","tr","li","section"]).get_text(" ", strip=True) if link.find_parent(["div","tr","li","section"]) else ""
 
-            container_text = parent.get_text(" ", strip=True) if parent else ""
-
-            date_m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]+\s+\d+,?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", container_text, re.IGNORECASE)
-            deadline = self._pd(date_m.group(1)) if date_m else self._dd(30)
+            date_m = re.search(r"Due\s*Date\s*:?\s*([A-Za-z]{3,9}\s+\d{1,2},?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})", container_text, re.IGNORECASE)
+            deadline = self._pd(date_m.group(1).strip()) if date_m else self._dd(30)
 
             val_m = re.search(r"([\d,\.]+)\s*(Crore|Lakh|L|Cr)", container_text, re.IGNORECASE)
             value_str = f"₹{val_m.group(1)} {val_m.group(2)}" if val_m else "N/A"
@@ -113,13 +120,19 @@ class TenderDetailScraper(BaseScraper):
         return "Govt Portal"
 
     def _pd(self, s: str) -> str:
-        s = s.strip()
-        try: return datetime.strptime(s, "%b %d, %Y").strftime("%Y-%m-%d")
-        except: pass
-        try: return datetime.strptime(s, "%B %d, %Y").strftime("%Y-%m-%d")
-        except: pass
-        for f in ("%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d/%m/%y"):
-            try: return datetime.strptime(s[:10], f).strftime("%Y-%m-%d")
+        s = s.strip().rstrip(".")
+        # Remove leading/trailing noise
+        import re as _re
+        s = _re.sub(r"[Dd]ue\s*[Dd]ate\s*:?\s*", "", s).strip()
+        # Try all common formats
+        for fmt in ("%b %d, %Y", "%b %d %Y", "%B %d, %Y", "%B %d %Y",
+                    "%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d/%m/%y",
+                    "%d-%m-%y", "%d %b %Y", "%d %B %Y"):
+            try:
+                parsed = datetime.strptime(s[:15], fmt)
+                # Sanity check — must be in 2024-2027
+                if 2024 <= parsed.year <= 2027:
+                    return parsed.strftime("%Y-%m-%d")
             except: pass
         return self._dd(30)
 
