@@ -68,14 +68,14 @@ class TenderDetailScraper(BaseScraper):
                     anchor_pos = full_text.find(anchor)
 
                     # Find nearest Due Date AFTER the anchor position
-                    deadline = self._dd(30)
+                    deadline = "N/A"
                     if anchor_pos != -1:
                         for pos, date_str in date_hits:
                             if pos > anchor_pos:
                                 parsed = self._pd(date_str)
-                                if parsed != self._dd(30):
+                                if parsed:
                                     deadline = parsed
-                                break
+                                    break
 
                     # Value — scan 600 chars after anchor
                     value_str = "N/A"
@@ -136,7 +136,7 @@ class TenderDetailScraper(BaseScraper):
                 if 2024 <= parsed.year <= 2028:
                     return parsed.strftime("%Y-%m-%d")
             except: pass
-        return self._dd(30)
+        return ""
 
     def _dd(self, d):
         return (datetime.utcnow() + timedelta(days=d)).strftime("%Y-%m-%d")
