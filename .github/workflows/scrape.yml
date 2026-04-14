@@ -3,12 +3,7 @@ name: TenderRadar Scraper
 on:
   schedule:
     - cron: '0 */4 * * *'
-  workflow_dispatch:
-    inputs:
-      portals:
-        description: 'Comma-separated portals to scrape (leave blank for all)'
-        required: false
-        default: ''
+  workflow_dispatch: {}
 
 permissions:
   contents: write
@@ -16,7 +11,7 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repo
@@ -31,23 +26,17 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          pip install -r scraper/requirements.txt
-          pip install playwright
-          python -m playwright install chromium
-          sudo apt-get install -y libasound2t64 || true
+        run: pip install -r scraper/requirements.txt
 
       - name: Run scrapers
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMPANY_PROFILE: ${{ secrets.COMPANY_PROFILE }}
           MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
-          PORTALS_OVERRIDE: ${{ github.event.inputs.portals }}
         run: python scraper/main.py
 
       - name: Send alerts
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
