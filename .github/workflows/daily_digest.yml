@@ -2,8 +2,7 @@ name: TenderRadar Daily Digest
 
 on:
   schedule:
-    # Every day at 8:00 AM IST (2:30 AM UTC)
-    - cron: '30 2 * * *'
+    - cron: '30 2 * * *'   # 8:00 AM IST daily
   workflow_dispatch: {}
 
 permissions:
@@ -12,6 +11,10 @@ permissions:
 jobs:
   digest:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,16 +23,16 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install deps
+      - name: Install dependencies
         run: pip install -r scraper/requirements.txt
 
       - name: Send daily digest
         env:
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          SMTP_USER:          ${{ secrets.SMTP_USER }}
+          SMTP_PASS:          ${{ secrets.SMTP_PASS }}
+          ALERT_EMAIL_TO:     ${{ secrets.ALERT_EMAIL_TO }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          COMPANY_PROFILE: ${{ secrets.COMPANY_PROFILE }}
+          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
+          COMPANY_PROFILE:    ${{ secrets.COMPANY_PROFILE }}
         run: python scraper/daily_digest.py
