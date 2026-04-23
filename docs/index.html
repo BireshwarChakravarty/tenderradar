@@ -734,11 +734,14 @@ const PIPE_COLS = [
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
 
 function daysLeft(deadlineStr){
-  if(!deadlineStr) return null;
+  if(!deadlineStr || deadlineStr==='N/A' || deadlineStr==='n/a') return null;
   try{
     const d = new Date(deadlineStr+'T00:00:00');
+    if(isNaN(d.getTime())) return null;
     const today = new Date(); today.setHours(0,0,0,0);
-    return Math.round((d-today)/(1000*60*60*24));
+    const diff = Math.round((d-today)/(1000*60*60*24));
+    if(isNaN(diff)) return null;
+    return diff;
   }catch(e){ return null; }
 }
 
