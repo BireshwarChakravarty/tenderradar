@@ -538,7 +538,7 @@ td{padding:11px 14px;vertical-align:middle}
       </select>
       <!-- Expired tenders toggle -->
       <div class="toggle-wrap" onclick="toggleExpired()" title="Show/hide expired tenders">
-        <div class="toggle-switch" id="expired-switch"></div>
+        <div class="toggle-switch on" id="expired-switch"></div>
         <span class="toggle-label">Show expired</span>
       </div>
       <span class="result-count" id="result-count"></span>
@@ -552,9 +552,9 @@ td{padding:11px 14px;vertical-align:middle}
         <!-- Stats row -->
         <div class="stats-row" id="stats-row">
           <div class="stat-card stat-amber">
-            <div class="stat-label">Active Tenders</div>
+            <div class="stat-label">Total Tenders</div>
             <div class="stat-value" id="s-active">—</div>
-            <div class="stat-sub">Live &amp; open</div>
+            <div class="stat-sub">In database</div>
           </div>
           <div class="stat-card stat-red">
             <div class="stat-label">Closing This Week</div>
@@ -718,7 +718,7 @@ td{padding:11px 14px;vertical-align:middle}
 // ── STATE ─────────────────────────────────────────────────────
 let ALL = [];
 let CURRENT = null;
-let SHOW_EXPIRED = false;
+let SHOW_EXPIRED = true;
 const TODAY_STR = new Date().toISOString().split('T')[0];
 
 const STATUSES = ['New','Watching','Bid Submitted','Won','Lost'];
@@ -797,15 +797,11 @@ function getSettings(){
 }
 
 function buildUrl(repo,branch){
+  // If a custom repo is saved in settings, use raw.githubusercontent.com
   if(repo) return `https://raw.githubusercontent.com/${repo}/${branch}/docs/data/tenders.json`;
-  // Auto-detect from GitHub Pages URL
-  const parts = location.hostname.replace('.github.io','').split('.');
-  if(parts.length>=1 && location.pathname.length>1){
-    const user = parts[0];
-    const repoName = location.pathname.split('/').filter(Boolean)[0]||'tenderradar';
-    return `https://raw.githubusercontent.com/${user}/${repoName}/${branch}/docs/data/tenders.json`;
-  }
-  return '';
+  // Default: use a relative URL — data/tenders.json is served directly by
+  // GitHub Pages from docs/data/tenders.json, same origin, no CORS, no case issues.
+  return './data/tenders.json';
 }
 
 function saveSettings(){
@@ -844,11 +840,11 @@ async function loadTenders(){
     const pipelineCount  = ALL.filter(t=>['Watching','Bid Submitted'].includes(t.status)).length;
     const highFitCount   = ALL.filter(t=>parseFloat(t.score||0)>=8&&!isExpired(t)).length;
 
-    document.getElementById('s-active').textContent  = activeTenders.length;
+    document.getElementById('s-active').textContent  = ALL.length;
     document.getElementById('s-closing').textContent = closingCount;
     document.getElementById('s-pipeline').textContent= pipelineCount;
     document.getElementById('s-highfit').textContent = highFitCount;
-    document.getElementById('nb-all').textContent    = activeTenders.length;
+    document.getElementById('nb-all').textContent    = ALL.length;
     document.getElementById('nb-pipe').textContent   = pipelineCount;
 
     // Updated time
@@ -864,7 +860,7 @@ async function loadTenders(){
 
     // Populate filters
     populateFilters();
-    setStatus('ok', `${activeTenders.length} active · ${closingCount} closing`, 'green');
+    setStatus('ok', `${ALL.length} tenders · ${closingCount} closing`, 'green');
     renderTable();
     renderPipeline();
 
