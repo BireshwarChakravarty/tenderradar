@@ -1,12 +1,17 @@
 """
-TenderRadar — TenderDetail.com Scraper
-Aggregates tenders from GeM, CPPP, and state portals via tenderdetail.com.
+TenderRadar — TenderDetail.com Scraper (Playwright edition)
+tenderdetail.com migrated to a JS-rendered SPA — requires a real browser
+to execute JavaScript before the DOM contains any tender links.
 """
+import logging
 import random
 import re
 import time
 from datetime import datetime, timedelta
+
 from base_scraper import BaseScraper, Tender
+
+log = logging.getLogger("TenderDetail")
 
 SEARCH_KEYWORDS = [
     "public-relations",
@@ -46,28 +51,17 @@ CATEGORY_MAP = {
     "geo":                      "Digital Marketing",
 }
 
-# All known URL patterns to try for each keyword
-# Listed in order of preference — first match wins
-URL_PATTERNS = [
-    "{base}/Indian-tender/{kw}-tenders",
-    "{base}/search-tender?keyword={kw}",
-    "{base}/tenders/{kw}",
-    "{base}/tender-search?q={kw}",
-]
-
-# All known link selectors — first non-empty match wins
+# Link selectors to try after JS has rendered the page
 LINK_SELECTORS = [
     "h2 a[href*='/TenderNotice/']",
     "a[href*='/TenderNotice/']",
     "a[href*='TenderNotice']",
-    "h2 a[href*='/tender/']",
+    "h2 a[href*='tender']",
     "a[href*='/tender-detail']",
-    "a[href*='/tender/']",
     ".tender-title a",
     ".bid-title a",
-    "h3 a[href*='tender']",
-    "h2 a",
     "h3 a",
+    "h2 a",
 ]
 
 
@@ -77,158 +71,128 @@ class TenderDetailScraper(BaseScraper):
     def scrape(self) -> list[Tender]:
         tenders  = []
         seen_ids = set()
-        self.logger.info("Starting TenderDetail.com scrape…")
+        log.info("Starting TenderDetail.com scrape (Playwright)…")
 
-        # Warm up session
-        self.logger.info("Warming up session…")
         try:
-            r = self.session.get(BASE, timeout=15)
-            self.logger.info("Homepage: HTTP %d — %d chars", r.status_code, len(r.text))
-        except Exception as e:
-            self.logger.warning("Warmup failed: %s", e)
-        time.sleep(random.uniform(4, 7))
-
-        # Discover which URL pattern and selector work on the first keyword
-        working_url_pattern = None
-        working_selector    = None
-
-        self.logger.info("=== SELECTOR DISCOVERY on first keyword ===")
-        disc_url, disc_selector, disc_soup = self._discover(SEARCH_KEYWORDS[0])
-        if disc_url:
-            working_url_pattern = disc_url
-            working_selector    = disc_selector
-            self.logger.info("✓ URL pattern : %s", disc_url)
-            self.logger.info("✓ Selector    : %s", disc_selector)
-        else:
-            self.logger.error("✗ No working URL+selector found — aborting scrape")
-            self.logger.error("  Check the DIAGNOSTIC output above to update selectors")
+            from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+        except ImportError:
+            log.error("Playwright not installed — run: playwright install chromium --with-deps")
             return []
 
-        consecutive_failures = 0
+        with sync_playwright() as pw:
+            browser = pw.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-setuid-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                ],
+            )
+            context = browser.new_context(
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/124.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1280, "height": 800},
+                locale="en-IN",
+            )
+            page = context.new_page()
 
-        for i, keyword in enumerate(SEARCH_KEYWORDS):
-            if i > 0:
-                delay = random.uniform(6, 12)
-                time.sleep(delay)
-
-            url = working_url_pattern.replace("{kw}", keyword)
+            # Warm up — visit homepage first to set cookies / bypass checks
+            log.info("Warming up session…")
             try:
-                soup = self.get(url)
-                if not soup:
-                    consecutive_failures += 1
-                    if consecutive_failures >= 3:
-                        self.logger.warning("3 consecutive failures — backing off 120s")
-                        time.sleep(120)
-                        consecutive_failures = 0
-                    continue
+                page.goto(BASE, timeout=20000, wait_until="domcontentloaded")
+                time.sleep(random.uniform(3, 5))
+                log.info("Homepage loaded — title: %s", page.title()[:60])
+            except Exception as e:
+                log.warning("Warmup failed (non-fatal): %s", e)
 
-                consecutive_failures = 0
-                links = soup.select(working_selector)
+            consecutive_failures = 0
 
-                # Fallback: try all selectors if the working one returns 0
-                if not links:
+            for i, keyword in enumerate(SEARCH_KEYWORDS):
+                if i > 0:
+                    time.sleep(random.uniform(5, 10))
+
+                url = f"{BASE}/Indian-tender/{keyword}-tenders"
+                try:
+                    page.goto(url, timeout=30000, wait_until="networkidle")
+                    # Give JS a moment to finish rendering
+                    time.sleep(random.uniform(2, 4))
+
+                    title = page.title()
+                    log.info("'%s' — title: %s", keyword, title[:60] if title else "NO TITLE")
+
+                    # Try selectors until one returns links
+                    links_data = []
                     for sel in LINK_SELECTORS:
-                        links = soup.select(sel)
-                        if links:
-                            self.logger.info(
-                                "Selector updated to '%s' for '%s'", sel, keyword
-                            )
-                            working_selector = sel
+                        els = page.query_selector_all(sel)
+                        if els:
+                            log.info("  Selector '%s' → %d links", sel, len(els))
+                            for el in els:
+                                href = el.get_attribute("href") or ""
+                                text = (el.inner_text() or "").strip()
+                                if href and text:
+                                    links_data.append((href, text))
                             break
 
-                found = 0
-                for link in links:
-                    t = self._parse_link(link, keyword)
-                    if t and t.id not in seen_ids:
-                        seen_ids.add(t.id)
-                        tenders.append(t)
-                        found += 1
+                    if not links_data:
+                        # Last resort: log all hrefs so we can debug
+                        all_links = page.query_selector_all("a[href]")
+                        log.warning(
+                            "  No selector matched. Total <a>: %d", len(all_links)
+                        )
+                        if all_links:
+                            sample = [el.get_attribute("href")[:60] for el in all_links[:5]]
+                            log.warning("  Sample hrefs: %s", sample)
+                        consecutive_failures += 1
+                        if consecutive_failures >= 3:
+                            log.warning("3+ failures — backing off 60s")
+                            time.sleep(60)
+                            consecutive_failures = 0
+                        continue
 
-                self.logger.info("TenderDetail '%s': %d tenders", keyword, found)
+                    consecutive_failures = 0
+                    found = 0
 
-            except Exception as e:
-                self.logger.error("TenderDetail '%s': %s", keyword, e)
-                consecutive_failures += 1
+                    for href, title_text in links_data:
+                        # Get the full URL
+                        full_url = href if href.startswith("http") else (BASE + href)
+                        # Get surrounding text for date/value extraction
+                        container = title_text  # minimal — expand if needed
 
-        self.logger.info("TenderDetail total: %d", len(tenders))
+                        t = self._build_tender(
+                            title=title_text,
+                            url=full_url,
+                            container=container,
+                            keyword=keyword,
+                        )
+                        if t and t.id not in seen_ids:
+                            seen_ids.add(t.id)
+                            tenders.append(t)
+                            found += 1
+
+                    log.info("TenderDetail '%s': %d tenders", keyword, found)
+
+                except Exception as e:
+                    log.error("TenderDetail '%s': %s", keyword, e)
+                    consecutive_failures += 1
+
+            browser.close()
+
+        log.info("TenderDetail total: %d", len(tenders))
         return tenders
 
-    def _discover(self, keyword: str):
-        """
-        Try every URL pattern × selector combination on one keyword.
-        Logs full diagnostics so failures can be debugged.
-        Returns (url_template, selector, soup) on first success, or (None,None,None).
-        """
-        kw = keyword
-        for url_tmpl in URL_PATTERNS:
-            url = url_tmpl.format(base=BASE, kw=kw)
-            self.logger.info("Trying URL: %s", url)
-            try:
-                time.sleep(random.uniform(3, 6))
-                r = self.session.get(url, timeout=25)
-                self.logger.info("  → HTTP %d | %d chars", r.status_code, len(r.text))
-
-                if r.status_code != 200:
-                    self.logger.warning("  Non-200, skipping")
-                    continue
-
-                from bs4 import BeautifulSoup
-                soup = BeautifulSoup(r.text, "lxml")
-
-                # Diagnostics regardless of selector outcome
-                title = soup.title.string.strip()[:80] if soup.title else "NO TITLE"
-                all_a = soup.find_all("a")
-                self.logger.info("  Page title : %s", title)
-                self.logger.info("  Total <a>  : %d", len(all_a))
-                if all_a:
-                    # Log first 5 hrefs so we can identify the new pattern
-                    hrefs = [a.get("href","")[:70] for a in all_a[:5] if a.get("href")]
-                    self.logger.info("  First hrefs: %s", hrefs)
-
-                # Try every selector
-                for sel in LINK_SELECTORS:
-                    links = soup.select(sel)
-                    if links:
-                        self.logger.info("  ✓ Selector '%s' → %d links", sel, len(links))
-                        return url_tmpl, sel, soup
-                    else:
-                        self.logger.info("  ✗ '%s' → 0", sel)
-
-                self.logger.warning("  No selector matched on %s", url)
-
-            except Exception as e:
-                self.logger.error("  Error: %s", e)
-
-        return None, None, None
-
-    def _parse_link(self, link, keyword: str) -> "Tender | None":
+    def _build_tender(self, title: str, url: str, container: str, keyword: str) -> "Tender | None":
         try:
-            title = link.get_text(strip=True)
             if not title or len(title) < 8:
                 return None
-
-            href = link.get("href", "")
-            url  = href if href.startswith("http") else (BASE + href)
-
-            search_texts = [title]
-            node = link
-            for _ in range(6):
-                node = node.parent
-                if node is None:
-                    break
-                txt = node.get_text(" ", strip=True)
-                if txt:
-                    search_texts.append(txt)
-                if len(txt) > 400:
-                    break
-            container = " ".join(search_texts)
-
             deadline  = self._extract_deadline(container)
             value_str = self._extract_value(container)
             portal    = self._detect_portal(container, title)
             category  = self._categorise(keyword, title)
             ref_no    = self._extract_ref(container, portal)
-
             return self.make_tender(
                 portal=portal,
                 title=title[:300],
@@ -241,7 +205,7 @@ class TenderDetailScraper(BaseScraper):
                 url=url,
             )
         except Exception as e:
-            self.logger.debug("_parse_link error: %s", e)
+            self.logger.debug("_build_tender error: %s", e)
             return None
 
     def _extract_deadline(self, text: str) -> str:
@@ -250,8 +214,6 @@ class TenderDetailScraper(BaseScraper):
             r"\s*[:\-]?\s*(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})",
             r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
             r"\s*[:\-]?\s*(\d{1,2}\s+\w+\s+\d{4})",
-            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
-            r"\s*[:\-]?\s*(\w+\s+\d{1,2},?\s+\d{4})",
         ]
         for pattern in label_patterns:
             m = re.search(pattern, text, re.IGNORECASE)
@@ -283,16 +245,15 @@ class TenderDetailScraper(BaseScraper):
             return "N/A"
         amount = float(m.group(1).replace(",", ""))
         unit   = (m.group(2) or "").lower()
-        if "cr" in unit:                     return f"₹{amount:.2f} Cr"
-        if unit in ("l","lac","lakh"):       return f"₹{amount:.2f} L"
-        if unit in ("k","thousand"):         return f"₹{amount/100000:.2f} L"
+        if "cr" in unit:                   return f"₹{amount:.2f} Cr"
+        if unit in ("l","lac","lakh"):     return f"₹{amount:.2f} L"
+        if unit in ("k","thousand"):       return f"₹{amount/100000:.2f} L"
         return f"₹{amount:,.0f}"
 
     def _detect_portal(self, text: str, title: str) -> str:
         combined = (text + " " + title).upper()
         if "GEM"         in combined: return "GeM"
         if "CPPP"        in combined: return "CPPP"
-        if "TENDER.GOV"  in combined: return "CPPP"
         if "MAHARASHTRA" in combined: return "MH Gov"
         if "KARNATAKA"   in combined: return "KA Gov"
         if "RAJASTHAN"   in combined: return "RJ Gov"
@@ -313,7 +274,6 @@ class TenderDetailScraper(BaseScraper):
             r"[A-Z]{2,}/\d{4}[\/\-]\w+",
             r"\d{4,}/\w+/\d{2,4}",
             r"GEM[\/\-]\w+[\/\-]\w+",
-            r"CPPP[\/\-]\d+",
         ]
         for p in patterns:
             m = re.search(p, text, re.IGNORECASE)
@@ -324,12 +284,10 @@ class TenderDetailScraper(BaseScraper):
 
 
 def scrape_all_aggregators() -> list[Tender]:
-    import logging
-    log = logging.getLogger("Aggregators")
     try:
         results = TenderDetailScraper().scrape()
-        log.info("TenderDetail.com: %d tenders", len(results))
+        logging.getLogger("Aggregators").info("TenderDetail.com: %d tenders", len(results))
         return results
     except Exception as e:
-        log.error("TenderDetail.com failed: %s", e)
+        logging.getLogger("Aggregators").error("TenderDetail.com failed: %s", e)
         return []
