@@ -1,18 +1,13 @@
 """
 TenderRadar — TenderDetail.com Scraper
-tenderdetail.com is accessible from GitHub Actions and aggregates
-tenders from GeM, CPPP, and all state portals.
-URL pattern: /Indian-tender/{keyword}-tenders
+Aggregates tenders from GeM, CPPP, and state portals.
+URL pattern: https://www.tenderdetail.com/Indian-tender/{keyword}-tenders
 """
 import re
 import time
 from datetime import datetime, timedelta
 from base_scraper import BaseScraper, Tender
 
-
-# PR/Comms specific search keywords on tenderdetail.com
-# NOTE: "geo-services" removed — it pulls geotechnical/GIS tenders, not PR-relevant
-# Added: photography-services, film-production, outdoor-advertising
 SEARCH_KEYWORDS = [
     "public-relations",
     "social-media-management",
@@ -28,20 +23,35 @@ SEARCH_KEYWORDS = [
     "integrated-communication",
     "website-development",
     "seo-services",
-    "photography-services",
-    "film-production",
-    "outdoor-advertising",
-    "brand-promotion",
+    "geo-services",
 ]
 
 BASE = "https://www.tenderdetail.com"
+
+CATEGORY_MAP = {
+    "public relations":        "Public Relations",
+    "pr agency":               "Public Relations",
+    "media monitoring":        "Media Monitoring",
+    "social media":            "Social Media Management",
+    "digital marketing":       "Digital Marketing",
+    "digital outreach":        "Digital Marketing",
+    "event":                   "Events & Publicity",
+    "advertising":             "Campaign Execution",
+    "media buying":            "Campaign Execution",
+    "integrated communication":"Integrated Communications",
+    "communication agency":    "Integrated Communications",
+    "content":                 "Creative & Content",
+    "website":                 "Digital Marketing",
+    "seo":                     "Digital Marketing",
+    "geo":                     "Digital Marketing",
+}
 
 
 class TenderDetailScraper(BaseScraper):
     PORTAL_NAME = "TenderDetail"
 
     def scrape(self) -> list[Tender]:
-        tenders = []
+        tenders  = []
         seen_ids = set()
         self.logger.info("Starting TenderDetail.com scrape…")
 
@@ -52,28 +62,23 @@ class TenderDetailScraper(BaseScraper):
                 soup = self.get(url)
                 if not soup:
                     continue
-
-                links = soup.select("h2 a[href*='/TenderNotice/']")
-                if not links:
-                    links = soup.select("a[href*='/TenderNotice/']")
-
+                links = soup.select("h2 a[href*='/TenderNotice/']") or \
+                        soup.select("a[href*='/TenderNotice/']")
                 found = 0
                 for link in links:
-                    t = self._parse_link(link)
+                    t = self._parse_link(link, keyword)
                     if t and t.id not in seen_ids:
                         seen_ids.add(t.id)
                         tenders.append(t)
                         found += 1
-
-                self.logger.info(f"TenderDetail '{keyword}': {found} tenders")
-
+                self.logger.info("TenderDetail '%s': %d tenders", keyword, found)
             except Exception as e:
-                self.logger.error(f"TenderDetail '{keyword}': {e}")
+                self.logger.error("TenderDetail '%s': %s", keyword, e)
 
-        self.logger.info(f"TenderDetail total: {len(tenders)}")
+        self.logger.info("TenderDetail total: %d", len(tenders))
         return tenders
 
-    def _parse_link(self, link) -> "Tender | None":
+    def _parse_link(self, link, keyword: str) -> "Tender | None":
         try:
             title = link.get_text(strip=True)
             if not title or len(title) < 8:
@@ -82,123 +87,145 @@ class TenderDetailScraper(BaseScraper):
             href = link.get("href", "")
             url  = href if href.startswith("http") else (BASE + href)
 
-            parent = link.parent
-            for _ in range(4):
-                if parent is None:
+            # Collect text from surrounding DOM for date/value/portal
+            search_texts = [title]
+            node = link
+            for _ in range(6):
+                node = node.parent
+                if node is None:
                     break
-                parent = parent.parent
+                txt = node.get_text(" ", strip=True)
+                if txt:
+                    search_texts.append(txt)
+                if len(txt) > 400:
+                    break
+            container = " ".join(search_texts)
 
-            container_text = parent.get_text(" ", strip=True) if parent else ""
+            deadline = self._extract_deadline(container)
+            value_str = self._extract_value(container)
+            portal = self._detect_portal(container, title)
+            category = self._categorise(keyword, title)
+            ref_no = self._extract_ref(container, portal)
 
-            # Parse due date — try common Indian tender date formats
-            date_m = re.search(
-                r"Due\s*Date\s*:?\s*([A-Za-z]+\s+\d+,?\s+\d{4}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})",
-                container_text, re.IGNORECASE
-            )
-            deadline = self._pd(date_m.group(1)) if date_m else ""
-
-            # Parse value
-            val_m = re.search(
-                r"([\d,\.]+)\s*(Crore|Lakh|L|Cr)", container_text, re.IGNORECASE
-            )
-            value_str = f"₹{val_m.group(1)} {val_m.group(2)}" if val_m else "N/A"
-
-            # Extract ref number
-            ref_m = re.search(
-                r"GEM/\d+/\w/\d+|[\w]+/\d{4}[/-]\w+/\d+", title + " " + url, re.IGNORECASE
-            )
-            ref = ref_m.group(0) if ref_m else f"TD-{abs(hash(title))%100000}"
-
-            portal = self._detect_portal(title + " " + container_text)
-
-            self.PORTAL_NAME = portal
             return self.make_tender(
-                title=title[:250],
-                ref_no=ref[:100],
-                category=self._cat(title),
-                description=title,
+                portal=portal,
+                title=title[:300],
+                ref_no=ref_no,
+                category=category,
+                description=container[:500],
                 value_raw=0.0,
                 value_str=value_str,
                 deadline=deadline,
                 url=url,
             )
         except Exception as e:
-            self.logger.debug(f"TenderDetail parse error: {e}")
+            self.logger.debug("_parse_link error: %s", e)
             return None
 
-    def _detect_portal(self, text: str) -> str:
-        t = text.upper()
-        if "GEM/" in t or "GEM/2" in t:  return "GeM"
-        if "CPPP" in t:                   return "CPPP"
-        if "ONGC" in t:                   return "ONGC"
-        if "NTPC" in t:                   return "NTPC"
-        if "IRCTC" in t:                  return "IRCTC"
-        if "BHEL" in t:                   return "BHEL"
-        if "IRCON" in t:                  return "IRCON"
-        if "NBCC" in t:                   return "NBCC"
-        return "Govt Portal"
+    def _extract_deadline(self, text: str) -> str:
+        """
+        Tries multiple date label patterns.
+        Falls back to a 30-day default if nothing found.
+        """
+        # Labels that precede the submission/closing date
+        label_patterns = [
+            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
+            r"\s*[:\-]?\s*"
+            r"(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})",
+            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
+            r"\s*[:\-]?\s*"
+            r"(\d{1,2}\s+\w+\s+\d{4})",
+            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
+            r"\s*[:\-]?\s*"
+            r"(\w+\s+\d{1,2},?\s+\d{4})",
+        ]
+        for pattern in label_patterns:
+            m = re.search(pattern, text, re.IGNORECASE)
+            if m:
+                parsed = self._pd(m.group(1))
+                if parsed:
+                    # Reject obviously wrong dates (in the past by more than 1 yr)
+                    try:
+                        from datetime import date
+                        d = datetime.strptime(parsed, "%Y-%m-%d").date()
+                        if (date.today() - d).days > 365:
+                            continue
+                    except Exception:
+                        pass
+                    return parsed
 
-    def _pd(self, s: str) -> str:
-        """Parse a date string into YYYY-MM-DD. Returns empty string if unparseable."""
-        s = s.strip()
-        for fmt in ("%b %d, %Y", "%B %d, %Y", "%b %d %Y", "%B %d %Y",
-                    "%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d/%m/%y", "%d-%m-%y"):
-            try:
-                return datetime.strptime(s[:len(fmt.replace('%Y','0000').replace('%m','00').replace('%d','00').replace('%b','AAA').replace('%B','AAAAAAAA'))], fmt).strftime("%Y-%m-%d")
-            except Exception:
-                pass
-        # Try a simpler approach for edge cases
-        for fmt in ("%b %d, %Y", "%B %d, %Y", "%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d"):
-            try:
-                return datetime.strptime(s, fmt).strftime("%Y-%m-%d")
-            except Exception:
-                pass
-        return ""  # empty string — dashboard will show "N/A" cleanly without NaNd
+        # Generic date anywhere in text — take the LAST one found (most likely closing)
+        all_dates = re.findall(
+            r"\b(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})\b", text
+        )
+        for raw in reversed(all_dates):
+            parsed = self._pd(raw)
+            if parsed:
+                try:
+                    from datetime import date
+                    d = datetime.strptime(parsed, "%Y-%m-%d").date()
+                    # Only accept future dates (or within the last 7 days)
+                    if (date.today() - d).days <= 7:
+                        return parsed
+                except Exception:
+                    pass
 
-    def _dd(self, d: int) -> str:
-        return (datetime.utcnow() + timedelta(days=d)).strftime("%Y-%m-%d")
+        return self._dd(30)
 
-    def _cat(self, t: str) -> str:
-        t = t.lower()
-        if any(k in t for k in ["pr ", "public relation", "communication agency", "empanelment",
-                                  "media relation", "press release", "spokesperson"]):
-            return "PR & Communications"
-        if any(k in t for k in ["social media", "digital media management", "facebook",
-                                  "instagram", "twitter"]):
-            return "Social Media"
-        if any(k in t for k in ["campaign", "awareness campaign", "outreach campaign",
-                                  "iec campaign", "information education"]):
-            return "Campaign Execution"
-        if any(k in t for k in ["media monitor", "press clipping", "news monitor",
-                                  "sentiment", "media tracking"]):
-            return "Media Monitoring"
-        if any(k in t for k in ["event", "exhibition", "trade fair", "conference",
-                                  "seminar", "ceremony"]):
-            return "Event Publicity"
-        if any(k in t for k in ["creative", "content", "design", "video", "film",
-                                  "photo", "production", "animation"]):
-            return "Creative & Content"
-        if any(k in t for k in ["website", "web portal", "web development", "seo",
-                                  "digital platform"]):
-            return "Digital & Web"
-        if any(k in t for k in ["advertising", "ad agency", "media buying", "outdoor",
-                                  "hoarding", "banner", "flex"]):
-            return "Advertising"
-        if any(k in t for k in ["reputation", "crisis", "brand management", "brand promotion"]):
-            return "Reputation Management"
-        if any(k in t for k in ["analytics", "reporting", "dashboard", "measurement"]):
-            return "Analytics"
+    def _extract_value(self, text: str) -> str:
+        m = re.search(
+            r"[₹Rs\.]+\s*([\d,\.]+)\s*(Cr|Crore|L|Lac|Lakh|K|Thousand)?",
+            text, re.IGNORECASE
+        )
+        if not m:
+            return "N/A"
+        amount = float(m.group(1).replace(",", ""))
+        unit   = (m.group(2) or "").lower()
+        if "cr" in unit:    return f"₹{amount:.2f} Cr"
+        if unit in ("l","lac","lakh"): return f"₹{amount:.2f} L"
+        if unit in ("k","thousand"):   return f"₹{amount/100000:.2f} L"
+        return f"₹{amount:,.0f}"
+
+    def _detect_portal(self, text: str, title: str) -> str:
+        combined = (text + " " + title).upper()
+        if "GEM"  in combined: return "GeM"
+        if "CPPP" in combined: return "CPPP"
+        if "TENDER.GOV" in combined: return "CPPP"
+        if "UP"   in combined and "GOVERNMENT" in combined: return "UP Gov"
+        if "MAHARASHTRA" in combined: return "MH Gov"
+        if "KARNATAKA"   in combined: return "KA Gov"
+        return "Gov Portal"
+
+    def _categorise(self, keyword: str, title: str) -> str:
+        kw = keyword.replace("-", " ").lower()
+        t  = title.lower()
+        for k, cat in CATEGORY_MAP.items():
+            if k in kw or k in t:
+                return cat
         return "Communication Support"
+
+    def _extract_ref(self, text: str, portal: str) -> str:
+        patterns = [
+            r"[A-Z]{2,}/\d{4}[\/\-]\w+",
+            r"\d{4,}/\w+/\d{2,4}",
+            r"GEM[\/\-]\w+[\/\-]\w+",
+            r"CPPP[\/\-]\d+",
+        ]
+        for p in patterns:
+            m = re.search(p, text, re.IGNORECASE)
+            if m:
+                return m.group(0)[:100]
+        slug = re.sub(r"[^A-Za-z0-9]", "", text[:20])
+        return f"{portal}-{slug}"
 
 
 def scrape_all_aggregators() -> list[Tender]:
     import logging
     log = logging.getLogger("Aggregators")
     try:
-        scraper = TenderDetailScraper()
-        results = scraper.scrape()
-        log.info(f"TenderDetail.com: {len(results)} tenders")
+        results = TenderDetailScraper().scrape()
+        log.info("TenderDetail.com: %d tenders", len(results))
         return results
     except Exception as e:
-        log.error(f"TenderDetail.com failed: {e}")
+        log.error("TenderDetail.com failed: %s", e)
         return []
