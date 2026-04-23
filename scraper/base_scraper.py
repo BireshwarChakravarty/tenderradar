@@ -1,7 +1,12 @@
+"""
+TenderRadar — Base scraper
+Shared HTTP session, retry logic, and Tender dataclass.
+"""
 import hashlib
+import random
 import time
 import logging
-from abc import ABC, abstractmethod
+from abc import ABC
 from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta
 from typing import Optional
@@ -9,6 +14,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from config import USER_AGENT, REQUEST_DELAY
+
 
 @dataclass
 class Tender:
@@ -40,31 +46,69 @@ class Tender:
 class BaseScraper(ABC):
     PORTAL_NAME: str = ""
 
+    # Extra headers that make requests look like a real browser
+    _HEADERS = {
+        "Accept":          "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-IN,en-GB;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection":      "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Cache-Control":   "max-age=0",
+    }
+
     def __init__(self):
         self.logger = logging.getLogger(self.PORTAL_NAME)
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": USER_AGENT,
-            "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
-            "Accept-Language": "en-IN,en;q=0.9",
+            **self._HEADERS,
         })
 
     def get(self, url: str, **kwargs) -> Optional[BeautifulSoup]:
+        """
+        GET with smart retry + exponential back-off.
+        - 503 / 429: wait 45 s then 90 s before retrying (server is throttling)
+        - Timeout / other: wait 5 s then 12 s
+        - Returns None after 3 failed attempts.
+        """
         for attempt in range(3):
             try:
-                time.sleep(REQUEST_DELAY + attempt * 2)
-                resp = self.session.get(url, timeout=20, **kwargs)
+                # Jittered delay: base delay + random 0-3 s so requests don't
+                # look metronomic to the server
+                delay = REQUEST_DELAY + random.uniform(0, 3)
+                if attempt > 0:
+                    delay += attempt * 2          # extra back-off on retries
+                time.sleep(delay)
+
+                resp = self.session.get(url, timeout=25, **kwargs)
+
+                # Rate-limit / service unavailable — long back-off
+                if resp.status_code in (429, 503):
+                    wait = 45 * (attempt + 1)     # 45 s, then 90 s
+                    self.logger.warning(
+                        "HTTP %d on attempt %d — backing off %ds: %s",
+                        resp.status_code, attempt + 1, wait, url
+                    )
+                    time.sleep(wait)
+                    continue                       # retry without raising
+
                 resp.raise_for_status()
                 return BeautifulSoup(resp.text, "lxml")
-            except Exception as e:
-                self.logger.warning(f"Attempt {attempt+1} failed for {url}: {e}")
-        self.logger.error(f"All retries exhausted for {url}")
+
+            except requests.exceptions.Timeout:
+                self.logger.warning("Timeout attempt %d: %s", attempt + 1, url)
+                time.sleep(8 + attempt * 4)
+            except requests.exceptions.RequestException as e:
+                self.logger.warning("Attempt %d failed: %s — %s", attempt + 1, url, e)
+                time.sleep(5 + attempt * 3)
+
+        self.logger.error("All retries exhausted: %s", url)
         return None
 
     def make_tender(self, **kwargs) -> Tender:
         t = Tender(
             scraped_at=datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-            **kwargs
+            **kwargs,
         )
         t.compute_id()
         return t
@@ -75,8 +119,7 @@ class BaseScraper(ABC):
         fmts = [
             "%d-%m-%Y", "%d/%m/%Y", "%d-%m-%y", "%d/%m/%y",
             "%B %d, %Y", "%b %d, %Y", "%B %d %Y", "%b %d %Y",
-            "%d %B %Y", "%d %b %Y",
-            "%Y-%m-%d",
+            "%d %B %Y",  "%d %b %Y",  "%Y-%m-%d",
         ]
         for fmt in fmts:
             try:
