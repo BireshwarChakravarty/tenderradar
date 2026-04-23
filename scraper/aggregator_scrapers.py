@@ -46,6 +46,30 @@ CATEGORY_MAP = {
     "geo":                      "Digital Marketing",
 }
 
+# All known URL patterns to try for each keyword
+# Listed in order of preference — first match wins
+URL_PATTERNS = [
+    "{base}/Indian-tender/{kw}-tenders",
+    "{base}/search-tender?keyword={kw}",
+    "{base}/tenders/{kw}",
+    "{base}/tender-search?q={kw}",
+]
+
+# All known link selectors — first non-empty match wins
+LINK_SELECTORS = [
+    "h2 a[href*='/TenderNotice/']",
+    "a[href*='/TenderNotice/']",
+    "a[href*='TenderNotice']",
+    "h2 a[href*='/tender/']",
+    "a[href*='/tender-detail']",
+    "a[href*='/tender/']",
+    ".tender-title a",
+    ".bid-title a",
+    "h3 a[href*='tender']",
+    "h2 a",
+    "h3 a",
+]
+
 
 class TenderDetailScraper(BaseScraper):
     PORTAL_NAME = "TenderDetail"
@@ -55,47 +79,62 @@ class TenderDetailScraper(BaseScraper):
         seen_ids = set()
         self.logger.info("Starting TenderDetail.com scrape…")
 
-        # Warm up the session with the homepage first — reduces 503 likelihood
+        # Warm up session
         self.logger.info("Warming up session…")
-        self.session.get(BASE, timeout=15)
+        try:
+            r = self.session.get(BASE, timeout=15)
+            self.logger.info("Homepage: HTTP %d — %d chars", r.status_code, len(r.text))
+        except Exception as e:
+            self.logger.warning("Warmup failed: %s", e)
         time.sleep(random.uniform(4, 7))
+
+        # Discover which URL pattern and selector work on the first keyword
+        working_url_pattern = None
+        working_selector    = None
+
+        self.logger.info("=== SELECTOR DISCOVERY on first keyword ===")
+        disc_url, disc_selector, disc_soup = self._discover(SEARCH_KEYWORDS[0])
+        if disc_url:
+            working_url_pattern = disc_url
+            working_selector    = disc_selector
+            self.logger.info("✓ URL pattern : %s", disc_url)
+            self.logger.info("✓ Selector    : %s", disc_selector)
+        else:
+            self.logger.error("✗ No working URL+selector found — aborting scrape")
+            self.logger.error("  Check the DIAGNOSTIC output above to update selectors")
+            return []
 
         consecutive_failures = 0
 
         for i, keyword in enumerate(SEARCH_KEYWORDS):
-            url = f"{BASE}/Indian-tender/{keyword}-tenders"
+            if i > 0:
+                delay = random.uniform(6, 12)
+                time.sleep(delay)
+
+            url = working_url_pattern.replace("{kw}", keyword)
             try:
-                # Longer inter-keyword delay to avoid rate-limiting
-                # Randomised so it doesn't look metronomic
-                if i > 0:
-                    delay = random.uniform(6, 12)
-                    self.logger.debug("Sleeping %.1fs before next keyword…", delay)
-                    time.sleep(delay)
-
                 soup = self.get(url)
-
                 if not soup:
                     consecutive_failures += 1
-                    self.logger.warning(
-                        "No response for '%s' (%d consecutive failures)",
-                        keyword, consecutive_failures
-                    )
-                    # If 3+ keywords in a row fail, the site is likely blocking
-                    # this run — back off heavily then continue
                     if consecutive_failures >= 3:
-                        self.logger.warning(
-                            "3+ consecutive failures — backing off 120s before continuing"
-                        )
+                        self.logger.warning("3 consecutive failures — backing off 120s")
                         time.sleep(120)
                         consecutive_failures = 0
                     continue
 
-                consecutive_failures = 0  # reset on success
+                consecutive_failures = 0
+                links = soup.select(working_selector)
 
-                links = (
-                    soup.select("h2 a[href*='/TenderNotice/']")
-                    or soup.select("a[href*='/TenderNotice/']")
-                )
+                # Fallback: try all selectors if the working one returns 0
+                if not links:
+                    for sel in LINK_SELECTORS:
+                        links = soup.select(sel)
+                        if links:
+                            self.logger.info(
+                                "Selector updated to '%s' for '%s'", sel, keyword
+                            )
+                            working_selector = sel
+                            break
 
                 found = 0
                 for link in links:
@@ -114,6 +153,54 @@ class TenderDetailScraper(BaseScraper):
         self.logger.info("TenderDetail total: %d", len(tenders))
         return tenders
 
+    def _discover(self, keyword: str):
+        """
+        Try every URL pattern × selector combination on one keyword.
+        Logs full diagnostics so failures can be debugged.
+        Returns (url_template, selector, soup) on first success, or (None,None,None).
+        """
+        kw = keyword
+        for url_tmpl in URL_PATTERNS:
+            url = url_tmpl.format(base=BASE, kw=kw)
+            self.logger.info("Trying URL: %s", url)
+            try:
+                time.sleep(random.uniform(3, 6))
+                r = self.session.get(url, timeout=25)
+                self.logger.info("  → HTTP %d | %d chars", r.status_code, len(r.text))
+
+                if r.status_code != 200:
+                    self.logger.warning("  Non-200, skipping")
+                    continue
+
+                from bs4 import BeautifulSoup
+                soup = BeautifulSoup(r.text, "lxml")
+
+                # Diagnostics regardless of selector outcome
+                title = soup.title.string.strip()[:80] if soup.title else "NO TITLE"
+                all_a = soup.find_all("a")
+                self.logger.info("  Page title : %s", title)
+                self.logger.info("  Total <a>  : %d", len(all_a))
+                if all_a:
+                    # Log first 5 hrefs so we can identify the new pattern
+                    hrefs = [a.get("href","")[:70] for a in all_a[:5] if a.get("href")]
+                    self.logger.info("  First hrefs: %s", hrefs)
+
+                # Try every selector
+                for sel in LINK_SELECTORS:
+                    links = soup.select(sel)
+                    if links:
+                        self.logger.info("  ✓ Selector '%s' → %d links", sel, len(links))
+                        return url_tmpl, sel, soup
+                    else:
+                        self.logger.info("  ✗ '%s' → 0", sel)
+
+                self.logger.warning("  No selector matched on %s", url)
+
+            except Exception as e:
+                self.logger.error("  Error: %s", e)
+
+        return None, None, None
+
     def _parse_link(self, link, keyword: str) -> "Tender | None":
         try:
             title = link.get_text(strip=True)
@@ -123,7 +210,6 @@ class TenderDetailScraper(BaseScraper):
             href = link.get("href", "")
             url  = href if href.startswith("http") else (BASE + href)
 
-            # Collect context text from surrounding DOM
             search_texts = [title]
             node = link
             for _ in range(6):
@@ -173,18 +259,14 @@ class TenderDetailScraper(BaseScraper):
                 parsed = self._pd(m.group(1))
                 if parsed and not self._is_stale(parsed):
                     return parsed
-
-        # Fallback: last date-like string in text that isn't in the past > 7 days
         all_dates = re.findall(r"\b(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})\b", text)
         for raw in reversed(all_dates):
             parsed = self._pd(raw)
             if parsed and not self._is_stale(parsed):
                 return parsed
-
         return self._dd(30)
 
     def _is_stale(self, date_str: str) -> bool:
-        """Returns True if the date is more than 7 days in the past."""
         try:
             from datetime import date
             d = datetime.strptime(date_str, "%Y-%m-%d").date()
@@ -201,9 +283,9 @@ class TenderDetailScraper(BaseScraper):
             return "N/A"
         amount = float(m.group(1).replace(",", ""))
         unit   = (m.group(2) or "").lower()
-        if "cr" in unit:                        return f"₹{amount:.2f} Cr"
-        if unit in ("l", "lac", "lakh"):        return f"₹{amount:.2f} L"
-        if unit in ("k", "thousand"):           return f"₹{amount / 100000:.2f} L"
+        if "cr" in unit:                     return f"₹{amount:.2f} Cr"
+        if unit in ("l","lac","lakh"):       return f"₹{amount:.2f} L"
+        if unit in ("k","thousand"):         return f"₹{amount/100000:.2f} L"
         return f"₹{amount:,.0f}"
 
     def _detect_portal(self, text: str, title: str) -> str:
