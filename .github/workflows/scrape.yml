@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       portals:
-        description: 'Comma-separated portals to scrape (leave blank for all)'
+        description: 'Portals to scrape (leave blank for all)'
         required: false
         default: ''
 
@@ -17,6 +17,8 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repo
@@ -33,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r scraper/requirements.txt
 
-      - name: Run scrapers
+      - name: Run scrapers + AI scoring
         env:
           ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
           COMPANY_PROFILE:     ${{ secrets.COMPANY_PROFILE }}
@@ -43,13 +45,12 @@ jobs:
 
       - name: Send alerts
         env:
-          SMTP_USER:           ${{ secrets.SMTP_USER }}
-          SMTP_PASS:           ${{ secrets.SMTP_PASS }}
-          ALERT_EMAIL_TO:      ${{ secrets.ALERT_EMAIL_TO }}
-          TELEGRAM_BOT_TOKEN:  ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID:    ${{ secrets.TELEGRAM_CHAT_ID }}
-          COMPANY_PROFILE:     ${{ secrets.COMPANY_PROFILE }}
-          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_USER:          ${{ secrets.SMTP_USER }}
+          SMTP_PASS:          ${{ secrets.SMTP_PASS }}
+          ALERT_EMAIL_TO:     ${{ secrets.ALERT_EMAIL_TO }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
+          COMPANY_PROFILE:    ${{ secrets.COMPANY_PROFILE }}
         run: python scraper/alerts.py
 
       - name: Commit updated data
