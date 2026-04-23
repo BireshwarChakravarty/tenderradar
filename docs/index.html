@@ -1054,47 +1054,16 @@ function updateStatus(val){
 }
 
 // ── AI RE-SCORE ────────────────────────────────────────────────
-async function runAiScore(){
-  if(!CURRENT) return;
-  const btn = document.getElementById('ai-btn');
-  btn.disabled=true; btn.textContent='✦ Analysing…';
-  const sumEl = document.getElementById('p-summary');
-  sumEl.textContent='Running AI analysis…'; sumEl.classList.add('empty');
-
-  try{
-    const profile = localStorage.getItem('tr_profile')||'Communications and PR agency in India';
-    const resp = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
-        messages:[{role:'user',content:
-          `Score this tender for a communications/PR agency.\n\n`+
-          `TENDER: ${CURRENT.title}\nPORTAL: ${CURRENT.portal}\nCATEGORY: ${CURRENT.category}\n`+
-          `DESCRIPTION: ${CURRENT.description||'N/A'}\n\n`+
-          `COMPANY: ${profile}\n\n`+
-          `Respond with JSON only: {"score":0.0,"summary":"two-sentence analysis"}`
-        }]
-      })
-    });
-    const data = await resp.json();
-    const text = (data.content||[]).map(c=>c.text||'').join('');
-    const clean = text.replace(/```json|```/g,'').trim();
-    const result = JSON.parse(clean);
-    CURRENT.score   = result.score||0;
-    CURRENT.summary = result.summary||'';
-    sumEl.textContent = CURRENT.summary; sumEl.classList.remove('empty');
-    document.getElementById('p-score').innerHTML =
-      `<span style="font-weight:700;color:${CURRENT.score>=8?'var(--green)':CURRENT.score>=6?'var(--amber)':'var(--red)'}">${CURRENT.score.toFixed(1)} / 10</span>`;
-    renderTable();
-  }catch(e){
-    sumEl.textContent='AI analysis failed: '+e.message; sumEl.classList.add('empty');
-  }finally{
-    btn.disabled=false; btn.textContent='✦ Re-analyse with AI';
-  }
+function runAiScore(){
+  const btn    = document.getElementById('ai-btn');
+  const sumEl  = document.getElementById('p-summary');
+  btn.disabled = true;
+  sumEl.classList.add('empty');
+  sumEl.textContent =
+    'AI scoring runs server-side via GitHub Actions every 4 hours. '
+    + 'To trigger now: repo \u2192 Actions \u2192 TenderRadar Scraper \u2192 Run workflow.';
+  setTimeout(()=>{ btn.disabled=false; }, 4000);
 }
-
 // ── EXPIRED TOGGLE ─────────────────────────────────────────────
 function toggleExpired(){
   SHOW_EXPIRED = !SHOW_EXPIRED;
