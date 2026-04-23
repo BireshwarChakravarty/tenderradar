@@ -5,12 +5,35 @@ preserving user-set statuses and AI scores across runs.
 """
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from base_scraper import Tender
 from config import TENDERS_FILE
 
 logger = logging.getLogger("Deduplicator")
+
+# Portal name variants to normalise → canonical form
+_PORTAL_ALIASES = {
+    "Govt Portal": "Gov Portal",
+    "Government Portal": "Gov Portal",
+}
+
+
+def _normalise(tenders_list: list[dict]) -> list[dict]:
+    """
+    Clean up data quality issues on every save:
+      - Normalise legacy portal name variants
+      - Replace 'N/A' / missing deadlines with today+30
+    """
+    default_dl = (datetime.now(timezone.utc) + timedelta(days=30)).strftime("%Y-%m-%d")
+    for t in tenders_list:
+        # Portal normalisation
+        if t.get("portal") in _PORTAL_ALIASES:
+            t["portal"] = _PORTAL_ALIASES[t["portal"]]
+        # Deadline normalisation
+        if not t.get("deadline") or t["deadline"] == "N/A":
+            t["deadline"] = default_dl
+    return tenders_list
 
 
 def load_existing() -> dict[str, dict]:
@@ -33,15 +56,15 @@ def save_tenders(tender_dict: dict[str, dict]) -> None:
         key=lambda t: t.get("scraped_at", ""),
         reverse=True,
     )
-    # Cap at 1 000 tenders to keep the file small
     tenders_list = tenders_list[:1000]
+    tenders_list = _normalise(tenders_list)
 
     out = {
         "tenders": tenders_list,
         "meta": {
             "total":        len(tenders_list),
-            "portals":      list({t.get("portal", "") for t in tenders_list if t.get("portal")}),
-            "last_updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "portals":      sorted({t.get("portal", "") for t in tenders_list if t.get("portal")}),
+            "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         },
     }
     with open(TENDERS_FILE, "w", encoding="utf-8") as f:
@@ -63,10 +86,8 @@ def merge_new_tenders(new_tenders: list[Tender]) -> tuple[list[Tender], list[dic
             existing[t.id] = t.to_dict()
         else:
             stored = existing[t.id]
-            # Never overwrite user-set pipeline status
             if stored.get("status", "New") != "New":
                 continue
-            # Refresh mutable fields in case portal updated them
             stored["deadline"]   = t.deadline or stored.get("deadline", "")
             stored["url"]        = t.url or stored.get("url", "")
             stored["scraped_at"] = t.scraped_at
