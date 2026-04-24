@@ -187,9 +187,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);
   background:var(--bg2);border:1px solid var(--border);
   border-radius:var(--radius-lg);padding:16px 18px;
   display:flex;flex-direction:column;gap:4px;
-  transition:border-color .15s;cursor:default
+  transition:all .15s;cursor:pointer;user-select:none
 }
-.stat-card:hover{border-color:var(--border3)}
+.stat-card:hover{border-color:var(--border3);background:var(--bg3);transform:translateY(-1px)}
+.stat-card:active{transform:translateY(0)}
+.stat-card.active-filter{border-color:var(--amber)!important;background:var(--amber-dim)!important}
+.stat-card.active-filter .stat-label{color:var(--amber)}
 .stat-label{font-size:11px;font-family:var(--font-mono);color:var(--text3);
   text-transform:uppercase;letter-spacing:.6px}
 .stat-value{font-family:var(--font-display);font-size:26px;font-weight:700;line-height:1.1}
@@ -514,15 +517,15 @@ td{padding:11px 14px;vertical-align:middle}
     <div class="filterbar" id="filterbar">
       <div class="search-wrap">
         <svg viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M10 10l2.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <input class="search-input" id="f-search" placeholder="Search tenders…" oninput="renderTable()">
+        <input class="search-input" id="f-search" placeholder="Search tenders…" oninput="clearStatFilter();renderTable()">
       </div>
-      <select class="filter-select" id="f-portal" onchange="renderTable()">
+      <select class="filter-select" id="f-portal" onchange="clearStatFilter();renderTable()">
         <option value="">All Portals</option>
       </select>
-      <select class="filter-select" id="f-cat" onchange="renderTable()">
+      <select class="filter-select" id="f-cat" onchange="clearStatFilter();renderTable()">
         <option value="">All Categories</option>
       </select>
-      <select class="filter-select" id="f-status" onchange="renderTable()">
+      <select class="filter-select" id="f-status" onchange="clearStatFilter();renderTable()">
         <option value="">All Statuses</option>
         <option>New</option>
         <option>Watching</option>
@@ -530,7 +533,7 @@ td{padding:11px 14px;vertical-align:middle}
         <option>Won</option>
         <option>Lost</option>
       </select>
-      <select class="filter-select" id="f-score" onchange="renderTable()">
+      <select class="filter-select" id="f-score" onchange="clearStatFilter();renderTable()">
         <option value="">Any Score</option>
         <option value="8">Score ≥ 8</option>
         <option value="7">Score ≥ 7</option>
@@ -539,7 +542,7 @@ td{padding:11px 14px;vertical-align:middle}
       <!-- Expired tenders toggle -->
       <div class="toggle-wrap" onclick="toggleExpired()" title="Show/hide expired tenders">
         <div class="toggle-switch on" id="expired-switch"></div>
-        <span class="toggle-label">Show expired</span>
+        <span class="toggle-label" id="expired-label">Show expired</span>
       </div>
       <span class="result-count" id="result-count"></span>
     </div>
@@ -551,22 +554,22 @@ td{padding:11px 14px;vertical-align:middle}
       <div class="view active" id="view-tenders">
         <!-- Stats row -->
         <div class="stats-row" id="stats-row">
-          <div class="stat-card stat-amber">
+          <div class="stat-card stat-amber" id="sc-all" onclick="filterByStat('all')" title="Show all tenders">
             <div class="stat-label">Total Tenders</div>
             <div class="stat-value" id="s-active">—</div>
             <div class="stat-sub">In database</div>
           </div>
-          <div class="stat-card stat-red">
+          <div class="stat-card stat-red" id="sc-closing" onclick="filterByStat('closing')" title="Show tenders closing within 7 days">
             <div class="stat-label">Closing This Week</div>
             <div class="stat-value" id="s-closing">—</div>
             <div class="stat-sub">Within 7 days</div>
           </div>
-          <div class="stat-card stat-teal">
+          <div class="stat-card stat-teal" id="sc-pipeline" onclick="filterByStat('pipeline')" title="Show pipeline tenders">
             <div class="stat-label">In Pipeline</div>
             <div class="stat-value" id="s-pipeline">—</div>
             <div class="stat-sub">Watching / Bid submitted</div>
           </div>
-          <div class="stat-card stat-green">
+          <div class="stat-card stat-green" id="sc-highfit" onclick="filterByStat('highfit')" title="Show high-fit tenders (score ≥ 8)">
             <div class="stat-label">High Fit (≥8)</div>
             <div class="stat-value" id="s-highfit">—</div>
             <div class="stat-sub">AI score ≥ 8.0</div>
@@ -719,6 +722,7 @@ td{padding:11px 14px;vertical-align:middle}
 let ALL = [];
 let CURRENT = null;
 let SHOW_EXPIRED = true;
+let STAT_FILTER = null;  // 'closing' | 'pipeline' | null
 const TODAY_STR = new Date().toISOString().split('T')[0];
 
 const STATUSES = ['New','Watching','Bid Submitted','Won','Lost'];
@@ -840,10 +844,10 @@ async function loadTenders(){
     const pipelineCount  = ALL.filter(t=>['Watching','Bid Submitted'].includes(t.status)).length;
     const highFitCount   = ALL.filter(t=>parseFloat(t.score||0)>=8&&!isExpired(t)).length;
 
-    document.getElementById('s-active').textContent  = ALL.length;
-    document.getElementById('s-closing').textContent = closingCount;
-    document.getElementById('s-pipeline').textContent= pipelineCount;
-    document.getElementById('s-highfit').textContent = highFitCount;
+    document.getElementById('s-active').textContent   = ALL.length;
+    document.getElementById('s-closing').textContent  = closingCount > 0 ? closingCount : '0';
+    document.getElementById('s-pipeline').textContent = pipelineCount > 0 ? pipelineCount : '0';
+    document.getElementById('s-highfit').textContent  = highFitCount > 0 ? highFitCount : '0';
     document.getElementById('nb-all').textContent    = ALL.length;
     document.getElementById('nb-pipe').textContent   = pipelineCount;
 
@@ -894,17 +898,25 @@ function populateFilters(){
 
 // ── TABLE RENDER ───────────────────────────────────────────────
 function renderTable(){
-  const search = (document.getElementById('f-search').value||'').toLowerCase();
-  const portal = document.getElementById('f-portal').value;
-  const cat    = document.getElementById('f-cat').value;
-  const status = document.getElementById('f-status').value;
+  const search   = (document.getElementById('f-search').value||'').toLowerCase();
+  const portal   = document.getElementById('f-portal').value;
+  const cat      = document.getElementById('f-cat').value;
+  const status   = document.getElementById('f-status').value;
   const minScore = parseFloat(document.getElementById('f-score').value)||0;
 
   let filtered = ALL.filter(t=>{
-    // ── EXPIRY FILTER (the core fix) ──────────────────────────
-    // By default, hide expired tenders (deadline has passed)
-    // unless the user has toggled "Show expired" on,
-    // or the tender is in a pipeline status (always visible).
+
+    // ── STAT CARD QUICK FILTERS ───────────────────────────────
+    if(STAT_FILTER === 'closing'){
+      const days = daysLeft(t.deadline);
+      if(days === null || days < 0 || days > 7) return false;
+      if(['Won','Lost'].includes(t.status)) return false;
+    }
+    if(STAT_FILTER === 'pipeline'){
+      if(!['Watching','Bid Submitted'].includes(t.status)) return false;
+    }
+
+    // ── EXPIRY FILTER ─────────────────────────────────────────
     if(!SHOW_EXPIRED && isExpired(t)) return false;
 
     if(portal && t.portal !== portal) return false;
@@ -1063,11 +1075,80 @@ function runAiScore(){
     + 'To trigger now: repo \u2192 Actions \u2192 TenderRadar Scraper \u2192 Run workflow.';
   setTimeout(()=>{ btn.disabled=false; }, 4000);
 }
-// ── EXPIRED TOGGLE ─────────────────────────────────────────────
+// ── STAT CARD FILTER ──────────────────────────────────────────
+function filterByStat(type){
+  // Clear all active states
+  ['sc-all','sc-closing','sc-pipeline','sc-highfit'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.classList.remove('active-filter');
+  });
+
+  // Reset all filters first
+  document.getElementById('f-search').value  = '';
+  document.getElementById('f-portal').value  = '';
+  document.getElementById('f-cat').value     = '';
+  document.getElementById('f-status').value  = '';
+  document.getElementById('f-score').value   = '';
+
+  const sw = document.getElementById('expired-switch');
+
+  if(type === 'all'){
+    // Show everything
+    SHOW_EXPIRED = true;
+    sw.classList.add('on');
+    document.getElementById('sc-all').classList.add('active-filter');
+
+  } else if(type === 'closing'){
+    // Tenders closing within 7 days — need custom renderTable logic
+    // Use a special global flag
+    SHOW_EXPIRED = false;
+    sw.classList.remove('on');
+    document.getElementById('sc-closing').classList.add('active-filter');
+    STAT_FILTER = 'closing';
+    renderTable();
+    return;
+
+  } else if(type === 'pipeline'){
+    document.getElementById('f-status').value = '';
+    SHOW_EXPIRED = true;
+    sw.classList.add('on');
+    document.getElementById('sc-pipeline').classList.add('active-filter');
+    STAT_FILTER = 'pipeline';
+    renderTable();
+    return;
+
+  } else if(type === 'highfit'){
+    document.getElementById('f-score').value = '8';
+    SHOW_EXPIRED = false;
+    sw.classList.remove('on');
+    document.getElementById('sc-highfit').classList.add('active-filter');
+  }
+
+  STAT_FILTER = null;
+  renderTable();
+}
+
+
+function clearStatFilter(){
+  STAT_FILTER = null;
+  ['sc-all','sc-closing','sc-pipeline','sc-highfit'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.classList.remove('active-filter');
+  });
+}
+
 function toggleExpired(){
   SHOW_EXPIRED = !SHOW_EXPIRED;
-  const sw = document.getElementById('expired-switch');
-  SHOW_EXPIRED ? sw.classList.add('on') : sw.classList.remove('on');
+  const sw  = document.getElementById('expired-switch');
+  const lbl = document.getElementById('expired-label');
+  if(SHOW_EXPIRED){
+    sw.classList.add('on');
+    lbl.textContent = 'Show expired';
+  } else {
+    sw.classList.remove('on');
+    const expiredCount = ALL.filter(t => isExpired(t)).length;
+    lbl.textContent = expiredCount > 0 ? `Hide expired (${expiredCount})` : 'Show expired';
+  }
   renderTable();
 }
 
