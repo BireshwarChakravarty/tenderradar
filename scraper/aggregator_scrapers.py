@@ -1,7 +1,6 @@
 """
 TenderRadar — TenderDetail.com Scraper (Playwright edition)
-tenderdetail.com migrated to a JS-rendered SPA — requires a real browser
-to execute JavaScript before the DOM contains any tender links.
+tenderdetail.com is a JS-rendered SPA — requires headless Chromium.
 """
 import logging
 import random
@@ -51,10 +50,9 @@ CATEGORY_MAP = {
     "geo":                      "Digital Marketing",
 }
 
-# Link selectors to try after JS has rendered the page
 LINK_SELECTORS = [
-    "h2 a[href*='/TenderNotice/']",
     "a[href*='/TenderNotice/']",
+    "h2 a[href*='/TenderNotice/']",
     "a[href*='TenderNotice']",
     "h2 a[href*='tender']",
     "a[href*='/tender-detail']",
@@ -74,20 +72,16 @@ class TenderDetailScraper(BaseScraper):
         log.info("Starting TenderDetail.com scrape (Playwright)…")
 
         try:
-            from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+            from playwright.sync_api import sync_playwright
         except ImportError:
-            log.error("Playwright not installed — run: playwright install chromium --with-deps")
+            log.error("Playwright not installed")
             return []
 
         with sync_playwright() as pw:
             browser = pw.chromium.launch(
                 headless=True,
-                args=[
-                    "--no-sandbox",
-                    "--disable-setuid-sandbox",
-                    "--disable-dev-shm-usage",
-                    "--disable-gpu",
-                ],
+                args=["--no-sandbox","--disable-setuid-sandbox",
+                      "--disable-dev-shm-usage","--disable-gpu"],
             )
             context = browser.new_context(
                 user_agent=(
@@ -100,12 +94,12 @@ class TenderDetailScraper(BaseScraper):
             )
             page = context.new_page()
 
-            # Warm up — visit homepage first to set cookies / bypass checks
+            # Warm up
             log.info("Warming up session…")
             try:
-                page.goto(BASE, timeout=20000, wait_until="domcontentloaded")
-                time.sleep(random.uniform(3, 5))
-                log.info("Homepage loaded — title: %s", page.title()[:60])
+                page.goto(BASE, timeout=25000, wait_until="domcontentloaded")
+                time.sleep(random.uniform(4, 7))
+                log.info("Homepage: %s", page.title()[:60])
             except Exception as e:
                 log.warning("Warmup failed (non-fatal): %s", e)
 
@@ -113,65 +107,90 @@ class TenderDetailScraper(BaseScraper):
 
             for i, keyword in enumerate(SEARCH_KEYWORDS):
                 if i > 0:
-                    time.sleep(random.uniform(5, 10))
+                    time.sleep(random.uniform(6, 11))
 
                 url = f"{BASE}/Indian-tender/{keyword}-tenders"
                 try:
-                    page.goto(url, timeout=30000, wait_until="networkidle")
-                    # Give JS a moment to finish rendering
+                    page.goto(url, timeout=35000, wait_until="networkidle")
                     time.sleep(random.uniform(2, 4))
 
                     title = page.title()
-                    log.info("'%s' — title: %s", keyword, title[:60] if title else "NO TITLE")
+                    log.info("'%s' — %s", keyword, title[:70] if title else "NO TITLE")
 
-                    # Try selectors until one returns links
-                    links_data = []
+                    # Find the working link selector
+                    working_sel = None
                     for sel in LINK_SELECTORS:
-                        els = page.query_selector_all(sel)
-                        if els:
-                            log.info("  Selector '%s' → %d links", sel, len(els))
-                            for el in els:
-                                href = el.get_attribute("href") or ""
-                                text = (el.inner_text() or "").strip()
-                                if href and text:
-                                    links_data.append((href, text))
+                        if page.query_selector_all(sel):
+                            working_sel = sel
                             break
 
-                    if not links_data:
-                        # Last resort: log all hrefs so we can debug
-                        all_links = page.query_selector_all("a[href]")
-                        log.warning(
-                            "  No selector matched. Total <a>: %d", len(all_links)
-                        )
-                        if all_links:
-                            sample = [el.get_attribute("href")[:60] for el in all_links[:5]]
-                            log.warning("  Sample hrefs: %s", sample)
+                    if not working_sel:
+                        all_a = page.query_selector_all("a[href]")
+                        log.warning("No selector matched. <a> count: %d", len(all_a))
+                        if all_a:
+                            sample = [el.get_attribute("href")[:60] for el in all_a[:5]]
+                            log.warning("Sample hrefs: %s", sample)
                         consecutive_failures += 1
                         if consecutive_failures >= 3:
-                            log.warning("3+ failures — backing off 60s")
-                            time.sleep(60)
+                            log.warning("3+ failures — backing off 90s")
+                            time.sleep(90)
                             consecutive_failures = 0
                         continue
 
                     consecutive_failures = 0
+                    link_els = page.query_selector_all(working_sel)
+                    log.info("  Selector '%s' → %d links", working_sel, len(link_els))
+
                     found = 0
+                    for el in link_els:
+                        try:
+                            href       = el.get_attribute("href") or ""
+                            link_text  = (el.inner_text() or "").strip()
 
-                    for href, title_text in links_data:
-                        # Get the full URL
-                        full_url = href if href.startswith("http") else (BASE + href)
-                        # Get surrounding text for date/value extraction
-                        container = title_text  # minimal — expand if needed
+                            if not href or not link_text or len(link_text) < 8:
+                                continue
 
-                        t = self._build_tender(
-                            title=title_text,
-                            url=full_url,
-                            container=container,
-                            keyword=keyword,
-                        )
-                        if t and t.id not in seen_ids:
-                            seen_ids.add(t.id)
-                            tenders.append(t)
-                            found += 1
+                            full_url = href if href.startswith("http") else (BASE + href)
+
+                            # ── Extract surrounding card text for deadline/value ──
+                            # Walk up the DOM to find the card container
+                            container_text = link_text
+                            try:
+                                # Try to get the parent card element text
+                                for _ in range(5):
+                                    parent = el.evaluate("el => el.parentElement")
+                                    if parent:
+                                        card_text = el.evaluate(
+                                            """el => {
+                                                let node = el;
+                                                for(let i=0; i<5; i++){
+                                                    node = node.parentElement;
+                                                    if(!node) break;
+                                                    const t = node.innerText || '';
+                                                    if(t.length > 50 && t.length < 800) return t;
+                                                }
+                                                return '';
+                                            }"""
+                                        )
+                                        if card_text and len(card_text) > 50:
+                                            container_text = card_text
+                                            break
+                            except Exception:
+                                pass
+
+                            t = self._build_tender(
+                                title=link_text,
+                                url=full_url,
+                                container=container_text,
+                                keyword=keyword,
+                            )
+                            if t and t.id not in seen_ids:
+                                seen_ids.add(t.id)
+                                tenders.append(t)
+                                found += 1
+
+                        except Exception as e:
+                            log.debug("Link parse error: %s", e)
 
                     log.info("TenderDetail '%s': %d tenders", keyword, found)
 
@@ -184,7 +203,7 @@ class TenderDetailScraper(BaseScraper):
         log.info("TenderDetail total: %d", len(tenders))
         return tenders
 
-    def _build_tender(self, title: str, url: str, container: str, keyword: str) -> "Tender | None":
+    def _build_tender(self, title, url, container, keyword):
         try:
             if not title or len(title) < 8:
                 return None
@@ -194,15 +213,10 @@ class TenderDetailScraper(BaseScraper):
             category  = self._categorise(keyword, title)
             ref_no    = self._extract_ref(container, portal)
             return self.make_tender(
-                portal=portal,
-                title=title[:300],
-                ref_no=ref_no,
-                category=category,
-                description=container[:500],
-                value_raw=0.0,
-                value_str=value_str,
-                deadline=deadline,
-                url=url,
+                portal=portal, title=title[:300], ref_no=ref_no,
+                category=category, description=container[:500],
+                value_raw=0.0, value_str=value_str,
+                deadline=deadline, url=url,
             )
         except Exception as e:
             self.logger.debug("_build_tender error: %s", e)
@@ -210,10 +224,12 @@ class TenderDetailScraper(BaseScraper):
 
     def _extract_deadline(self, text: str) -> str:
         label_patterns = [
-            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
+            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date|Closing)"
             r"\s*[:\-]?\s*(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})",
-            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date)"
+            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date|Closing)"
             r"\s*[:\-]?\s*(\d{1,2}\s+\w+\s+\d{4})",
+            r"(?:Submission|Bid\s+Submission|Last\s+Date|Due\s+Date|Closing\s+Date|End\s+Date|Closing)"
+            r"\s*[:\-]?\s*(\w+\s+\d{1,2},?\s+\d{4})",
         ]
         for pattern in label_patterns:
             m = re.search(pattern, text, re.IGNORECASE)
@@ -221,6 +237,7 @@ class TenderDetailScraper(BaseScraper):
                 parsed = self._pd(m.group(1))
                 if parsed and not self._is_stale(parsed):
                     return parsed
+        # Fallback: last date-like string
         all_dates = re.findall(r"\b(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})\b", text)
         for raw in reversed(all_dates):
             parsed = self._pd(raw)
@@ -270,12 +287,7 @@ class TenderDetailScraper(BaseScraper):
         return "Communication Support"
 
     def _extract_ref(self, text: str, portal: str) -> str:
-        patterns = [
-            r"[A-Z]{2,}/\d{4}[\/\-]\w+",
-            r"\d{4,}/\w+/\d{2,4}",
-            r"GEM[\/\-]\w+[\/\-]\w+",
-        ]
-        for p in patterns:
+        for p in [r"[A-Z]{2,}/\d{4}[\/\-]\w+", r"\d{4,}/\w+/\d{2,4}", r"GEM[\/\-]\w+[\/\-]\w+"]:
             m = re.search(p, text, re.IGNORECASE)
             if m:
                 return m.group(0)[:100]
