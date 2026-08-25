@@ -1,6 +1,23 @@
 {
   "tenders": [
     {
+      "id": "963b2ac2240c7adb",
+      "portal": "Gov Portal",
+      "title": "Pre-Bid expression of interest Document For Selection Of Channel Partner/Supplier/Authorized Distributor For Provision Of Ip-Mpls Based Network For Unified Communication Back-Bone & Voip Based Control Communication System With Associated Lan Infrastructure At Various Stations & H",
+      "ref_no": "57185960",
+      "category": "Media Monitoring",
+      "description": "Indian Tenders \n AI Search\nSales : +91-777 804 8217\nLogin\nHome  › \nIndian Tenders  › Tender #57185960\nCommunications and Information Technology\nBoards / Undertakings / PSU\nClosing in 14 days\nTDR #57185960\nTender For Pre- Bid expression of interest Document For Selection Of Channel Partner/Supplier/Authorized Distributor For Provision Of An Ip-Mpls-Based Unified Communication Network With Voip Control Communication, Lan/Ofc Infrastructure, Tcp-Ip-Based\nIssued by Boards / Undertakings / PSU · Gora",
+      "value_raw": 0.0,
+      "value_str": "N/A",
+      "deadline": "2026-09-08",
+      "url": "https://www.tenderdetail.com/Indian-Tenders/TenderNotice/57185960/9a2e24589f2210c9acb13fae3d41f0bd",
+      "status": "New",
+      "score": 1.5,
+      "summary": "**Fit:** This tender requires IP-MPLS network infrastructure and VoIP system provision, which falls outside the core competencies of a PR and communications agency focused on content, digital outreach, and media management.\n\n**Opportunity:** Not suitable for pursuit as it is a technical telecom infrastructure tender requiring hardware/network supplier capabilities rather than communications strategy and content services.\n\n**Recommendation:** Skip",
+      "scraped_at": "2026-08-25T13:01:05Z",
+      "alerted": false
+    },
+    {
       "id": "4798696a249aa826",
       "portal": "Gov Portal",
       "title": "Tender For Providing Comprehensive Architectural & Technical Design Services Including Geo-Technical Investigation, Surveying Work, Structural And Services Design & Drawings, Tender & Specifications Etc., Complete For Construction Of Schools Under Godabar",
@@ -16611,7 +16628,7 @@
     }
   ],
   "meta": {
-    "total": 977,
+    "total": 978,
     "portals": [
       "BR Gov",
       "GJ Gov",
@@ -16623,6 +16640,6 @@
       "RJ Gov",
       "UP Gov"
     ],
-    "last_updated": "2026-08-25T09:28:55Z"
+    "last_updated": "2026-08-25T13:35:43Z"
   }
 }
