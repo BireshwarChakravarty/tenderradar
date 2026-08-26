@@ -1,6 +1,23 @@
 {
   "tenders": [
     {
+      "id": "25ac165bf3a528d9",
+      "portal": "Gov Portal",
+      "title": "Pre-Bid EOI Document for Selection of Channel Partner/Supplier/Authorized Distributor for Provision of IP-MPLS based network for Unified communication Back-bone & VOIP based control communication system with associated LAN infrastructure at various stations & HQ Control Room and",
+      "ref_no": "57185957",
+      "category": "Integrated Communications",
+      "description": "Indian Tenders \n AI Search\nSales : +91-777 804 8217\nLogin\nHome  › \nIndian Tenders  › Tender #57185957\nCommunications and Information Technology\nBoards / Undertakings / PSU\nClosing in 13 days\nTDR #57185957\nTender For Pre- Bid expression of interest Document For Selection Of Service Partner For Engagement Of Labour For Provision Of An Ip-Mpls-Based Unified Communication Network With Voip Control Communication, Lan/Ofc Infrastructure, Tcp-Ip-Based Fire-F\nIssued by Boards / Undertakings / PSU · Gora",
+      "value_raw": 0.0,
+      "value_str": "N/A",
+      "deadline": "2026-09-08",
+      "url": "https://www.tenderdetail.com/Indian-Tenders/TenderNotice/57185957/fa30634875dce7e4283f2f507a6283fa",
+      "status": "New",
+      "score": 2.5,
+      "summary": "**Fit:** This is a technical infrastructure tender for IP-MPLS network and VOIP systems procurement, outside the agency's core competency in social media management, digital outreach, and creative communications.\n\n**Opportunity:** Not relevant as this requires specialized telecom/IT infrastructure expertise and vendor-distributor partnerships rather than PR and communications strategy services.\n\n**Recommendation:** Skip",
+      "scraped_at": "2026-08-26T01:39:44Z",
+      "alerted": false
+    },
+    {
       "id": "963b2ac2240c7adb",
       "portal": "Gov Portal",
       "title": "Pre-Bid expression of interest Document For Selection Of Channel Partner/Supplier/Authorized Distributor For Provision Of Ip-Mpls Based Network For Unified Communication Back-Bone & Voip Based Control Communication System With Associated Lan Infrastructure At Various Stations & H",
@@ -14,7 +31,7 @@
       "status": "New",
       "score": 1.5,
       "summary": "**Fit:** This tender requires IP-MPLS network infrastructure and VoIP system provision, which falls outside the core competencies of a PR and communications agency focused on content, digital outreach, and media management.\n\n**Opportunity:** Not suitable for pursuit as it is a technical telecom infrastructure tender requiring hardware/network supplier capabilities rather than communications strategy and content services.\n\n**Recommendation:** Skip",
-      "scraped_at": "2026-08-25T13:01:05Z",
+      "scraped_at": "2026-08-26T01:34:56Z",
       "alerted": false
     },
     {
@@ -16628,7 +16645,7 @@
     }
   ],
   "meta": {
-    "total": 978,
+    "total": 979,
     "portals": [
       "BR Gov",
       "GJ Gov",
@@ -16640,6 +16657,6 @@
       "RJ Gov",
       "UP Gov"
     ],
-    "last_updated": "2026-08-25T13:35:43Z"
+    "last_updated": "2026-08-26T02:09:06Z"
   }
 }
