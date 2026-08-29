@@ -1,20 +1,20 @@
 {
   "tenders": [
     {
-      "id": "25ac165bf3a528d9",
-      "portal": "Gov Portal",
+      "id": "e45bb5e30a7bf1c4",
+      "portal": "GeM",
       "title": "Pre-Bid EOI Document for Selection of Channel Partner/Supplier/Authorized Distributor for Provision of IP-MPLS based network for Unified communication Back-bone & VOIP based control communication system with associated LAN infrastructure at various stations & HQ Control Room and",
       "ref_no": "57185957",
       "category": "Integrated Communications",
-      "description": "Indian Tenders \n AI Search\nSales : +91-777 804 8217\nLogin\nHome  › \nIndian Tenders  › Tender #57185957\nCommunications and Information Technology\nBoards / Undertakings / PSU\nClosing in 13 days\nTDR #57185957\nTender For Pre- Bid expression of interest Document For Selection Of Service Partner For Engagement Of Labour For Provision Of An Ip-Mpls-Based Unified Communication Network With Voip Control Communication, Lan/Ofc Infrastructure, Tcp-Ip-Based Fire-F\nIssued by Boards / Undertakings / PSU · Gora",
+      "description": "Indian Tenders \n AI Search\nSales : +91-777 804 8217\nLogin\nHome  › \nIndian Tenders  › Tender #57185957\nCommunications and Information Technology\nBoards / Undertakings / PSU\nClosing in 9 days\nTDR #57185957\nTender For Pre- Bid expression of interest Document For Selection Of Service Partner For Engagement Of Labour For Provision Of An Ip-Mpls-Based Unified Communication Network With Voip Control Communication, Lan/Ofc Infrastructure, Tcp-Ip-Based Fire-F\nIssued by Boards / Undertakings / PSU · Gorak",
       "value_raw": 0.0,
       "value_str": "N/A",
       "deadline": "2026-09-08",
       "url": "https://www.tenderdetail.com/Indian-Tenders/TenderNotice/57185957/fa30634875dce7e4283f2f507a6283fa",
       "status": "New",
       "score": 2.5,
-      "summary": "**Fit:** This is a technical infrastructure tender for IP-MPLS network and VOIP systems procurement, outside the agency's core competency in social media management, digital outreach, and creative communications.\n\n**Opportunity:** Not relevant as this requires specialized telecom/IT infrastructure expertise and vendor-distributor partnerships rather than PR and communications strategy services.\n\n**Recommendation:** Skip",
-      "scraped_at": "2026-08-29T13:54:48Z",
+      "summary": "**Fit:** This tender is for IP-MPLS network infrastructure and VOIP technical implementation, which falls outside the agency's core competencies in social media management, creative content, and communications strategy.\n\n**Opportunity:** While issued by a PSU, this is a specialized telecom/IT infrastructure procurement that requires technical networking expertise rather than PR and communications services, making it unsuitable for the agency's service offerings.\n\n**Recommendation:** Skip",
+      "scraped_at": "2026-08-29T22:42:39Z",
       "alerted": false
     },
     {
@@ -31,7 +31,24 @@
       "status": "New",
       "score": 1.5,
       "summary": "**Fit:** This tender requires IP-MPLS network infrastructure and VoIP system provision, which falls outside the core competencies of a PR and communications agency focused on content, digital outreach, and media management.\n\n**Opportunity:** Not suitable for pursuit as it is a technical telecom infrastructure tender requiring hardware/network supplier capabilities rather than communications strategy and content services.\n\n**Recommendation:** Skip",
-      "scraped_at": "2026-08-29T13:50:25Z",
+      "scraped_at": "2026-08-29T22:38:20Z",
+      "alerted": false
+    },
+    {
+      "id": "25ac165bf3a528d9",
+      "portal": "Gov Portal",
+      "title": "Pre-Bid EOI Document for Selection of Channel Partner/Supplier/Authorized Distributor for Provision of IP-MPLS based network for Unified communication Back-bone & VOIP based control communication system with associated LAN infrastructure at various stations & HQ Control Room and",
+      "ref_no": "57185957",
+      "category": "Integrated Communications",
+      "description": "Indian Tenders \n AI Search\nSales : +91-777 804 8217\nLogin\nHome  › \nIndian Tenders  › Tender #57185957\nCommunications and Information Technology\nBoards / Undertakings / PSU\nClosing in 13 days\nTDR #57185957\nTender For Pre- Bid expression of interest Document For Selection Of Service Partner For Engagement Of Labour For Provision Of An Ip-Mpls-Based Unified Communication Network With Voip Control Communication, Lan/Ofc Infrastructure, Tcp-Ip-Based Fire-F\nIssued by Boards / Undertakings / PSU · Gora",
+      "value_raw": 0.0,
+      "value_str": "N/A",
+      "deadline": "2026-09-08",
+      "url": "https://www.tenderdetail.com/Indian-Tenders/TenderNotice/57185957/fa30634875dce7e4283f2f507a6283fa",
+      "status": "New",
+      "score": 2.5,
+      "summary": "**Fit:** This is a technical infrastructure tender for IP-MPLS network and VOIP systems procurement, outside the agency's core competency in social media management, digital outreach, and creative communications.\n\n**Opportunity:** Not relevant as this requires specialized telecom/IT infrastructure expertise and vendor-distributor partnerships rather than PR and communications strategy services.\n\n**Recommendation:** Skip",
+      "scraped_at": "2026-08-29T13:54:48Z",
       "alerted": false
     },
     {
@@ -16645,7 +16662,7 @@
     }
   ],
   "meta": {
-    "total": 979,
+    "total": 980,
     "portals": [
       "BR Gov",
       "GJ Gov",
@@ -16657,6 +16674,6 @@
       "RJ Gov",
       "UP Gov"
     ],
-    "last_updated": "2026-08-29T14:25:14Z"
+    "last_updated": "2026-08-29T23:13:24Z"
   }
 }
