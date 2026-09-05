@@ -14,7 +14,7 @@
       "status": "New",
       "score": 2.5,
       "summary": "**Fit:** This tender is for IP-MPLS network infrastructure and VOIP technical implementation, which falls outside the agency's core competencies in social media management, creative content, and communications strategy.\n\n**Opportunity:** While issued by a PSU, this is a specialized telecom/IT infrastructure procurement that requires technical networking expertise rather than PR and communications services, making it unsuitable for the agency's service offerings.\n\n**Recommendation:** Skip",
-      "scraped_at": "2026-09-05T03:46:15Z",
+      "scraped_at": "2026-09-05T08:23:43Z",
       "alerted": false
     },
     {
@@ -31,7 +31,7 @@
       "status": "New",
       "score": 1.5,
       "summary": "**Fit:** This tender requires IP-MPLS network infrastructure and VoIP system provision, which falls outside the core competencies of a PR and communications agency focused on content, digital outreach, and media management.\n\n**Opportunity:** Not suitable for pursuit as it is a technical telecom infrastructure tender requiring hardware/network supplier capabilities rather than communications strategy and content services.\n\n**Recommendation:** Skip",
-      "scraped_at": "2026-09-05T03:42:31Z",
+      "scraped_at": "2026-09-05T08:19:33Z",
       "alerted": false
     },
     {
@@ -16674,6 +16674,6 @@
       "RJ Gov",
       "UP Gov"
     ],
-    "last_updated": "2026-09-05T04:11:41Z"
+    "last_updated": "2026-09-05T08:49:12Z"
   }
 }
