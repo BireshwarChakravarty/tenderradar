@@ -25,6 +25,7 @@ def run():
     logger.info("TenderRadar started at %s UTC", start.strftime("%Y-%m-%d %H:%M:%S"))
     logger.info("=" * 60)
     all_scraped = []
+    failed = False
 
     try:
         from aggregator_scrapers import scrape_all_aggregators
@@ -33,6 +34,7 @@ def run():
         logger.info("✓ TenderDetail.com: %d tenders", len(results))
     except Exception as e:
         logger.error("✗ Aggregator failed: %s", e)
+        failed = True
 
     logger.info("\nTotal scraped (pre-dedup): %d", len(all_scraped))
 
@@ -61,6 +63,10 @@ def run():
     logger.info("=" * 60)
     logger.info("Done in %ds | New: %d | Total scraped: %d", elapsed, len(truly_new), len(all_scraped))
     logger.info("=" * 60)
+
+    # Non-zero exit marks the workflow run failed, so GitHub emails the owner
+    if failed:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

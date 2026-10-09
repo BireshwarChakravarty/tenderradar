@@ -15,14 +15,18 @@ ROOT CAUSES FIXED:
   3. Listing page shows publication date, not submission date — only detail page has it.
 """
 import logging
+import os
 import random
 import re
 import time
 from datetime import datetime, timedelta
 
 from base_scraper import BaseScraper, Tender
+from deduplicator import load_existing
 
 log = logging.getLogger("TenderDetail")
+
+MAX_DETAIL_PAGES = int(os.getenv("MAX_DETAIL_PAGES", "150"))
 
 SEARCH_KEYWORDS = [
     "public-relations",
@@ -81,6 +85,7 @@ class TenderDetailScraper(BaseScraper):
     def scrape(self) -> list[Tender]:
         tenders  = []
         seen_ids = set()
+        no_title = 0
         log.info("Starting TenderDetail.com scrape (Playwright two-pass)…")
 
         try:
@@ -173,16 +178,28 @@ class TenderDetailScraper(BaseScraper):
             log.info("Pass 1 complete — %d unique tender URLs", len(url_keyword_map))
 
             # ── PASS 2: Visit each detail page ────────────────────
-            log.info("Pass 2: fetching detail pages for real title/deadline/value…")
+            # Skip URLs already in the store, and cap the rest so the run
+            # finishes (and commits) inside the workflow's 45-minute timeout.
+            # Each detail page takes ~6 s; leftovers are picked up next run.
+            known = {t.get("url") for t in load_existing().values()}
+            pending = [(u, k) for u, k in url_keyword_map.items() if u not in known]
+            log.info("Pass 2: %d new URLs (%d already stored), fetching up to %d…",
+                     len(pending), len(url_keyword_map) - len(pending), MAX_DETAIL_PAGES)
+            pending = pending[:MAX_DETAIL_PAGES]
             processed = 0
 
-            for detail_url, keyword in url_keyword_map.items():
+            for n, (detail_url, keyword) in enumerate(pending, 1):
+                if n % 10 == 0:
+                    log.info("  Visited %d / %d detail pages (%d parsed)", n, len(pending), processed)
                 try:
                     time.sleep(random.uniform(2, 4))
                     detail = self._fetch_detail(page, detail_url)
 
                     if not detail.get("title"):
-                        log.debug("No title from detail page: %s", detail_url)
+                        no_title += 1
+                        if no_title == 1:
+                            log.warning("No title parsed from %s — page text starts:\n%s",
+                                        detail_url, detail.get("description", "<empty>")[:400])
                         continue
 
                     t = self._build_tender(
@@ -199,15 +216,19 @@ class TenderDetailScraper(BaseScraper):
                         tenders.append(t)
                         processed += 1
 
-                    if processed % 10 == 0:
-                        log.info("  Processed %d / %d detail pages", processed, len(url_keyword_map))
-
                 except Exception as e:
                     log.error("Detail page '%s': %s", detail_url, e)
 
             browser.close()
 
-        log.info("TenderDetail total: %d tenders", len(tenders))
+        log.info("TenderDetail total: %d tenders (%d pages without a title)", len(tenders), no_title)
+        if no_title and not tenders:
+            # Every page fetched but none parsed — the site layout has changed.
+            # Fail loudly instead of committing an unchanged store for months.
+            raise RuntimeError(
+                f"Parsed 0 of {no_title} TenderDetail pages — detail page layout has "
+                "probably changed; update the patterns in _parse_detail()"
+            )
         return tenders
 
     # ── Detail page extractor ──────────────────────────────────────
@@ -221,23 +242,35 @@ class TenderDetailScraper(BaseScraper):
           - portal (from tendering authority / location text)
           - description (tender brief text)
         """
-        result = {}
         try:
             page.goto(url, timeout=30000, wait_until="domcontentloaded")
             time.sleep(random.uniform(1.5, 2.5))
-
             body_text = page.evaluate("() => document.body.innerText || ''")
+        except Exception as e:
+            log.debug("_fetch_detail error %s: %s", url, e)
+            return {}
+        return self._parse_detail(body_text)
 
+    def _parse_detail(self, body_text: str) -> dict:
+        """
+        Extract fields from a detail page's visible text. Handles both layouts:
+          - pre-July 2026: "TDR : 55145448 … Tender Brief : <title> … Submission Date …"
+          - redesign:      "Closing in 13 days\nTDR #57185957\n<title>\nIssued by …"
+        """
+        result = {}
+        try:
             if not body_text or len(body_text) < 80:
                 return result
 
             result["description"] = body_text[:500]
 
             # ── Title ──────────────────────────────────────────────
-            # tenderdetail.com shows: "Tender Brief : [Corrigendum :] <actual title>"
             title_patterns = [
+                # Old layout: "Tender Brief : [Corrigendum :] <actual title>"
                 r"Tender Brief\s*[:\-]\s*(?:Corrigendum\s*[:\-]\s*)?([A-Za-z][^\n]{20,350})",
                 r"(?:Subject|Title|Brief)\s*[:\-]\s*([A-Za-z][^\n]{20,300})",
+                # Redesign: no label — the title is the line right after "TDR #<id>"
+                r"TDR\s*[#:]\s*\d+\s*\n\s*([A-Za-z][^\n]{20,350})",
             ]
             for pat in title_patterns:
                 m = re.search(pat, body_text, re.IGNORECASE)
@@ -248,6 +281,13 @@ class TenderDetailScraper(BaseScraper):
                         break
 
             # ── Submission date ────────────────────────────────────
+            # The redesign shows a countdown ("Closing in 13 days"). Prefer it:
+            # labelled dates on the new page pick up an unrelated date.
+            m = re.search(r"Closing (?:in (\d+) days?|(today)|(tomorrow))", body_text, re.IGNORECASE)
+            if m:
+                days = int(m.group(1)) if m.group(1) else (0 if m.group(2) else 1)
+                result["deadline"] = (datetime.utcnow() + timedelta(days=days)).strftime("%Y-%m-%d")
+
             date_patterns = [
                 r"Submission Date\s*[:\-]?\s*(\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4})",
                 r"Bid Submission\s*[:\-]?\s*(\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4})",
@@ -257,7 +297,7 @@ class TenderDetailScraper(BaseScraper):
                 # With month names
                 r"Submission Date\s*[:\-]?\s*(\d{1,2}[\s\-\/]\w+[\s\-\/]\d{4})",
             ]
-            for pat in date_patterns:
+            for pat in date_patterns if "deadline" not in result else []:
                 m = re.search(pat, body_text, re.IGNORECASE)
                 if m:
                     parsed = self._pd(m.group(1))
@@ -304,7 +344,7 @@ class TenderDetailScraper(BaseScraper):
             result["portal"] = self._detect_portal(body_text, "")
 
         except Exception as e:
-            log.debug("_fetch_detail error %s: %s", url, e)
+            log.debug("_parse_detail error: %s", e)
 
         return result
 
@@ -370,10 +410,6 @@ class TenderDetailScraper(BaseScraper):
 
 
 def scrape_all_aggregators() -> list[Tender]:
-    try:
-        results = TenderDetailScraper().scrape()
-        logging.getLogger("Aggregators").info("TenderDetail.com: %d tenders", len(results))
-        return results
-    except Exception as e:
-        logging.getLogger("Aggregators").error("TenderDetail.com failed: %s", e)
-        return []
+    results = TenderDetailScraper().scrape()
+    logging.getLogger("Aggregators").info("TenderDetail.com: %d tenders", len(results))
+    return results
