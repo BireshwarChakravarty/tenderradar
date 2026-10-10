@@ -1,5 +1,5 @@
 """
-TenderRadar — scrape run (every 4 hours via GitHub Actions).
+TenderRadar: scrape run (every 4 hours via GitHub Actions).
 
   crawl TenderDetail → merge into the store → AI-score anything unscored
   → prune old tenders → save docs/data/tenders.json
@@ -11,7 +11,7 @@ import logging
 import sys
 import time
 
-from ai_scorer import score
+from ai_scorer import SCORING_VERSION, score
 from dates import from_str, iso_now, today_ist
 from store import load, load_rejected, merge, prune, save, save_rejected
 from tenderdetail import crawl
@@ -53,13 +53,18 @@ def run() -> int:
                  stats["new"], stats["updated"], stats["excluded"], run_info["closed_on_arrival"])
 
     today = today_ist()
+    # New tenders, plus any scored with an older version of the prompt
     unscored = [t for t in store.values()
-                if t.score is None and (not t.deadline or from_str(t.deadline) >= today)]
+                if (t.score is None or t.scoring_version < SCORING_VERSION)
+                and (not t.deadline or from_str(t.deadline) >= today)]
     if unscored:
         log.info("Scoring %d tenders…", len(unscored))
         run_info["scored"] = score(unscored)
 
+    before = set(store)
     run_info["pruned"] = prune(store)
+    for tid in before - set(store):            # don't fetch pruned duplicates or closed tenders again
+        rejected.setdefault(tid, today.isoformat())
     run_info["finished"] = iso_now()
     save(store, run_info)
     save_rejected(rejected)

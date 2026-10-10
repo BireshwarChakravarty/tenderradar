@@ -1,5 +1,5 @@
 """
-TenderRadar — morning digest (8 AM IST).
+TenderRadar: morning digest (8 AM IST).
 
   Closing this week   recommended tenders with a deadline in the next 7 days
   New since yesterday recommended tenders first seen in the last 24 hours
@@ -35,7 +35,7 @@ def build() -> dict:
 def run() -> None:
     g = build()
     if not g["closing"] and not g["new"]:
-        log.info("Nothing closing this week and nothing new — no digest today.")
+        log.info("Nothing closing this week and nothing new; no digest today.")
         return
 
     date_str = f"{now_ist():%A}, {now_ist().day} {now_ist():%B}"
@@ -44,8 +44,8 @@ def run() -> None:
 
     body = (email_section("Closing this week", g["closing"], "Deadlines in the next 7 days")
             + email_section("New since yesterday", g["new"]))
-    send_email(f"TenderRadar digest — {now_ist().day} {now_ist():%b}: {summary}",
-               email_page(f"Good morning — {date_str}", summary, body))
+    send_email(f"TenderRadar digest, {now_ist().day} {now_ist():%b}: {summary}",
+               email_page("Your morning digest", f"{date_str} · {summary}", body))
     send_telegram(telegram_message(f"☀️ TenderRadar · {date_str}\n{summary}",
                                    [("⏰ Closing this week", g["closing"]),
                                     ("✨ New since yesterday", g["new"])]))

@@ -1,5 +1,5 @@
 """
-TenderRadar — email and Telegram delivery, plus the shared message templates
+TenderRadar: email and Telegram delivery, plus the shared message templates
 used by alerts.py (new tenders) and daily_digest.py (morning summary).
 """
 import html
@@ -94,14 +94,17 @@ def email_section(title: str, tenders: list[Tender], note: str = "") -> str:
     note_html = f'<div style="color:#64748b;font-size:13px;margin-top:2px">{E(note)}</div>' if note else ""
     return f"""
     <tr><td style="padding:24px 28px 0">
-      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4338ca">{E(title)}</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4f5bd5">{E(title)}</div>
       {note_html}
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{"".join(email_card(t) for t in tenders)}</table>
     </td></tr>"""
 
 
 def email_page(heading: str, subheading: str, body_rows: str) -> str:
-    button = (f'<a href="{E(DASHBOARD_URL)}" style="display:inline-block;background:#4338ca;color:#fff;'
+    # Email clients don't render SVG, so the header uses the hosted PNG icon
+    logo = (f'<td style="padding-right:10px;vertical-align:middle"><img src="{E(DASHBOARD_URL)}assets/icon-192.png" '
+            f'width="28" height="28" alt="" style="display:block;border-radius:7px"></td>') if DASHBOARD_URL else ""
+    button = (f'<a href="{E(DASHBOARD_URL)}" style="display:inline-block;background:#4f5bd5;color:#fff;'
               f'padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none">'
               f'Open dashboard</a>') if DASHBOARD_URL else ""
     return f"""<!DOCTYPE html>
@@ -109,8 +112,10 @@ def email_page(heading: str, subheading: str, body_rows: str) -> str:
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f9;padding:24px 12px">
 <tr><td align="center">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0">
-    <tr><td style="background:#0f172a;padding:20px 28px">
-      <span style="color:#ffffff;font-size:16px;font-weight:700;letter-spacing:-.01em">TenderRadar</span>
+    <tr><td style="background:#07090d;padding:18px 28px">
+      <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+        {logo}<td style="color:#ffffff;font-size:16px;font-weight:700;letter-spacing:-.01em;vertical-align:middle">TenderRadar</td>
+      </tr></table>
     </td></tr>
     <tr><td style="padding:24px 28px 0">
       <div style="font-size:20px;font-weight:700;color:#0f172a">{E(heading)}</div>
@@ -129,7 +134,7 @@ def email_page(heading: str, subheading: str, body_rows: str) -> str:
 
 def send_email(subject: str, html_body: str) -> bool:
     if not EMAIL_ENABLED:
-        log.info("Email not configured — skipping")
+        log.info("Email not configured, skipping")
         return False
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
@@ -175,7 +180,7 @@ def telegram_message(heading: str, sections: list[tuple[str, list[Tender]]], lim
 
 def send_telegram(text: str) -> bool:
     if not TELEGRAM_ENABLED:
-        log.info("Telegram not configured — skipping")
+        log.info("Telegram not configured, skipping")
         return False
     data = urllib.parse.urlencode({
         "chat_id": TELEGRAM_CHAT_ID, "text": text,

@@ -1,5 +1,5 @@
 """
-TenderRadar — instant alerts.
+TenderRadar: instant alerts.
 
 Runs after each scrape. Sends one email and one Telegram message listing the
 recommended open tenders that haven't been alerted yet, best fit first.

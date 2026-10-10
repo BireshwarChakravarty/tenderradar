@@ -1,5 +1,5 @@
 """
-TenderRadar — TenderDetail.com page parser.
+TenderRadar: TenderDetail.com page parser.
 
 Pure functions over a detail page's visible text (document.body.innerText),
 so they can be tested without a browser. Handles both page layouts:
@@ -92,9 +92,9 @@ def _labelled_date(text: str, label: re.Pattern) -> date | None:
 
 def parse_dates(text: str, today: date | None = None) -> dict:
     """
-    {"deadline", "published", "closed"} — deadline/published are "YYYY-MM-DD" or "".
+    {"deadline", "published", "closed"}: deadline/published are "YYYY-MM-DD" or "".
 
-    A labelled date ("Submission Date 15-10-2026") is exact, so it wins — unless
+    A labelled date ("Submission Date 15-10-2026") is exact, so it wins, unless
     the page also shows a live countdown and the labelled date is already past.
     That combination appeared on the July 2026 layout, where the label picked up
     an unrelated date; the countdown ("Closing in 13 days") is right there.
@@ -149,7 +149,9 @@ def parse_money(text: str) -> dict:
 def split_location(loc: str) -> tuple[str, str]:
     """('Gorakhpur, Uttar Pradesh', 'Uttar Pradesh') from messy text like ' Gorakhpur , Uttar Pradesh'."""
     parts = [p.strip() for p in re.split(r"\s*,\s*", _clean(loc)) if p.strip()]
-    parts = [p.title() if p.islower() else p for p in parts]          # "jalandhar" → "Jalandhar"
+    parts = [p.title() if p.islower() else p for p in parts]          # "jalandhar" to "Jalandhar"
+    seen: set[str] = set()
+    parts = [p for p in parts if not (p.lower() in seen or seen.add(p.lower()))]  # "Delhi, Delhi" to "Delhi"
     state = ""
     for p in reversed(parts):
         state = _STATE_LOOKUP.get(p.lower(), "")

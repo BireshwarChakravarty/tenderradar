@@ -120,6 +120,8 @@ class PageParserTests(unittest.TestCase):
         self.assertEqual(split_location(" Jaipur , Rajasthan"), ("Jaipur, Rajasthan", "Rajasthan"))
         self.assertEqual(split_location("New Delhi"), ("New Delhi", "Delhi"))
         self.assertEqual(split_location("jalandhar, Punjab"), ("Jalandhar, Punjab", "Punjab"))
+        self.assertEqual(split_location("Delhi, Delhi"), ("Delhi", "Delhi"))
+        self.assertEqual(split_location("multi state, Multi State"), ("Multi State", ""))
 
 
 if __name__ == "__main__":

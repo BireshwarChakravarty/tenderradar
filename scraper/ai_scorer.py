@@ -1,5 +1,5 @@
 """
-TenderRadar — AI assessment of each tender with Claude.
+TenderRadar: AI assessment of each tender with Claude.
 
 For every new tender, Claude returns a structured assessment: a short clean
 headline, the issuing authority, what kind of procurement it is, a 1–10 fit
@@ -17,7 +17,10 @@ from pydantic import BaseModel, Field
 
 from config import AI_MODEL, ANTHROPIC_API_KEY, COMPANY_PROFILE
 from dates import days_until, iso_now
-from models import Tender
+from models import Tender, plain
+
+# Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
+SCORING_VERSION = 2
 
 log = logging.getLogger("AIScorer")
 
@@ -49,17 +52,19 @@ Fields:
 - kind: "services" when the buyer hires an agency or service provider (including empanelment);
   "goods" for supply of items or equipment; "works" for construction or civil works;
   "auction" when the government sells or licenses something (for example advertising rights on
-  hoardings, buses or stations) — the company would be paying, not being paid.
+  hoardings, buses or stations). The company would be paying, not being paid.
 - score, on this scale:
-  9–10  a core service of the company, clearly scoped
-  7–8   a strong fit; most of the scope is work the company does
-  5–6   a partial fit; worth a look, or a consortium or subcontracting angle
-  3–4   tangential; only a small part of the scope fits
-  1–2   not relevant — anything that is goods, works or an auction scores here
-- recommendation: "Bid" for strong fits with enough time to prepare a bid, "Watch" for partial fits or
-  when key details are missing, "Skip" otherwise. If the tender closes within 2 days, say so in
-  `reason` and prefer "Watch" over "Bid" unless the fit is exceptional.
-- fit and reason: one plain sentence each, specific to this tender. No filler."""
+  9 to 10  a core service of the company, clearly scoped
+  7 to 8   a strong fit; most of the scope is work the company does
+  5 to 6   a partial fit; worth a look, or a consortium or subcontracting angle
+  3 to 4   tangential; only a small part of the scope fits
+  1 to 2   not relevant. Anything that is goods, works or an auction scores here
+- recommendation: judge the fit only. "Bid" for strong fits (score 7 or more), "Watch" for partial
+  fits or when key details are missing, "Skip" otherwise. Don't downgrade a tender because its
+  deadline is close; the deadline is shown separately. You may mention a very close deadline in `reason`.
+- fit and reason: one plain sentence each, specific to this tender. No filler.
+
+Write in plain sentences. Never use em dashes; use commas, full stops or "and" instead."""
 
 
 def _client():
@@ -68,7 +73,7 @@ def _client():
     try:
         import anthropic
     except ImportError:
-        log.warning("anthropic package not installed — AI scoring disabled")
+        log.warning("anthropic package not installed, AI scoring disabled")
         return None
     return anthropic.Anthropic(api_key=ANTHROPIC_API_KEY, max_retries=3)
 
@@ -94,7 +99,7 @@ def score(tenders: list[Tender]) -> int:
     client = _client()
     if client is None:
         if tenders:
-            log.warning("ANTHROPIC_API_KEY not set — %d tenders left unscored", len(tenders))
+            log.warning("ANTHROPIC_API_KEY not set, %d tenders left unscored", len(tenders))
         return 0
 
     import anthropic
@@ -112,7 +117,7 @@ def score(tenders: list[Tender]) -> int:
                 output_format=Assessment,
             )
         except anthropic.AuthenticationError:
-            log.error("Anthropic API key rejected — stopping AI scoring for this run")
+            log.error("Anthropic API key rejected, stopping AI scoring for this run")
             break
         except anthropic.APIError as e:
             log.warning("[%d/%d] %s: API error, will retry next run: %s", i, len(tenders), t.id, e)
@@ -124,14 +129,15 @@ def score(tenders: list[Tender]) -> int:
                         i, len(tenders), t.id, resp.stop_reason)
             continue
 
-        t.headline = a.headline.strip()[:120]
-        t.authority = a.authority.strip() or t.authority
+        t.headline = plain(a.headline)[:120]
+        t.authority = plain(a.authority) or t.authority
         t.kind = a.kind
         t.score = round(min(10.0, max(1.0, a.score)), 1)
         t.recommendation = a.recommendation
-        t.fit = a.fit.strip()
-        t.reason = a.reason.strip()
+        t.fit = plain(a.fit)
+        t.reason = plain(a.reason)
         t.scored_at = iso_now()
+        t.scoring_version = SCORING_VERSION
         done += 1
         log.info("[%d/%d] %4.1f %-5s %s", i, len(tenders), t.score, t.recommendation, t.headline[:70])
     return done
