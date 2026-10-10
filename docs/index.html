@@ -278,6 +278,7 @@ textarea.control { width: 100%; height: 96px; padding: 8px 10px; resize: vertica
   <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.5M12 16h.01"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 4l1.7 4.8L18.5 10.5l-4.8 1.7L12 17l-1.7-4.8L5.5 10.5l4.8-1.7z"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4-2v-4.5z"/></symbol>
   <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3.5 13h5l1.5 2.5h4l1.5-2.5h5"/><path d="M6 5h12l2.5 8v5.5a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1V13z"/></symbol>
 </svg>
 
@@ -289,6 +290,7 @@ textarea.control { width: 100%; height: 96px; padding: 8px 10px; resize: vertica
       <button class="nav-item" data-view="open"><svg class="i"><use href="#i-list"/></svg><span class="label">All open</span><span class="count num" id="n-open"></span></button>
       <button class="nav-item" data-view="shortlist"><svg class="i"><use href="#i-bookmark"/></svg><span class="label">Shortlist</span><span class="count num" id="n-shortlist"></span></button>
       <button class="nav-item" data-view="closed"><svg class="i"><use href="#i-archive"/></svg><span class="label">Recently closed</span><span class="count num" id="n-closed"></span></button>
+      <button class="nav-item" data-view="filtered" title="Goods, works, auctions and very low fit — screened out by the AI"><svg class="i"><use href="#i-filter"/></svg><span class="label">Filtered out</span><span class="count num" id="n-filtered"></span></button>
       <div class="nav-label">Categories</div>
       <div id="nav-cats"></div>
     </nav>
@@ -351,7 +353,7 @@ const STATUSES = [
   { id: "dropped",     label: "Not pursuing" },
 ];
 const TRACKED = ["shortlisted", "preparing", "submitted"];
-const VIEWS = { recommended: "Recommended", open: "All open", shortlist: "Shortlist", closed: "Recently closed" };
+const VIEWS = { recommended: "Recommended", open: "All open", shortlist: "Shortlist", closed: "Recently closed", filtered: "Filtered out" };
 const statusLabel = id => (STATUSES.find(s => s.id === id) || STATUSES[0]).label;
 
 let tenders = [], meta = {};
@@ -408,6 +410,8 @@ const buyer = t => [t.authority, t.location].filter(Boolean).join(" · ");
 /* ── Classification ─────────────────────────────────────────────────── */
 const isRecommended = t => t.score != null && t.score >= (meta.min_score ?? 6) && t.recommendation !== "Skip"
   && !["goods", "works", "auction"].includes(t.kind);
+// Screened out by the AI: not services (goods, works, auctions) or a very poor fit
+const isFiltered = t => t.score != null && (["goods", "works", "auction"].includes(t.kind) || t.score < 3);
 const isNew = (t, days = 2) => t.first_seen && (Date.now() - Date.parse(t.first_seen)) < days * 864e5;
 const isTracked = t => TRACKED.includes(track(t.id).status);
 function inView(t, v) {
@@ -415,7 +419,8 @@ function inView(t, v) {
   if (v === "shortlist") return isTracked(t);
   if (isClosed(t)) return false;
   if (v === "recommended") return isRecommended(t) && track(t.id).status !== "dropped";
-  return true;
+  if (v === "filtered") return isFiltered(t);
+  return !isFiltered(t);
 }
 
 /* ── Filtering & sorting ────────────────────────────────────────────── */
@@ -479,6 +484,7 @@ function emptyHTML() {
       open: ["No open tenders", "Open tenders appear here as they're found."],
       shortlist: ["Shortlist is empty", "Set a tender's status to Shortlisted to track it here."],
       closed: ["No recently closed tenders", `Tenders that closed in the last ${meta.keep_closed_days ?? 30} days appear here.`],
+      filtered: ["Nothing filtered out", "Goods supply, works, auctions and very poor fits screened out by the AI appear here."],
     }[view];
   }
   return `<div class="empty"><div><div class="empty-icon"><svg class="i"><use href="#i-inbox"/></svg></div><h2>${esc(h)}</h2><p>${esc(p)}</p>${action}</div></div>`;
@@ -509,7 +515,7 @@ function renderSidebar() {
     const n = tenders.filter(t => inView(t, v)).length;
     $("#n-" + v).textContent = n || "";
   }
-  const open = tenders.filter(t => !isClosed(t));
+  const open = tenders.filter(t => !isClosed(t) && !isFiltered(t));
   const cats = {};
   open.forEach(t => { if (t.category) cats[t.category] = (cats[t.category] || 0) + 1; });
   $("#nav-cats").innerHTML = Object.keys(cats).length
@@ -617,6 +623,7 @@ function showSettings() {
     ["Tenders stored", `${meta.total ?? tenders.length} · ${meta.open ?? "–"} open`],
     lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered out, ${lr.closed_on_arrival ?? 0} already closed`],
     lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
+    lr.duplicates ? ["Duplicates skipped", `${lr.duplicates} corrigenda of tenders already listed`] : null,
     ["Recommended", `Fit ${meta.min_score ?? 6}+ and not marked Skip`],
   ].filter(Boolean);
   $("#insp-head").innerHTML = `<strong>Status &amp; data</strong><span class="spacer"></span>

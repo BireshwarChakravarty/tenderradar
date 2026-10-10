@@ -13,7 +13,7 @@ import time
 
 from ai_scorer import score
 from dates import from_str, iso_now, today_ist
-from store import load, merge, prune, save
+from store import load, load_rejected, merge, prune, save, save_rejected
 from tenderdetail import crawl
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-7s %(name)s: %(message)s",
@@ -25,10 +25,11 @@ def run() -> int:
     started = time.monotonic()
     run_info = {"started": iso_now(), "ok": True}
     store, _ = load()
+    rejected = load_rejected()
     log.info("Store: %d tenders", len(store))
 
     try:
-        res = crawl(store)
+        res = crawl(store, set(rejected))
     except Exception as e:
         log.error("Crawl failed: %s", e)
         run_info.update(ok=False, error=str(e)[:300])
@@ -39,9 +40,12 @@ def run() -> int:
         for tid in res.listed_ids & store.keys():
             store[tid].last_seen = now
         stats = merge(store, res.tenders)
+        today_s = today_ist().isoformat()
+        for tid in [*stats["rejected_ids"], *res.closed_ids]:
+            rejected.setdefault(tid, today_s)
         run_info.update(
             listed=len(res.listed_ids), pages=res.pages, new=stats["new"],
-            updated=stats["updated"], excluded=stats["excluded"],
+            updated=stats["updated"], excluded=stats["excluded"], duplicates=stats["duplicates"],
             closed_on_arrival=stats["closed_on_arrival"] + res.closed_on_arrival,
             unparsed=res.unparsed, backlog=res.backlog,
         )
@@ -58,6 +62,7 @@ def run() -> int:
     run_info["pruned"] = prune(store)
     run_info["finished"] = iso_now()
     save(store, run_info)
+    save_rejected(rejected)
     log.info("Done in %ds: %s", time.monotonic() - started,
              {k: v for k, v in run_info.items() if k not in ("started", "finished")})
     return 0 if run_info["ok"] else 1

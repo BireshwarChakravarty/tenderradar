@@ -40,6 +40,7 @@ class CrawlResult:
     pages: int = 0
     unparsed: int = 0
     closed_on_arrival: int = 0
+    closed_ids: set[str] = field(default_factory=set)
     backlog: int = 0                                    # new notices left for the next run
 
 
@@ -82,7 +83,8 @@ def _read_page(page, url: str) -> str:
         return ""
 
 
-def crawl(store: dict[str, Tender]) -> CrawlResult:
+def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlResult:
+    """`rejected`: ids already turned down (excluded, duplicate, closed) — never fetched again."""
     from playwright.sync_api import sync_playwright
 
     res = CrawlResult()
@@ -104,7 +106,8 @@ def crawl(store: dict[str, Tender]) -> CrawlResult:
         listed = _collect_listing_urls(page)
         res.listed_ids = {tender_id(ref_from_url(u)) for u in listed}
 
-        new = [(u, k) for u, k in listed.items() if tender_id(ref_from_url(u)) not in store]
+        new = [(u, k) for u, k in listed.items()
+               if (tid := tender_id(ref_from_url(u))) not in store and tid not in rejected]
         refresh = [
             (u, k) for u, k in listed.items()
             if (t := store.get(tender_id(ref_from_url(u))))
@@ -130,6 +133,7 @@ def crawl(store: dict[str, Tender]) -> CrawlResult:
             tid = tender_id(ref_from_url(url))
             if p["closed"] and tid not in store:
                 res.closed_on_arrival += 1
+                res.closed_ids.add(tid)
                 continue
             now = iso_now()
             res.tenders.append(Tender(

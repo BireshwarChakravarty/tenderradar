@@ -47,12 +47,15 @@ shelters, train wraps), construction and civil works, geotechnical surveys, and 
 that clearly describe agency work (IEC campaigns, publicity, PR) are always kept. These rules were
 checked against ~1,000 previously scored tenders: they removed 335, all of which had scored under 4.
 
-**Dropped by the store** (`scraper/store.py`) — tenders already closed when first found; closed
-tenders older than 30 days; tenders with no stated deadline not seen for 45 days.
+**Dropped by the store** (`scraper/store.py`) — tenders already closed when first found; corrigenda
+of a tender already listed (same wording and deadline); closed tenders older than 30 days; tenders
+with no stated deadline not seen for 45 days. Rejected notices are remembered in
+`docs/data/rejected.json` for 60 days so they aren't fetched again.
 
 **Scored by Claude** (`scraper/ai_scorer.py`) — a short headline, the issuing authority, the kind of
 procurement, a 1–10 fit score, Bid / Watch / Skip, and one-line reasons. A tender is *recommended*
-when it scores at or above `MIN_RELEVANCE_SCORE`, isn't Skip, and isn't goods, works or an auction.
+when it scores at or above `MIN_RELEVANCE_SCORE`, isn't Skip, and isn't goods, works or an auction. Goods,
+works, auctions and anything scoring under 3 are kept out of "All open" and listed under "Filtered out".
 
 **Dates** (`scraper/dates.py`) — every date is an Indian calendar date, and a tender is open
 through its closing day. A missing deadline stays missing; nothing is invented. Implausible
@@ -72,7 +75,7 @@ so extended deadlines (corrigenda) are picked up.
 
 ## Dashboard
 
-Recommended / All open / Shortlist / Closed views, search, category and state filters, CSV export,
+Recommended / All open / Shortlist / Recently closed / Filtered out views, search, category and state filters, CSV export,
 a detail sheet with the AI assessment, and tracking (Shortlisted → Preparing bid → Submitted) with notes.
 Tracking lives in your browser; export it from the settings panel to back it up or move devices.
 A link to a single tender is `…/#t=td-<number>`.

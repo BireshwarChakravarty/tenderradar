@@ -5,7 +5,8 @@ from datetime import timedelta
 from dates import today_ist
 from models import Tender
 from relevance import categorise, exclusion_reason, is_recommended
-from store import merge, prune
+from page_parser import is_sector_label, parse_where
+from store import dupe_key, merge, prune
 
 
 def _t(ref="1", title="Selection of PR agency for state tourism", deadline_in=10, **kw):
@@ -63,6 +64,33 @@ class StoreTests(unittest.TestCase):
         merge(store, [_t("1", deadline_in=12)])
         self.assertEqual(store["td-1"].deadline, (today_ist() + timedelta(days=12)).isoformat())
         self.assertEqual(store["td-1"].score, 8.0)
+
+    def test_corrigenda_of_the_same_tender_are_merged(self):
+        store = {}
+        stats = merge(store, [
+            _t("1", title="Corrigendum Tender For Appointment Of Public Relations (Pr) And Social Media Agency"),
+            _t("2", title="Corrigendum Appointment Of Public Relations (Pr) And Social Media Agency"),
+            _t("3", title="Corrigendum Appointment Of Public Relations (Pr) And Social Media Agency", deadline_in=20),
+        ])
+        self.assertEqual(sorted(store), ["td-1", "td-3"])          # different deadline = different tender
+        self.assertEqual(stats["duplicates"], 1)
+        self.assertEqual(stats["rejected_ids"], ["td-2"])
+
+    def test_prune_collapses_stored_duplicates(self):
+        a, b = _t("1", title="Tender For PR Agency For Tourism"), _t("2", title="Corrigendum PR Agency For Tourism")
+        b.first_seen = "2026-10-02T00:00:00Z"
+        store = {a.id: a, b.id: b}
+        self.assertEqual(dupe_key(a), dupe_key(b))
+        prune(store)
+        self.assertEqual(list(store), ["td-1"])
+
+    def test_sector_labels_are_not_buyers(self):
+        self.assertTrue(is_sector_label("Government Departments"))
+        self.assertTrue(is_sector_label("Statutory Bodies & Commissions/Committees"))
+        self.assertTrue(is_sector_label("Boards / Undertakings / PSU"))
+        self.assertFalse(is_sector_label("Bareilly Development Authority"))
+        self.assertEqual(parse_where("Issued by Government Departments · Patna, Bihar\n")["authority"], "")
+        self.assertEqual(parse_where("Issued by Health Department · Patna, Bihar\n")["authority"], "Health Department")
 
     def test_prune(self):
         store = {t.id: t for t in [_t("1", deadline_in=-5), _t("2", deadline_in=-60),

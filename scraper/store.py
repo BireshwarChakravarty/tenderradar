@@ -15,10 +15,11 @@ import logging
 import re
 from datetime import timedelta
 
-from config import ALERT_LOG_FILE, KEEP_CLOSED_DAYS, MIN_RELEVANCE_SCORE, STALE_DAYS, TENDERS_FILE
+from config import (ALERT_LOG_FILE, KEEP_CLOSED_DAYS, MIN_RELEVANCE_SCORE, REJECTED_FILE, STALE_DAYS,
+                    TENDERS_FILE)
 from dates import from_str, iso_now, plausible, today_ist
 from models import SCHEMA_VERSION, Tender, tender_id
-from page_parser import detect_portal, parse_where, ref_from_url
+from page_parser import detect_portal, is_sector_label, parse_where, ref_from_url, split_location
 from relevance import categorise, exclusion_reason
 
 log = logging.getLogger("Store")
@@ -39,7 +40,13 @@ def load() -> tuple[dict[str, Tender], dict]:
     rows = data.get("tenders", [])
     if meta.get("schema", 1) < 2:
         return _from_v1(rows), {}
-    return {r["id"]: Tender.from_dict(r) for r in rows if r.get("id")}, meta
+    store = {r["id"]: Tender.from_dict(r) for r in rows if r.get("id")}
+    for t in store.values():
+        if is_sector_label(t.authority):
+            t.authority = ""  # stored before sector labels were recognised
+        if t.location:
+            t.location = split_location(t.location)[0]
+    return store, meta
 
 
 def save(tenders: dict[str, Tender], run: dict | None = None) -> None:
@@ -66,13 +73,27 @@ def save(tenders: dict[str, Tender], run: dict | None = None) -> None:
 
 # ── Merge a scrape into the store ─────────────────────────────────────
 
+_BOILERPLATE = re.compile(r"\b(?:corrigendum|tender for|tender|bids are invited for|notice inviting|nit)\b|[^a-z0-9 ]", re.I)
+
+
+def dupe_key(t: Tender) -> str:
+    """
+    The same tender is often listed several times — the original notice plus each
+    corrigendum gets its own TenderDetail number. Same wording + same deadline = same tender.
+    """
+    words = _BOILERPLATE.sub(" ", t.title.lower()).split()
+    return " ".join(words) + "|" + t.deadline
+
+
 def merge(store: dict[str, Tender], scraped: list[Tender]) -> dict:
     """
     Add new tenders and refresh known ones in place.
     Returns counts plus "new_ids" for the scorer.
     """
     today = today_ist()
-    stats = {"new": 0, "updated": 0, "excluded": 0, "closed_on_arrival": 0, "new_ids": []}
+    stats = {"new": 0, "updated": 0, "excluded": 0, "closed_on_arrival": 0, "duplicates": 0,
+             "new_ids": [], "rejected_ids": []}
+    seen = {dupe_key(t) for t in store.values()}
     for t in scraped:
         known = store.get(t.id)
         if known:
@@ -87,11 +108,18 @@ def merge(store: dict[str, Tender], scraped: list[Tender]) -> dict:
             continue
         if exclusion_reason(t.title):
             stats["excluded"] += 1
+            stats["rejected_ids"].append(t.id)
             continue
         d = from_str(t.deadline)
         if d and d < today:
             stats["closed_on_arrival"] += 1
+            stats["rejected_ids"].append(t.id)
             continue
+        if dupe_key(t) in seen:
+            stats["duplicates"] += 1
+            stats["rejected_ids"].append(t.id)
+            continue
+        seen.add(dupe_key(t))
         store[t.id] = t
         stats["new"] += 1
         stats["new_ids"].append(t.id)
@@ -112,9 +140,33 @@ def prune(store: dict[str, Tender]) -> int:
             doomed.append(tid)
         elif exclusion_reason(t.title):  # rules may have been tightened since it was stored
             doomed.append(tid)
+    # Collapse duplicates already in the store, keeping the first one found
+    first: dict[str, str] = {}
+    for t in sorted(store.values(), key=lambda t: (t.first_seen, t.id)):
+        k = dupe_key(t)
+        if k in first and t.id not in doomed:
+            doomed.append(t.id)
+        first.setdefault(k, t.id)
     for tid in doomed:
         del store[tid]
     return len(doomed)
+
+
+# ── Rejected notices ──────────────────────────────────────────────────
+# {id: date} for notices turned down, so the crawler doesn't fetch them every run.
+# Entries expire after 60 days, by which time the tender has closed anyway.
+
+def load_rejected() -> dict[str, str]:
+    try:
+        return json.loads(REJECTED_FILE.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+def save_rejected(rejected: dict[str, str]) -> None:
+    cutoff = (today_ist() - timedelta(days=60)).isoformat()
+    keep = {k: v for k, v in rejected.items() if v >= cutoff}
+    REJECTED_FILE.write_text(json.dumps(dict(sorted(keep.items())), indent=0) + "\n")
 
 
 # ── Alert log ─────────────────────────────────────────────────────────
