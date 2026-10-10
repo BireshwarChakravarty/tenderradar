@@ -2,8 +2,8 @@
 TenderRadar: AI assessment of each tender with Claude.
 
 For every new tender, Claude returns a structured assessment: a short clean
-headline, the issuing authority, what kind of procurement it is, a 1–10 fit
-score against COMPANY_PROFILE, a Bid / Watch / Skip call, and two one-line
+headline, the issuing authority, what kind of procurement it is, a 1 to 10 fit
+score against the company profile (scraper/knowledge/profile.md plus private notes), a Bid / Watch / Skip call, and two one-line
 explanations. Structured outputs guarantee the shape, so there is no JSON
 parsing to go wrong.
 
@@ -15,12 +15,12 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from config import AI_MODEL, ANTHROPIC_API_KEY, COMPANY_PROFILE
+from config import AI_MODEL, ANTHROPIC_API_KEY, COMPANY_PROFILE, HAS_PRIVATE_KNOWLEDGE
 from dates import days_until, iso_now
 from models import Tender, plain
 
 # Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
-SCORING_VERSION = 2
+SCORING_VERSION = 3
 
 log = logging.getLogger("AIScorer")
 
@@ -53,16 +53,20 @@ Fields:
   "goods" for supply of items or equipment; "works" for construction or civil works;
   "auction" when the government sells or licenses something (for example advertising rights on
   hoardings, buses or stations). The company would be paying, not being paid.
-- score, on this scale:
-  9 to 10  a core service of the company, clearly scoped
+- score: follow "How to score" in the company profile. The overall scale is
+  9 to 10  a core service of the company, clearly scoped, for a buyer it targets
   7 to 8   a strong fit; most of the scope is work the company does
   5 to 6   a partial fit; worth a look, or a consortium or subcontracting angle
   3 to 4   tangential; only a small part of the scope fits
   1 to 2   not relevant. Anything that is goods, works or an auction scores here
-- recommendation: judge the fit only. "Bid" for strong fits (score 7 or more), "Watch" for partial
-  fits or when key details are missing, "Skip" otherwise. Don't downgrade a tender because its
-  deadline is close; the deadline is shown separately. You may mention a very close deadline in `reason`.
-- fit and reason: one plain sentence each, specific to this tender. No filler.
+- recommendation: "Bid" for strong fits (score 7 or more), "Watch" for partial fits or when key
+  details are missing, "Skip" otherwise, and "Skip" when the tender demands an empanelment the
+  company doesn't hold. Don't lower the score because the deadline is close; the deadline is shown
+  separately.
+- fit: one plain sentence on which of the company's services or past work this matches.
+- reason: one plain sentence on whether to pursue it, naming the main risk if there is one
+  (missing empanelment, very large contract, sectional cut-off, deadline under about 10 days,
+  already bid). No filler.
 
 Write in plain sentences. Never use em dashes; use commas, full stops or "and" instead."""
 
@@ -104,6 +108,8 @@ def score(tenders: list[Tender]) -> int:
 
     import anthropic
 
+    if not HAS_PRIVATE_KNOWLEDGE:
+        log.info("COMPANY_KNOWLEDGE not set, scoring with the public profile only")
     done = 0
     for i, t in enumerate(tenders, 1):
         try:
