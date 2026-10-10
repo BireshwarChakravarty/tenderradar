@@ -1,517 +1,346 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TenderRadar</title>
 <meta name="description" content="Government tenders for PR and communications, scored for fit.">
-<meta name="theme-color" content="#07080b">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23a594ff'/%3E%3Cstop offset='1' stop-color='%236ee7d8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='%2307080b'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='url(%23g)' stroke-width='2' opacity='.5'/%3E%3Ccircle cx='16' cy='16' r='4' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Cpath d='M16 16 L23 9' stroke='url(%23g)' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235e6ad2'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='white' stroke-width='2' opacity='.45'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ══ Tokens ═══════════════════════════════════════════════════════════ */
+/* ── Tokens ─────────────────────────────────────────────────────────── */
 :root {
-  --font: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --r-xl: 22px; --r-lg: 16px; --r-md: 12px; --r-sm: 9px;
-  --ease: cubic-bezier(.2, .8, .2, 1);
-}
-:root, :root[data-theme="dark"] {
-  --bg: #07080b;
-  --glow-1: rgba(122, 104, 255, .20);
-  --glow-2: rgba(64, 214, 196, .12);
-  --surface: rgba(255, 255, 255, .028);
-  --surface-hi: rgba(255, 255, 255, .055);
-  --surface-solid: #0e1016;
-  --sheet: rgba(14, 16, 22, .82);
-  --hair: rgba(255, 255, 255, .075);
-  --hair-hi: rgba(255, 255, 255, .15);
-  --text: #f3f4f7; --text-2: #a3a8b6; --text-3: #6a6f7e;
-  --accent: #a594ff; --accent-2: #6ee7d8;
-  --accent-ink: #0b0a14;
-  --grad: linear-gradient(120deg, #b3a6ff 0%, #8f7dff 35%, #5fd9ca 100%);
-  --good: #7ee2b8; --good-bg: rgba(126, 226, 184, .10);
-  --warn: #f6c177; --warn-bg: rgba(246, 193, 119, .10);
-  --bad: #ff8f87;  --bad-bg: rgba(255, 143, 135, .10);
-  --chip: rgba(255, 255, 255, .055);
-  --ring-track: rgba(255, 255, 255, .08);
-  --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 20px 40px -24px rgba(0, 0, 0, .8);
-  --shadow-lg: 0 40px 80px -20px rgba(0, 0, 0, .75);
-  --grain-opacity: .05;
-  color-scheme: dark;
-}
-:root[data-theme="light"] {
-  --bg: #f6f4ef;
-  --glow-1: rgba(120, 100, 255, .10);
-  --glow-2: rgba(40, 190, 170, .08);
-  --surface: rgba(255, 255, 255, .75);
-  --surface-hi: #ffffff;
-  --surface-solid: #ffffff;
-  --sheet: rgba(252, 251, 248, .9);
-  --hair: rgba(20, 18, 30, .09);
-  --hair-hi: rgba(20, 18, 30, .18);
-  --text: #111116; --text-2: #565967; --text-3: #8b8e99;
-  --accent: #5a48e0; --accent-2: #0d9b8b;
-  --accent-ink: #ffffff;
-  --grad: linear-gradient(120deg, #6b58f0 0%, #5a48e0 40%, #0d9b8b 100%);
-  --good: #0f7a55; --good-bg: rgba(15, 122, 85, .09);
-  --warn: #a35d00; --warn-bg: rgba(200, 120, 0, .10);
-  --bad: #c13a33;  --bad-bg: rgba(193, 58, 51, .08);
-  --chip: rgba(20, 18, 30, .05);
-  --ring-track: rgba(20, 18, 30, .08);
-  --shadow: 0 1px 2px rgba(20, 18, 30, .04), 0 12px 32px -18px rgba(20, 18, 30, .18);
-  --shadow-lg: 0 40px 80px -24px rgba(20, 18, 30, .3);
-  --grain-opacity: .035;
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sidebar-w: 236px;
+  --inspector-w: 420px;
+  --r: 6px;
+
+  --bg: #ffffff;
+  --bg-sidebar: #f9f9fa;
+  --bg-subtle: #f6f6f7;
+  --bg-hover: #f4f4f5;
+  --bg-selected: #eff0fb;
+  --bg-elevated: #ffffff;
+  --border: #e8e8eb;
+  --border-strong: #d9d9de;
+  --text: #1b1b1f;
+  --text-2: #5c5c66;
+  --text-3: #8e8e98;
+  --accent: #5e6ad2;
+  --accent-hover: #5059c4;
+  --accent-soft: #eef0fb;
+  --on-accent: #ffffff;
+  --green: #18794e; --green-soft: #e9f6ef;
+  --amber: #a35c00; --amber-soft: #fdf3e2;
+  --red: #c4302b;   --red-soft: #fcebea;
+  --shadow-pop: 0 0 0 1px rgba(0,0,0,.04), 0 8px 24px -6px rgba(0,0,0,.12);
   color-scheme: light;
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111113; --bg-sidebar: #0c0c0e; --bg-subtle: #161619; --bg-hover: #18181b; --bg-selected: #1c1d2b;
+    --bg-elevated: #18181b; --border: #232327; --border-strong: #2e2e33;
+    --text: #ececef; --text-2: #a1a1aa; --text-3: #6e6e78;
+    --accent: #7c86e6; --accent-hover: #8d96ec; --accent-soft: #1f2135; --on-accent: #0c0c0e;
+    --green: #4cc38a; --green-soft: #12251b; --amber: #e9a23b; --amber-soft: #2a2010; --red: #f2726b; --red-soft: #2c1615;
+    --shadow-pop: 0 0 0 1px rgba(255,255,255,.06), 0 12px 32px -8px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111113; --bg-sidebar: #0c0c0e; --bg-subtle: #161619; --bg-hover: #18181b; --bg-selected: #1c1d2b;
+  --bg-elevated: #18181b; --border: #232327; --border-strong: #2e2e33;
+  --text: #ececef; --text-2: #a1a1aa; --text-3: #6e6e78;
+  --accent: #7c86e6; --accent-hover: #8d96ec; --accent-soft: #1f2135; --on-accent: #0c0c0e;
+  --green: #4cc38a; --green-soft: #12251b; --amber: #e9a23b; --amber-soft: #2a2010; --red: #f2726b; --red-soft: #2c1615;
+  --shadow-pop: 0 0 0 1px rgba(255,255,255,.06), 0 12px 32px -8px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
 
-/* ══ Base ═════════════════════════════════════════════════════════════ */
+/* ── Base ───────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; }
-html { background: var(--bg); }
+html, body { margin: 0; height: 100%; }
 body {
-  min-height: 100vh; color: var(--text); background: var(--bg);
-  font: 14.5px/1.55 var(--font); letter-spacing: -.005em;
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  font: 13px/1.5 var(--font); color: var(--text); background: var(--bg);
+  font-feature-settings: "cv11", "ss03"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
-/* aurora + grain */
-body::before {
-  content: ""; position: fixed; inset: -20vh -10vw auto; height: 85vh; z-index: -2; pointer-events: none;
-  background:
-    radial-gradient(42% 60% at 22% 0%, var(--glow-1), transparent 70%),
-    radial-gradient(38% 50% at 82% 8%, var(--glow-2), transparent 70%);
-  filter: blur(10px);
-}
-body::after {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: var(--grain-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 a { color: inherit; text-decoration: none; }
-::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--text-3); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+svg.i { width: 15px; height: 15px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-.wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+/* ── Shell ──────────────────────────────────────────────────────────── */
+.app { display: grid; grid-template-columns: var(--sidebar-w) minmax(0, 1fr); height: 100vh; }
+.app.inspecting { grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--inspector-w); }
 
-/* ══ Top bar ══════════════════════════════════════════════════════════ */
-.nav { position: sticky; top: 0; z-index: 30; padding: 14px 0; }
-.nav-inner {
-  display: flex; align-items: center; gap: 14px; height: 56px; padding: 0 10px 0 16px;
-  border: 1px solid var(--hair); border-radius: 999px; background: var(--sheet);
-  backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
-  box-shadow: var(--shadow);
+/* Sidebar */
+.sidebar { background: var(--bg-sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; min-height: 0; }
+.ws { display: flex; align-items: center; gap: 9px; height: 52px; padding: 0 16px; font-weight: 600; font-size: 13.5px; }
+.ws-logo { width: 20px; height: 20px; border-radius: 5px; background: var(--accent); display: grid; place-items: center; }
+.ws-logo i { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,.35); }
+.nav { padding: 6px 8px; overflow-y: auto; flex: 1; }
+.nav-label { font-size: 11.5px; font-weight: 500; color: var(--text-3); padding: 14px 8px 4px; }
+.nav-item {
+  display: flex; align-items: center; gap: 9px; width: 100%; height: 30px; padding: 0 8px; border: 0; border-radius: var(--r);
+  background: transparent; color: var(--text-2); cursor: pointer; text-align: left; font-weight: 500;
 }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -.02em; font-size: 15.5px; }
-.mark { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; position: relative; background: var(--surface-solid); border: 1px solid var(--hair-hi); }
-.mark svg { width: 20px; height: 20px; stroke: url(#grad-stroke); }
-.mark::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; background: var(--grad); opacity: .25; filter: blur(8px); z-index: -1; }
-.nav-sep { width: 1px; height: 22px; background: var(--hair); }
-.status { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-2); white-space: nowrap; }
-.pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--text-3); flex: none; }
-.pulse.ok { background: var(--good); }
-.pulse.ok::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--good); animation: ping 2.4s var(--ease) infinite; }
-.pulse.stale { background: var(--warn); }
-.pulse.fail { background: var(--bad); }
-@keyframes ping { 0% { transform: scale(.6); opacity: .9; } 100% { transform: scale(1.8); opacity: 0; } }
-.nav-right { margin-left: auto; display: flex; align-items: center; gap: 6px; }
-.icon-btn {
-  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
-  border: 1px solid transparent; background: transparent; color: var(--text-2); transition: .2s var(--ease);
-}
-.icon-btn:hover { background: var(--surface-hi); color: var(--text); border-color: var(--hair); }
+.nav-item:hover { background: var(--bg-hover); color: var(--text); }
+.nav-item[aria-current="true"] { background: var(--bg-hover); color: var(--text); }
+:root[data-theme="dark"] .nav-item[aria-current="true"] { background: #1d1d21; }
+.nav-item .label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nav-item .count { font-size: 12px; color: var(--text-3); font-weight: 400; }
+.nav-item .swatch { width: 8px; height: 8px; border-radius: 2px; background: var(--text-3); opacity: .5; margin: 0 3px; }
+.side-foot { border-top: 1px solid var(--border); padding: 10px 8px; display: flex; flex-direction: column; gap: 2px; }
+.sync { display: flex; align-items: center; gap: 8px; padding: 6px 8px; color: var(--text-2); font-size: 12px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); flex: none; }
+.dot.ok { background: var(--green); } .dot.stale { background: var(--amber); } .dot.fail { background: var(--red); }
 
-/* ══ Hero ═════════════════════════════════════════════════════════════ */
-.hero { padding: 54px 0 34px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: end; }
-.eyebrow { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--text-3); display: flex; align-items: center; gap: 10px; }
-.eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--hair-hi); }
-.hero h1 {
-  font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 6vw, 68px); line-height: 1.02;
-  letter-spacing: -.02em; margin: 14px 0 0;
+/* Main */
+.main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.topbar { height: 52px; display: flex; align-items: center; gap: 10px; padding: 0 16px 0 20px; border-bottom: 1px solid var(--border); flex: none; }
+.btn.menu-btn { display: none; }
+.title { font-size: 14px; font-weight: 600; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+.title .count { font-weight: 400; color: var(--text-3); font-size: 13px; }
+.topbar .spacer { flex: 1; }
+.search { position: relative; width: 280px; }
+.search svg { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-3); pointer-events: none; }
+.search kbd { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); font: 11px var(--font); color: var(--text-3); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; line-height: 17px; background: var(--bg); }
+.control {
+  height: 30px; border: 1px solid var(--border); border-radius: var(--r); background: var(--bg); padding: 0 10px; outline: none; color: var(--text);
 }
-.hero h1 em { font-style: italic; }
-.hero .lede { color: var(--text-2); font-size: 16px; margin: 14px 0 0; max-width: 680px; }
-
-.alert {
-  display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; margin-top: 8px;
-  border-radius: var(--r-md); border: 1px solid color-mix(in srgb, var(--bad) 30%, transparent);
-  background: var(--bad-bg);
-}
-.alert svg { color: var(--bad); margin-top: 3px; }
-.alert p { margin: 2px 0 0; color: var(--text-2); }
-
-/* Stats */
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; border-radius: var(--r-lg); overflow: hidden;
-  background: var(--hair); border: 1px solid var(--hair); box-shadow: var(--shadow); }
-.stat {
-  position: relative; text-align: left; padding: 20px 22px 18px; cursor: pointer; border: 0;
-  background: var(--surface-solid); transition: background .25s var(--ease);
-}
-:root[data-theme="dark"] .stat { background: color-mix(in srgb, var(--surface-solid) 82%, transparent); }
-.stat:hover { background: var(--surface-hi); }
-.stat[aria-pressed="true"]::after { content: ""; position: absolute; left: 22px; right: 22px; bottom: 0; height: 2px; background: var(--grad); border-radius: 2px; }
-.stat-label { font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); display: flex; align-items: center; gap: 8px; }
-.stat-value { font-size: 40px; font-weight: 500; letter-spacing: -.04em; line-height: 1; margin-top: 14px; font-variant-numeric: tabular-nums; }
-.stat-sub { font-size: 13px; color: var(--text-2); margin-top: 8px; }
-
-/* ══ Spotlight ════════════════════════════════════════════════════════ */
-.spotlight {
-  position: relative; margin-top: 18px; border-radius: var(--r-xl); padding: 1px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 55%, transparent), var(--hair) 40%, var(--hair) 60%, color-mix(in srgb, var(--accent-2) 45%, transparent));
-  box-shadow: var(--shadow); cursor: pointer;
-}
-.spotlight-inner {
-  position: relative; overflow: hidden; border-radius: calc(var(--r-xl) - 1px); background: var(--surface-solid);
-  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 28px; align-items: center; padding: 26px 28px;
-}
-.spotlight-inner::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(60% 120% at 0% 0%, var(--glow-1), transparent 60%), radial-gradient(40% 100% at 100% 100%, var(--glow-2), transparent 60%);
-}
-.spotlight-inner > * { position: relative; }
-.spotlight .tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; }
-.spotlight h2 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.12; letter-spacing: -.01em; margin: 8px 0 6px; }
-.spotlight p { margin: 0; color: var(--text-2); max-width: 640px; }
-.spotlight .meta { display: flex; gap: 8px 18px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--text-2); }
-.spotlight .meta b { color: var(--text); font-weight: 500; }
-.spotlight .cta { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.spotlight:hover .btn-primary { filter: brightness(1.08); }
-
-/* ══ Controls ═════════════════════════════════════════════════════════ */
-.controls { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin: 46px 0 18px; }
-.segmented {
-  display: inline-flex; padding: 4px; gap: 2px; border-radius: 999px; background: var(--surface); border: 1px solid var(--hair);
-  overflow-x: auto; scrollbar-width: none; max-width: 100%;
-}
-.seg-btn {
-  appearance: none; border: 0; background: transparent; cursor: pointer; white-space: nowrap;
-  height: 34px; padding: 0 14px; border-radius: 999px; color: var(--text-2); font-weight: 500; font-size: 13.5px;
-  display: inline-flex; align-items: center; gap: 8px; transition: .2s var(--ease);
-}
-.seg-btn:hover { color: var(--text); }
-.seg-btn[aria-selected="true"] { background: var(--text); color: var(--bg); }
-.seg-btn .n { font-family: var(--mono); font-size: 11.5px; opacity: .6; }
-.tools { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; }
-.search { position: relative; flex: 1 1 280px; }
-.search svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-3); pointer-events: none; }
-.input, .select {
-  height: 40px; border-radius: 999px; border: 1px solid var(--hair); background: var(--surface);
-  padding: 0 14px; outline: none; transition: .2s var(--ease); color: var(--text);
-}
-.search .input { width: 100%; padding-left: 38px; }
-.input::placeholder { color: var(--text-3); }
-.input:hover, .select:hover { border-color: var(--hair-hi); }
-.input:focus, .select:focus { border-color: color-mix(in srgb, var(--accent) 60%, transparent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
-.select { appearance: none; padding-right: 32px; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b8e99' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 13px center; }
-.select option { background: var(--surface-solid); color: var(--text); }
+.control:hover { border-color: var(--border-strong); }
+.control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.search .control { width: 100%; padding: 0 30px 0 30px; }
+.search .control::placeholder { color: var(--text-3); }
+select.control { appearance: none; padding-right: 26px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238e8e98' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 9px center; }
 .btn {
-  height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px;
-  border-radius: 999px; border: 1px solid var(--hair); background: var(--surface); cursor: pointer; font-weight: 500;
-  white-space: nowrap; transition: .2s var(--ease);
+  height: 30px; display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; border-radius: var(--r);
+  border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; font-weight: 500; white-space: nowrap;
 }
-.btn:hover { border-color: var(--hair-hi); background: var(--surface-hi); }
-.btn-primary { border: 0; color: var(--accent-ink); background: var(--grad); box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--accent) 70%, transparent); }
-.btn-primary:hover { background: var(--grad); filter: brightness(1.08); }
-.result-line { font-family: var(--mono); font-size: 12px; color: var(--text-3); padding: 0 4px; }
+.btn:hover { background: var(--bg-hover); }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--text-2); }
+.btn.ghost:hover { background: var(--bg-hover); color: var(--text); }
+.btn.icon { width: 30px; padding: 0; justify-content: center; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
 
-/* ══ List ═════════════════════════════════════════════════════════════ */
-.list { display: flex; flex-direction: column; gap: 10px; }
-.list-head {
-  display: grid; grid-template-columns: 60px minmax(0, 1fr) 190px 110px 24px; gap: 22px; padding: 0 22px 2px;
-  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3);
+.filterbar { display: flex; align-items: center; gap: 6px; padding: 8px 16px 8px 20px; border-bottom: 1px solid var(--border); flex: none; flex-wrap: wrap; }
+.filterbar .control { height: 28px; font-size: 12.5px; color: var(--text-2); }
+.filterbar .control.set { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); background-color: var(--accent-soft); }
+.chip-toggle { height: 28px; padding: 0 10px; border: 1px solid var(--border); border-radius: var(--r); background: var(--bg); color: var(--text-2); cursor: pointer; font-size: 12.5px; display: inline-flex; align-items: center; gap: 6px; }
+.chip-toggle:hover { border-color: var(--border-strong); color: var(--text); }
+.chip-toggle[aria-pressed="true"] { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); background: var(--accent-soft); }
+.filterbar .summary { margin-left: auto; color: var(--text-3); font-size: 12.5px; white-space: nowrap; }
+.filterbar .summary b { color: var(--text-2); font-weight: 500; }
+
+.alert { display: flex; gap: 10px; align-items: flex-start; margin: 12px 16px 0 20px; padding: 10px 12px; border-radius: var(--r); background: var(--red-soft); color: var(--text); font-size: 12.5px; }
+.alert svg { color: var(--red); margin-top: 1px; }
+.alert span { color: var(--text-2); }
+
+/* Table */
+.scroll { flex: 1; overflow: auto; min-height: 0; }
+table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+thead th {
+  position: sticky; top: 0; z-index: 2; background: var(--bg); height: 34px; padding: 0 12px; text-align: left;
+  font-size: 12px; font-weight: 500; color: var(--text-3); border-bottom: 1px solid var(--border); white-space: nowrap;
 }
-.row {
-  display: grid; grid-template-columns: 60px minmax(0, 1fr) 190px 110px 24px; gap: 22px; align-items: center;
-  padding: 18px 22px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hair);
-  cursor: pointer; transition: transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
-  animation: rise .5s var(--ease) both;
+thead th:first-child, tbody td:first-child { padding-left: 20px; }
+thead th:last-child, tbody td:last-child { padding-right: 16px; }
+th.r, td.r { text-align: right; }
+tbody tr { cursor: pointer; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; height: 58px; }
+tbody tr:hover td { background: var(--bg-hover); }
+tbody tr[aria-selected="true"] td { background: var(--bg-selected); }
+tbody tr.dim td > * { opacity: .55; }
+.col-fit { width: 64px; } .col-cat { width: 168px; } .col-due { width: 132px; } .col-val { width: 104px; } .col-st { width: 120px; }
+/* With the inspector open, its properties cover category and status */
+.app.inspecting .col-cat, .app.inspecting .c-cat, .app.inspecting .col-st, .app.inspecting .c-st, .app.inspecting .filterbar .summary { display: none; }
+
+.fit {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 22px; padding: 0 6px; border-radius: 5px;
+  font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--bg-subtle); color: var(--text-2);
+  box-shadow: inset 0 0 0 1px var(--border);
 }
-.row:hover { border-color: var(--hair-hi); background: var(--surface-hi); transform: translateY(-1px); }
-.row:hover .go { color: var(--text); transform: translateX(2px); }
-.row.muted { opacity: .55; }
-@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-.ring { position: relative; width: 52px; height: 52px; display: grid; place-items: center; }
-.ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
-.ring .v { font-family: var(--mono); font-size: 14px; font-weight: 500; }
-.ring.none .v { color: var(--text-3); }
-
-.t-title { font-weight: 550; font-size: 16px; letter-spacing: -.015em; line-height: 1.35; overflow-wrap: anywhere; }
-.t-meta { color: var(--text-2); font-size: 13.5px; margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: 999px; font-size: 12px; font-weight: 500; background: var(--chip); color: var(--text-2); white-space: nowrap; }
-.chip.good { background: var(--good-bg); color: var(--good); }
-.chip.warn { background: var(--warn-bg); color: var(--warn); }
-.chip.accent { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
-.chip.new::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--grad); }
-.chip.new { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text); }
-
-.when-date { font-weight: 500; font-size: 14px; }
-.when-rel { font-size: 12.5px; color: var(--text-2); margin-top: 1px; }
-.when-rel.urgent { color: var(--bad); }
-.when-rel.soon { color: var(--warn); }
-.bar { height: 3px; border-radius: 3px; background: var(--ring-track); margin-top: 9px; overflow: hidden; width: 100%; max-width: 150px; }
-.bar i { display: block; height: 100%; border-radius: inherit; background: var(--grad); }
-.bar.urgent i { background: var(--bad); }
-.bar.soon i { background: var(--warn); }
-.when.unknown .when-date { color: var(--text-3); font-weight: 400; }
-.value { text-align: right; font-family: var(--mono); font-size: 14px; }
-.value small { display: block; font-family: var(--font); font-size: 11.5px; color: var(--text-3); }
-.value.none { color: var(--text-3); }
-.go { color: var(--text-3); transition: .25s var(--ease); }
-
-/* Board */
-.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
-.col { border-radius: var(--r-lg); border: 1px solid var(--hair); background: var(--surface); padding: 14px; min-height: 160px; }
-.col-head { display: flex; align-items: center; justify-content: space-between; padding: 2px 4px 14px; }
-.col-head span:first-child { font-family: var(--serif); font-size: 22px; }
-.card { border-radius: var(--r-md); border: 1px solid var(--hair); background: var(--surface-solid); padding: 14px; margin-bottom: 10px; cursor: pointer; transition: .2s var(--ease); }
-.card:hover { border-color: var(--hair-hi); transform: translateY(-1px); }
-.card .t-title { font-size: 14.5px; }
-.card-foot { display: flex; justify-content: space-between; margin-top: 12px; font-size: 12.5px; color: var(--text-2); }
-.col-empty { color: var(--text-3); font-size: 13px; padding: 4px; }
+.fit.bid { background: var(--green-soft); color: var(--green); box-shadow: none; }
+.fit.watch { background: var(--amber-soft); color: var(--amber); box-shadow: none; }
+.fit.none { background: transparent; color: var(--text-3); font-weight: 400; }
+.t-title { font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13.5px; }
+.t-sub { color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; display: flex; gap: 6px; align-items: center; }
+.new-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+.cat { color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.due-date { color: var(--text); font-variant-numeric: tabular-nums; }
+.due-rel { color: var(--text-3); font-size: 12px; }
+.due-rel.urgent { color: var(--red); font-weight: 500; }
+.due-rel.soon { color: var(--amber); }
+.val { font-variant-numeric: tabular-nums; color: var(--text); }
+.status { display: inline-flex; align-items: center; gap: 6px; color: var(--text-2); white-space: nowrap; }
+.status i { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--text-3); flex: none; }
+.status.shortlisted i { border-color: var(--accent); }
+.status.preparing i { border-color: var(--amber); background: linear-gradient(90deg, var(--amber) 50%, transparent 50%); }
+.status.submitted i { border-color: var(--green); background: var(--green); }
+.status.dropped i { border-style: dashed; }
 
 /* Empty */
-.empty { text-align: center; padding: 72px 24px; border-radius: var(--r-xl); border: 1px dashed var(--hair-hi); background: var(--surface); }
-.empty .orb { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-solid); border: 1px solid var(--hair-hi); position: relative; }
-.empty .orb::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; background: var(--grad); opacity: .18; filter: blur(14px); z-index: -1; }
-.empty .orb svg { width: 26px; height: 26px; stroke: url(#grad-stroke); }
-.empty h2 { font-family: var(--serif); font-weight: 400; font-size: 30px; margin: 0 0 8px; letter-spacing: -.01em; }
-.empty p { margin: 0 auto; max-width: 460px; color: var(--text-2); }
-.skeleton { height: 92px; border-radius: var(--r-lg); border: 1px solid var(--hair); background: linear-gradient(100deg, var(--surface) 30%, var(--surface-hi) 50%, var(--surface) 70%); background-size: 300% 100%; animation: shimmer 1.6s linear infinite; }
-@keyframes shimmer { to { background-position: -300% 0; } }
+.empty { display: grid; place-items: center; padding: 96px 24px; text-align: center; }
+.empty-icon { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); display: grid; place-items: center; margin: 0 auto 14px; color: var(--text-3); background: var(--bg-subtle); }
+.empty h2 { font-size: 14px; font-weight: 600; margin: 0 0 4px; }
+.empty p { margin: 0; color: var(--text-3); max-width: 380px; }
+.empty .btn { margin-top: 16px; }
 
-footer { padding: 64px 0 48px; color: var(--text-3); font-size: 12.5px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 22px; border-top: 1px solid var(--hair); padding-top: 22px; }
-footer a:hover { color: var(--text); }
+/* ── Inspector ──────────────────────────────────────────────────────── */
+.inspector { border-left: 1px solid var(--border); background: var(--bg); display: none; flex-direction: column; min-height: 0; }
+.app.inspecting .inspector { display: flex; }
+.insp-head { height: 52px; display: flex; align-items: center; gap: 6px; padding: 0 10px 0 20px; border-bottom: 1px solid var(--border); flex: none; }
+.insp-head .ref { color: var(--text-3); font-variant-numeric: tabular-nums; }
+.insp-head .spacer { flex: 1; }
+.insp-body { flex: 1; overflow-y: auto; padding: 20px 20px 28px; }
+.insp-body h2 { font-size: 17px; line-height: 1.35; font-weight: 600; letter-spacing: -.01em; margin: 0; }
+.insp-body .orig { color: var(--text-3); margin: 8px 0 0; font-size: 12.5px; }
+.props { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 2px 12px; margin: 20px 0 0; }
+.props dt { color: var(--text-3); padding: 5px 0; }
+.props dd { margin: 0; padding: 5px 0; min-width: 0; overflow-wrap: anywhere; }
+.props dd .sub { color: var(--text-3); margin-left: 6px; }
+.props select.control { height: 28px; margin: -4px 0; width: 100%; max-width: 200px; }
+.section { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+.section-title { font-size: 12px; font-weight: 500; color: var(--text-3); margin: 0 0 10px; display: flex; align-items: center; gap: 8px; }
+.assess p { margin: 0 0 10px; color: var(--text-2); line-height: 1.6; }
+.assess p b { color: var(--text); font-weight: 500; }
+.assess .note { font-size: 12px; color: var(--text-3); margin: 0; }
+.rec { display: inline-flex; align-items: center; height: 20px; padding: 0 7px; border-radius: 4px; font-size: 12px; font-weight: 500; background: var(--bg-subtle); color: var(--text-2); }
+.rec.bid { background: var(--green-soft); color: var(--green); }
+.rec.watch { background: var(--amber-soft); color: var(--amber); }
+textarea.control { width: 100%; height: 96px; padding: 8px 10px; resize: vertical; line-height: 1.5; }
+.insp-foot { padding: 12px 20px; border-top: 1px solid var(--border); flex: none; display: flex; gap: 8px; }
+.insp-foot .btn.primary { flex: 1; justify-content: center; height: 32px; }
+.kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; }
+.kv dt { color: var(--text-3); } .kv dd { margin: 0; }
+.prose p { color: var(--text-2); margin: 0 0 10px; line-height: 1.6; }
 
-/* ══ Sheet (drawer) ═══════════════════════════════════════════════════ */
-.scrim { position: fixed; inset: 0; z-index: 40; background: rgba(4, 5, 8, .5); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .3s var(--ease); }
-:root[data-theme="light"] .scrim { background: rgba(30, 26, 40, .22); }
-.scrim.open { opacity: 1; pointer-events: auto; }
-.sheet {
-  position: fixed; top: 12px; right: 12px; bottom: 12px; width: min(580px, calc(100vw - 24px)); z-index: 50;
-  border-radius: var(--r-xl); border: 1px solid var(--hair-hi); background: var(--sheet);
-  backdrop-filter: blur(28px) saturate(160%); -webkit-backdrop-filter: blur(28px) saturate(160%);
-  box-shadow: var(--shadow-lg); display: flex; flex-direction: column; overflow: hidden;
-  transform: translateX(calc(100% + 24px)); visibility: hidden; transition: transform .45s var(--ease), visibility .45s;
-}
-.sheet.open { transform: none; visibility: visible; }
-.sheet:focus { outline: none; }
-.sheet-head { display: flex; align-items: center; gap: 14px; padding: 16px 18px 16px 22px; border-bottom: 1px solid var(--hair); }
-.sheet-head .spacer { flex: 1; }
-.sheet-body { flex: 1; overflow-y: auto; padding: 26px 26px 32px; }
-.sheet h2 { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.08; letter-spacing: -.015em; margin: 0; }
-.orig { color: var(--text-3); font-size: 13.5px; margin: 12px 0 0; }
-.facts { display: grid; grid-template-columns: 1fr 1fr; margin: 26px 0 30px; border-top: 1px solid var(--hair); }
-.fact { padding: 14px 0; border-bottom: 1px solid var(--hair); min-width: 0; }
-.fact:nth-child(odd) { padding-right: 18px; }
-.fact:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--hair); }
-.fact dt { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-3); }
-.fact dd { margin: 6px 0 0; font-size: 15px; font-weight: 500; overflow-wrap: anywhere; }
-.fact dd .sub { display: block; font-size: 13px; font-weight: 400; color: var(--text-2); margin-top: 1px; }
-.fact dd .na { color: var(--text-3); font-weight: 400; }
-.label { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
-.ai {
-  position: relative; border-radius: var(--r-lg); padding: 1px; margin-bottom: 30px;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 50%, transparent), var(--hair) 45%, color-mix(in srgb, var(--accent-2) 40%, transparent));
-}
-.ai-inner { border-radius: calc(var(--r-lg) - 1px); background: var(--surface-solid); padding: 18px 18px 16px; }
-.ai-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-.ai p { margin: 0 0 10px; color: var(--text-2); line-height: 1.6; }
-.ai p b { color: var(--text); font-weight: 600; }
-.ai .fine { font-size: 12px; color: var(--text-3); margin: 12px 0 0; }
-.pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
-.pill { height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--hair); background: var(--surface); cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text-2); transition: .2s var(--ease); }
-.pill:hover { color: var(--text); border-color: var(--hair-hi); }
-.pill[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
-textarea.input { width: 100%; height: 104px; border-radius: var(--r-md); padding: 12px 14px; resize: vertical; line-height: 1.55; }
-.sheet-foot { display: flex; gap: 8px; padding: 16px 18px; border-top: 1px solid var(--hair); }
-.sheet-foot:empty { display: none; }
-.sheet-foot .btn-primary { flex: 1; height: 46px; font-size: 15px; }
-.kv { display: grid; grid-template-columns: 170px 1fr; gap: 10px 14px; margin: 0 0 30px; font-size: 14px; }
-.kv dt { color: var(--text-3); }
-.kv dd { margin: 0; }
-.prose p { color: var(--text-2); margin: 0 0 12px; }
-.prose a { color: var(--accent); }
-
-.toast { position: fixed; left: 50%; bottom: 28px; z-index: 60; transform: translate(-50%, 16px); opacity: 0; pointer-events: none; transition: .3s var(--ease);
-  padding: 11px 18px; border-radius: 999px; background: var(--text); color: var(--bg); font-weight: 500; box-shadow: var(--shadow-lg); }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translate(-50%, 12px); opacity: 0; pointer-events: none; transition: .2s; z-index: 80;
+  background: var(--text); color: var(--bg); padding: 8px 14px; border-radius: var(--r); font-weight: 500; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
+.scrim { display: none; }
 
-/* ══ Responsive ═══════════════════════════════════════════════════════ */
-@media (max-width: 980px) {
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .spotlight-inner { grid-template-columns: auto minmax(0, 1fr); }
-  .spotlight .cta { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
-  .list-head { display: none; }
-  .row { grid-template-columns: 52px minmax(0, 1fr); grid-template-areas: "ring main" ". when"; gap: 6px 16px; padding: 16px; }
-  .row > .ring { grid-area: ring; align-self: start; }
-  .row > .main { grid-area: main; }
-  .row > .when { grid-area: when; margin-top: 8px; }
-  .row > .value, .row > .go { display: none; }
-  .board { grid-template-columns: 1fr; }
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .app.inspecting { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+  .inspector { position: fixed; top: 0; right: 0; bottom: 0; width: min(var(--inspector-w), 100vw); z-index: 60; box-shadow: var(--shadow-pop); }
+  .app.inspecting .scrim { display: block; position: fixed; inset: 0; z-index: 55; background: rgba(0,0,0,.25); }
+  .col-cat, td.c-cat { display: none; }
 }
-@media (max-width: 620px) {
-  .wrap { padding: 0 16px; }
-  .nav { padding: 10px 0; }
-  .nav-inner { height: 52px; }
-  .status .txt, .nav-sep { display: none; }
-  .hero { padding: 34px 0 24px; grid-template-columns: 1fr; }
-  .hero .lede { font-size: 15px; }
-  .stat { padding: 16px; }
-  .stat-value { font-size: 32px; }
-  .spotlight-inner { padding: 20px; gap: 16px; }
-  .spotlight h2 { font-size: 26px; }
-  .controls { margin-top: 32px; }
-  .search { flex-basis: 100%; }
-  .tools > label:not(.search) { flex: 1 1 calc(50% - 4px); min-width: 0; }
-  .tools > label .select { width: 100%; }
-  .tools > .btn { flex: 1 1 calc(50% - 4px); }
-  .spotlight-inner { grid-template-columns: 1fr; }
-  .spotlight .cta { justify-content: flex-start; }
-  .tools .result-line { display: none; }
-  .t-meta { white-space: normal; }
-  .sheet { top: auto; left: 0; right: 0; bottom: 0; width: 100%; height: 92vh; border-radius: var(--r-xl) var(--r-xl) 0 0; transform: translateY(100%); }
-  .sheet h2 { font-size: 28px; }
-  .sheet-body { padding: 22px 18px 28px; }
-  .facts { grid-template-columns: 1fr; }
-  .fact:nth-child(n) { padding: 12px 0; border-left: 0; }
-  .kv { grid-template-columns: 1fr; gap: 2px; }
-  .kv dd { margin-bottom: 10px; }
+@media (max-width: 860px) {
+  .app, .app.inspecting { grid-template-columns: 1fr; }
+  .sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: 260px; z-index: 70; transform: translateX(-100%); transition: transform .2s; box-shadow: var(--shadow-pop); }
+  .app.nav-open .sidebar { transform: none; }
+  .app.nav-open .scrim { display: block; position: fixed; inset: 0; z-index: 65; background: rgba(0,0,0,.25); }
+  .btn.menu-btn { display: inline-flex; margin-left: -6px; }
+  .topbar { padding: 0 12px; }
+  .search { width: auto; flex: 1 1 150px; min-width: 150px; }
+  .title .count { display: none; }
+  .search kbd, .topbar .hide-sm { display: none; }
+  .filterbar { padding: 8px 12px; }
+  .filterbar .summary { display: none; }
+  thead { display: none; }
+  table, tbody, tr, td { display: block; }
+  tbody tr { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; grid-template-areas: "fit main due"; align-items: center; border-bottom: 1px solid var(--border); padding: 10px 12px; }
+  tbody td { border: 0; height: auto; padding: 0 !important; }
+  td.c-fit { grid-area: fit; } td.c-main { grid-area: main; min-width: 0; } td.c-due { grid-area: due; text-align: right; padding-left: 10px !important; }
+  td.c-cat, td.c-val, td.c-st { display: none; }
+  .inspector { width: 100vw; }
 }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <linearGradient id="grad-stroke" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#b3a6ff"/><stop offset=".45" stop-color="#8f7dff"/><stop offset="1" stop-color="#5fd9ca"/>
-    </linearGradient>
-  </defs>
-  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" opacity=".5"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-6"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
-  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></symbol>
-  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
-  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></symbol>
-  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></symbol>
-  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19 17l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
-  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5 5h14l2 8v6H3v-6z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6.5 3.5h11v17l-5.5-3.8-5.5 3.8z"/></symbol>
+  <symbol id="i-archive" viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="4.5" rx="1"/><path d="M5 8.5v10.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.5M10 12.5h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M17 7L7 17M7 7l10 10"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M8 16L16 8M9 8h7v7"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4.5v10M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.5M12 16h.01"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 4l1.7 4.8L18.5 10.5l-4.8 1.7L12 17l-1.7-4.8L5.5 10.5l4.8-1.7z"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3.5 13h5l1.5 2.5h4l1.5-2.5h5"/><path d="M6 5h12l2.5 8v5.5a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1V13z"/></symbol>
 </svg>
 
-<div class="nav">
-  <div class="wrap">
-    <nav class="nav-inner" aria-label="Main">
-      <a class="brand" href="./" aria-label="TenderRadar home">
-        <span class="mark"><svg class="i"><use href="#i-radar"/></svg></span>TenderRadar
-      </a>
-      <span class="nav-sep"></span>
-      <span class="status" id="status"><span class="pulse" id="pulse"></span><span class="txt" id="status-txt">Connecting…</span></span>
-      <div class="nav-right">
-        <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch colour theme"><svg class="i"><use href="#i-sun"/></svg></button>
-        <button class="icon-btn" id="settings-btn" type="button" aria-label="Status and settings"><svg class="i"><use href="#i-sliders"/></svg></button>
-      </div>
+<div class="app" id="app">
+  <aside class="sidebar" aria-label="Sidebar">
+    <div class="ws"><span class="ws-logo"><i></i></span>TenderRadar</div>
+    <nav class="nav">
+      <button class="nav-item" data-view="recommended"><svg class="i"><use href="#i-star"/></svg><span class="label">Recommended</span><span class="count num" id="n-recommended"></span></button>
+      <button class="nav-item" data-view="open"><svg class="i"><use href="#i-list"/></svg><span class="label">All open</span><span class="count num" id="n-open"></span></button>
+      <button class="nav-item" data-view="shortlist"><svg class="i"><use href="#i-bookmark"/></svg><span class="label">Shortlist</span><span class="count num" id="n-shortlist"></span></button>
+      <button class="nav-item" data-view="closed"><svg class="i"><use href="#i-archive"/></svg><span class="label">Recently closed</span><span class="count num" id="n-closed"></span></button>
+      <div class="nav-label">Categories</div>
+      <div id="nav-cats"></div>
     </nav>
-  </div>
-</div>
-
-<main class="wrap">
-  <header class="hero">
-    <div>
-      <div class="eyebrow" id="eyebrow">Government tenders · PR &amp; communications</div>
-      <h1 id="headline">Loading your <em>opportunities</em>…</h1>
-      <p class="lede" id="lede">&nbsp;</p>
+    <div class="side-foot">
+      <div class="sync" id="sync" title=""><span class="dot" id="sync-dot"></span><span id="sync-txt">Loading…</span></div>
+      <button class="nav-item" id="theme-btn" type="button"><svg class="i"><use href="#i-moon"/></svg><span class="label" id="theme-label">Dark mode</span></button>
+      <button class="nav-item" id="settings-btn" type="button"><svg class="i"><use href="#i-gear"/></svg><span class="label">Status &amp; data</span></button>
     </div>
-  </header>
+  </aside>
 
-  <div id="alert"></div>
-
-  <section class="stats" aria-label="Summary">
-    <button class="stat" type="button" data-kpi="recommended" aria-pressed="false">
-      <div class="stat-label">Recommended</div>
-      <div class="stat-value" id="k-rec">–</div>
-      <div class="stat-sub" id="k-rec-sub">Open and a good fit</div>
-    </button>
-    <button class="stat" type="button" data-kpi="closing" aria-pressed="false">
-      <div class="stat-label">Closing ≤ 7 days</div>
-      <div class="stat-value" id="k-closing">–</div>
-      <div class="stat-sub">Recommended, act soon</div>
-    </button>
-    <button class="stat" type="button" data-kpi="new" aria-pressed="false">
-      <div class="stat-label">New this week</div>
-      <div class="stat-value" id="k-new">–</div>
-      <div class="stat-sub">Found in the last 7 days</div>
-    </button>
-    <button class="stat" type="button" data-kpi="shortlist" aria-pressed="false">
-      <div class="stat-label">Your shortlist</div>
-      <div class="stat-value" id="k-short">–</div>
-      <div class="stat-sub">Tracked to submission</div>
-    </button>
-  </section>
-
-  <div id="spotlight"></div>
-
-  <div class="controls">
-    <div class="segmented" role="tablist" aria-label="Views">
-      <button class="seg-btn" role="tab" data-view="recommended" aria-selected="true">Recommended <span class="n" id="c-recommended">0</span></button>
-      <button class="seg-btn" role="tab" data-view="open" aria-selected="false">All open <span class="n" id="c-open">0</span></button>
-      <button class="seg-btn" role="tab" data-view="shortlist" aria-selected="false">Shortlist <span class="n" id="c-shortlist">0</span></button>
-      <button class="seg-btn" role="tab" data-view="closed" aria-selected="false">Closed <span class="n" id="c-closed">0</span></button>
-    </div>
-    <div class="tools">
+  <section class="main" aria-label="Tenders">
+    <header class="topbar">
+      <button class="btn ghost icon menu-btn" id="menu-btn" type="button" aria-label="Open navigation"><svg class="i"><use href="#i-menu"/></svg></button>
+      <div class="title"><span id="view-title">Recommended</span><span class="count num" id="view-count"></span></div>
+      <span class="spacer"></span>
       <label class="search"><span class="sr-only">Search</span><svg class="i"><use href="#i-search"/></svg>
-        <input class="input" id="q" type="search" placeholder="Search tenders, buyers, places" autocomplete="off"></label>
-      <label><span class="sr-only">Category</span><select class="select" id="f-cat"><option value="">All categories</option></select></label>
-      <label><span class="sr-only">State</span><select class="select" id="f-state"><option value="">All states</option></select></label>
-      <label><span class="sr-only">Sort by</span><select class="select" id="f-sort">
-        <option value="closing">Closing soonest</option>
-        <option value="score">Best match</option>
-        <option value="newest">Newest</option>
-        <option value="value">Highest value</option>
+        <input class="control" id="q" type="search" placeholder="Search" autocomplete="off"><kbd>/</kbd></label>
+      <button class="btn ghost hide-sm" id="export-btn" type="button"><svg class="i"><use href="#i-download"/></svg>Export</button>
+    </header>
+
+    <div class="filterbar">
+      <label><span class="sr-only">State</span><select class="control" id="f-state"><option value="">State</option></select></label>
+      <label><span class="sr-only">Category</span><select class="control" id="f-cat"><option value="">Category</option></select></label>
+      <button class="chip-toggle" type="button" id="f-week" aria-pressed="false">Closing this week</button>
+      <button class="chip-toggle" type="button" id="f-new" aria-pressed="false">New</button>
+      <label><span class="sr-only">Sort</span><select class="control" id="f-sort">
+        <option value="closing">Sort: Deadline</option>
+        <option value="score">Sort: Fit</option>
+        <option value="newest">Sort: Newest</option>
+        <option value="value">Sort: Value</option>
       </select></label>
-      <button class="btn" type="button" id="export-btn" aria-label="Export as CSV"><svg class="i"><use href="#i-download"/></svg>CSV</button>
+      <span class="summary" id="summary"></span>
     </div>
-  </div>
+    <div id="alert"></div>
 
-  <section id="results" aria-live="polite">
-    <div class="list"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+    <div class="scroll" id="scroll">
+      <div id="results"></div>
+    </div>
   </section>
-</main>
 
-<footer>
-  <div class="wrap">
-    <span>Sourced from TenderDetail.com — GeM, CPPP and state portals — every 4 hours.</span>
-    <span>Fit scores are AI estimates. Always read the tender document.</span>
-    <a href="https://github.com/BireshwarChakravarty/tenderradar" target="_blank" rel="noopener">GitHub ↗</a>
-  </div>
-</footer>
-
-<div class="scrim" id="scrim"></div>
-<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" tabindex="-1">
-  <div class="sheet-head" id="sheet-head"></div>
-  <div class="sheet-body" id="sheet-body"></div>
-  <div class="sheet-foot" id="sheet-foot"></div>
-</aside>
+  <aside class="inspector" id="inspector" aria-label="Tender details" tabindex="-1">
+    <div class="insp-head" id="insp-head"></div>
+    <div class="insp-body" id="insp-body"></div>
+    <div class="insp-foot" id="insp-foot"></div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+</div>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
 "use strict";
-/* ══ State ═══════════════════════════════════════════════════════════ */
+/* ── State ──────────────────────────────────────────────────────────── */
 const STORE_KEY = "tenderradar.tracking.v2";
 const PREFS_KEY = "tenderradar.prefs.v2";
 const STATUSES = [
@@ -521,15 +350,12 @@ const STATUSES = [
   { id: "submitted",   label: "Submitted" },
   { id: "dropped",     label: "Not pursuing" },
 ];
-const BOARD = ["shortlisted", "preparing", "submitted"];
+const TRACKED = ["shortlisted", "preparing", "submitted"];
+const VIEWS = { recommended: "Recommended", open: "All open", shortlist: "Shortlist", closed: "Recently closed" };
 const statusLabel = id => (STATUSES.find(s => s.id === id) || STATUSES[0]).label;
 
-let tenders = [];
-let meta = {};
-let view = "recommended";
-let kpiFilter = "";
-let openId = null;
-let lastFocus = null;
+let tenders = [], meta = {};
+let view = "recommended", openId = null, panel = null;   // panel: "tender" | "settings" | null
 
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -540,32 +366,25 @@ const savePrefs = () => safe(() => localStorage.setItem(PREFS_KEY, JSON.stringif
 const saveTracking = () => safe(() => localStorage.setItem(STORE_KEY, JSON.stringify(tracking)));
 const track = id => tracking[id] || {};
 
-/* ══ Dates & numbers ═════════════════════════════════════════════════
-   Tender dates are Indian calendar dates: compare with today in IST,
-   whatever timezone the viewer is in. */
+/* ── Dates & formatting (tender dates are IST calendar dates) ───────── */
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const todayIST = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
 const dayNum = iso => { const [y, m, d] = iso.split("-").map(Number); return Date.UTC(y, m - 1, d) / 864e5; };
 let TODAY = todayIST();
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
 const daysLeft = dl => dl ? Math.round(dayNum(dl) - dayNum(TODAY)) : null;
 const isClosed = t => { const n = daysLeft(t.deadline); return n !== null && n < 0; };
-
-function fmtDate(iso, withDay = true) {
+function fmtDate(iso) {
   if (!iso) return "";
   const [y, m, d] = iso.split("-").map(Number);
-  const wd = WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
-  return `${withDay ? wd + ", " : ""}${d} ${MONTHS[m - 1]}${String(y) !== TODAY.slice(0, 4) ? " " + y : ""}`;
+  return `${d} ${MONTHS[m - 1]}${String(y) !== TODAY.slice(0, 4) ? " " + y : ""}`;
 }
 function relDays(n) {
   if (n === null) return "";
-  if (n === 0) return "Closes today";
-  if (n === 1) return "Closes tomorrow";
-  if (n > 1) return `${n} days left`;
-  if (n === -1) return "Closed yesterday";
-  return `Closed ${-n} days ago`;
+  if (n === 0) return "Today";
+  if (n === 1) return "Tomorrow";
+  if (n > 1) return `in ${n} days`;
+  return n === -1 ? "Yesterday" : `${-n} days ago`;
 }
 const urgency = n => n === null || n < 0 ? "" : n <= 2 ? "urgent" : n <= 7 ? "soon" : "";
 function fmtINR(v) {
@@ -579,106 +398,36 @@ function ago(ts) {
   if (!ts) return "";
   const mins = Math.round((Date.now() - Date.parse(ts)) / 6e4);
   if (mins < 1) return "just now";
-  if (mins < 60) return `${mins} min ago`;
+  if (mins < 60) return `${mins}m ago`;
   const h = Math.round(mins / 60);
-  if (h < 24) return `${h}h ago`;
-  const d = Math.round(h / 24);
-  return `${d} day${d === 1 ? "" : "s"} ago`;
+  return h < 24 ? `${h}h ago` : `${Math.round(h / 24)}d ago`;
 }
-/* Share of the bidding window still remaining, for the deadline bar */
-function remaining(t) {
-  const n = daysLeft(t.deadline);
-  if (n === null || n < 0) return 0;
-  const start = t.published || (t.first_seen || "").slice(0, 10) || TODAY;
-  const total = Math.max(1, dayNum(t.deadline) - dayNum(start));
-  return Math.max(.04, Math.min(1, n / total));
-}
-
 const title = t => t.headline || t.title;
-const where = t => [t.authority, t.location].filter(Boolean).join(" · ");
+const buyer = t => [t.authority, t.location].filter(Boolean).join(" · ");
 
-/* ══ Classification ══════════════════════════════════════════════════ */
-function isRecommended(t) {
-  return t.score != null && t.score >= (meta.min_score ?? 6) && t.recommendation !== "Skip"
-    && !["goods", "works", "auction"].includes(t.kind);
-}
-const isNew = (t, days) => t.first_seen && (Date.now() - Date.parse(t.first_seen)) < days * 864e5;
-const tracked = t => BOARD.includes(track(t.id).status);
+/* ── Classification ─────────────────────────────────────────────────── */
+const isRecommended = t => t.score != null && t.score >= (meta.min_score ?? 6) && t.recommendation !== "Skip"
+  && !["goods", "works", "auction"].includes(t.kind);
+const isNew = (t, days = 2) => t.first_seen && (Date.now() - Date.parse(t.first_seen)) < days * 864e5;
+const isTracked = t => TRACKED.includes(track(t.id).status);
 function inView(t, v) {
-  const st = track(t.id).status;
   if (v === "closed") return isClosed(t);
-  if (isClosed(t)) return v === "shortlist" && tracked(t);
-  if (v === "recommended") return isRecommended(t) && st !== "dropped";
-  if (v === "shortlist") return tracked(t);
-  return true;
-}
-function kpiMatch(t) {
-  if (kpiFilter === "closing") { const n = daysLeft(t.deadline); return n !== null && n >= 0 && n <= 7; }
-  if (kpiFilter === "new") return isNew(t, 7);
+  if (v === "shortlist") return isTracked(t);
+  if (isClosed(t)) return false;
+  if (v === "recommended") return isRecommended(t) && track(t.id).status !== "dropped";
   return true;
 }
 
-/* ══ Pieces ══════════════════════════════════════════════════════════ */
-function ring(t, size = 52) {
-  const r = size / 2 - 4, c = 2 * Math.PI * r;
-  if (t.score == null)
-    return `<div class="ring none" style="width:${size}px;height:${size}px" title="Not scored yet">
-      <svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="var(--ring-track)" stroke-width="2.5" stroke-dasharray="3 4"/></svg><span class="v">–</span></div>`;
-  const rec = isRecommended(t);
-  const stroke = rec && t.recommendation === "Bid" ? "url(#grad-stroke)" : rec ? "var(--warn)" : "var(--text-3)";
-  const off = c * (1 - t.score / 10);
-  return `<div class="ring" style="width:${size}px;height:${size}px" title="Fit score ${t.score} out of 10">
-    <svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="var(--ring-track)" stroke-width="3"/>
-    <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${stroke}" stroke-width="3" stroke-linecap="round"
-      stroke-dasharray="${c.toFixed(2)}" stroke-dashoffset="${off.toFixed(2)}"/></svg>
-    <span class="v" ${size > 60 ? 'style="font-size:18px"' : ""}>${t.score.toFixed(1)}</span></div>`;
+/* ── Filtering & sorting ────────────────────────────────────────────── */
+const F = { cat: "", state: "", week: false, fresh: false };
+function filtered() {
+  const q = $("#q").value.trim().toLowerCase();
+  return tenders.filter(t => inView(t, view)
+    && (!F.cat || t.category === F.cat) && (!F.state || t.state === F.state)
+    && (!F.week || ((n => n !== null && n >= 0 && n <= 7)(daysLeft(t.deadline))))
+    && (!F.fresh || isNew(t, 7))
+    && (!q || [t.headline, t.title, t.authority, t.location, t.ref_no].join(" ").toLowerCase().includes(q)));
 }
-function recChip(t) {
-  if (!t.recommendation) return t.score == null ? `<span class="chip">Awaiting review</span>` : "";
-  const cls = { Bid: "good", Watch: "warn" }[t.recommendation] || "";
-  return `<span class="chip ${cls}">${esc(t.recommendation)}</span>`;
-}
-function chips(t) {
-  const st = track(t.id).status, out = [];
-  if (isNew(t, 2) && !isClosed(t)) out.push(`<span class="chip new">New</span>`);
-  out.push(recChip(t));
-  if (st) out.push(`<span class="chip ${st === "dropped" ? "" : "accent"}">${esc(statusLabel(st))}</span>`);
-  if (t.category && t.category !== "Other") out.push(`<span class="chip">${esc(t.category)}</span>`);
-  if (t.portal) out.push(`<span class="chip">${esc(t.portal)}</span>`);
-  return out.join("");
-}
-function when(t) {
-  const n = daysLeft(t.deadline);
-  if (n === null) return `<div class="when unknown"><div class="when-date">No date listed</div><div class="when-rel">See the notice</div></div>`;
-  const u = urgency(n);
-  return `<div class="when"><div class="when-date">${esc(fmtDate(t.deadline))}</div><div class="when-rel ${u}">${relDays(n)}</div>
-    ${n >= 0 ? `<div class="bar ${u}"><i style="width:${(remaining(t) * 100).toFixed(0)}%"></i></div>` : ""}</div>`;
-}
-function rowHTML(t, i) {
-  const muted = isClosed(t) || track(t.id).status === "dropped";
-  const v = fmtINR(t.value_inr);
-  return `<article class="row${muted ? " muted" : ""}" tabindex="0" role="button" data-id="${esc(t.id)}" aria-label="${esc(title(t))}" style="animation-delay:${Math.min(i * 35, 400)}ms">
-    ${ring(t)}
-    <div class="main">
-      <div class="t-title">${esc(title(t))}</div>
-      <div class="t-meta">${esc(where(t)) || "&nbsp;"}</div>
-      <div class="chips">${chips(t)}</div>
-    </div>
-    ${when(t)}
-    <div class="value ${v ? "" : "none"}">${v || "—"}${v ? "<small>est. value</small>" : ""}</div>
-    <svg class="i go"><use href="#i-arrow"/></svg>
-  </article>`;
-}
-function cardHTML(t) {
-  const n = daysLeft(t.deadline);
-  return `<article class="card" tabindex="0" role="button" data-id="${esc(t.id)}">
-    <div class="t-title">${esc(title(t))}</div>
-    <div class="t-meta">${esc(where(t)) || "&nbsp;"}</div>
-    <div class="card-foot"><span>${t.deadline ? esc(fmtDate(t.deadline)) + " · " + relDays(n) : "No date listed"}</span>
-    <span class="mono">${t.score != null ? t.score.toFixed(1) : ""}</span></div></article>`;
-}
-
-/* ══ Render ══════════════════════════════════════════════════════════ */
 function sorted(list) {
   const key = {
     closing: t => { const n = daysLeft(t.deadline); return n === null ? 1e6 : (n < 0 ? 2e6 - n : n); },
@@ -688,334 +437,328 @@ function sorted(list) {
   }[$("#f-sort").value];
   return [...list].sort((a, b) => (key(a) - key(b)) || (b.score ?? 0) - (a.score ?? 0));
 }
-function filtered() {
-  const q = $("#q").value.trim().toLowerCase(), cat = $("#f-cat").value, st = $("#f-state").value;
-  return tenders.filter(t => inView(t, view) && kpiMatch(t) && (!cat || t.category === cat) && (!st || t.state === st)
-    && (!q || [t.headline, t.title, t.authority, t.location, t.ref_no].join(" ").toLowerCase().includes(q)));
-}
-const hasFilters = () => $("#q").value || $("#f-cat").value || $("#f-state").value || kpiFilter;
 
+/* ── Rendering ──────────────────────────────────────────────────────── */
+function fitBadge(t) {
+  if (t.score == null) return `<span class="fit none" title="Not scored yet">—</span>`;
+  const cls = isRecommended(t) ? (t.recommendation === "Bid" ? "bid" : "watch") : "";
+  return `<span class="fit ${cls}" title="Fit ${t.score} / 10 · ${esc(t.recommendation || "")}">${t.score.toFixed(1)}</span>`;
+}
+function statusCell(t) {
+  const st = track(t.id).status;
+  return st ? `<span class="status ${st}"><i></i>${esc(statusLabel(st))}</span>` : "";
+}
+function rowHTML(t) {
+  const n = daysLeft(t.deadline);
+  const dim = isClosed(t) || track(t.id).status === "dropped";
+  return `<tr data-id="${esc(t.id)}" tabindex="-1" aria-selected="${t.id === openId}"${dim ? ' class="dim"' : ""}>
+    <td class="c-fit">${fitBadge(t)}</td>
+    <td class="c-main"><div class="t-title" title="${esc(title(t))}">${esc(title(t))}</div>
+      <div class="t-sub">${isNew(t) && !isClosed(t) ? '<span class="new-dot" title="New"></span>' : ""}<span>${esc(buyer(t)) || "—"}</span></div></td>
+    <td class="c-cat"><span class="cat">${esc(t.category && t.category !== "Other" ? t.category : "—")}</span></td>
+    <td class="c-due">${t.deadline
+      ? `<div class="due-date">${esc(fmtDate(t.deadline))}</div><div class="due-rel ${urgency(n)}">${relDays(n)}</div>`
+      : `<div class="muted">Not listed</div>`}</td>
+    <td class="c-val r"><span class="val">${fmtINR(t.value_inr) || '<span class="muted">—</span>'}</span></td>
+    <td class="c-st">${statusCell(t)}</td>
+  </tr>`;
+}
 function emptyHTML() {
-  let h, p, icon = "i-inbox";
+  const filters = $("#q").value || F.cat || F.state || F.week || F.fresh;
+  let h, p, action = "";
   if (!tenders.length) {
-    icon = "i-radar";
-    h = "The radar is <em>warming up</em>";
-    p = `TenderRadar checks for new tenders every 4 hours and lists open ones here as they're found.`
-      + (meta.last_updated ? ` Last check: ${ago(meta.last_updated)}.` : "")
-      + ((meta.last_run || {}).migrated_from_v1 ? " Old, already-closed tenders were cleared during the upgrade." : "");
-  } else if (hasFilters()) {
-    h = "Nothing matches"; p = "Try clearing the search, the filters, or the highlighted summary.";
+    h = "No tenders yet";
+    p = "Tenders appear here after the next sync, which runs every 4 hours."
+      + (meta.last_updated ? ` Last sync ${ago(meta.last_updated)}.` : "");
+  } else if (filters) {
+    h = "No matching tenders"; p = "Nothing in this view matches the current filters.";
+    action = `<button class="btn" type="button" data-act="clear">Clear filters</button>`;
   } else {
     [h, p] = {
-      recommended: ["Nothing recommended <em>right now</em>", "No open tender scores as a good fit at the moment. Everything else that's open is under All open."],
-      open: ["No open tenders", "Tenders appear here as they're found."],
-      shortlist: ["Your shortlist is <em>empty</em>", "Open any tender and mark it Shortlisted to follow it through to submission."],
+      recommended: ["Nothing recommended right now", "No open tender currently meets the fit threshold. Everything else is under All open."],
+      open: ["No open tenders", "Open tenders appear here as they're found."],
+      shortlist: ["Shortlist is empty", "Set a tender's status to Shortlisted to track it here."],
       closed: ["No recently closed tenders", `Tenders that closed in the last ${meta.keep_closed_days ?? 30} days appear here.`],
     }[view];
   }
-  return `<div class="empty"><div class="orb"><svg class="i"><use href="#${icon}"/></svg></div><h2>${h}</h2><p>${esc(p)}</p></div>`;
+  return `<div class="empty"><div><div class="empty-icon"><svg class="i"><use href="#i-inbox"/></svg></div><h2>${esc(h)}</h2><p>${esc(p)}</p>${action}</div></div>`;
 }
 
 function render() {
   TODAY = todayIST();
   const list = sorted(filtered());
-  const out = $("#results");
-  renderSpotlight();
-  if (!list.length) { out.innerHTML = emptyHTML(); return; }
-  if (view === "shortlist") {
-    out.innerHTML = `<div class="board">${BOARD.map(s => {
-      const items = list.filter(t => track(t.id).status === s);
-      return `<section class="col" aria-label="${esc(statusLabel(s))}"><div class="col-head"><span>${esc(statusLabel(s))}</span><span class="mono" style="color:var(--text-3)">${items.length}</span></div>
-        ${items.map(cardHTML).join("") || `<div class="col-empty">Nothing here yet</div>`}</section>`;
-    }).join("")}</div>`;
-    return;
-  }
-  out.innerHTML = `<div class="list-head" aria-hidden="true"><span>Fit</span><span>Tender</span><span>Bid deadline</span><span style="text-align:right">Value</span><span></span></div>
-    <div class="list" role="list">${list.map(rowHTML).join("")}</div>`;
+  $("#view-title").textContent = VIEWS[view];
+  $("#view-count").textContent = list.length ? list.length : "";
+  $$(".nav-item[data-view]").forEach(b => b.setAttribute("aria-current", b.dataset.view === view));
+  $$(".nav-cat").forEach(b => b.setAttribute("aria-current", b.dataset.cat === F.cat));
+  $("#f-cat").classList.toggle("set", !!F.cat);
+  $("#f-state").classList.toggle("set", !!F.state);
+  $("#f-week").setAttribute("aria-pressed", F.week);
+  $("#f-new").setAttribute("aria-pressed", F.fresh);
+
+  if (!list.length) { $("#results").innerHTML = emptyHTML(); return; }
+  $("#results").innerHTML = `<table>
+    <colgroup><col class="col-fit"><col><col class="col-cat"><col class="col-due"><col class="col-val"><col class="col-st"></colgroup>
+    <thead><tr><th>Fit</th><th>Tender</th><th class="col-cat">Category</th><th>Deadline</th><th class="r">Value</th><th class="col-st">Status</th></tr></thead>
+    <tbody>${list.map(rowHTML).join("")}</tbody></table>`;
 }
 
-function topMatch() {
-  return tenders.filter(t => !isClosed(t) && isRecommended(t) && !track(t.id).status)
-    .sort((a, b) => (b.score - a.score) || ((daysLeft(a.deadline) ?? 999) - (daysLeft(b.deadline) ?? 999)))[0];
-}
-function renderSpotlight() {
-  const el = $("#spotlight");
-  const t = view === "recommended" && !hasFilters() ? topMatch() : null;
-  if (!t) { el.innerHTML = ""; return; }
-  const n = daysLeft(t.deadline);
-  el.innerHTML = `<article class="spotlight" tabindex="0" role="button" data-id="${esc(t.id)}" aria-label="Top match: ${esc(title(t))}">
-    <div class="spotlight-inner">
-      ${ring(t, 76)}
-      <div>
-        <div class="tag grad-text">✦ Top match</div>
-        <h2>${esc(title(t))}</h2>
-        <p>${esc(t.reason || t.fit || where(t))}</p>
-        <div class="meta">
-          ${t.authority ? `<span>${esc(t.authority)}</span>` : ""}
-          ${t.deadline ? `<span><b>${esc(fmtDate(t.deadline))}</b> · ${relDays(n)}</span>` : ""}
-          ${t.value_inr ? `<span><b>${fmtINR(t.value_inr)}</b> est.</span>` : ""}
-        </div>
-      </div>
-      <div class="cta"><span class="btn btn-primary">View details <svg class="i"><use href="#i-arrow"/></svg></span></div>
-    </div></article>`;
-}
-
-function greeting() {
-  const h = Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Kolkata", hour: "numeric", hourCycle: "h23" }).format(new Date()));
-  return h < 5 ? "Good evening" : h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
-}
-function renderSummary() {
+function renderSidebar() {
   TODAY = todayIST();
-  const open = tenders.filter(t => !isClosed(t));
-  const rec = open.filter(t => isRecommended(t) && track(t.id).status !== "dropped");
-  const closing = rec.filter(t => { const n = daysLeft(t.deadline); return n !== null && n <= 7; });
-  const unscored = open.filter(t => t.score == null).length;
-
-  $("#k-rec").textContent = rec.length;
-  $("#k-rec-sub").textContent = `Fit ${meta.min_score ?? 6}+ and not Skip`;
-  $("#k-closing").textContent = closing.length;
-  $("#k-new").textContent = open.filter(t => isNew(t, 7)).length;
-  $("#k-short").textContent = tenders.filter(tracked).length;
-  for (const v of ["recommended", "open", "shortlist", "closed"]) $("#c-" + v).textContent = tenders.filter(t => inView(t, v)).length;
-
-  const [y, m, d] = TODAY.split("-").map(Number);
-  const FULL_DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  $("#eyebrow").textContent = `${FULL_DAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]}, ${d} ${MONTHS[m - 1]} · PR & communications`;
-  if (!tenders.length) {
-    $("#headline").innerHTML = `${greeting()}. <em>Nothing yet.</em>`;
-    $("#lede").textContent = "New government tenders for PR and communications will appear here, scored for fit.";
-  } else {
-    $("#headline").innerHTML = rec.length
-      ? `${greeting()}. <em class="grad-text">${rec.length} ${rec.length === 1 ? "tender" : "tenders"}</em> worth your time.`
-      : `${greeting()}. <em>Nothing urgent</em> today.`;
-    $("#lede").textContent = `${open.length} open across ${new Set(open.map(t => t.state).filter(Boolean)).size || "several"} states`
-      + (closing.length ? ` — ${closing.length} recommended ${closing.length === 1 ? "closes" : "close"} within a week` : "")
-      + (unscored ? `. ${unscored} awaiting AI review.` : ".");
+  for (const v of Object.keys(VIEWS)) {
+    const n = tenders.filter(t => inView(t, v)).length;
+    $("#n-" + v).textContent = n || "";
   }
-  fillSelect("#f-cat", "All categories", [...new Set(tenders.map(t => t.category).filter(Boolean))].sort());
-  fillSelect("#f-state", "All states", [...new Set(tenders.map(t => t.state).filter(Boolean))].sort());
+  const open = tenders.filter(t => !isClosed(t));
+  const cats = {};
+  open.forEach(t => { if (t.category) cats[t.category] = (cats[t.category] || 0) + 1; });
+  $("#nav-cats").innerHTML = Object.keys(cats).length
+    ? Object.entries(cats).sort((a, b) => b[1] - a[1]).map(([c, n]) =>
+        `<button class="nav-item nav-cat" data-cat="${esc(c)}"><span class="swatch"></span><span class="label">${esc(c)}</span><span class="count num">${n}</span></button>`).join("")
+    : `<div class="nav-item" style="cursor:default;color:var(--text-3)"><span class="label">None yet</span></div>`;
+
+  const rec = open.filter(t => isRecommended(t) && track(t.id).status !== "dropped");
+  const week = rec.filter(t => { const n = daysLeft(t.deadline); return n !== null && n <= 7; }).length;
+  const fresh = open.filter(t => isNew(t, 7)).length;
+  $("#summary").innerHTML = tenders.length
+    ? `<b>${rec.length}</b> recommended · <b>${week}</b> closing this week · <b>${fresh}</b> new this week` : "";
+
+  fillSelect("#f-state", "State", [...new Set(tenders.map(t => t.state).filter(Boolean))].sort(), F.state);
+  fillSelect("#f-cat", "Category", [...new Set(tenders.map(t => t.category).filter(Boolean))].sort(), F.cat);
 }
-function fillSelect(sel, label, items) {
-  const el = $(sel), cur = el.value;
-  el.innerHTML = `<option value="">${label}</option>` + items.map(i => `<option>${esc(i)}</option>`).join("");
-  el.value = items.includes(cur) ? cur : "";
+function fillSelect(sel, label, items, cur) {
+  $(sel).innerHTML = `<option value="">${label}</option>` + items.map(i => `<option${i === cur ? " selected" : ""}>${esc(i)}</option>`).join("");
 }
 
-function renderStatus() {
+function renderSync() {
   const lr = meta.last_run || {};
-  if (!meta.last_updated) { $("#status-txt").textContent = "No data yet"; return; }
+  if (!meta.last_updated) { $("#sync-txt").textContent = "Not synced yet"; return; }
   const hours = (Date.now() - Date.parse(meta.last_updated)) / 36e5;
-  $("#pulse").className = "pulse " + (lr.ok === false ? "fail" : hours > 9 ? "stale" : "ok");
-  $("#status-txt").textContent = lr.ok === false ? "Last check failed" : `Live · updated ${ago(meta.last_updated)}`;
-  $("#status").title = new Date(meta.last_updated).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" }) + " IST";
-  const a = $("#alert");
-  if (lr.ok === false) a.innerHTML = `<div class="alert" role="alert"><svg class="i"><use href="#i-alert"/></svg><div><strong>The last check for new tenders failed.</strong>
-      <p>${esc(lr.error || "See the latest run in the repository's Actions tab.")} The list may be out of date.</p></div></div>`;
-  else if (hours > 12) a.innerHTML = `<div class="alert" role="alert"><svg class="i"><use href="#i-alert"/></svg><div><strong>No update for ${Math.round(hours)} hours.</strong>
-      <p>Checks normally run every 4 hours — the scheduled workflow may be paused or failing. See the repository's Actions tab.</p></div></div>`;
-  else a.innerHTML = "";
-  if (a.innerHTML) a.style.marginBottom = "18px";
+  $("#sync-dot").className = "dot " + (lr.ok === false ? "fail" : hours > 9 ? "stale" : "ok");
+  $("#sync-txt").textContent = lr.ok === false ? `Sync failed ${ago(meta.last_updated)}` : `Synced ${ago(meta.last_updated)}`;
+  $("#sync").title = new Date(meta.last_updated).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" }) + " IST";
+  const alert = lr.ok === false
+    ? `<strong>The last sync failed.</strong> <span>${esc(lr.error || "")} The list may be out of date.</span>`
+    : hours > 12 ? `<strong>No sync for ${Math.round(hours)} hours.</strong> <span>Syncs normally run every 4 hours — the scheduled job may be paused.</span>` : "";
+  $("#alert").innerHTML = alert ? `<div class="alert" role="alert"><svg class="i"><use href="#i-alert"/></svg><div>${alert}</div></div>` : "";
 }
 
-/* ══ Sheet ═══════════════════════════════════════════════════════════ */
-const fact = (label, value, sub = "") =>
-  `<div class="fact"><dt>${esc(label)}</dt><dd>${value || '<span class="na">Not stated</span>'}${sub ? `<span class="sub">${sub}</span>` : ""}</dd></div>`;
-
-function showSheet() {
-  if (!$("#sheet").classList.contains("open")) lastFocus = document.activeElement;
-  $("#sheet").classList.add("open"); $("#scrim").classList.add("open");
-  document.body.style.overflow = "hidden";
-  $("#sheet").focus();
+/* ── Inspector ──────────────────────────────────────────────────────── */
+function openPanel(kind) {
+  panel = kind;
+  $("#app").classList.add("inspecting");
 }
-function openTender(id, push = true) {
+function closePanel() {
+  panel = null; openId = null;
+  $("#app").classList.remove("inspecting");
+  $$("tbody tr[aria-selected='true']").forEach(r => r.setAttribute("aria-selected", "false"));
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+}
+const prop = (k, v) => `<dt>${esc(k)}</dt><dd>${v || '<span class="muted">—</span>'}</dd>`;
+
+function showTender(id, push = true) {
   const t = tenders.find(x => x.id === id);
   if (!t) return;
   openId = id;
+  const list = sorted(filtered());
+  const i = list.findIndex(x => x.id === id);
   const n = daysLeft(t.deadline), tr = track(id);
-  $("#sheet-head").innerHTML = `${ring(t, 46)}
-    <div><div style="font-weight:600">${t.score != null ? `Fit ${t.score.toFixed(1)} of 10` : "Awaiting AI review"}</div>
-    <div style="color:var(--text-3);font-size:13px">${[t.category, t.portal].filter(Boolean).map(esc).join(" · ")}</div></div>
-    <span class="spacer"></span>
-    <button class="icon-btn" type="button" data-act="copy" aria-label="Copy link"><svg class="i"><use href="#i-link"/></svg></button>
-    <button class="icon-btn" type="button" data-act="close" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>`;
-  const ai = t.score != null
-    ? `<div class="ai"><div class="ai-inner"><div class="ai-head">${recChip(t)}${t.kind && t.kind !== "services" ? `<span class="chip">${esc(t.kind[0].toUpperCase() + t.kind.slice(1))}</span>` : ""}</div>
-        ${t.fit ? `<p><b>Fit.</b> ${esc(t.fit)}</p>` : ""}${t.reason ? `<p><b>Worth pursuing?</b> ${esc(t.reason)}</p>` : ""}
-        <p class="fine">An estimate against your company profile — not a substitute for reading the tender document.</p></div></div>`
-    : `<div class="ai"><div class="ai-inner"><p style="margin:0">Not reviewed yet — it will be scored on the next run.</p></div></div>`;
-  $("#sheet-body").innerHTML = `
-    <h2 id="sheet-title">${esc(title(t))}</h2>
+  $$("tbody tr").forEach(r => r.setAttribute("aria-selected", r.dataset.id === id));
+
+  $("#insp-head").innerHTML = `<span class="ref">${t.ref_no ? "TDR " + esc(t.ref_no) : ""}</span><span class="spacer"></span>
+    <button class="btn ghost icon" data-act="prev" title="Previous (k)" aria-label="Previous tender" ${i <= 0 ? "disabled" : ""}><svg class="i"><use href="#i-up"/></svg></button>
+    <button class="btn ghost icon" data-act="next" title="Next (j)" aria-label="Next tender" ${i < 0 || i >= list.length - 1 ? "disabled" : ""}><svg class="i"><use href="#i-down"/></svg></button>
+    <button class="btn ghost icon" data-act="copy" title="Copy link" aria-label="Copy link"><svg class="i"><use href="#i-link"/></svg></button>
+    <button class="btn ghost icon" data-act="close" title="Close (Esc)" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>`;
+
+  const recCls = { Bid: "bid", Watch: "watch" }[t.recommendation] || "";
+  $("#insp-body").innerHTML = `
+    <h2>${esc(title(t))}</h2>
     ${t.headline && t.headline !== t.title ? `<p class="orig">${esc(t.title)}</p>` : ""}
-    <dl class="facts">
-      ${fact("Bid deadline", t.deadline ? esc(fmtDate(t.deadline)) : "", t.deadline ? relDays(n) : "")}
-      ${fact("Published", t.published ? esc(fmtDate(t.published)) : "")}
-      ${fact("Estimated value", esc(fmtINR(t.value_inr)))}
-      ${fact("EMD", esc(fmtINR(t.emd_inr)))}
-      ${fact("Issued by", esc(t.authority))}
-      ${fact("Location", esc(t.location))}
-      ${fact("Reference", t.ref_no ? `<span class="mono">TDR ${esc(t.ref_no)}</span>` : "")}
-      ${fact("First seen", t.first_seen ? esc(ago(t.first_seen)) : "")}
+    <dl class="props">
+      <dt>Status</dt><dd><select class="control" id="status-select" aria-label="Tracking status">
+        ${STATUSES.map(s => `<option value="${s.id}"${(tr.status || "") === s.id ? " selected" : ""}>${esc(s.label)}</option>`).join("")}</select></dd>
+      ${prop("Fit", t.score != null ? `${fitBadge(t)}<span class="sub">of 10</span>` : "")}
+      ${prop("Deadline", t.deadline ? `${esc(fmtDate(t.deadline))}<span class="sub due-rel ${urgency(n)}">${relDays(n)}</span>` : "")}
+      ${prop("Published", esc(fmtDate(t.published)))}
+      ${prop("Value", esc(fmtINR(t.value_inr)))}
+      ${prop("EMD", esc(fmtINR(t.emd_inr)))}
+      ${prop("Buyer", esc(t.authority))}
+      ${prop("Location", esc(t.location))}
+      ${prop("Category", esc(t.category))}
+      ${prop("Portal", esc(t.portal))}
+      ${prop("First seen", esc(ago(t.first_seen)))}
     </dl>
-    <div class="label"><svg class="i grad-text" style="stroke:url(#grad-stroke)"><use href="#i-spark"/></svg>AI assessment</div>
-    ${ai}
-    <div class="label">Your tracking</div>
-    <div class="pills" role="group" aria-label="Tracking status">
-      ${STATUSES.map(s => `<button class="pill" type="button" data-status="${s.id}" aria-pressed="${(tr.status || "") === s.id}">${esc(s.label)}</button>`).join("")}
+    <div class="section assess">
+      <div class="section-title"><svg class="i"><use href="#i-spark"/></svg>AI assessment ${t.recommendation ? `<span class="rec ${recCls}">${esc(t.recommendation)}</span>` : ""}</div>
+      ${t.score != null ? `
+        ${t.fit ? `<p><b>Fit</b> — ${esc(t.fit)}</p>` : ""}
+        ${t.reason ? `<p><b>Worth pursuing</b> — ${esc(t.reason)}</p>` : ""}
+        <p class="note">Estimated against your company profile. Read the tender document before bidding.</p>`
+      : `<p class="note">Not assessed yet. It will be scored on the next sync.</p>`}
     </div>
-    <label class="sr-only" for="notes">Notes</label>
-    <textarea class="input" id="notes" placeholder="Notes — contacts, eligibility, documents needed… Saved in this browser.">${esc(tr.notes || "")}</textarea>`;
-  $("#sheet-foot").innerHTML = t.url
-    ? `<a class="btn btn-primary" href="${esc(t.url)}" target="_blank" rel="noopener">Open the tender notice <svg class="i"><use href="#i-ext"/></svg></a>` : "";
+    <div class="section">
+      <div class="section-title">Notes</div>
+      <textarea class="control" id="notes" placeholder="Contacts, eligibility, documents needed…">${esc(tr.notes || "")}</textarea>
+    </div>`;
+  $("#insp-foot").innerHTML = t.url
+    ? `<a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">Open tender notice<svg class="i"><use href="#i-ext"/></svg></a>` : "";
   if (push) history.replaceState(null, "", "#t=" + encodeURIComponent(id));
-  showSheet();
+  openPanel("tender");
+  $$("tbody tr").forEach(r => r.dataset.id === id && r.scrollIntoView({ block: "nearest" }));
 }
-function openSettings() {
+
+function showSettings() {
   openId = null;
+  $$("tbody tr").forEach(r => r.setAttribute("aria-selected", "false"));
   const lr = meta.last_run || {};
   const rows = [
-    ["Last check", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " — failed" : ""}` : "—"],
-    ["Tenders stored", `${meta.total ?? tenders.length} (${meta.open ?? "–"} open)`],
-    lr.listed != null && ["Last run", `${lr.listed} listed · ${lr.new ?? 0} new · ${lr.excluded ?? 0} filtered out · ${lr.closed_on_arrival ?? 0} already closed`],
-    lr.backlog && ["Backlog", `${lr.backlog} notices queued for the next run`],
-    ["Recommended means", `AI fit ${meta.min_score ?? 6}+ and not marked Skip`],
+    ["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " (failed)" : ""}` : "—"],
+    ["Tenders stored", `${meta.total ?? tenders.length} · ${meta.open ?? "–"} open`],
+    lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered out, ${lr.closed_on_arrival ?? 0} already closed`],
+    lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
+    ["Recommended", `Fit ${meta.min_score ?? 6}+ and not marked Skip`],
   ].filter(Boolean);
-  $("#sheet-head").innerHTML = `<div style="font-family:var(--serif);font-size:24px" id="sheet-title">Status &amp; settings</div><span class="spacer"></span>
-    <button class="icon-btn" type="button" data-act="close" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>`;
-  $("#sheet-body").innerHTML = `
-    <div class="label">System</div>
+  $("#insp-head").innerHTML = `<strong>Status &amp; data</strong><span class="spacer"></span>
+    <button class="btn ghost icon" data-act="close" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>`;
+  $("#insp-body").innerHTML = `
     <dl class="kv">${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
-    <div class="label">Your shortlist &amp; notes</div>
-    <div class="prose"><p>Statuses and notes live in this browser only. Export them to keep a backup or move them to another device.</p></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px">
-      <button class="btn" type="button" data-act="export-tracking"><svg class="i"><use href="#i-download"/></svg>Export</button>
-      <label class="btn">Import…<input type="file" accept="application/json" id="import-file" hidden></label>
+    <div class="section">
+      <div class="section-title">Your tracking data</div>
+      <div class="prose"><p>Statuses and notes are saved in this browser. Export them to keep a backup or move to another device.</p></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" type="button" data-act="export-tracking"><svg class="i"><use href="#i-download"/></svg>Export</button>
+        <label class="btn">Import<input type="file" accept="application/json" id="import-file" hidden></label>
+      </div>
     </div>
-    <div class="label">How it works</div>
-    <div class="prose"><p>Every 4 hours a GitHub Actions workflow collects new notices, drops auctions, construction works and goods supply,
-      and asks Claude to score each remaining tender against your company profile. New recommended tenders go out by email and Telegram,
-      with a digest at 8 AM IST.</p>
-      <p>The company profile, score threshold and search keywords are set in the
-      <a href="https://github.com/BireshwarChakravarty/tenderradar" target="_blank" rel="noopener">repository</a> — see its README.</p></div>`;
-  $("#sheet-foot").innerHTML = "";
-  showSheet();
+    <div class="section">
+      <div class="section-title">How tenders are chosen</div>
+      <div class="prose"><p>Every 4 hours new notices are collected from GeM, CPPP and state portals via TenderDetail.com.
+      Auctions, construction works and goods supply are removed, and each remaining tender is assessed against your company profile.
+      New recommended tenders are sent by email and Telegram, with a digest at 8 AM IST.</p></div>
+    </div>`;
+  $("#insp-foot").innerHTML = "";
+  openPanel("settings");
 }
-function closeSheet() {
-  $("#sheet").classList.remove("open"); $("#scrim").classList.remove("open");
-  document.body.style.overflow = "";
-  openId = null;
-  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
-  if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+
+function step(dir) {
+  const list = sorted(filtered());
+  if (!list.length) return;
+  const i = list.findIndex(t => t.id === openId);
+  const next = list[Math.max(0, Math.min(list.length - 1, i < 0 ? 0 : i + dir))];
+  showTender(next.id);
 }
 function setStatus(id, status) {
   const cur = track(id);
   tracking[id] = { ...cur, status, updated: new Date().toISOString() };
   if (!status && !cur.notes) delete tracking[id];
-  saveTracking(); renderSummary(); render(); openTender(id, false);
+  saveTracking(); renderSidebar(); render(); showTender(id, false);
 }
 
-/* ══ Export ══════════════════════════════════════════════════════════ */
+/* ── Export ─────────────────────────────────────────────────────────── */
 function download(name, text, type) {
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 function exportCSV() {
-  const cols = [["Title", title], ["Original title", t => t.title], ["Issued by", t => t.authority], ["Location", t => t.location],
-    ["State", t => t.state], ["Category", t => t.category], ["Fit score", t => t.score ?? ""], ["Recommendation", t => t.recommendation],
-    ["Bid deadline", t => t.deadline], ["Published", t => t.published], ["Estimated value (INR)", t => t.value_inr ?? ""],
-    ["EMD (INR)", t => t.emd_inr ?? ""], ["Your status", t => track(t.id).status ? statusLabel(track(t.id).status) : ""],
-    ["Notes", t => track(t.id).notes || ""], ["Reference", t => t.ref_no], ["Link", t => t.url]];
+  const cols = [["Title", title], ["Original title", t => t.title], ["Buyer", t => t.authority], ["Location", t => t.location],
+    ["State", t => t.state], ["Category", t => t.category], ["Fit", t => t.score ?? ""], ["Recommendation", t => t.recommendation],
+    ["Deadline", t => t.deadline], ["Published", t => t.published], ["Value (INR)", t => t.value_inr ?? ""], ["EMD (INR)", t => t.emd_inr ?? ""],
+    ["Status", t => track(t.id).status ? statusLabel(track(t.id).status) : ""], ["Notes", t => track(t.id).notes || ""],
+    ["Reference", t => t.ref_no], ["Link", t => t.url]];
   const cell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const rows = sorted(filtered()).map(t => cols.map(([, f]) => cell(f(t))).join(","));
-  download(`tenderradar-${view}-${TODAY}.csv`, "﻿" + [cols.map(([h]) => cell(h)).join(","), ...rows].join("\r\n"), "text/csv");
+  download(`tenders-${view}-${TODAY}.csv`, "﻿" + [cols.map(([h]) => cell(h)).join(","), ...rows].join("\r\n"), "text/csv");
   toast(`Exported ${rows.length} tender${rows.length === 1 ? "" : "s"}`);
 }
 function toast(msg) {
   const el = $("#toast");
   el.textContent = msg; el.classList.add("show");
-  clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 2200);
+  clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 2000);
 }
 
-/* ══ Theme (dark by default) ═════════════════════════════════════════ */
+/* ── Theme ──────────────────────────────────────────────────────────── */
+const effectiveTheme = () => document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  $("#theme-btn use").setAttribute("href", theme === "dark" ? "#i-sun" : "#i-moon");
-  $('meta[name="theme-color"]').content = theme === "dark" ? "#07080b" : "#f6f4ef";
+  if (theme) document.documentElement.dataset.theme = theme;
+  const dark = effectiveTheme() === "dark";
+  $("#theme-btn use").setAttribute("href", dark ? "#i-sun" : "#i-moon");
+  $("#theme-label").textContent = dark ? "Light mode" : "Dark mode";
 }
 
-/* ══ Events ══════════════════════════════════════════════════════════ */
+/* ── Events ─────────────────────────────────────────────────────────── */
 function setView(v) {
   view = v; prefs.view = v; savePrefs();
-  $$(".seg-btn").forEach(b => b.setAttribute("aria-selected", b.dataset.view === v));
+  $("#app").classList.remove("nav-open");
   render();
 }
 function wire() {
-  $$(".seg-btn").forEach(b => b.addEventListener("click", () => {
-    kpiFilter = ""; $$(".stat").forEach(x => x.setAttribute("aria-pressed", "false"));
-    setView(b.dataset.view);
-  }));
-  $$(".stat").forEach(b => b.addEventListener("click", () => {
-    const k = b.dataset.kpi;
-    if (k === "shortlist" || k === "recommended") { kpiFilter = ""; setView(k); }
-    else { kpiFilter = kpiFilter === k ? "" : k; setView(k === "new" ? "open" : "recommended"); }
-    $$(".stat").forEach(x => x.setAttribute("aria-pressed", x.dataset.kpi === kpiFilter));
-    $(".controls").scrollIntoView({ behavior: "smooth", block: "start" });
-  }));
+  $(".nav").addEventListener("click", e => {
+    const b = e.target.closest(".nav-item");
+    if (!b) return;
+    if (b.dataset.view) setView(b.dataset.view);
+    else if (b.dataset.cat !== undefined) { F.cat = F.cat === b.dataset.cat ? "" : b.dataset.cat; if (view === "closed" || view === "shortlist") view = "open"; renderSidebar(); setView(view); }
+  });
+  $("#f-state").addEventListener("change", e => { F.state = e.target.value; render(); });
+  $("#f-cat").addEventListener("change", e => { F.cat = e.target.value; render(); });
+  $("#f-week").addEventListener("click", () => { F.week = !F.week; render(); });
+  $("#f-new").addEventListener("click", () => { F.fresh = !F.fresh; render(); });
+  $("#f-sort").addEventListener("change", e => { prefs.sort = e.target.value; savePrefs(); render(); });
   $("#q").addEventListener("input", render);
-  for (const s of ["#f-cat", "#f-state", "#f-sort"]) $(s).addEventListener("change", () => {
-    if (s === "#f-sort") { prefs.sort = $(s).value; savePrefs(); }
-    render();
-  });
   $("#export-btn").addEventListener("click", exportCSV);
-  $("#settings-btn").addEventListener("click", openSettings);
+  $("#settings-btn").addEventListener("click", showSettings);
+  $("#menu-btn").addEventListener("click", () => $("#app").classList.add("nav-open"));
+  $("#scrim").addEventListener("click", () => { $("#app").classList.remove("nav-open"); closePanel(); });
   $("#theme-btn").addEventListener("click", () => {
-    prefs.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    savePrefs(); applyTheme(prefs.theme);
+    prefs.theme = effectiveTheme() === "dark" ? "light" : "dark"; savePrefs(); applyTheme(prefs.theme);
   });
-  const opener = e => { const el = e.target.closest("[data-id]"); if (el) openTender(el.dataset.id); };
-  const keyOpener = e => {
-    const el = e.target.closest("[data-id]");
-    if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openTender(el.dataset.id); }
-  };
-  for (const s of ["#results", "#spotlight"]) { $(s).addEventListener("click", opener); $(s).addEventListener("keydown", keyOpener); }
-  $("#scrim").addEventListener("click", closeSheet);
-  $("#sheet").addEventListener("click", e => {
+  $("#results").addEventListener("click", e => {
+    if (e.target.closest("[data-act='clear']")) {
+      Object.assign(F, { cat: "", state: "", week: false, fresh: false }); $("#q").value = ""; renderSidebar(); render(); return;
+    }
+    const r = e.target.closest("tr[data-id]");
+    if (r) showTender(r.dataset.id);
+  });
+  $("#inspector").addEventListener("click", e => {
     const b = e.target.closest("button");
     if (!b) return;
-    if (b.dataset.act === "close") closeSheet();
-    else if (b.dataset.act === "copy") navigator.clipboard?.writeText(location.href).then(() => toast("Link copied"), () => toast("Couldn't copy the link"));
-    else if (b.dataset.act === "export-tracking") download(`tenderradar-tracking-${TODAY}.json`, JSON.stringify(tracking, null, 2), "application/json");
-    else if (b.dataset.status !== undefined && openId) setStatus(openId, b.dataset.status);
+    const act = b.dataset.act;
+    if (act === "close") closePanel();
+    else if (act === "prev") step(-1);
+    else if (act === "next") step(1);
+    else if (act === "copy") navigator.clipboard?.writeText(location.href).then(() => toast("Link copied"), () => toast("Couldn't copy link"));
+    else if (act === "export-tracking") download(`tenderradar-tracking-${TODAY}.json`, JSON.stringify(tracking, null, 2), "application/json");
   });
-  $("#sheet").addEventListener("input", e => {
+  $("#inspector").addEventListener("change", async e => {
+    if (e.target.id === "status-select" && openId) setStatus(openId, e.target.value);
+    if (e.target.id === "import-file" && e.target.files[0]) {
+      try {
+        const data = JSON.parse(await e.target.files[0].text());
+        if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error();
+        tracking = { ...tracking, ...data }; saveTracking(); renderSidebar(); render();
+        toast(`Imported ${Object.keys(data).length} tracked tenders`);
+      } catch { toast("That file isn't a TenderRadar export"); }
+    }
+  });
+  $("#inspector").addEventListener("input", e => {
     if (e.target.id !== "notes" || !openId) return;
     tracking[openId] = { ...track(openId), notes: e.target.value, updated: new Date().toISOString() };
     saveTracking();
   });
-  $("#sheet").addEventListener("change", async e => {
-    if (e.target.id !== "import-file" || !e.target.files[0]) return;
-    try {
-      const data = JSON.parse(await e.target.files[0].text());
-      if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error();
-      tracking = { ...tracking, ...data }; saveTracking(); renderSummary(); render();
-      toast(`Imported ${Object.keys(data).length} tracked tenders`);
-    } catch { toast("That file isn't a TenderRadar export"); }
-  });
   document.addEventListener("keydown", e => {
     const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName);
-    if (e.key === "Escape" && $("#sheet").classList.contains("open")) closeSheet();
-    else if (e.key === "/" && !typing) { e.preventDefault(); $("#q").focus(); }
+    if (e.key === "Escape") { if (typing) document.activeElement.blur(); else closePanel(); $("#app").classList.remove("nav-open"); return; }
+    if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "/") { e.preventDefault(); $("#q").focus(); }
+    else if (e.key === "j" || e.key === "ArrowDown") { e.preventDefault(); step(1); }
+    else if (e.key === "k" || e.key === "ArrowUp") { e.preventDefault(); step(-1); }
+    else if (e.key === "Enter" && openId) { const t = tenders.find(x => x.id === openId); if (t?.url) window.open(t.url, "_blank", "noopener"); }
   });
-  $("#sheet").addEventListener("keydown", e => {   // keep focus inside the open sheet
-    if (e.key !== "Tab") return;
-    const f = [...$("#sheet").querySelectorAll("button, a[href], textarea, label.btn")].filter(x => x.offsetParent);
-    if (!f.length) return;
-    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f.at(-1).focus(); }
-    else if (!e.shiftKey && document.activeElement === f.at(-1)) { e.preventDefault(); f[0].focus(); }
-  });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => applyTheme());
 }
 
-/* ══ Load ════════════════════════════════════════════════════════════ */
+/* ── Load ───────────────────────────────────────────────────────────── */
 async function load() {
   try {
     const res = await fetch("data/tenders.json?t=" + Date.now(), { cache: "no-store" });
@@ -1024,23 +767,22 @@ async function load() {
     meta = data.meta || {};
     tenders = meta.schema >= 2 ? (data.tenders || []) : [];
   } catch (err) {
-    $("#headline").innerHTML = "Couldn't load <em>tenders</em>.";
-    $("#lede").textContent = `${err.message}. The data file is docs/data/tenders.json in the repository.`;
-    $("#results").innerHTML = "";
-    $("#status-txt").textContent = "Load failed"; $("#pulse").className = "pulse fail";
+    $("#results").innerHTML = `<div class="empty"><div><div class="empty-icon"><svg class="i"><use href="#i-alert"/></svg></div>
+      <h2>Couldn't load tenders</h2><p>${esc(err.message)}</p></div></div>`;
+    $("#sync-txt").textContent = "Load failed"; $("#sync-dot").className = "dot fail";
     return;
   }
-  renderStatus(); renderSummary(); render();
+  renderSync(); renderSidebar(); render();
   const m = location.hash.match(/^#t=(.+)$/);
-  if (m) openTender(decodeURIComponent(m[1]), false);
+  if (m) showTender(decodeURIComponent(m[1]), false);
 }
 
-applyTheme(prefs.theme || "dark");
+applyTheme(prefs.theme);
 if (prefs.sort) $("#f-sort").value = prefs.sort;
-if (prefs.view) { view = prefs.view; $$(".seg-btn").forEach(b => b.setAttribute("aria-selected", b.dataset.view === view)); }
+if (prefs.view && VIEWS[prefs.view]) view = prefs.view;
 wire();
 load();
-setInterval(renderStatus, 60_000);
+setInterval(renderSync, 60_000);
 </script>
 </body>
 </html>
