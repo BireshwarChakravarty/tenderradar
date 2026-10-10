@@ -69,3 +69,4 @@ DATA_DIR = ROOT_DIR / "docs" / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 TENDERS_FILE   = DATA_DIR / "tenders.json"
 ALERT_LOG_FILE = DATA_DIR / "alert_log.json"
+REJECTED_FILE  = DATA_DIR / "rejected.json"   # notices not worth storing, so they aren't re-fetched

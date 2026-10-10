@@ -56,6 +56,15 @@ _EMD = re.compile(r"\bEMD\b(?:\s+Amount)?\s*[:\-]?[ \t]*" + _AMOUNT, re.I)
 # ── Where ─────────────────────────────────────────────────────────────
 _ISSUED_BY = re.compile(r"Issued by\s+([^\n·]+?)\s*·\s*([^\n]+)", re.I)
 _OLD_LOCATION = re.compile(r"View Tendering Authority\.?\s*\n\s*([^\n]{3,80})", re.I)
+# TenderDetail's "Issued by" often names a sector, not the buyer
+_SECTOR_LABEL = re.compile(
+    r"^(?:government departments?|statutory bodies|boards?\s*/\s*undertakings|cooperatives?|local bodies"
+    r"|private organi[sz]ations?|autonomous bodies|central government|state government|public sector"
+    r"|banks?\b|educational institutions?|research institutes?)", re.I)
+
+
+def is_sector_label(s: str) -> bool:
+    return bool(_SECTOR_LABEL.match((s or "").strip()))
 
 
 def _clean(s: str) -> str:
@@ -140,6 +149,7 @@ def parse_money(text: str) -> dict:
 def split_location(loc: str) -> tuple[str, str]:
     """('Gorakhpur, Uttar Pradesh', 'Uttar Pradesh') from messy text like ' Gorakhpur , Uttar Pradesh'."""
     parts = [p.strip() for p in re.split(r"\s*,\s*", _clean(loc)) if p.strip()]
+    parts = [p.title() if p.islower() else p for p in parts]          # "jalandhar" → "Jalandhar"
     state = ""
     for p in reversed(parts):
         state = _STATE_LOOKUP.get(p.lower(), "")
@@ -152,7 +162,8 @@ def parse_where(text: str) -> dict:
     out = {"authority": "", "location": "", "state": ""}
     m = _ISSUED_BY.search(text)
     if m:
-        out["authority"] = _clean(m.group(1))
+        name = _clean(m.group(1))
+        out["authority"] = "" if is_sector_label(name) else name
         out["location"], out["state"] = split_location(m.group(2))
     else:
         m = _OLD_LOCATION.search(text)
