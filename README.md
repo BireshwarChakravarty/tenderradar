@@ -25,20 +25,18 @@ GitHub Pages   docs/index.html: the dashboard, reading docs/data/tenders.json
    | Secret | What it is | Needed for |
    |---|---|---|
    | `ANTHROPIC_API_KEY` | Claude API key from console.anthropic.com | Scoring (without it tenders are listed but unscored) |
-   | `COMPANY_PROFILE` | A paragraph on what you do, who for, typical deal size | Scoring |
+   | `COMPANY_KNOWLEDGE` | Private company notes: turnover, contract sizes, empanelments, named clients, bids in progress | Scoring (recommended) |
+   | `COMPANY_PROFILE` | Any extra notes for the scorer | Optional |
    | `MIN_RELEVANCE_SCORE` | Fit score that counts as "recommended" (default `6.0`) | Optional |
    | `SMTP_USER`, `SMTP_PASS`, `ALERT_EMAIL_TO` | Gmail address, Gmail **App Password**, recipient(s) | Email |
    | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | From @BotFather, and your chat ID | Telegram |
 
 3. **First run**: Actions → TenderRadar Scraper → Run workflow. A run takes 10–25 minutes.
 
-Example `COMPANY_PROFILE`:
-
-```
-Delhi-based communications agency: public relations, media relations, social media
-management, digital campaigns, media monitoring and content for central ministries,
-state departments and PSUs. Typical engagements ₹10 L – ₹2 Cr.
-```
+**Company profile.** The scorer reads `scraper/knowledge/profile.md` (public: services, target
+buyers and the scoring guide) and then the `COMPANY_KNOWLEDGE` secret (private: anything you
+wouldn't put in a public repo). Paste a whole Markdown file into the secret; it can be up to 48 KB.
+After changing either, bump `SCORING_VERSION` in `scraper/ai_scorer.py` to re-score open tenders.
 
 ## How tenders are judged
 

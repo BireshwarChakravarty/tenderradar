@@ -25,11 +25,29 @@ def _int(name: str, default: int) -> int:
 # ── AI scoring ────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 AI_MODEL          = os.getenv("AI_MODEL") or "claude-haiku-5-5"
-COMPANY_PROFILE   = os.getenv("COMPANY_PROFILE") or (
-    "Communications and PR agency based in India: public relations, media relations, "
-    "social media management, digital marketing, media monitoring, content and campaigns "
-    "for government and PSU clients."
-)
+# What the company does and how to judge fit. The public guide lives in the
+# repo; private details (turnover, contract sizes, empanelments, named clients,
+# bid history) come from the COMPANY_KNOWLEDGE secret so they stay out of the
+# public repo. COMPANY_PROFILE, if set, is added as extra notes.
+PROFILE_FILE = Path(__file__).resolve().parent / "knowledge" / "profile.md"
+
+
+def _company_profile() -> str:
+    parts = [PROFILE_FILE.read_text(encoding="utf-8").strip()] if PROFILE_FILE.exists() else []
+    for name, heading in (("COMPANY_KNOWLEDGE", "Private notes"), ("COMPANY_PROFILE", "Extra notes")):
+        text = os.getenv(name, "").strip()
+        if text:
+            parts.append(f"# {heading}\n\n{text}")
+    return "\n\n".join(parts) or (
+        "Communications and PR agency based in India: public relations, media relations, "
+        "social media management, digital marketing, media monitoring, content and campaigns "
+        "for government and PSU clients."
+    )
+
+
+COMPANY_PROFILE = _company_profile()
+HAS_PRIVATE_KNOWLEDGE = bool(os.getenv("COMPANY_KNOWLEDGE", "").strip())
+
 # Tenders scoring at least this (and not recommended "Skip") are "relevant":
 # they trigger alerts and appear in the dashboard's Recommended view.
 MIN_RELEVANCE_SCORE = _float("MIN_RELEVANCE_SCORE", 6.0)

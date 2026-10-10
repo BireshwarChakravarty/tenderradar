@@ -41,6 +41,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMPANY_PROFILE:   ${{ secrets.COMPANY_PROFILE }}
+          COMPANY_KNOWLEDGE: ${{ secrets.COMPANY_KNOWLEDGE }}
         run: python scraper/main.py
 
       - name: Send alerts
