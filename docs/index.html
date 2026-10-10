@@ -832,7 +832,7 @@ function openTender(id, push = true) {
     </dl>
     <div class="ai"><div class="ai-in">
       <div class="ai-h"><svg class="i"><use href="#i-spark"/></svg>AI assessment</div>
-      ${t.score != null ? `${t.fit ? `<p><b>Fit.</b> ${esc(t.fit)}</p>` : ""}${t.reason ? `<p><b>Worth pursuing?</b> ${esc(t.reason)}</p>` : ""}
+      ${t.score != null ? `${t.fit ? `<p><b>Fit.</b> ${esc(t.fit)}</p>` : ""}${t.reason ? `<p><b>Worth pursuing?</b> ${esc(t.reason)}</p>` : ""}${t.eligibility ? `<p><b>Eligibility.</b> ${esc(t.eligibility)}</p>` : ""}
         <p class="note">Estimated against your company profile, read the tender document before bidding.</p>`
       : `<p class="note">Not assessed yet. It will be scored on the next sync.</p>`}
     </div></div>
@@ -875,7 +875,7 @@ function setStatus(id, s) {
 function download(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
 function exportCSV() {
   const cols = [["Title", title], ["Original title", t => t.title], ["Buyer", t => t.authority], ["Location", t => t.location], ["State", t => t.state],
-    ["Category", t => t.category], ["Fit", t => t.score ?? ""], ["Recommendation", t => t.recommendation], ["Deadline", t => t.deadline],
+    ["Category", t => t.category], ["Fit", t => t.score ?? ""], ["Recommendation", t => t.recommendation], ["Eligibility", t => t.eligibility || ""], ["Deadline", t => t.deadline],
     ["Published", t => t.published], ["Value (INR)", t => t.value_inr ?? ""], ["EMD (INR)", t => t.emd_inr ?? ""],
     ["Status", t => track(t.id).status ? statusLabel(track(t.id).status) : ""], ["Notes", t => track(t.id).notes || ""], ["Reference", t => t.ref_no], ["Link", t => t.url]];
   const cell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;

@@ -56,6 +56,32 @@ state capitals and tier 2 cities. Content teams write in English and Hindi.
 - Low: private sector tenders (outside the usual pursuit pattern).
 - Most work is bought on GeM under QCBS.
 
+## Eligibility checks
+
+Fit says whether the work suits the company; eligibility says whether it can
+qualify. Check both, and keep everything the private notes say about
+eligibility (turnover, MSME/Udyam classification and EMD exemption,
+empanelments held and not held, offices, team size, past work orders).
+
+- Value: compare the estimated value with the usual contract range and the
+  turnover in the private notes. Far above the range needs a deliberate check.
+- EMD: the company is MSME/Udyam registered, and Udyam has been accepted for
+  EMD exemption. Note when an EMD is stated and whether the exemption likely
+  applies; check the tender's MSE clause against the right classification year.
+- Empanelment: if the title demands an empanelment or registration the company
+  does not hold, it cannot qualify: Skip. If it isn't recorded either way
+  (for example DAVP), say to confirm it.
+- Experience: similar work for central government, PSUs or statutory bodies
+  is the company's strongest evidence; sector specific experience criteria
+  (sports, health, monitoring tools) are where bids have been lost.
+- Presence: tenders needing state or city offices can use the multi-city
+  working seats; regional language output beyond Hindi and English is
+  unverified.
+- Always end by naming what to confirm in the tender document.
+
+The dashboard is public: describe eligibility in general terms and never quote
+private figures, clients or bid results.
+
 ## How to score
 
 Score the scope match first, then adjust:

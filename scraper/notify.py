@@ -79,6 +79,9 @@ def email_card(t: Tender) -> str:
     if t.value_inr:
         chips.append(_chip(fmt_inr(t.value_inr), "#334155", "#f1f5f9"))
     reason = f'<p style="margin:8px 0 0;color:#475569;font-size:13px;line-height:1.5">{E(t.reason)}</p>' if t.reason else ""
+    if t.eligibility:
+        reason += (f'<p style="margin:6px 0 0;color:#475569;font-size:13px;line-height:1.5">'
+                   f'<b>Eligibility:</b> {E(t.eligibility)}</p>')
     return f"""
       <tr><td style="padding:16px 0;border-bottom:1px solid #e2e8f0">
         <a href="{E(t.url)}" style="color:#0f172a;font-size:15px;font-weight:600;text-decoration:none;line-height:1.4">{E(title_of(t))}</a>

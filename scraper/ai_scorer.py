@@ -3,7 +3,7 @@ TenderRadar: AI assessment of each tender with Claude.
 
 For every new tender, Claude returns a structured assessment: a short clean
 headline, the issuing authority, what kind of procurement it is, a 1 to 10 fit
-score against the company profile (scraper/knowledge/profile.md plus private notes), a Bid / Watch / Skip call, and two one-line
+score against the company profile, an eligibility note (scraper/knowledge/profile.md plus private notes), a Bid / Watch / Skip call, and two one-line
 explanations. Structured outputs guarantee the shape, so there is no JSON
 parsing to go wrong.
 
@@ -20,7 +20,7 @@ from dates import days_until, iso_now
 from models import Tender, plain
 
 # Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
-SCORING_VERSION = 3
+SCORING_VERSION = 4
 
 log = logging.getLogger("AIScorer")
 
@@ -33,6 +33,7 @@ class Assessment(BaseModel):
     recommendation: Literal["Bid", "Watch", "Skip"]
     fit: str = Field(description="One sentence: how the scope matches the company's capabilities")
     reason: str = Field(description="One sentence: why it is or isn't worth pursuing")
+    eligibility: str = Field(description="One sentence: eligibility as far as the listing shows, and what to check in the tender document")
 
 
 SYSTEM_PROMPT = f"""You assess Indian government tenders for one company and decide whether it should bid.
@@ -67,6 +68,18 @@ Fields:
 - reason: one plain sentence on whether to pursue it, naming the main risk if there is one
   (missing empanelment, very large contract, sectional cut-off, deadline under about 10 days,
   already bid). No filler.
+- eligibility: one plain sentence. Check what the listing shows against the company's eligibility
+  in the profile and private notes: estimated value against the usual contract range and turnover,
+  the EMD against the MSE/Udyam exemption, any empanelment or registration the title demands,
+  and the buyer type. Then name what to confirm in the tender document (for example turnover
+  threshold, similar work experience, empanelment, MSE clause). If the listing gives nothing to
+  check, say what to confirm.
+
+Everything you write is published on a public website. Never quote figures from the private
+notes (turnover, contract values, costs, team size, bid scores or ranks) and never name the
+company's clients or past bids from them. Refer to them generically instead, for example
+"within the usual contract range", "meets typical turnover thresholds", "similar to an existing
+ministry mandate", "already in the bid pipeline".
 
 Write in plain sentences. Never use em dashes; use commas, full stops or "and" instead."""
 
@@ -93,6 +106,7 @@ def _describe(t: Tender) -> str:
         f"Location: {t.location or 'not stated'}",
         f"Portal: {t.portal or 'not stated'}",
         f"Estimated value: {f'₹{t.value_inr:,.0f}' if t.value_inr else 'not stated'}",
+        f"EMD (bid security): {f'₹{t.emd_inr:,.0f}' if t.emd_inr else 'not stated'}",
         f"Bid deadline: {closes}",
     ]
     return "\n".join(lines)
@@ -142,6 +156,7 @@ def score(tenders: list[Tender]) -> int:
         t.recommendation = a.recommendation
         t.fit = plain(a.fit)
         t.reason = plain(a.reason)
+        t.eligibility = plain(a.eligibility)
         t.scored_at = iso_now()
         t.scoring_version = SCORING_VERSION
         done += 1
