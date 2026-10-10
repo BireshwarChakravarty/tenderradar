@@ -1,5 +1,5 @@
 """
-TenderRadar — the tender store (docs/data/tenders.json).
+TenderRadar: the tender store (docs/data/tenders.json).
 
 Keeps one record per TenderDetail notice and applies the house rules:
   - a tender already closed when first found is never stored
@@ -18,7 +18,7 @@ from datetime import timedelta
 from config import (ALERT_LOG_FILE, KEEP_CLOSED_DAYS, MIN_RELEVANCE_SCORE, REJECTED_FILE, STALE_DAYS,
                     TENDERS_FILE)
 from dates import from_str, iso_now, plausible, today_ist
-from models import SCHEMA_VERSION, Tender, tender_id
+from models import SCHEMA_VERSION, Tender, plain, tender_id
 from page_parser import detect_portal, is_sector_label, parse_where, ref_from_url, split_location
 from relevance import categorise, exclusion_reason
 
@@ -46,6 +46,8 @@ def load() -> tuple[dict[str, Tender], dict]:
             t.authority = ""  # stored before sector labels were recognised
         if t.location:
             t.location = split_location(t.location)[0]
+        for f in ("title", "headline", "authority", "fit", "reason"):
+            setattr(t, f, plain(getattr(t, f)))
     return store, meta
 
 
@@ -78,7 +80,7 @@ _BOILERPLATE = re.compile(r"\b(?:corrigendum|tender for|tender|bids are invited 
 
 def dupe_key(t: Tender) -> str:
     """
-    The same tender is often listed several times — the original notice plus each
+    The same tender is often listed several times: the original notice plus each
     corrigendum gets its own TenderDetail number. Same wording + same deadline = same tender.
     """
     words = _BOILERPLATE.sub(" ", t.title.lower()).split()
@@ -140,13 +142,17 @@ def prune(store: dict[str, Tender]) -> int:
             doomed.append(tid)
         elif exclusion_reason(t.title):  # rules may have been tightened since it was stored
             doomed.append(tid)
-    # Collapse duplicates already in the store, keeping the first one found
+    # Collapse duplicates already in the store, keeping the first one found. Two keys:
+    # the source wording, and the AI headline (catches corrigenda worded differently).
     first: dict[str, str] = {}
     for t in sorted(store.values(), key=lambda t: (t.first_seen, t.id)):
-        k = dupe_key(t)
-        if k in first and t.id not in doomed:
+        keys = [dupe_key(t)]
+        if t.headline and t.deadline:
+            keys.append("h|" + re.sub(r"[^a-z0-9]+", " ", t.headline.lower()).strip() + "|" + t.deadline + "|" + t.state)
+        if any(k in first for k in keys) and t.id not in doomed:
             doomed.append(t.id)
-        first.setdefault(k, t.id)
+        for k in keys:
+            first.setdefault(k, t.id)
     for tid in doomed:
         del store[tid]
     return len(doomed)

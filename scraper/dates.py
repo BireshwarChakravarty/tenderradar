@@ -1,5 +1,5 @@
 """
-TenderRadar — date handling.
+TenderRadar: date handling.
 
 Every date in the store is a plain calendar date ("YYYY-MM-DD") in India
 Standard Time, or "" when the source doesn't state one. Nothing here ever
@@ -19,7 +19,7 @@ _MONTHS = {
     for m in names
 }
 
-# 14-10-2026, 14/10/26, 14.10.2026 — Indian sites are always day-first
+# 14-10-2026, 14/10/26, 14.10.2026. Indian sites are always day-first
 _NUMERIC = re.compile(r"\b(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})\b")
 # 2026-10-14
 _ISO = re.compile(r"\b(\d{4})-(\d{1,2})-(\d{1,2})\b")

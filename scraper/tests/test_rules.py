@@ -3,7 +3,7 @@ import unittest
 from datetime import timedelta
 
 from dates import today_ist
-from models import Tender
+from models import Tender, plain
 from relevance import categorise, exclusion_reason, is_recommended
 from page_parser import is_sector_label, parse_where
 from store import dupe_key, merge, prune
@@ -23,6 +23,15 @@ class RelevanceTests(unittest.TestCase):
             "Bids Are Invited For Custom Bid For Services - Geo-Technical Investigation At Vadodara",
             "Tender for Construction of Skywalk",
             "Pre-Bid EOI for Selection of Channel Partner/Authorized Distributor for IP-MPLS network",
+        ]:
+            self.assertTrue(exclusion_reason(title), title)
+
+    def test_selling_ad_rights_is_excluded_even_with_agency_wording(self):
+        for title in [
+            "Corrigendum : Tender for Selection of Advertising Agencies for Exclusive Commercial Advertisement Rights on Existing Hoardings",
+            "Supply, Installation And Commissioning Of CCTV Cameras At Bus Stands",
+            "Sale of Scrap Buses, Scrap Spare Parts and Tyres",
+            "Bids Are invited for Portable Communication Set",
         ]:
             self.assertTrue(exclusion_reason(title), title)
 
@@ -83,6 +92,18 @@ class StoreTests(unittest.TestCase):
         self.assertEqual(dupe_key(a), dupe_key(b))
         prune(store)
         self.assertEqual(list(store), ["td-1"])
+
+    def test_prune_collapses_duplicates_with_the_same_ai_headline(self):
+        a = _t("1", title="Tender For Social Media Management Agency For AMC", headline="Social media agency for Ahmedabad Municipal Corporation", state="Gujarat")
+        b = _t("2", title="Corrigendum Appointment Of Agency For Managing Social Media Of AMC", headline="Social media agency for Ahmedabad Municipal Corporation", state="Gujarat")
+        b.first_seen = "2026-10-02T00:00:00Z"
+        store = {a.id: a, b.id: b}
+        prune(store)
+        self.assertEqual(list(store), ["td-1"])
+
+    def test_no_em_dashes(self):
+        self.assertEqual(plain("Strong fit \u2014 apply early"), "Strong fit, apply early")
+        self.assertEqual(plain("No dashes here"), "No dashes here")
 
     def test_sector_labels_are_not_buyers(self):
         self.assertTrue(is_sector_label("Government Departments"))

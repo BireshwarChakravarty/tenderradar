@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TenderRadar</title>
 <meta name="description" content="Government tenders for PR and communications, scored for fit.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7bff'/%3E%3Cstop offset='1' stop-color='%234fb8ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='white' stroke-width='1.8' opacity='.5'/%3E%3Ccircle cx='16' cy='16' r='3.6' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/manifest.webmanifest">
+<meta name="theme-color" content="#07090d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TenderRadar">
+<meta property="og:description" content="Government tenders for PR and communications, found, filtered and scored every four hours.">
+<meta property="og:image" content="https://bireshwarchakravarty.github.io/tenderradar/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +36,7 @@
   --accent: #8a96ff; --accent-soft: rgba(138, 150, 255, .12);
   --grad: linear-gradient(135deg, #8b7bff 0%, #6c8cff 45%, #4fb8ff 100%);
   --glow: rgba(110, 120, 255, .16); --glow-2: rgba(79, 184, 255, .10);
-  /* chart — validated (dataviz validator, all-pairs, dark surface #10141c) */
+  /* chart, validated (dataviz validator, all-pairs, dark surface #10141c) */
   --bid: #199e70; --watch: #d95926; --other: #4b5262;
   --grid: #1b202b; --axis: #2a303d; --week: rgba(138, 150, 255, .06);
   --bar: #3987e5;
@@ -51,7 +60,7 @@
   --accent: #4f5bd5; --accent-soft: rgba(79, 91, 213, .09);
   --grad: linear-gradient(135deg, #6d5cf6 0%, #4f5bd5 45%, #1d8fe0 100%);
   --glow: rgba(110, 100, 255, .10); --glow-2: rgba(40, 150, 240, .07);
-  /* chart — validated (all-pairs, light surface #ffffff; aqua < 3:1 → legend, tooltip and table carry identity) */
+  /* chart, validated (all-pairs, light surface #ffffff; aqua < 3:1 → legend, tooltip and table carry identity) */
   --bid: #1baf7a; --watch: #eb6834; --other: #b9c0cc;
   --grid: #eef0f4; --axis: #d9dde5; --week: rgba(79, 91, 213, .05);
   --bar: #2a78d6;
@@ -91,8 +100,8 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
   backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); }
 .top .wrap { display: flex; align-items: center; gap: 22px; height: 60px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 15px; letter-spacing: -.02em; }
-.mark { width: 26px; height: 26px; border-radius: 8px; background: var(--grad); display: grid; place-items: center; box-shadow: 0 4px 14px -4px rgba(110, 120, 255, .6); }
-.mark svg { width: 18px; height: 18px; stroke: #fff; stroke-width: 1.8; }
+.mark { width: 28px; height: 28px; border-radius: 8px; display: block; box-shadow: 0 4px 14px -4px rgba(110, 120, 255, .6); }
+
 .tabs { display: flex; gap: 2px; }
 .tab { border: 0; background: none; height: 34px; padding: 0 12px; border-radius: var(--r-sm); color: var(--text-2); font-weight: 500; cursor: pointer; transition: .15s; }
 .tab:hover { color: var(--text); background: var(--chip); }
@@ -147,7 +156,7 @@ svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none;
 .chart text { font-family: var(--font); font-size: 11.5px; fill: var(--text-3); }
 .chart .dotg { cursor: pointer; }
 .chart .dotg circle.m { transition: r .15s var(--ease); }
-.chart .dotg:hover circle.m, .chart .dotg:focus circle.m { r: 8; }
+.chart .dotg.hot circle.m, .chart .dotg:focus circle.m { r: 8; }
 .tip { position: absolute; pointer-events: none; z-index: 5; min-width: 220px; max-width: 280px; padding: 10px 12px; border-radius: 10px;
   background: var(--surface-3); border: 1px solid var(--border-2); box-shadow: var(--shadow-lg); font-size: 12.5px; opacity: 0; transform: translateY(4px); transition: opacity .12s, transform .12s; }
 .tip.show { opacity: 1; transform: none; }
@@ -218,6 +227,13 @@ select.field { appearance: none; padding-right: 30px; cursor: pointer;
 .search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-3); pointer-events: none; }
 .search .field { width: 100%; padding-left: 34px; }
 .toolbar .spacer { flex: 1; }
+.active-filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: -4px 0 14px; }
+.active-filters[hidden] { display: none; }
+.fchip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 6px 0 11px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border)); background: var(--accent-soft); color: var(--text); font-size: 12.5px; font-weight: 500; cursor: pointer; }
+.fchip:hover { border-color: var(--accent); }
+.fchip svg { width: 13px; height: 13px; color: var(--text-2); }
+.linkbtn { border: 0; background: none; color: var(--accent); font-weight: 500; font-size: 12.5px; cursor: pointer; padding: 4px 6px; }
+.empty .btn { margin-top: 16px; }
 .table-card { overflow: hidden; }
 table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 thead th { height: 40px; padding: 0 14px; text-align: left; font-size: 12px; font-weight: 500; color: var(--text-3); background: var(--surface-2); border-bottom: 1px solid var(--border); white-space: nowrap; }
@@ -233,6 +249,7 @@ tbody tr.dim td > * { opacity: .55; }
 .fit.watch { background: var(--warn-soft); color: var(--warn); }
 .fit.none { background: none; color: var(--text-3); font-weight: 400; }
 .tt { font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-cat .muted { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ts { color: var(--text-3); font-size: 12.5px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .due b { font-weight: 500; display: block; font-variant-numeric: tabular-nums; }
 .due span { font-size: 12.5px; color: var(--text-3); }
@@ -301,6 +318,9 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
 /* ══ Responsive ═══════════════════════════════════════════════════════ */
 @media (max-width: 1080px) {
   .grid-main { grid-template-columns: 1fr; }
+  .col-cat, .c-cat { display: none; }
+}
+@media (max-width: 900px) {
   .matches { grid-template-columns: 1fr 1fr; }
   .matches .match:nth-child(3) { display: none; }
   .col-cat, .c-cat { display: none; }
@@ -308,7 +328,8 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
 @media (max-width: 720px) {
   .wrap { padding: 0 16px; }
   .top .wrap { gap: 10px; }
-  .brand > span:last-child, .pill { display: none; }
+  .brand > span:last-child, .pill .txt { display: none; }
+  .pill { padding: 0; width: 30px; justify-content: center; }
   .tab { padding: 0 9px; }
   .icon-btn { width: 32px; }
   .page { padding-top: 24px; }
@@ -365,7 +386,7 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
 
 <header class="top">
   <div class="wrap">
-    <div class="brand"><span class="mark"><svg class="i"><use href="#i-radar"/></svg></span><span>TenderRadar</span></div>
+    <div class="brand"><img class="mark" src="assets/logo-mark.svg" alt="" width="28" height="28"><span>TenderRadar</span></div>
     <nav class="tabs" aria-label="Pages">
       <button class="tab" data-page="overview">Overview</button>
       <button class="tab" data-page="tenders">Tenders</button>
@@ -388,16 +409,16 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
     <div id="alert"></div>
 
     <div class="kpis">
-      <button class="card kpi" type="button" data-kpi="recommended"><div class="kpi-label"><svg class="i"><use href="#i-star"/></svg>Recommended</div><div class="kpi-value" id="k1">–</div><div class="kpi-sub" id="k1s">&nbsp;</div></button>
-      <button class="card kpi" type="button" data-kpi="week"><div class="kpi-label"><svg class="i"><use href="#i-clock"/></svg>Closing this week</div><div class="kpi-value" id="k2">–</div><div class="kpi-sub" id="k2s">&nbsp;</div></button>
-      <button class="card kpi" type="button" data-kpi="new"><div class="kpi-label"><svg class="i"><use href="#i-spark"/></svg>New this week</div><div class="kpi-value" id="k3">–</div><div class="kpi-sub" id="k3s">&nbsp;</div></button>
-      <button class="card kpi" type="button" data-kpi="fit"><div class="kpi-label"><svg class="i"><use href="#i-target"/></svg>Average fit</div><div class="kpi-value" id="k4">–</div><div class="kpi-sub" id="k4s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="recommended"><div class="kpi-label"><svg class="i"><use href="#i-star"/></svg>Recommended</div><div class="kpi-value" id="k1">&nbsp;</div><div class="kpi-sub" id="k1s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="week"><div class="kpi-label"><svg class="i"><use href="#i-clock"/></svg>Closing this week</div><div class="kpi-value" id="k2">&nbsp;</div><div class="kpi-sub" id="k2s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="new"><div class="kpi-label"><svg class="i"><use href="#i-spark"/></svg>New this week</div><div class="kpi-value" id="k3">&nbsp;</div><div class="kpi-sub" id="k3s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="fit"><div class="kpi-label"><svg class="i"><use href="#i-target"/></svg>Average fit</div><div class="kpi-value" id="k4">&nbsp;</div><div class="kpi-sub" id="k4s">&nbsp;</div></button>
     </div>
 
     <div class="grid-main">
       <div class="card">
         <div class="card-head">
-          <div><div class="card-title">Deadline runway</div><div class="card-sub">Every open tender by days left and fit — top-left is urgent and strong</div></div>
+          <div><div class="card-title">Deadline runway</div><div class="card-sub">Every open tender by days left and fit. Top left is urgent and strong.</div></div>
           <div class="legend" id="legend"></div>
         </div>
         <div class="chart" id="chart"><div class="tip" id="tip" role="tooltip"></div></div>
@@ -429,11 +450,12 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
       <button class="view" data-view="filtered">Filtered out <span class="n" id="n-filtered"></span></button>
     </div>
     <div class="toolbar" id="toolbar">
-      <label class="search"><span class="sr-only">Search</span><svg class="i"><use href="#i-search"/></svg><input class="field" id="q" type="search" placeholder="Search tenders, buyers, places   /" autocomplete="off"></label>
+      <label class="search"><span class="sr-only">Search</span><svg class="i"><use href="#i-search"/></svg><input class="field" id="q" type="search" placeholder="Search tenders, buyers, places" title="Shortcut: press / to search" autocomplete="off"></label>
       <label><span class="sr-only">Category</span><select class="field" id="f-cat"><option value="">All categories</option></select></label>
       <label><span class="sr-only">State</span><select class="field" id="f-state"><option value="">All states</option></select></label>
       <label><span class="sr-only">Sort</span><select class="field" id="f-sort"><option value="closing">Closing soonest</option><option value="score">Best fit</option><option value="newest">Newest</option><option value="value">Highest value</option></select></label>
     </div>
+    <div class="active-filters" id="active-filters" hidden></div>
     <div id="results"></div>
   </section>
 </main>
@@ -457,6 +479,7 @@ const STATUSES = [
 const TRACKED = ["shortlisted", "preparing", "submitted"];
 const statusLabel = id => (STATUSES.find(s => s.id === id) || STATUSES[0]).label;
 let tenders = [], meta = {}, page = "overview", view = "recommended", openId = null, lastFocus = null;
+const F = { week: false, fresh: false };   // quick filters set from the overview cards
 const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
 const safe = fn => { try { return fn(); } catch { return undefined; } };
 let tracking = safe(() => JSON.parse(localStorage.getItem(STORE_KEY))) || {};
@@ -465,7 +488,7 @@ const savePrefs = () => safe(() => localStorage.setItem(PREFS_KEY, JSON.stringif
 const saveTracking = () => safe(() => localStorage.setItem(STORE_KEY, JSON.stringify(tracking)));
 const track = id => tracking[id] || {};
 
-/* ── Dates & formatting — tender dates are IST calendar dates ───────── */
+/* ── Dates & formatting, tender dates are IST calendar dates ───────── */
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const todayIST = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
 const dayNum = iso => { const [y, m, d] = iso.split("-").map(Number); return Date.UTC(y, m - 1, d) / 864e5; };
@@ -545,7 +568,7 @@ function renderOverview() {
   const fresh = open.filter(t => isNew(t, 7)), freshRec = fresh.filter(isRecommended);
   $("#k3").innerHTML = `${fresh.length}`;
   $("#k3s").textContent = `${freshRec.length} of them recommended`;
-  $("#k4").innerHTML = rec.length ? `${avg.toFixed(1)}<small>/ 10</small>` : "—";
+  $("#k4").innerHTML = rec.length ? `${avg.toFixed(1)}<small>/ 10</small>` : `<small style="margin:0">None yet</small>`;
   $("#k4s").textContent = rec.length ? `Across ${rec.length} recommended` : "No recommended tenders";
 
   const soon = rec.filter(t => t.deadline).sort((a, b) => a.deadline.localeCompare(b.deadline)).slice(0, 6);
@@ -588,9 +611,18 @@ function renderRunway(list) {
   const pad = { l: 34, r: 14, t: 14, b: 30 }, iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
   const X = d => pad.l + Math.min(d, 31) / 31 * iw, Y = s => pad.t + ih - s / 10 * ih;
   const pts = list.filter(t => t.score != null && t.deadline).map(t => ({ t, d: daysLeft(t.deadline), k: kind(t) }));
-  // spread exact overlaps a little so every tender stays hoverable
-  const seen = {};
-  pts.forEach(p => { const key = `${Math.min(p.d, 31)}|${p.t.score}`; const i = (seen[key] = (seen[key] ?? -1) + 1); p.jx = i ? (i % 2 ? 1 : -1) * Math.ceil(i / 2) * 9 : 0; });
+  // Nudge dots sideways until none overlaps another (14px apart), so every tender stays clickable.
+  // Recommended tenders are placed first, so they keep their exact position.
+  const placed = [], GAP = 14;
+  [...pts].sort((a, b) => (a.k === "other") - (b.k === "other") || a.d - b.d).forEach(p => {
+    const cy = Y(p.t.score), x0 = X(p.d);
+    for (let i = 0; i < 40; i++) {
+      const cx = Math.min(W - pad.r - 7, Math.max(pad.l + 7, x0 + (i % 2 ? 1 : -1) * Math.ceil(i / 2) * GAP));
+      if (!placed.some(q => Math.hypot(q.cx - cx, q.cy - cy) < GAP)) { p.cx = cx; p.cy = cy; break; }
+    }
+    if (p.cx === undefined) { p.cx = x0; p.cy = cy; }
+    placed.push(p);
+  });
   const counts = { bid: 0, watch: 0, other: 0 }; pts.forEach(p => counts[p.k]++);
   $("#legend").innerHTML = [["bid", "Bid"], ["watch", "Watch"], ["other", "Other"]].map(([k, l]) =>
     `<span><i style="background:var(--${k})"></i>${l} <span class="muted num">${counts[k]}</span></span>`).join("");
@@ -608,17 +640,34 @@ function renderRunway(list) {
   s += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${pad.t + ih}" y2="${pad.t + ih}" stroke="var(--axis)" stroke-width="1"/>`;
   // draw "other" first so recommended marks sit on top
   [...pts].sort((a, b) => (a.k === "other") - (b.k === "other")).reverse().forEach(p => {
-    const cx = Math.min(W - pad.r - 7, Math.max(pad.l + 7, X(p.d) + p.jx)), cy = Y(p.t.score);
+    const { cx, cy } = p;
     s += `<g class="dotg" data-id="${esc(p.t.id)}" tabindex="0" role="button" aria-label="${esc(title(p.t))}, fit ${p.t.score}, ${relDays(p.d)}">
-      <circle cx="${cx}" cy="${cy}" r="13" fill="transparent"/>
+      <circle cx="${cx}" cy="${cy}" r="7" fill="transparent"/>
       <circle class="m" cx="${cx}" cy="${cy}" r="6" fill="var(--${p.k})" stroke="var(--surface)" stroke-width="2"/></g>`;
   });
-  s += `</svg>`;
+  // Pointer layer on top: snaps to the nearest dot, so crowded areas stay easy to use
+  s += `<rect class="hit" x="${pad.l - 12}" y="${pad.t - 12}" width="${iw + 24}" height="${ih + 24}" fill="transparent"/></svg>`;
+  runwayPts = placed.map(p => ({ id: p.t.id, cx: p.cx, cy: p.cy }));
   box.querySelector("svg")?.remove();
   box.insertAdjacentHTML("beforeend", s);
-  if (!pts.length) box.insertAdjacentHTML("beforeend", "");
 }
 
+let runwayPts = [], hotId = null;
+function nearestDot(evt) {
+  const r = $("#chart svg")?.getBoundingClientRect(); if (!r) return null;
+  const x = evt.clientX - r.left, y = evt.clientY - r.top;
+  let best = null, bd = 18;
+  for (const p of runwayPts) { const d = Math.hypot(p.cx - x, p.cy - y); if (d < bd) { bd = d; best = p; } }
+  return best;
+}
+function setHot(id) {
+  if (hotId === id) return;
+  $$("#chart .dotg.hot").forEach(g => g.classList.remove("hot"));
+  hotId = id;
+  const g = id && $(`#chart .dotg[data-id="${CSS.escape(id)}"]`);
+  if (g) { g.classList.add("hot"); showTip(g); } else $("#tip").classList.remove("show");
+  $("#chart").style.cursor = g ? "pointer" : "";
+}
 function showTip(g, evt) {
   const t = tenders.find(x => x.id === g.dataset.id); if (!t) return;
   const tip = $("#tip"), box = $("#chart").getBoundingClientRect(), n = daysLeft(t.deadline);
@@ -640,7 +689,23 @@ function filtered() {
   const q = $("#q").value.trim().toLowerCase(), cat = $("#f-cat").value, st = $("#f-state").value;
   const v = page === "shortlist" ? "shortlist" : view;
   return tenders.filter(t => inView(t, v) && (!cat || t.category === cat) && (!st || t.state === st)
+    && (!F.week || ((n => n !== null && n >= 0 && n <= 7)(daysLeft(t.deadline))))
+    && (!F.fresh || isNew(t, 7))
     && (!q || [t.headline, t.title, t.authority, t.location, t.ref_no].join(" ").toLowerCase().includes(q)));
+}
+const hasFilters = () => !!($("#q").value.trim() || $("#f-cat").value || $("#f-state").value || F.week || F.fresh);
+function clearFilters() { $("#q").value = ""; $("#f-cat").value = ""; $("#f-state").value = ""; F.week = F.fresh = false; }
+function renderActiveFilters() {
+  const chips = [];
+  if ($("#q").value.trim()) chips.push(["q", `Search: “${$("#q").value.trim()}”`]);
+  if ($("#f-cat").value) chips.push(["cat", $("#f-cat").value]);
+  if ($("#f-state").value) chips.push(["state", $("#f-state").value]);
+  if (F.week) chips.push(["week", "Closing within 7 days"]);
+  if (F.fresh) chips.push(["fresh", "Found in the last 7 days"]);
+  const el = $("#active-filters");
+  el.hidden = !chips.length;
+  el.innerHTML = chips.map(([k, l]) => `<button class="fchip" type="button" data-clear="${k}" aria-label="Remove filter ${esc(l)}">${esc(l)}<svg class="i"><use href="#i-x"/></svg></button>`).join("")
+    + (chips.length > 1 ? `<button class="linkbtn" type="button" data-clear="all">Clear all</button>` : "");
 }
 function sorted(list) {
   const key = { closing: t => { const n = daysLeft(t.deadline); return n === null ? 1e6 : (n < 0 ? 2e6 - n : n); },
@@ -648,7 +713,7 @@ function sorted(list) {
   return [...list].sort((a, b) => (key(a) - key(b)) || (b.score ?? 0) - (a.score ?? 0));
 }
 function fitBadge(t) {
-  if (t.score == null) return `<span class="fit none">—</span>`;
+  if (t.score == null) return `<span class="fit none" title="Waiting for the AI review">Pending</span>`;
   const k = kind(t);
   return `<span class="fit ${k === "other" ? "" : k}">${t.score.toFixed(1)}</span>`;
 }
@@ -656,10 +721,10 @@ function rowHTML(t) {
   const n = daysLeft(t.deadline), st = track(t.id).status;
   return `<tr data-id="${esc(t.id)}"${isClosed(t) || st === "dropped" ? ' class="dim"' : ""}>
     <td class="c-fit">${fitBadge(t)}</td>
-    <td class="c-main"><div class="tt">${esc(title(t))}</div><div class="ts">${isNew(t) && !isClosed(t) ? '<span class="chip accent" style="height:18px;padding:0 6px;margin-right:6px"><i></i>New</span>' : ""}${esc(buyer(t)) || "—"}${st ? ` · ${esc(statusLabel(st))}` : ""}</div></td>
-    <td class="c-cat"><span class="muted">${esc(t.category || "—")}</span></td>
+    <td class="c-main"><div class="tt">${esc(title(t))}</div><div class="ts">${isNew(t) && !isClosed(t) ? '<span class="chip accent" style="height:18px;padding:0 6px;margin-right:6px"><i></i>New</span>' : ""}${esc(buyer(t)) || "Buyer not listed"}${st ? ` · ${esc(statusLabel(st))}` : ""}</div></td>
+    <td class="c-cat"><span class="muted">${esc(t.category || "Other")}</span></td>
     <td class="c-due due">${t.deadline ? `<b>${esc(fmtDate(t.deadline))}</b><span class="${urgency(n)}">${relDays(n)}</span>` : `<span>Not listed</span>`}</td>
-    <td class="c-val r">${fmtINR(t.value_inr) || '<span class="muted">—</span>'}</td></tr>`;
+    <td class="c-val r">${fmtINR(t.value_inr) || '<span class="muted">Not listed</span>'}</td></tr>`;
 }
 function renderTenders() {
   TODAY = todayIST();
@@ -668,14 +733,17 @@ function renderTenders() {
   $("#views").hidden = short;
   for (const v of ["recommended", "open", "closed", "filtered"]) $("#n-" + v).textContent = tenders.filter(t => inView(t, v)).length || "";
   $$(".view").forEach(b => b.setAttribute("aria-selected", b.dataset.view === view));
+  renderActiveFilters();
   const list = sorted(filtered());
   $("#t-sub").textContent = short ? "Tenders you're preparing to bid on" : `${list.length} shown · sorted by ${$("#f-sort").selectedOptions[0].text.toLowerCase()}`;
   const out = $("#results");
   if (!list.length) {
     const msg = !tenders.length ? ["No tenders yet", `Tenders appear after the next sync (every 4 hours).${meta.last_updated ? " Last sync " + ago(meta.last_updated) + "." : ""}`]
       : short ? ["Your shortlist is empty", "Open any tender and set it to Shortlisted to track it here."]
-      : ["Nothing here", "No tenders in this view match the current filters."];
-    out.innerHTML = `<div class="card empty"><div class="orb"><svg class="i"><use href="#i-inbox"/></svg></div><h3>${esc(msg[0])}</h3><p>${esc(msg[1])}</p></div>`;
+      : hasFilters() ? ["No tenders match these filters", "Remove a filter above, or clear them all."]
+      : ["Nothing here yet", "Tenders in this view will appear after the next sync."];
+    out.innerHTML = `<div class="card empty"><div class="orb"><svg class="i"><use href="#i-inbox"/></svg></div><h3>${esc(msg[0])}</h3><p>${esc(msg[1])}</p>
+      ${hasFilters() && tenders.length ? '<button class="btn" type="button" data-clear="all">Clear filters</button>' : ""}</div>`;
     return;
   }
   if (short) {
@@ -704,9 +772,13 @@ function go(p, opts = {}) {
   $$(".tab").forEach(b => b.setAttribute("aria-current", b.dataset.page === p));
   $("#page-overview").hidden = p !== "overview";
   $("#page-tenders").hidden = p === "overview";
+  if (opts.reset) clearFilters();
   if (opts.view) view = opts.view;
   if (opts.cat !== undefined) $("#f-cat").value = opts.cat;
   if (opts.state !== undefined) $("#f-state").value = opts.state;
+  if (opts.week) F.week = true;
+  if (opts.fresh) F.fresh = true;
+  if (opts.sort) $("#f-sort").value = opts.sort;
   if (p === "overview") renderOverview(); else renderTenders();
   window.scrollTo({ top: 0 });
 }
@@ -719,7 +791,7 @@ function renderSync() {
   $("#sync-dot").className = "dot " + (lr.ok === false ? "fail" : hours > 9 ? "stale" : "ok");
   $("#sync-txt").textContent = lr.ok === false ? "Last sync failed" : `Synced ${ago(meta.last_updated)}`;
   $("#sync").title = new Date(meta.last_updated).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" }) + " IST";
-  const a = lr.ok === false ? `The last sync failed. ${lr.error || ""}` : hours > 12 ? `No sync for ${Math.round(hours)} hours — the scheduled job may be paused.` : "";
+  const a = lr.ok === false ? `The last sync failed. ${lr.error || ""}` : hours > 12 ? `No sync for ${Math.round(hours)} hours. The scheduled job may be paused.` : "";
   $("#alert").innerHTML = a ? `<div class="card" style="padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:center;border-color:color-mix(in srgb,var(--bad) 35%,transparent)"><svg class="i" style="color:var(--bad)"><use href="#i-alert"/></svg>${esc(a)}</div>` : "";
 }
 
@@ -761,13 +833,13 @@ function openTender(id, push = true) {
     <div class="ai"><div class="ai-in">
       <div class="ai-h"><svg class="i"><use href="#i-spark"/></svg>AI assessment</div>
       ${t.score != null ? `${t.fit ? `<p><b>Fit.</b> ${esc(t.fit)}</p>` : ""}${t.reason ? `<p><b>Worth pursuing?</b> ${esc(t.reason)}</p>` : ""}
-        <p class="note">Estimated against your company profile — read the tender document before bidding.</p>`
+        <p class="note">Estimated against your company profile, read the tender document before bidding.</p>`
       : `<p class="note">Not assessed yet. It will be scored on the next sync.</p>`}
     </div></div>
     <div class="lbl">Your tracking</div>
     <div class="seg" role="group" aria-label="Tracking status">${STATUSES.map(s => `<button type="button" data-status="${s.id}" aria-pressed="${(tr.status || "") === s.id}">${esc(s.label)}</button>`).join("")}</div>
     <label class="sr-only" for="notes">Notes</label>
-    <textarea class="field" id="notes" placeholder="Notes — contacts, eligibility, documents needed…">${esc(tr.notes || "")}</textarea>`;
+    <textarea class="field" id="notes" placeholder="Notes: contacts, eligibility, documents needed…">${esc(tr.notes || "")}</textarea>`;
   $("#sheet-foot").innerHTML = t.url ? `<a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">Open tender notice <svg class="i"><use href="#i-ext"/></svg></a>` : "";
   if (push) history.replaceState(null, "", "#t=" + encodeURIComponent(id));
   showSheet();
@@ -775,7 +847,7 @@ function openTender(id, push = true) {
 function openSettings() {
   openId = null;
   const lr = meta.last_run || {};
-  const rows = [["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " — failed" : ""}` : "—"],
+  const rows = [["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " (failed)" : ""}` : "Never"],
     ["Tenders stored", `${meta.total ?? tenders.length} · ${meta.open ?? "–"} open`],
     lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered, ${lr.duplicates ?? 0} duplicates`],
     lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
@@ -822,18 +894,30 @@ function applyTheme(th) {
 function wire() {
   $$(".tab").forEach(b => b.addEventListener("click", () => go(b.dataset.page)));
   document.addEventListener("click", e => {
-    const g = e.target.closest("[data-goto]"); if (g) { go(g.dataset.goto, { view: "recommended" }); return; }
+    const g = e.target.closest("[data-goto]"); if (g) { go(g.dataset.goto, { view: "recommended", reset: true }); return; }
     const k = e.target.closest("[data-kpi]");
     if (k) {
-      const kk = k.dataset.kpi;
-      if (kk === "week") $("#f-sort").value = "closing";
-      if (kk === "new") $("#f-sort").value = "newest";
-      if (kk === "fit") $("#f-sort").value = "score";
-      go("tenders", { view: kk === "new" ? "open" : "recommended" });
+      go("tenders", {
+        recommended: { view: "recommended", reset: true },
+        week: { view: "recommended", reset: true, week: true, sort: "closing" },
+        new: { view: "open", reset: true, fresh: true, sort: "newest" },
+        fit: { view: "recommended", reset: true, sort: "score" },
+      }[k.dataset.kpi]);
       return;
     }
     const b = e.target.closest(".bar-row");
-    if (b) { go("tenders", { view: "open", [b.dataset.filter]: b.dataset.value }); return; }
+    if (b) { go("tenders", { view: "open", reset: true, [b.dataset.filter]: b.dataset.value }); return; }
+    const c = e.target.closest("[data-clear]");
+    if (c) {
+      const k2 = c.dataset.clear;
+      if (k2 === "all") clearFilters();
+      else if (k2 === "q") $("#q").value = "";
+      else if (k2 === "cat") $("#f-cat").value = "";
+      else if (k2 === "state") $("#f-state").value = "";
+      else if (k2 === "week") F.week = false;
+      else if (k2 === "fresh") F.fresh = false;
+      renderTenders(); return;
+    }
     const item = e.target.closest("#page-overview [data-id], #results [data-id]");
     if (item) openTender(item.dataset.id);
   });
@@ -842,12 +926,13 @@ function wire() {
     if (item && (e.key === "Enter" || e.key === " ") && !e.target.closest("#sheet")) { e.preventDefault(); openTender(item.dataset.id); return; }
     const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName);
     if (e.key === "Escape" && $("#sheet").classList.contains("open")) closeSheet();
-    else if (e.key === "/" && !typing) { e.preventDefault(); if (page === "overview") go("tenders", { view: "open" }); $("#q").focus(); }
+    else if (e.key === "/" && !typing) { e.preventDefault(); if (page === "overview") go("tenders", { view: "open", reset: true }); $("#q").focus(); }
   });
   const chart = $("#chart");
-  chart.addEventListener("mouseover", e => { const g = e.target.closest(".dotg"); if (g) showTip(g, e); });
+  chart.addEventListener("pointermove", e => setHot(nearestDot(e)?.id || null));
+  chart.addEventListener("pointerleave", () => setHot(null));
+  chart.addEventListener("click", e => { const p = nearestDot(e); if (p) { e.stopPropagation(); setHot(null); openTender(p.id); } });
   chart.addEventListener("focusin", e => { const g = e.target.closest(".dotg"); if (g) showTip(g, e); });
-  chart.addEventListener("mouseleave", () => $("#tip").classList.remove("show"));
   chart.addEventListener("focusout", () => $("#tip").classList.remove("show"));
   $$(".view").forEach(b => b.addEventListener("click", () => { view = b.dataset.view; renderTenders(); }));
   $("#q").addEventListener("input", renderTenders);
@@ -893,7 +978,11 @@ async function load() {
   }
   renderAll();
   const m = location.hash.match(/^#t=(.+)$/);
-  if (m) openTender(decodeURIComponent(m[1]), false);
+  if (m) {
+    const id = decodeURIComponent(m[1]);
+    if (tenders.some(t => t.id === id)) openTender(id, false);
+    else { history.replaceState(null, "", location.pathname); toast("That tender is no longer listed. It may have closed or been merged with a duplicate."); }
+  }
 }
 
 applyTheme(prefs.theme || "dark");

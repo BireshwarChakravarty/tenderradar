@@ -1,5 +1,5 @@
 """
-TenderRadar — configuration.
+TenderRadar: configuration.
 
 Everything comes from environment variables: GitHub Secrets in Actions, or a
 local .env file during development. Defaults are sensible for a PR and

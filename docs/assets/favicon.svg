@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="tr-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7b61ff"/><stop offset=".55" stop-color="#4d6bff"/><stop offset="1" stop-color="#16b4e8"/>
+    </linearGradient>
+    <linearGradient id="tr-trail" gradientUnits="userSpaceOnUse" x1="24.82" y1="12.27" x2="50.19" y2="21.50">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".62"/>
+    </linearGradient>
+    <radialGradient id="tr-shine" cx=".2" cy=".05" r=".95"><stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#tr-bg)"/>
+  <rect width="64" height="64" rx="15" fill="url(#tr-shine)"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="3.2"/>
+  <path d="M32 32 L21.50 13.81 A21 21 0 0 1 50.19 21.50 Z" fill="url(#tr-trail)"/>
+  <path d="M32 32 L50.19 21.50" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>
+  <circle cx="32" cy="32" r="4" fill="#fff"/>
+  <circle cx="31.49" cy="17.51" r="7" fill="#fff" fill-opacity=".24"/>
+  <circle cx="31.49" cy="17.51" r="4.2" fill="#fff"/>
+</svg>

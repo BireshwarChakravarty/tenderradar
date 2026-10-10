@@ -1,4 +1,4 @@
-# TenderRadar — Python dependencies (Python 3.11+)
+# TenderRadar: Python dependencies (Python 3.11+)
 anthropic>=1.12,<2
 pydantic>=2.7,<3
 playwright>=1.44

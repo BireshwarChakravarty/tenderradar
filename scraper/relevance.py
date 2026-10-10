@@ -1,5 +1,5 @@
 """
-TenderRadar — relevance rules.
+TenderRadar: relevance rules.
 
 Cheap, rule-based screening that runs before any AI call. It removes tenders
 that are never a fit for a communications agency, however they were found:
@@ -33,41 +33,59 @@ SEARCH_KEYWORDS = [
 # A title matching any of these is dropped before scoring.
 # Each line was checked against ~1,000 previously scored tenders: together
 # they removed hundreds of low-scoring ones and almost no good ones.
-EXCLUDE_PATTERNS = [
-    # Revenue auctions — the government is *selling* ad space, not hiring an agency
+# Always excluded: the government is selling or leasing something, or buying
+# equipment. Agency wording in the title doesn't rescue these ("Selection of
+# advertising agencies for exclusive advertisement rights" is still a sale).
+HARD_EXCLUDE_PATTERNS = [
     r"\bauction\b",
+    r"\badverti[sz](?:ing|ement)s?(?: space)? rights?\b",
+    r"\b(?:display|licen[cs]e|right|grant of rights) (?:of|for|to) (?:commercial )?advert",
+    r"\bgrant of rights\b|\bsale of\b|\bscrap\b|\bcondemned\b|\bon lease\b",
+    r"\bcctv\b|\bsurveillance\b|\b(?:ip|bullet|dome|ptz) cameras?\b",
+    r"\bsupply,? (?:and |& )?(?:installation|fitment|commissioning)\b|\binstallation (?:and|&) commissioning\b",
+    r"\b(?:led|light[- ]?box|advertising) (?:advertising )?boards?\b",
+    r"\badverti[sz]ing spaces?\b",
+    r"\bchannel partner\b|\bauthori[sz]ed distributor\b",
+]
+
+# Excluded unless the title clearly describes agency or publicity work
+# (KEEP_PATTERNS below), e.g. an IEC campaign that lists hoardings among
+# its deliverables.
+EXCLUDE_PATTERNS = [
     r"\b(?:hoardings?|unipoles?|kiosks?|glow ?signs?|sign ?boards?|billboards?)\b",
-    r"\badverti[sz](?:ing|ement)s? rights?\b",
-    r"\b(?:display|licen[cs]e|right) (?:of|for|to) (?:commercial )?advert",
     r"\bwall painting\b|\bvinyl wrap",
     r"\badvertisement (?:on|behind|through) (?:etm|ticket|bus|train|rake)",
     # Construction, civil and engineering works
-    r"\bconstruction of\b|\bcivil works?\b|\bskywalk\b",
+    r"\bconstruction of\b|\bcivil works?\b|\bskywalk\b|\bflyovers?\b|\bunderpass(?:es)?\b",
     r"\bgeo-? ?technical\b|\bsoil investigation\b|\bsurvey(?:ing)? work\b",
     r"\b(?:meter|electrical|plumbing) (?:repair|replacement|installation)",
     # Goods and equipment supply
     r"\bnbcd\b|\bhelmets?\b|\bprojectors?\b|\bfurniture\b",
     r"\bsound systems?\b|\bstage (?:set ?up|lights?|lighting)\b",
-    r"\b(?:supply|procurement) of (?:\w+ ){0,3}(?:items?|equipment|hardware|materials?|goods)\b",
-    r"\bchannel partner\b|\bauthori[sz]ed distributor\b",
+    # "Communication" listings also return telecom hardware
+    r"\bcommunication (?:equipments?|sets?|cables?|cards?|modules?|gateway|test sets?|lab)\b",
+    r"\bradio sets?\b|\bsoftware defined radio\b|\bofc cables?\b|\bconsumables\b|\bintercom\b",
+    r"\b(?:supply|procurement|purchase) of (?:\w+ ){0,3}(?:items?|equipments?|hardware|materials?|goods|accessories)\b",
     # Clearly unrelated services
     r"\bhat fee\b|\bparking\b|\bcanteen\b|\bhousekeeping\b|\bsecurity guards?\b",
     r"\bsoft skills? training\b|\bline producer\b",
 ]
 
-# ...unless the title clearly describes agency / publicity work, e.g. an IEC
-# campaign that lists hoardings among its deliverables.
 KEEP_PATTERNS = [
-    r"\biec\b", r"\bpublicity\b", r"\bcampaign\b", r"\bmulti-?media\b",
-    r"\bcreative\b", r"\bagenc(?:y|ies)\b", r"\bpublic relations\b", r"\bself-help group\b",
+    r"\biec\b", r"\bpublicity\b", r"\bcampaigns?\b", r"\bmulti-?media\b", r"\bcreative\b",
+    r"\bpublic relations\b", r"\bsocial media\b", r"\bself-help group\b",
 ]
 
+_HARD = re.compile("|".join(f"(?:{p})" for p in HARD_EXCLUDE_PATTERNS), re.IGNORECASE)
 _EXCLUDE = re.compile("|".join(f"(?:{p})" for p in EXCLUDE_PATTERNS), re.IGNORECASE)
 _KEEP = re.compile("|".join(KEEP_PATTERNS), re.IGNORECASE)
 
 
 def exclusion_reason(title: str) -> str:
     """The matched phrase if the tender should be dropped, else ""."""
+    m = _HARD.search(title or "")
+    if m:
+        return m.group(0)
     m = _EXCLUDE.search(title or "")
     if not m or _KEEP.search(title):
         return ""

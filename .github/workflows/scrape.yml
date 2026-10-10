@@ -8,7 +8,7 @@ on:
 permissions:
   contents: write
 
-# Never run two scrapes at once — the second would overwrite the first's data
+# Never run two scrapes at once: the second would overwrite the first's data
 concurrency:
   group: tenderradar-scrape
   cancel-in-progress: false
@@ -18,14 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: 'pip'

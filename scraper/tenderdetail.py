@@ -1,5 +1,5 @@
 """
-TenderRadar — TenderDetail.com crawler.
+TenderRadar: TenderDetail.com crawler.
 
 TenderDetail aggregates GeM, CPPP and state portals, which block GitHub's IP
 ranges directly. The site renders with JavaScript, so this drives headless
@@ -30,7 +30,7 @@ NOTICE_LINKS = "a[href*='/TenderNotice/']"
 
 
 class LayoutChanged(RuntimeError):
-    """Pages loaded but nothing could be parsed — the site's HTML has changed."""
+    """Pages loaded but nothing could be parsed; the site's HTML has changed."""
 
 
 @dataclass
@@ -84,7 +84,7 @@ def _read_page(page, url: str) -> str:
 
 
 def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlResult:
-    """`rejected`: ids already turned down (excluded, duplicate, closed) — never fetched again."""
+    """`rejected`: ids already turned down (excluded, duplicate, closed), never fetched again."""
     from playwright.sync_api import sync_playwright
 
     res = CrawlResult()
@@ -128,7 +128,7 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
             if not p.get("title"):
                 res.unparsed += 1
                 if res.unparsed == 1:
-                    log.warning("Could not parse %s — page text starts:\n%s", url, text[:500])
+                    log.warning("Could not parse %s, page text starts:\n%s", url, text[:500])
                 continue
             tid = tender_id(ref_from_url(url))
             if p["closed"] and tid not in store:
@@ -150,6 +150,6 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
              res.pages, len(res.tenders), res.closed_on_arrival, res.unparsed)
     if res.unparsed and not res.tenders and not res.closed_on_arrival:
         raise LayoutChanged(
-            f"Parsed 0 of {res.unparsed} TenderDetail pages — the page layout has probably "
+            f"Parsed 0 of {res.unparsed} TenderDetail pages, the page layout has probably "
             "changed. Update the patterns in scraper/page_parser.py.")
     return res
