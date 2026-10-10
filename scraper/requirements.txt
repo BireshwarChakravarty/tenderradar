@@ -1,9 +1,5 @@
-# TenderRadar — Python dependencies
-
-beautifulsoup4==4.12.3
-requests==2.32.3
-anthropic>=0.50.0
-python-dotenv==1.0.1
-lxml==5.2.2
-httpx>=0.27.0
-playwright>=1.44.0
+# TenderRadar — Python dependencies (Python 3.11+)
+anthropic>=1.12,<2
+pydantic>=2.7,<3
+playwright>=1.44
+python-dotenv>=1.0
