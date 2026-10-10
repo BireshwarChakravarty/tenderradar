@@ -46,7 +46,7 @@ def load() -> tuple[dict[str, Tender], dict]:
             t.authority = ""  # stored before sector labels were recognised
         if t.location:
             t.location = split_location(t.location)[0]
-        for f in ("title", "headline", "authority", "fit", "reason"):
+        for f in ("title", "headline", "authority", "fit", "reason", "eligibility"):
             setattr(t, f, plain(getattr(t, f)))
     return store, meta
 

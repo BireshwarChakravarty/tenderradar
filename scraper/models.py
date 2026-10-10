@@ -43,6 +43,7 @@ class Tender:
     kind:           str = ""                    # "services" | "goods" | "works" | "auction" | "other"
     fit:            str = ""
     reason:         str = ""
+    eligibility:    str = ""                    # what the listing shows about eligibility, and what to check
     scored_at:      str = ""
     scoring_version: int = 0                   # bumped when the scoring prompt changes; older scores are redone
 
