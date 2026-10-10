@@ -2,16 +2,16 @@ name: TenderRadar Scraper
 
 on:
   schedule:
-    - cron: '0 */4 * * *'
-  workflow_dispatch:
-    inputs:
-      portals:
-        description: 'Portals to scrape (leave blank for all)'
-        required: false
-        default: ''
+    - cron: '0 */4 * * *'      # every 4 hours
+  workflow_dispatch: {}
 
 permissions:
   contents: write
+
+# Never run two scrapes at once — the second would overwrite the first's data
+concurrency:
+  group: tenderradar-scrape
+  cancel-in-progress: false
 
 jobs:
   scrape:
@@ -19,47 +19,49 @@ jobs:
     timeout-minutes: 45
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+      MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install Python dependencies
-        run: pip install -r scraper/requirements.txt
+      - name: Install dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+          playwright install chromium --with-deps
 
-      - name: Install Playwright browser
-        run: playwright install chromium --with-deps
+      - name: Run tests
+        run: python -m unittest discover -s scraper/tests -t scraper
 
-      - name: Run scrapers + AI scoring
+      - name: Scrape, filter and score
         env:
-          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
-          COMPANY_PROFILE:     ${{ secrets.COMPANY_PROFILE }}
-          MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
-          PORTALS_OVERRIDE:    ${{ github.event.inputs.portals }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COMPANY_PROFILE:   ${{ secrets.COMPANY_PROFILE }}
         run: python scraper/main.py
 
       - name: Send alerts
+        # Still alert on anything scored, even if the crawl itself failed
+        if: always()
         env:
           SMTP_USER:          ${{ secrets.SMTP_USER }}
           SMTP_PASS:          ${{ secrets.SMTP_PASS }}
           ALERT_EMAIL_TO:     ${{ secrets.ALERT_EMAIL_TO }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
-          COMPANY_PROFILE:    ${{ secrets.COMPANY_PROFILE }}
         run: python scraper/alerts.py
 
       - name: Commit updated data
+        if: always()
         run: |
           git config user.name  "TenderRadar Bot"
           git config user.email "tenderradar-bot@users.noreply.github.com"
           git add docs/data/
-          git diff --staged --quiet || git commit -m "chore: update tenders [$(date '+%Y-%m-%d %H:%M')] [skip ci]"
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: update tenders [$(date -u '+%Y-%m-%d %H:%M') UTC] [skip ci]"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
           git push

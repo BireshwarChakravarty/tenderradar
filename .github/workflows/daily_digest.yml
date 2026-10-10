@@ -2,7 +2,7 @@ name: TenderRadar Daily Digest
 
 on:
   schedule:
-    - cron: '30 2 * * *'   # 8:00 AM IST daily
+    - cron: '30 2 * * *'       # 8:00 AM IST
   workflow_dispatch: {}
 
 permissions:
@@ -24,15 +24,15 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: pip install -r scraper/requirements.txt
+        run: pip install python-dotenv
 
       - name: Send daily digest
         env:
-          SMTP_USER:          ${{ secrets.SMTP_USER }}
-          SMTP_PASS:          ${{ secrets.SMTP_PASS }}
-          ALERT_EMAIL_TO:     ${{ secrets.ALERT_EMAIL_TO }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
-          ANTHROPIC_API_KEY:  ${{ secrets.ANTHROPIC_API_KEY }}
-          COMPANY_PROFILE:    ${{ secrets.COMPANY_PROFILE }}
+          DASHBOARD_URL:       https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
+          SMTP_USER:           ${{ secrets.SMTP_USER }}
+          SMTP_PASS:           ${{ secrets.SMTP_PASS }}
+          ALERT_EMAIL_TO:      ${{ secrets.ALERT_EMAIL_TO }}
+          TELEGRAM_BOT_TOKEN:  ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:    ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python scraper/daily_digest.py
