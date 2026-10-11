@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TenderRadar</title>
 <meta name="description" content="Government tenders for PR and communications, scored for fit.">
+<meta name="author" content="Bireshwar Chakravarty">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -94,6 +95,7 @@ a { color: inherit; text-decoration: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .wrap { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+.site-foot { padding-top: 40px; padding-bottom: 32px; color: var(--text-3); font-size: 12.5px; }
 
 /* ══ Top bar ══════════════════════════════════════════════════════════ */
 .top { position: sticky; top: 0; z-index: 40; background: var(--glass); border-bottom: 1px solid var(--border);
@@ -356,6 +358,12 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
   .kv { grid-template-columns: 1fr; gap: 2px; }
   .kv dd { margin-bottom: 8px; }
 }
+@media (max-width: 400px) {
+  .top .wrap { gap: 4px; padding: 0 12px; }
+  .tab { padding: 0 6px; font-size: 13px; }
+  .icon-btn { width: 30px; }
+  .pill, .icon-btn { flex-shrink: 0; }
+}
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 </style>
 </head>
@@ -459,6 +467,7 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
     <div id="results"></div>
   </section>
 </main>
+<footer class="wrap site-foot">Designed and built by Bireshwar Chakravarty · © 2026 Bireshwar Chakravarty. All rights reserved.</footer>
 
 <div class="scrim" id="scrim"></div>
 <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" tabindex="-1">

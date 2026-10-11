@@ -20,7 +20,7 @@ from dates import days_until, iso_now
 from models import Tender, plain
 
 # Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
-SCORING_VERSION = 5
+SCORING_VERSION = 6
 
 log = logging.getLogger("AIScorer")
 
@@ -66,8 +66,8 @@ Fields:
   recommendation; the dashboard shows the deadline, and the rest goes in reason or eligibility.
 - fit: one plain sentence on which of the company's services or past work this matches.
 - reason: one plain sentence on whether to pursue it, naming the main risk if there is one
-  (missing empanelment, very large contract, sectional cut-off, deadline under about 10 days,
-  possibly already in the internal bid tracker). No filler.
+  (missing empanelment, very large contract, sectional cut-off, deadline under about 10 days).
+  No filler.
 - eligibility: one plain sentence. Check what the listing shows against the company's eligibility
   in the profile and private notes: estimated value against the usual contract range and turnover,
   the EMD against the MSE/Udyam exemption, any empanelment or registration the title demands,
@@ -81,8 +81,8 @@ company's clients, prospects, bids or tenders under evaluation, and never say or
 company has a relationship, mandate, bid or evaluation with the tender's buyer, even when the
 buyer is named in the tender. Refer to private facts generically instead, for example "within
 the usual contract range", "meets typical turnover thresholds", "similar to existing central
-government work". If the tender looks like one in the private bid pipeline, say only "check the
-internal bid tracker".
+government work". Never mention bid trackers, the bid pipeline, or whether the company has
+already bid for or is evaluating a tender.
 
 Write in plain sentences. Never use em dashes; use commas, full stops or "and" instead."""
 
