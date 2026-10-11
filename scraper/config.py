@@ -87,7 +87,7 @@ TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "")
 TELEGRAM_ENABLED   = bool(TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID)
 
 # ── Files ─────────────────────────────────────────────────────────────
-# Data lives inside docs/ so GitHub Pages serves it next to the dashboard.
+# Only the published file lives in docs/, so GitHub Pages serves it next to the dashboard.
 DATA_DIR = ROOT_DIR / "docs" / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 TENDERS_FILE   = DATA_DIR / "tenders.json"     # published: only tenders that pass scraper/integrity.py
@@ -97,5 +97,6 @@ STORE_DIR      = ROOT_DIR / "data"
 STORE_DIR.mkdir(parents=True, exist_ok=True)
 STORE_FILE     = STORE_DIR / "store.json"
 QUALITY_FILE   = STORE_DIR / "quality.json"   # what was held back or corrected, and why
-ALERT_LOG_FILE = DATA_DIR / "alert_log.json"
-REJECTED_FILE  = DATA_DIR / "rejected.json"   # notices not worth storing, so they aren't re-fetched
+ALERT_LOG_FILE = STORE_DIR / "alert_log.json" # tenders already alerted on
+REJECTED_FILE  = STORE_DIR / "rejected.json"  # notices not worth storing, so they aren't re-fetched
+

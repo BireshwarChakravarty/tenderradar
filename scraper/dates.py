@@ -99,9 +99,3 @@ def days_until(deadline: str, today: date | None = None) -> int | None:
     if d is None:
         return None
     return (d - (today or today_ist())).days
-
-
-def is_open(deadline: str, today: date | None = None) -> bool | None:
-    """True/False, or None when the deadline is unknown. A tender is open through its closing day."""
-    n = days_until(deadline, today)
-    return None if n is None else n >= 0

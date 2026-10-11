@@ -14,7 +14,6 @@ Keeps one record per TenderDetail notice and applies the house rules:
   - a tender with no stated deadline is dropped once it hasn't been seen
     on the site for STALE_DAYS
 
-Reads the original (v1) file format too and converts it on load.
 """
 import json
 import logging
@@ -23,11 +22,11 @@ from datetime import timedelta
 
 from config import (ALERT_LOG_FILE, KEEP_CLOSED_DAYS, MIN_RELEVANCE_SCORE, QUALITY_FILE, REJECTED_FILE,
                     STALE_DAYS, STORE_FILE, TENDERS_FILE)
+from dates import from_str, iso_now, today_ist
 from integrity import MIN_PUBLISHED, gate
-from dates import from_str, iso_now, plausible, today_ist
-from models import SCHEMA_VERSION, Tender, plain, tender_id
-from page_parser import detect_portal, is_sector_label, parse_where, ref_from_url, split_location
-from relevance import categorise, exclusion_reason
+from models import SCHEMA_VERSION, Tender, plain
+from page_parser import is_sector_label, split_location
+from relevance import exclusion_reason
 
 log = logging.getLogger("Store")
 
@@ -35,7 +34,7 @@ log = logging.getLogger("Store")
 # ── Load / save ───────────────────────────────────────────────────────
 
 def load() -> tuple[dict[str, Tender], dict]:
-    """The working store: ({id: Tender}, meta). Converts older files transparently."""
+    """The working store: ({id: Tender}, meta)."""
     src = STORE_FILE if STORE_FILE.exists() else TENDERS_FILE   # first run after the split
     if not src.exists():
         return {}, {}
@@ -47,7 +46,7 @@ def load() -> tuple[dict[str, Tender], dict]:
     meta = data.get("meta", {})
     rows = data.get("tenders", [])
     if meta.get("schema", 1) < 2:
-        return _from_v1(rows), {}
+        raise ValueError(f"{src} uses an unsupported format (schema {meta.get('schema', 1)})")
     store = {r["id"]: Tender.from_dict(r) for r in rows if r.get("id")}
     for t in store.values():
         if is_sector_label(t.authority):
@@ -217,58 +216,3 @@ def load_alerted() -> set[str]:
 def save_alerted(ids: set[str]) -> None:
     ALERT_LOG_FILE.write_text(json.dumps(
         {"alerted_ids": sorted(ids), "updated_at": iso_now()}, indent=1) + "\n")
-
-
-# ── v1 → v2 conversion ────────────────────────────────────────────────
-
-def _v1_value(s: str) -> float | None:
-    m = re.match(r"₹\s*([\d,.]+)\s*(Cr|L)?", s or "")
-    if not m:
-        return None
-    n = float(m.group(1).replace(",", "")) * {"Cr": 1e7, "L": 1e5}.get(m.group(2) or "", 1)
-    return round(n) if n >= 1000 else None
-
-
-def _v1_summary(s: str) -> dict:
-    def grab(label):
-        m = re.search(rf"\*\*{label}:\*\*\s*(.+?)(?:\n\n|$)", s or "", re.S)
-        return m.group(1).strip() if m else ""
-    rec = grab("Recommendation").split()[:1]
-    return {"fit": grab("Fit"), "reason": grab("Opportunity"),
-            "recommendation": rec[0] if rec and rec[0] in ("Bid", "Watch", "Skip") else ""}
-
-
-def _from_v1(rows: list[dict]) -> dict[str, Tender]:
-    """
-    Convert the original format. Dates are kept as stored (re-parsing the saved
-    page snippet would compute countdowns against today, not the scrape date),
-    except implausible ones (e.g. 2018), which become "".
-    """
-    out: dict[str, Tender] = {}
-    dropped = 0
-    for r in rows:
-        ref = ref_from_url(r.get("url", "")) or r.get("ref_no", "")
-        if not ref:
-            dropped += 1
-            continue
-        seen = r.get("scraped_at", "")
-        dl = from_str(r.get("deadline", ""))
-        if dl and seen and dl < from_str(seen):
-            dropped += 1  # was already closed when scraped
-            continue
-        desc = r.get("description", "")
-        t = Tender(
-            id=tender_id(ref), ref_no=ref, url=r.get("url", ""), title=r.get("title", ""),
-            portal=detect_portal(desc), category=categorise(r.get("title", "")),
-            value_inr=_v1_value(r.get("value_str", "")),
-            deadline=dl.isoformat() if plausible(dl) else "",
-            first_seen=seen, last_seen=seen,
-            score=r.get("score") or None,
-            scored_at=seen if r.get("score") else "",
-            **parse_where(desc), **_v1_summary(r.get("summary", "")),
-        )
-        if t.id in out and out[t.id].last_seen >= t.last_seen:
-            continue  # the same notice stored twice under different titles
-        out[t.id] = t
-    log.info("Converted v1 store: %d records kept, %d dropped", len(out), dropped)
-    return out

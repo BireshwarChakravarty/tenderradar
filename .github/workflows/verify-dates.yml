@@ -7,12 +7,6 @@ on:
   schedule:
     - cron: '17 22 * * *'      # 03:47 IST, between scrape runs
   workflow_dispatch: {}
-  push:
-    branches: [claude/zen-edison-2nzih6]
-    paths:
-      - scraper/verify_dates.py
-      - scraper/page_parser.py
-      - .github/workflows/verify-dates.yml
 
 permissions:
   contents: read

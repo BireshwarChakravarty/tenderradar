@@ -2,7 +2,7 @@
 import unittest
 from datetime import date
 
-from dates import days_until, is_open, parse_date, plausible
+from dates import days_until, parse_date, plausible
 from page_parser import detect_portal, parse_detail, parse_money, split_location, to_inr
 
 TODAY = date(2026, 10, 10)
@@ -127,9 +127,8 @@ class DateTests(unittest.TestCase):
 
     def test_open_through_closing_day(self):
         self.assertEqual(days_until("2026-10-10", TODAY), 0)
-        self.assertTrue(is_open("2026-10-10", TODAY))
-        self.assertFalse(is_open("2026-10-09", TODAY))
-        self.assertIsNone(is_open("", TODAY))
+        self.assertEqual(days_until("2026-10-09", TODAY), -1)
+        self.assertIsNone(days_until("", TODAY))
 
 
 class PageParserTests(unittest.TestCase):
