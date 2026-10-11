@@ -129,7 +129,7 @@ def email_page(heading: str, subheading: str, body_rows: str) -> str:
       <p style="color:#94a3b8;font-size:12px;margin:16px 0 0;line-height:1.5">
         Scores and recommendations are AI estimates against your company profile. Always check the tender document before bidding.
       </p>
-      <p style="color:#94a3b8;font-size:12px;margin:8px 0 0">TenderRadar · Designed and built by Bireshwar Chakravarty · © 2026</p>
+      <p style="color:#94a3b8;font-size:12px;margin:8px 0 0">TenderRadar · Designed and built by Bireshwar Chakravarty · © 2026 Bireshwar Chakravarty. All rights reserved.</p>
     </td></tr>
   </table>
 </td></tr></table>

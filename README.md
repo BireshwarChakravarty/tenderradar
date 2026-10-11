@@ -103,4 +103,5 @@ The pre-redesign files are in `backup/2026-10-10-original/`. See `RESTORE.md` th
 
 ---
 
-Designed and built by Bireshwar Chakravarty. © 2026 Bireshwar Chakravarty.
+Designed and built by Bireshwar Chakravarty. © 2026 Bireshwar Chakravarty. All rights reserved.
+See [LICENSE](LICENSE).
