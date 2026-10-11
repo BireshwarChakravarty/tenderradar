@@ -1,0 +1,148 @@
+{
+ "checked_at": "2026-10-11T14:09:45Z",
+ "published": 131,
+ "held_back": 16,
+ "held_reasons": {
+  "no closing date stated": 4,
+  "never verified against the source": 4,
+  "closed": 12
+ },
+ "fields_fixed": 0,
+ "ai_text_reset": 0,
+ "held": [
+  {
+   "id": "td-8935699",
+   "title": "Services, Other Services, Consultancy Service, Space Planning and Designing, Architect Work",
+   "deadline": "",
+   "reasons": [
+    "no closing date stated",
+    "never verified against the source"
+   ]
+  },
+  {
+   "id": "td-9588739",
+   "title": "Services, Space Planning and Designing, Architect Work, Other Services, Consultancy Service, Business Management Service",
+   "deadline": "",
+   "reasons": [
+    "no closing date stated",
+    "never verified against the source"
+   ]
+  },
+  {
+   "id": "td-57577654",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57931097",
+   "title": "Short Dated Tender - Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Design And Development Of W",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57841699",
+   "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Balluk-Ii Gp Under Sahid Matan",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57841734",
+   "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Santipur-I Gp Under Sahid Mata",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57841766",
+   "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Raghunathpur-Ii Gp Under Sahid",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57841686",
+   "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Santipur-Ii Gp Under Sahid Mat",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57841743",
+   "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Kakharda Gp Under Sahid Matang",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57841700",
+   "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Dhalhara Gp Under Sahid Matang",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57662707",
+   "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Storyboarding And Conversion Of Content To Multimedia Fo",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57801230",
+   "title": "Bids Are invited for Manpower Outsourcing Services - Fixed Remuneration - Social Media Handler; Social Media Expert; Gra",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57916002",
+   "title": "Tender For Providing Underground Network For Voice/Data Communication At Ramgiri, Nagpur",
+   "deadline": "",
+   "reasons": [
+    "no closing date stated",
+    "never verified against the source"
+   ]
+  },
+  {
+   "id": "td-57879320",
+   "title": "Tender For Communication, Content Production And Digital Platform Management Consultant",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57752074",
+   "title": "Tender For Providing Business Integrated Communication Services",
+   "deadline": "",
+   "reasons": [
+    "no closing date stated",
+    "never verified against the source"
+   ]
+  },
+  {
+   "id": "td-57618226",
+   "title": "Tender For Indigenous Development Of Communication System",
+   "deadline": "2026-10-10",
+   "reasons": [
+    "closed"
+   ]
+  }
+ ],
+ "fixes": [],
+ "ai_resets": []
+}
