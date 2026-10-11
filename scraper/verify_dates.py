@@ -1,8 +1,11 @@
 """
-TenderRadar: deadline verification.
+TenderRadar: independent audit of the published data.
 
-Re-opens each stored open tender on TenderDetail and checks the stored
-deadline against what the page actually says. Read-only: nothing is saved.
+Re-opens every tender the website shows (docs/data/tenders.json) on
+TenderDetail and checks its closing date against what the page says now.
+Read-only: nothing is saved. Exits 1 if any published tender is closed or
+dated differently on its source page, so the GitHub run turns red and the
+owner is emailed.
 
 Each tender lands in one bucket:
   ok          explicit closing date on the page, in the future, equals the stored one
@@ -25,7 +28,7 @@ from collections import Counter, defaultdict
 from config import USER_AGENT
 from dates import parse_date, plausible, today_ist
 from page_parser import _COUNTDOWN, _DEADLINE_LABEL, _PUBLISHED_LABEL, parse_dates
-from store import load
+from store import load_published
 from tenderdetail import _read_page
 
 log = logging.getLogger("Verify")
@@ -72,10 +75,8 @@ def bucket(stored: str, info: dict) -> str:
 def main() -> None:
     from playwright.sync_api import sync_playwright
 
-    tenders, _ = load()
     today = today_ist().isoformat()
-    todo = sorted((t for t in tenders.values() if not t.deadline or t.deadline >= today),
-                  key=lambda t: t.deadline or "9999")
+    todo = sorted(load_published(), key=lambda t: t.deadline or "9999")
     limit = int(os.getenv("VERIFY_LIMIT") or 400)
     todo = todo[:limit]
     log.info("Checking %d open tenders against their pages (today %s)", len(todo), today)
@@ -134,6 +135,18 @@ def main() -> None:
             print(r.get("excerpt", ""))
     with open("verify_dates.json", "w", encoding="utf-8") as f:
         json.dump(rows, f, ensure_ascii=False, indent=1)
+
+    # The audit verdict: does every published closing date match its source page?
+    wrong = [r for r in loaded if r["fresh"]["closed"] or r["fresh"]["deadline"] != r["stored"]]
+    failed = counts.get("failed", 0)
+    print("\n==== AUDIT ====")
+    for r in wrong:
+        what = "closed on the source" if r["fresh"]["closed"] else f"source now says {r['fresh']['deadline'] or 'no date'}"
+        print(f"MISMATCH {r['id']}: site shows {r['stored']}, {what} | {r['title']}")
+    print(f"{len(loaded) - len(wrong)} of {len(loaded)} published closing dates match their source pages; "
+          f"{len(wrong)} mismatches; {failed} pages didn't load")
+    if wrong or failed > max(3, len(rows) // 20):
+        sys.exit(1)
 
 
 if __name__ == "__main__":

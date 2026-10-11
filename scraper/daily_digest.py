@@ -11,17 +11,17 @@ import logging
 import sys
 from datetime import datetime, timedelta, timezone
 
-from dates import days_until, is_open, now_ist
+from dates import days_until, now_ist
 from notify import email_page, email_section, send_email, send_telegram, telegram_message
 from relevance import is_recommended
-from store import load
+from store import load_published
 
 log = logging.getLogger("Digest")
 
 
 def build() -> dict:
-    tenders, _ = load()
-    rec = [t for t in tenders.values() if is_recommended(t) and is_open(t.deadline) is not False]
+    # Only what the website shows: verified, open, and passed the publish gate
+    rec = [t for t in load_published() if is_recommended(t)]
     since = (datetime.now(timezone.utc) - timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     closing = sorted((t for t in rec if (n := days_until(t.deadline)) is not None and n <= 7),

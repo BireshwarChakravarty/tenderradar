@@ -454,7 +454,6 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
     <div class="views" role="tablist" id="views">
       <button class="view" data-view="recommended">Recommended <span class="n" id="n-recommended"></span></button>
       <button class="view" data-view="open">All open <span class="n" id="n-open"></span></button>
-      <button class="view" data-view="closed">Recently closed <span class="n" id="n-closed"></span></button>
       <button class="view" data-view="filtered">Filtered out <span class="n" id="n-filtered"></span></button>
     </div>
     <div class="toolbar" id="toolbar">
@@ -487,7 +486,7 @@ const STATUSES = [
 ];
 const TRACKED = ["shortlisted", "preparing", "submitted"];
 const statusLabel = id => (STATUSES.find(s => s.id === id) || STATUSES[0]).label;
-let tenders = [], meta = {}, page = "overview", view = "recommended", openId = null, lastFocus = null;
+let raw = [], tenders = [], meta = {}, page = "overview", view = "recommended", openId = null, lastFocus = null;
 const F = { week: false, fresh: false };   // quick filters set from the overview cards
 const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
 const safe = fn => { try { return fn(); } catch { return undefined; } };
@@ -506,6 +505,10 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const daysLeft = dl => dl ? Math.round(dayNum(dl) - dayNum(TODAY)) : null;
 const isClosed = t => { const n = daysLeft(t.deadline); return n !== null && n < 0; };
+// Only open tenders with a stated closing date are ever shown. The data is already
+// filtered at publish time; this also covers the hours between midnight and the next sync.
+const isLive = t => !!t.deadline && daysLeft(t.deadline) >= 0;
+function refreshLive() { TODAY = todayIST(); tenders = raw.filter(isLive); }
 const fmtDate = iso => { if (!iso) return ""; const [y, m, d] = iso.split("-").map(Number); return `${d} ${MONTHS[m - 1]}${String(y) !== TODAY.slice(0, 4) ? " " + y : ""}`; };
 function relDays(n) {
   if (n === null) return "";
@@ -541,7 +544,6 @@ const isTracked = t => TRACKED.includes(track(t.id).status);
 const openRelevant = () => tenders.filter(t => !isClosed(t) && !isFiltered(t));
 const recommended = () => tenders.filter(t => !isClosed(t) && isRecommended(t) && track(t.id).status !== "dropped");
 function inView(t, v) {
-  if (v === "closed") return isClosed(t);
   if (v === "shortlist") return isTracked(t);
   if (isClosed(t)) return false;
   if (v === "recommended") return isRecommended(t) && track(t.id).status !== "dropped";
@@ -564,7 +566,7 @@ const recChip = t => t.recommendation ? `<span class="chip ${{ Bid: "bid", Watch
 
 /* ── Overview ───────────────────────────────────────────────────────── */
 function renderOverview() {
-  TODAY = todayIST();
+  refreshLive();
   const open = openRelevant(), rec = recommended();
   const week = rec.filter(t => { const n = daysLeft(t.deadline); return n !== null && n <= 7; });
   const avg = rec.length ? rec.reduce((a, t) => a + t.score, 0) / rec.length : 0;
@@ -736,11 +738,11 @@ function rowHTML(t) {
     <td class="c-val r">${fmtINR(t.value_inr) || '<span class="muted">Not listed</span>'}</td></tr>`;
 }
 function renderTenders() {
-  TODAY = todayIST();
+  refreshLive();
   const short = page === "shortlist";
   $("#t-title").textContent = short ? "Shortlist" : "Tenders";
   $("#views").hidden = short;
-  for (const v of ["recommended", "open", "closed", "filtered"]) $("#n-" + v).textContent = tenders.filter(t => inView(t, v)).length || "";
+  for (const v of ["recommended", "open", "filtered"]) $("#n-" + v).textContent = tenders.filter(t => inView(t, v)).length || "";
   $$(".view").forEach(b => b.setAttribute("aria-selected", b.dataset.view === view));
   renderActiveFilters();
   const list = sorted(filtered());
@@ -857,7 +859,9 @@ function openSettings() {
   openId = null;
   const lr = meta.last_run || {};
   const rows = [["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " (failed)" : ""}` : "Never"],
-    ["Tenders stored", `${meta.total ?? tenders.length} · ${meta.open ?? "–"} open`],
+    ["Tenders shown", `${tenders.length} open, each with a closing date stated by the source`],
+    meta.oldest_check && ["Source checks", `Every tender re-checked against its source page; oldest check ${ago(meta.oldest_check)}`],
+    meta.held_back != null && ["Held back", `${meta.held_back} not shown: closed, published before 2026, no closing date, or not re-verified`],
     lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered, ${lr.duplicates ?? 0} duplicates`],
     lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
     ["Recommended", `Fit ${meta.min_score ?? 6}+ and not marked Skip`]].filter(Boolean);
@@ -979,7 +983,8 @@ async function load() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     meta = data.meta || {};
-    tenders = meta.schema >= 2 ? (data.tenders || []) : [];
+    raw = meta.schema >= 2 ? (data.tenders || []) : [];
+    refreshLive();
   } catch (err) {
     $("#ov-sub").textContent = `Couldn't load tender data (${err.message}).`;
     $("#sync-txt").textContent = "Load failed"; $("#sync-dot").className = "dot fail";

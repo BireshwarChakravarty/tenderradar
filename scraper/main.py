@@ -1,8 +1,10 @@
 """
 TenderRadar: scrape run (every 4 hours via GitHub Actions).
 
-  crawl TenderDetail → merge into the store → AI-score anything unscored
-  → prune old tenders → save docs/data/tenders.json
+  crawl TenderDetail (new notices, and re-verify every open tender daily)
+  → merge into the store → AI-score what can be published → prune
+  → save data/store.json, and publish only what passes integrity.gate
+    to docs/data/tenders.json
 
 Exits non-zero when the crawl fails, so GitHub marks the run red and emails
 the repo owner instead of failing silently.
@@ -12,7 +14,8 @@ import sys
 import time
 
 from ai_scorer import SCORING_VERSION, score
-from dates import from_str, iso_now, today_ist
+from dates import iso_now, today_ist
+from integrity import blockers, gate
 from store import load, load_rejected, merge, prune, save, save_rejected
 from tenderdetail import crawl
 
@@ -53,10 +56,12 @@ def run() -> int:
                  stats["new"], stats["updated"], stats["excluded"], run_info["closed_on_arrival"])
 
     today = today_ist()
-    # New tenders, plus any scored with an older version of the prompt
+    gate(store, today)   # correct bad fields and clear unpublishable AI text before scoring
+    # Score only what can be published: new tenders, AI text that was cleared,
+    # and anything scored with an older version of the prompt
     unscored = [t for t in store.values()
                 if (t.score is None or t.scoring_version < SCORING_VERSION)
-                and (not t.deadline or from_str(t.deadline) >= today)]
+                and not blockers(t, today)]
     if unscored:
         log.info("Scoring %d tenders…", len(unscored))
         run_info["scored"] = score(unscored)
@@ -66,7 +71,8 @@ def run() -> int:
     for tid in before - set(store):            # don't fetch pruned duplicates or closed tenders again
         rejected.setdefault(tid, today.isoformat())
     run_info["finished"] = iso_now()
-    save(store, run_info)
+    report = save(store, run_info)
+    run_info["published"] = report["published"]
     save_rejected(rejected)
     log.info("Done in %ds: %s", time.monotonic() - started,
              {k: v for k, v in run_info.items() if k not in ("started", "finished")})

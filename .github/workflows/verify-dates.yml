@@ -1,8 +1,11 @@
-name: Verify tender deadlines
+name: Audit published tenders
 
-# Read-only check: re-opens each open tender on TenderDetail and compares the
-# stored deadline with what the page says. Nothing is committed.
+# Independent daily check: re-opens every tender the website shows and
+# compares its closing date with the source page. Nothing is committed. The
+# run fails, and GitHub emails the owner, if any published date is wrong.
 on:
+  schedule:
+    - cron: '17 22 * * *'      # 03:47 IST, between scrape runs
   workflow_dispatch: {}
   push:
     branches: [claude/zen-edison-2nzih6]
@@ -34,7 +37,7 @@ jobs:
         run: |
           pip install -r scraper/requirements.txt
           playwright install chromium --with-deps
-      - name: Verify deadlines
+      - name: Audit published closing dates
         run: python scraper/verify_dates.py
       - uses: actions/upload-artifact@v7
         if: always()

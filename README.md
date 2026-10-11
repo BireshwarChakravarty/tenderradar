@@ -60,6 +60,28 @@ through its closing day. A missing deadline stays missing; nothing is invented. 
 dates (e.g. 2018) are discarded. Open tenders closing within 3 days are re-checked each run,
 so extended deadlines (corrigenda) are picked up.
 
+## Data integrity
+
+Nothing reaches the website, the alerts or the digest unless it passes every check. The scraper
+keeps its working copy in `data/store.json`; only tenders that pass the publish gate
+(`scraper/integrity.py`) are written to `docs/data/tenders.json`.
+
+1. **Every open tender is re-read from its source page at least daily** (`REVERIFY_HOURS`, 18 by
+   default), oldest check first, so extensions, cancellations and closures are picked up.
+2. **The closing date is the one the page states**: the "BID SUBMISSION" box, then "LAST DATE".
+   A countdown is only used when no date is printed. TenderDetail shows "Closing in 0 days" on
+   every expired tender, so a zero countdown never keeps a tender open.
+3. **The publish gate** shows a tender only if: the source states a closing date; it is today or
+   later (IST); it is within a year; it was published in 2026 or later (when a publish date is
+   given); its page was re-read within the last 36 hours; and its link matches its reference.
+   Contradictory values (an EMD above the tender value, a publish date in the future) are cleared,
+   and AI text that mentions private names or internal process is wiped and re-scored.
+   `data/quality.json` lists everything held back or corrected, with the reason.
+4. **The dashboard** hides anything past its closing date even before the next sync.
+5. **A daily audit** (`Audit published tenders` workflow, 03:47 IST) re-opens every published
+   tender and compares its closing date with the source page. Any mismatch fails the run, and
+   GitHub emails the repo owner.
+
 ## Tuning
 
 | Change | Where |

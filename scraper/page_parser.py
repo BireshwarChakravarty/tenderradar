@@ -133,17 +133,18 @@ def parse_dates(text: str, today: date | None = None) -> dict:
     live = countdown is not None and countdown > today   # at least a day left
 
     if stated and (stated >= today or not live):
-        deadline = stated
+        deadline, source = stated, "stated"
     elif live:
-        deadline = countdown
+        deadline, source = countdown, "countdown"
     else:
-        deadline = None
+        deadline, source = None, ""
 
     if published and (published > today or (deadline and published > deadline)):
         published = None  # mis-read: not yet published, or "published" after it closed
 
     closed = bool(deadline and deadline < today) or (bool(_CLOSED.search(text)) and not live)
-    return {"deadline": to_str(deadline), "published": to_str(published), "closed": closed}
+    return {"deadline": to_str(deadline), "deadline_source": source,
+            "published": to_str(published), "closed": closed}
 
 
 def to_inr(amount: str, unit: str | None) -> float | None:
