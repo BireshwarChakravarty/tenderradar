@@ -1,13 +1,13 @@
 {
- "checked_at": "2026-10-11T15:15:20Z",
- "published": 84,
- "held_back": 97,
+ "checked_at": "2026-10-11T20:03:19Z",
+ "published": 83,
+ "held_back": 98,
  "held_reasons": {
   "not relevant (goods, works or auction)": 74,
   "no closing date stated": 4,
   "never verified against the source": 4,
   "not relevant (fit under 3)": 19,
-  "closed": 12
+  "closed": 13
  },
  "fields_fixed": 0,
  "ai_text_reset": 0,
@@ -646,6 +646,14 @@
    "deadline": "2026-10-12",
    "reasons": [
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57664365",
+   "title": "Tender For Tor For The Post Of Nmm-Knowledge Management And Communication For Day-Nrlm Nrlps",
+   "deadline": "2026-10-11",
+   "reasons": [
+    "closed"
    ]
   },
   {
