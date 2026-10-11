@@ -454,7 +454,6 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
     <div class="views" role="tablist" id="views">
       <button class="view" data-view="recommended">Recommended <span class="n" id="n-recommended"></span></button>
       <button class="view" data-view="open">All open <span class="n" id="n-open"></span></button>
-      <button class="view" data-view="filtered">Filtered out <span class="n" id="n-filtered"></span></button>
     </div>
     <div class="toolbar" id="toolbar">
       <label class="search"><span class="sr-only">Search</span><svg class="i"><use href="#i-search"/></svg><input class="field" id="q" type="search" placeholder="Search tenders, buyers, places" title="Shortcut: press / to search" autocomplete="off"></label>
@@ -538,7 +537,8 @@ const buyer = t => [t.authority, t.location].filter(Boolean).join(" · ");
 
 /* ── Classification ─────────────────────────────────────────────────── */
 const isRecommended = t => t.score != null && t.score >= (meta.min_score ?? 6) && t.recommendation !== "Skip" && !["goods", "works", "auction"].includes(t.kind);
-const isFiltered = t => t.score != null && (["goods", "works", "auction"].includes(t.kind) || t.score < 3);
+// Irrelevant tenders are not published (scraper/integrity.py); this is a second guard
+const isFiltered = t => t.score == null || ["goods", "works", "auction"].includes(t.kind) || t.score < 3;
 const isNew = (t, d = 2) => t.first_seen && (Date.now() - Date.parse(t.first_seen)) < d * 864e5;
 const isTracked = t => TRACKED.includes(track(t.id).status);
 const openRelevant = () => tenders.filter(t => !isClosed(t) && !isFiltered(t));
@@ -547,7 +547,6 @@ function inView(t, v) {
   if (v === "shortlist") return isTracked(t);
   if (isClosed(t)) return false;
   if (v === "recommended") return isRecommended(t) && track(t.id).status !== "dropped";
-  if (v === "filtered") return isFiltered(t);
   return !isFiltered(t);
 }
 const kind = t => !isRecommended(t) ? "other" : t.recommendation === "Bid" ? "bid" : "watch";
@@ -742,7 +741,7 @@ function renderTenders() {
   const short = page === "shortlist";
   $("#t-title").textContent = short ? "Shortlist" : "Tenders";
   $("#views").hidden = short;
-  for (const v of ["recommended", "open", "filtered"]) $("#n-" + v).textContent = tenders.filter(t => inView(t, v)).length || "";
+  for (const v of ["recommended", "open"]) $("#n-" + v).textContent = tenders.filter(t => inView(t, v)).length || "";
   $$(".view").forEach(b => b.setAttribute("aria-selected", b.dataset.view === view));
   renderActiveFilters();
   const list = sorted(filtered());
@@ -863,7 +862,7 @@ function openSettings() {
   const rows = [["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " (failed)" : ""}` : "Never"],
     ["Tenders shown", `${tenders.length} open, each with a closing date stated by the source`],
     meta.oldest_check && ["Source checks", `Every tender re-checked against its source page; oldest check ${ago(meta.oldest_check)}`],
-    meta.held_back != null && ["Held back", `${meta.held_back} not shown: closed, published before 2026, no closing date, or not re-verified`],
+    meta.held_back != null && ["Held back", `${meta.held_back} not shown: not relevant, closed, published before 2026, no closing date, or not re-verified`],
     lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered, ${lr.duplicates ?? 0} duplicates`],
     lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
     ["Recommended", `Fit ${meta.min_score ?? 6}+ and not marked Skip`]].filter(Boolean);

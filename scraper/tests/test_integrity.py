@@ -3,7 +3,7 @@ import unittest
 from datetime import date, datetime, timedelta, timezone
 
 import integrity
-from integrity import ai_problem, blockers, fix_fields, gate
+from integrity import ai_problem, blockers, fix_fields, gate, publish_blockers
 from models import Tender
 from store import merge
 
@@ -19,7 +19,8 @@ def good(**kw) -> Tender:
                url="https://www.tenderdetail.com/Indian-Tenders/TenderNotice/57900001/x",
                title="Selection of social media agency for the Department of Information",
                deadline="2026-10-20", deadline_source="stated", published="2026-10-01",
-               verified_at=_ts(2), first_seen=_ts(30), last_seen=_ts(2))
+               verified_at=_ts(2), first_seen=_ts(30), last_seen=_ts(2),
+               score=8.0, recommendation="Bid", kind="services")
     for k, v in kw.items():
         setattr(t, k, v)
     return t
@@ -63,6 +64,27 @@ class GateTests(unittest.TestCase):
         published, report = gate(store, TODAY)
         self.assertEqual([t.id for t in published], ["td-57900001"])
         self.assertEqual(report["held_back"], 1)
+
+
+class RelevanceTests(unittest.TestCase):
+    def test_relevant_tender_is_published(self):
+        self.assertEqual(publish_blockers(good(), TODAY), [])
+
+    def test_partial_fit_is_published(self):
+        self.assertEqual(publish_blockers(good(score=4.0, recommendation="Skip"), TODAY), [])
+
+    def test_goods_works_auctions_are_held(self):
+        for kind in ("goods", "works", "auction"):
+            self.assertIn("not relevant (goods, works or auction)",
+                          publish_blockers(good(kind=kind, score=2.0), TODAY))
+
+    def test_low_fit_is_held(self):
+        self.assertIn("not relevant (fit under 3)", publish_blockers(good(score=2.5), TODAY))
+
+    def test_unassessed_is_held_but_still_scored(self):
+        t = good(score=None)
+        self.assertIn("not yet assessed", publish_blockers(t, TODAY))
+        self.assertEqual(blockers(t, TODAY), [])     # so main.py still sends it for scoring
 
 
 class FieldFixTests(unittest.TestCase):

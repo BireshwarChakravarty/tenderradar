@@ -12,6 +12,8 @@ A tender is published only when:
   - it was published in 2026 or later, when the source states a publish date
   - its page was re-read from the source within MAX_VERIFY_AGE_HOURS
   - its link and reference number point to the same TenderDetail notice
+  - the AI has assessed it and judged it relevant: not goods, works or an
+    auction, and a fit score of 3 or more
 
 Some values are corrected rather than blocked: a publish date in the future,
 or after the closing date, is cleared; money values that contradict each
@@ -129,6 +131,26 @@ def blockers(t: Tender, today: date) -> list[str]:
     return out
 
 
+NOT_RELEVANT_KINDS = ("goods", "works", "auction")
+MIN_PUBLISHED_SCORE = 3.0
+
+
+def relevance_blockers(t: Tender) -> list[str]:
+    """The site lists only tenders the AI has judged relevant to the company."""
+    if t.score is None:
+        return ["not yet assessed"]
+    if t.kind in NOT_RELEVANT_KINDS:
+        return ["not relevant (goods, works or auction)"]
+    if t.score < MIN_PUBLISHED_SCORE:
+        return ["not relevant (fit under 3)"]
+    return []
+
+
+def publish_blockers(t: Tender, today: date) -> list[str]:
+    """Everything that keeps a tender off the site: source checks, then relevance."""
+    return blockers(t, today) + relevance_blockers(t)
+
+
 def gate(store: dict[str, Tender], today: date | None = None) -> tuple[list[Tender], dict]:
     """(publishable tenders, quality report). Fixes fields in place."""
     today = today or today_ist()
@@ -140,7 +162,7 @@ def gate(store: dict[str, Tender], today: date | None = None) -> tuple[list[Tend
         if problem:
             reset_assessment(t)
             ai_resets.append({"id": t.id, "problem": problem})
-        reasons = blockers(t, today)
+        reasons = publish_blockers(t, today)
         if reasons:
             held.append({"id": t.id, "title": t.title[:120], "deadline": t.deadline, "reasons": reasons})
         else:
