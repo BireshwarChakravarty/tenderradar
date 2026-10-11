@@ -1,12 +1,12 @@
 {
- "checked_at": "2026-10-11T14:50:40Z",
- "published": 49,
- "held_back": 98,
+ "checked_at": "2026-10-11T15:10:50Z",
+ "published": 84,
+ "held_back": 97,
  "held_reasons": {
   "no closing date stated": 4,
   "never verified against the source": 4,
-  "not relevant (fit under 3)": 36,
-  "not relevant (goods, works or auction)": 58,
+  "not relevant (fit under 3)": 19,
+  "not relevant (goods, works or auction)": 74,
   "closed": 12
  },
  "fields_fixed": 0,
@@ -123,139 +123,11 @@
    ]
   },
   {
-   "id": "td-57834922",
-   "title": "Tender For Ai-Based Integrated Animal Birth Control (Abc) And Animal Welfare Management System Development, Supply, Impl",
-   "deadline": "2026-10-14",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57775472",
-   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis Design, Development, Deployment And One (1) Year ",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57072729",
-   "title": "Tender For Empanelment Of Companies/Firms As Start-Up Company For Solution Design, Development Of Application Software/ ",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57773621",
-   "title": "Tender For Design, Development, Implementation, Testing, Commissioning, Data Migration And Support Of The Open Access Sc",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57923535",
-   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Development And Maintenance Of New And Existing ",
-   "deadline": "2026-10-28",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57903445",
-   "title": "Tender For Pre-Bid Expression Of Interest For Selection Of Implementation Partner For Design, Development, Implementatio",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
    "id": "td-57819572",
    "title": "Tender For Amd Kintex Ultrascale Xcku060 Or Equivalent Fpga Development Board, For More Details Refer Our Website Http//",
    "deadline": "2026-10-22",
    "reasons": [
     "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57857712",
-   "title": "Tender for Request For Proposal for Selection of Implementation Agency for Development, Augmentation, Operations and Mai",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57423227",
-   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Request For Proposal For Selection Of A System I",
-   "deadline": "2026-10-16",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57838187",
-   "title": "Tender For Design, Development, Hosting And Technical Maintenance Of The Official Website Of District Mineral Foundation",
-   "deadline": "2026-10-14",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57954274",
-   "title": "Tender For Development And Maintenance Of New And Existing Creda Website, Dashboard, Android Apps, And Online Projects O",
-   "deadline": "2026-10-28",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57928872",
-   "title": "Tender for Pre-Examination and Post-Examination Data Processing and Results Processing, Digitization of reverification r",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57891058",
-   "title": "Tender For For Empanelment/Onboarding Of An It Firm For Website Backend Management And Mis Development & Maintenance",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57793439",
-   "title": "Tender For Empanelment Of Eligible Information Technology Solutions And Service Providing Firms For Software/Website Dev",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57817693",
-   "title": "Tender For Development, Hosting And Technical Maintenance Of The Official Website Of Dmft, Jamtara",
-   "deadline": "2026-10-14",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57948268",
-   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Design, Development, Implementation And Integrat",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57747758",
-   "title": "Tender For Request For Empanelment (Rfe) For Empanelment Of It Agencies For Software/ Website Development",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (fit under 3)"
    ]
   },
   {
@@ -417,9 +289,9 @@
    ]
   },
   {
-   "id": "td-57857716",
-   "title": "SELECTION OF AGENCY FOR DEVELOPMENT IMPLEMENTATION,OPERATION AND MANAGEMENT OF AN INTEGRATED DIGITAL COMMERCE ECOSYSTEM ",
-   "deadline": "2026-10-12",
+   "id": "td-57883110",
+   "title": "Tender For Empanelment Of Advertising Agencies For Publication Of Advertisements In Newspapers And Periodicals The Adver",
+   "deadline": "2026-10-21",
    "reasons": [
     "not relevant (fit under 3)"
    ]
@@ -701,7 +573,7 @@
    "title": "Bids Are Invited For Repair, Maintenance, And Installation Of Plant/ Systems/Equipments (Version 2) - Conversion Of Comm",
    "deadline": "2026-10-13",
    "reasons": [
-    "not relevant (fit under 3)"
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -810,6 +682,126 @@
    "reasons": [
     "closed",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57868215",
+   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works Of Valves, Replacement Of Corroded Pipes Of Sea Water Booster",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859603",
+   "title": "Ttps – Mech.Ii - Bm – Unit I - Rectification Of Supporting Structure Of Aph Duct & Hopper Area, Reconditioning Of Eroded",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57807596",
+   "title": "Ttps – Mech.Ii – Tm Ii - Overhauling Of Various Size Of Valves In Instrument And Service Air Compressors, Pressure Vesse",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57819576",
+   "title": "Tender For Non-Comprehensive Annual Maintenance Contract (Amc) For Composite Curing Aerospace- Grade Lab Scale Autoclave",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859608",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection & Rectification Of Emitting Electrode Suspension Frame In Esp During Annual ",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859598",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Dismantling The Existing Seal Plates And Re-Erection After Rectification Works In Bah A",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859609",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During The Overh",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859593",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Replacement Of Boiler Pressure Parts Tubes & Bends In Ii Pass Of Unit Iii Boiler During",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859602",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Repairing Of Worn-Out Skin Casing Inside The Dog House And Coutant Bottom Area In Boile",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859594",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boile",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859610",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 5",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868189",
+   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Attending Overhauling Works In Unit - Iii Eco & Aph Hoppers Ash Disposal System Flushi",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868196",
+   "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Inspection, Painting & Overhauling Of Condenser, Cw Pipelines, Hotwells, Etc During T",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868212",
+   "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Overhauling Of Steam And Condensate Valves Of Turbine Regeneration System During The ",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868194",
+   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works - Cleaning Of Ash Water Pump House Sump During The Forthcomin",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   }
  ],
