@@ -1,10 +1,12 @@
 {
- "checked_at": "2026-10-11T14:47:07Z",
- "published": 131,
- "held_back": 16,
+ "checked_at": "2026-10-11T14:50:40Z",
+ "published": 49,
+ "held_back": 98,
  "held_reasons": {
   "no closing date stated": 4,
   "never verified against the source": 4,
+  "not relevant (fit under 3)": 36,
+  "not relevant (goods, works or auction)": 58,
   "closed": 12
  },
  "fields_fixed": 0,
@@ -16,7 +18,8 @@
    "deadline": "",
    "reasons": [
     "no closing date stated",
-    "never verified against the source"
+    "never verified against the source",
+    "not relevant (fit under 3)"
    ]
   },
   {
@@ -25,7 +28,80 @@
    "deadline": "",
    "reasons": [
     "no closing date stated",
-    "never verified against the source"
+    "never verified against the source",
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57888960",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Iv-5 At Naipur Gp Under Patashpur -",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57889093",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / Vi-7 At Gokulpur Gp Under Patashp",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57888991",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Iv-6 At Naipur Gp Under Patashpur -",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57889010",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Ii-3 At Naipur Gp Under Patashpur -",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57951898",
+   "title": "Provision of miscellaneous Signal and Telecommunication facilities for operational monitoring, communication and safety ",
+   "deadline": "2026-11-02",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57901896",
+   "title": "Tender For Supply Of Pacs (Picture Archiving And Communication System) Equipment For The Department Of Radio Diagnosis",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57840786",
+   "title": "Tender For Design, Development & Maintenance Of Landscaping Work, Including Plant Irrigation System At Dhagwar, Kangra, ",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57885012",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis - Comprehensive Services & Maintenance Contract F",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57784498",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis Invitation For Bids (Ifb) For Design, Development",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (fit under 3)"
    ]
   },
   {
@@ -33,7 +109,8 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (fit under 3)"
    ]
   },
   {
@@ -41,7 +118,160 @@
    "title": "Short Dated Tender - Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Design And Development Of W",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57834922",
+   "title": "Tender For Ai-Based Integrated Animal Birth Control (Abc) And Animal Welfare Management System Development, Supply, Impl",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57775472",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis Design, Development, Deployment And One (1) Year ",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57072729",
+   "title": "Tender For Empanelment Of Companies/Firms As Start-Up Company For Solution Design, Development Of Application Software/ ",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57773621",
+   "title": "Tender For Design, Development, Implementation, Testing, Commissioning, Data Migration And Support Of The Open Access Sc",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57923535",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Development And Maintenance Of New And Existing ",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57903445",
+   "title": "Tender For Pre-Bid Expression Of Interest For Selection Of Implementation Partner For Design, Development, Implementatio",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57819572",
+   "title": "Tender For Amd Kintex Ultrascale Xcku060 Or Equivalent Fpga Development Board, For More Details Refer Our Website Http//",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57857712",
+   "title": "Tender for Request For Proposal for Selection of Implementation Agency for Development, Augmentation, Operations and Mai",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57423227",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Request For Proposal For Selection Of A System I",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57838187",
+   "title": "Tender For Design, Development, Hosting And Technical Maintenance Of The Official Website Of District Mineral Foundation",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57954274",
+   "title": "Tender For Development And Maintenance Of New And Existing Creda Website, Dashboard, Android Apps, And Online Projects O",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57928872",
+   "title": "Tender for Pre-Examination and Post-Examination Data Processing and Results Processing, Digitization of reverification r",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57891058",
+   "title": "Tender For For Empanelment/Onboarding Of An It Firm For Website Backend Management And Mis Development & Maintenance",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57793439",
+   "title": "Tender For Empanelment Of Eligible Information Technology Solutions And Service Providing Firms For Software/Website Dev",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57817693",
+   "title": "Tender For Development, Hosting And Technical Maintenance Of The Official Website Of Dmft, Jamtara",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57948268",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Design, Development, Implementation And Integrat",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57747758",
+   "title": "Tender For Request For Empanelment (Rfe) For Empanelment Of It Agencies For Software/ Website Development",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57894294",
+   "title": "Tender For Rates Of Different Type Of Plantation / Nursery / Display Board / Construction Related Materials Of Vb-G Ram ",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57752876",
+   "title": "Bids Are invited for Educational Software And Hardware",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -49,7 +279,8 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Balluk-Ii Gp Under Sahid Matan",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -57,7 +288,8 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Santipur-I Gp Under Sahid Mata",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -65,7 +297,8 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Raghunathpur-Ii Gp Under Sahid",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -73,7 +306,8 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Santipur-Ii Gp Under Sahid Mat",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -81,7 +315,8 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Kakharda Gp Under Sahid Matang",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -89,7 +324,40 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials At Worksite Of Vb-G Ram G Works For Dhalhara Gp Under Sahid Matang",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57062222",
+   "title": "Tender For Selection Of Supplies Of Material Items For Implementation Of Vbgramg Schemes All Area Of Jemari Gram Panchay",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57863394",
+   "title": "Tender For Supplied Of Forest, Horticulture, Hedge, Vetiver Etc. Saplings And Agricultural Inputs (Govt. Certified Produ",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57609305",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Request For Proposal (Rfp) For “Implementation O",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57384426",
+   "title": "Tender For Rfp For Development, Optimization And Delivery Of On-Premises Multi-Language Ai/Ml Translation Models For Exa",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
    ]
   },
   {
@@ -101,6 +369,142 @@
    ]
   },
   {
+   "id": "td-57848600",
+   "title": "Tender For Empanelment/Rate-Listing Of Authorized And Experienced Firms/Ngos For Flex, Hoardings, Posters, Vinyl, Leafle",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57877675",
+   "title": "Tender for Annual Rate Contract For Tent, Gate, Chair, Matinee, Barricading, Sound, Publicity, Entire Arrangement Work D",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57801460",
+   "title": "Bids Are invited for Publicity Items",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57860227",
+   "title": "Schedule Of Rates For Advertising And Branding In Noida Lubes Territory, In The State Of Uttar Pradesh Uttarakhand, For ",
+   "deadline": "2026-10-18",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57740378",
+   "title": "Tender For Empanelment Of Advertising Agencies For Supply Of Catering Disposables, Railneer Bottles Labels, Other Permis",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57771920",
+   "title": "Tender For Annual Rate Contract For Empanelment Of New Advertising Agency For Publication Of Various Statutory Advertise",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57857716",
+   "title": "SELECTION OF AGENCY FOR DEVELOPMENT IMPLEMENTATION,OPERATION AND MANAGEMENT OF AN INTEGRATED DIGITAL COMMERCE ECOSYSTEM ",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57747517",
+   "title": "Tender For Temporary Infrastructure, Superstructure, Fabrication Of Pandal/ Stalls / Gates / Decoration Of Stage And Dis",
+   "deadline": "2026-12-03",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-45316608",
+   "title": "Tender For Provision Of Otm Accommodation At Hayuliang Under Ge P Lohitpur",
+   "deadline": "2026-11-09",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57668677",
+   "title": "Tender For Supply And Repairing Of Miscellaneous / Electrical Articles / Items In The F.Y. 2026-2027 In Paschim Medinipu",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57708104",
+   "title": "Tender For Supply Of Various Glass Ware & Plastic Ware Items At Skims, Soura, Srinagar On One Year Rate Contract Basis",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-48304923",
+   "title": "Tender For Providing Hybrid Hearing/ Streaming Equipments At Delhi District Courts",
+   "deadline": "2026-10-31",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57951001",
+   "title": "Tender For Purchase Of Portable Ultrasound Machine At Rajeev Gandhi Sports Medicine Center",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57527928",
+   "title": "Bids Are invited for Item 1 - Online Ph, Cod, Bod & Tss Analyzer, Tnpcb Connectivity Software For Waterrangeph - 0 To 14",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57947064",
+   "title": "Bids Are invited for Computer Equipments",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57908985",
+   "title": "Bids Are invited for Intrusion Detection Fence System For Magazine",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57919497",
+   "title": "Bids Are invited for Solar Monitoring And Export Control Solution",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
    "id": "td-57801230",
    "title": "Bids Are invited for Manpower Outsourcing Services - Fixed Remuneration - Social Media Handler; Social Media Expert; Gra",
    "deadline": "2026-10-10",
@@ -109,12 +513,245 @@
    ]
   },
   {
+   "id": "td-57581476",
+   "title": "Tender For Wanakbori Thermal Power Station Supply of Chemicals for Cooling water treatment including real time monitorin",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57704478",
+   "title": "Tender For Optical Tracking View Monitoring System",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57740266",
+   "title": "Tender For Providing Lan/Internet Connectivity To Continuous Ambient Air Quality Monitoring System Stations (Caaqms) At ",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57704665",
+   "title": "Bids Are invited for Rudrastra Qty 01",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57959468",
+   "title": "Bids Are invited for Sitc Of Dynamic Digital Display For Immigration Counters",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57792682",
+   "title": "Bids Are invited for Tender For 19 Nos Dc And Ac Ev Charging Stations At Different Locations Of Sbi In Uttar Pradesh",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57712687",
+   "title": "Bids Are invited for Technology Equipment Facilitating Drone Forensic Laboratory",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57961176",
+   "title": "Provision of Battery Energy Storage System (BESS) for Power back up for Climatic Chamber",
+   "deadline": "2026-11-06",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57105122",
+   "title": "Bids Are invited for Hiring Of Consultants - Milestone/Deliverable Based - Architectural Engineering Design Consultant; ",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57960998",
+   "title": "Supply Of LC gate Electronic Slave telephone & Master Telephone of Electronic LC Gate => Limited",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57895331",
+   "title": "Supply Of Environmental-Controlled Storage Unit featuring Dual-Compartment => Limited",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57893309",
+   "title": "Bids Are invited for Lte Fleid Controller With Smart Antina",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57939716",
+   "title": "Supply Of Telephones and Server for Emergency communication",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57529822",
+   "title": "Bids Are invited for Equipment For Establishment Of Police Research Institute And System Modernization",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57705795",
+   "title": "Bids Are invited for 40-657-5113-08U, Integrated Circuit Advanced Communication Ic Mil -1553 Ddc, Usa(5962- 9306541Hxa, ",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57851521",
+   "title": "Bids Are invited for Setting Up Of Integrated Command Open Communication Line Between Bridge And Ops Room Romulators",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57860706",
+   "title": "Supply Of DOUBLE ACTING HINGES SIZE 100 MM for LHB AC Entrance communication door",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57856568",
+   "title": "Tender For Up Gradation Of The Data Communication Network For Durgapur Steel Plant & Alloy Steel Plant",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57780102",
+   "title": "Tender For A Drone With Multisensor And Al Kit/ Imaging And Communication System For Agriculture",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-54251265",
+   "title": "Tender For Engagement Of Agency For Providing Mobile Communication Facility To Dhbvnl Officers Officials",
+   "deadline": "2026-11-03",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57961295",
+   "title": "Provision of Voice Logging Facility Through VHF Communication at Stations in LJN Division",
+   "deadline": "2026-11-03",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57868049",
+   "title": "Tender For Supply Of Copper Communication Control Flexible Trailing Cable,As Per The Technical Specification Enclosed",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57818558",
+   "title": "Bids Are invited for Conet Communication Protocol Card With Multimode Simplex Fiber Cables",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57902763",
+   "title": "Bids Are Invited For Repair, Maintenance, And Installation Of Plant/ Systems/Equipments (Version 2) - Conversion Of Comm",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57835750",
+   "title": "Bids Are invited for Electronics And Communication Engineering Lab Equipment And Components",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
    "id": "td-57916002",
    "title": "Tender For Providing Underground Network For Voice/Data Communication At Ramgiri, Nagpur",
    "deadline": "",
    "reasons": [
     "no closing date stated",
-    "never verified against the source"
+    "never verified against the source",
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57894779",
+   "title": "Supply Of Two way counter communication system (Public Announcement System) => Limited",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57574643",
+   "title": "Tender For Purchase Of Otdr For The Use Of Communication Section ,Kannur",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57263908",
+   "title": "Bids Are Invited For Communication Complex For Fy 2026-27",
+   "deadline": "2026-11-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57971120",
+   "title": "Short Dated Tender - Bids Are Invited For Counter Communication System",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -123,6 +760,30 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed"
+   ]
+  },
+  {
+   "id": "td-57744463",
+   "title": "Bids Are invited for Counter Communication System (Q4)",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57819269",
+   "title": "Tender For Purchase Of Advance Fiber Optics Communication Trainer For Telematics Laboratory",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57733194",
+   "title": "Supply Of Two way Counter communication system",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   },
   {
@@ -135,11 +796,20 @@
    ]
   },
   {
+   "id": "td-57853223",
+   "title": "Bids Are invited for Lora Based Communication",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
    "id": "td-57618226",
    "title": "Tender For Indigenous Development Of Communication System",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not relevant (fit under 3)"
    ]
   }
  ],
