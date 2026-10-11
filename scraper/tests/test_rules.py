@@ -104,6 +104,7 @@ class StoreTests(unittest.TestCase):
     def test_no_em_dashes(self):
         self.assertEqual(plain("Strong fit \u2014 apply early"), "Strong fit, apply early")
         self.assertEqual(plain("No dashes here"), "No dashes here")
+        self.assertEqual(plain("Media Buying &#45 Publication &amp; Ads"), "Media Buying - Publication & Ads")
 
     def test_sector_labels_are_not_buyers(self):
         self.assertTrue(is_sector_label("Government Departments"))

@@ -6,12 +6,15 @@ Runs entirely on GitHub (Actions + Pages) for the cost of the Claude API calls, 
 ```
 every 4 hours  GitHub Actions
                  ├─ crawl TenderDetail.com (GeM, CPPP, state portals)   scraper/tenderdetail.py
+                 │  and re-read every open tender from its source daily
                  ├─ parse each notice: title, deadline, value, EMD …     scraper/page_parser.py
                  ├─ drop auctions, works, goods, closed tenders          scraper/relevance.py, store.py
                  ├─ Claude scores the rest against your profile          scraper/ai_scorer.py
+                 ├─ publish gate: only verified, open, 2026 tenders      scraper/integrity.py
                  ├─ email + Telegram for new recommended tenders         scraper/alerts.py
-                 └─ commit docs/data/tenders.json
+                 └─ commit data/store.json and docs/data/tenders.json
 8 AM IST       morning digest: closing this week + new since yesterday  scraper/daily_digest.py
+03:47 IST      audit: every published date re-checked against source  scraper/verify_dates.py
 
 GitHub Pages   docs/index.html: the dashboard, reading docs/data/tenders.json
 ```
@@ -45,9 +48,10 @@ shelters, train wraps), construction and civil works, geotechnical surveys, and 
 that clearly describe agency work (IEC campaigns, publicity, PR) are always kept. These rules were
 checked against ~1,000 previously scored tenders: they removed 335, all of which had scored under 4.
 
-**Dropped by the store** (`scraper/store.py`): tenders already closed when first found; corrigenda
-of a tender already listed (same wording and deadline); closed tenders older than 30 days; tenders
-with no stated deadline not seen for 45 days. Rejected notices are remembered in
+**Dropped by the store** (`scraper/store.py`): tenders already closed when first found; notices
+published before 2026; corrigenda of a tender already listed (same wording and deadline). Closed
+tenders stay in the working store for 30 days (to recognise duplicates) but are never published;
+tenders with no stated deadline are dropped once not seen for 45 days. Rejected notices are remembered in
 `docs/data/rejected.json` for 60 days so they aren't fetched again.
 
 **Scored by Claude** (`scraper/ai_scorer.py`): a short headline, the issuing authority, the kind of
@@ -55,10 +59,10 @@ procurement, a 1–10 fit score, Bid / Watch / Skip, and one-line reasons. A ten
 when it scores at or above `MIN_RELEVANCE_SCORE`, isn't Skip, and isn't goods, works or an auction. Goods,
 works, auctions and anything scoring under 3 are kept out of "All open" and listed under "Filtered out".
 
-**Dates** (`scraper/dates.py`): every date is an Indian calendar date, and a tender is open
-through its closing day. A missing deadline stays missing; nothing is invented. Implausible
-dates (e.g. 2018) are discarded. Open tenders closing within 3 days are re-checked each run,
-so extended deadlines (corrigenda) are picked up.
+**Dates** (`scraper/dates.py`, `scraper/page_parser.py`): every date is an Indian calendar date,
+and a tender is open through its closing day. The closing date is the one the source page prints;
+a missing deadline stays missing and nothing is invented. Every open tender is re-read daily, so
+extended deadlines (corrigenda) and closures are picked up. See *Data integrity* below.
 
 ## Data integrity
 
@@ -90,12 +94,14 @@ keeps its working copy in `data/store.json`; only tenders that pass the publish 
 | Exclusion rules | `EXCLUDE_PATTERNS` / `KEEP_PATTERNS` in `scraper/relevance.py` |
 | Recommended threshold | `MIN_RELEVANCE_SCORE` secret |
 | Scoring rubric | `SYSTEM_PROMPT` in `scraper/ai_scorer.py` |
-| Pages per run, retention | `MAX_DETAIL_PAGES`, `KEEP_CLOSED_DAYS`, `STALE_DAYS` in `scraper/config.py` |
+| Pages and time per run | `MAX_DETAIL_PAGES`, `CRAWL_BUDGET_MIN` in `scraper/config.py` |
+| Re-verification, retention | `REVERIFY_HOURS`, `KEEP_CLOSED_DAYS`, `STALE_DAYS` in `scraper/config.py` |
+| Publish rules | `MIN_PUBLISHED`, `MAX_VERIFY_AGE_HOURS` in `scraper/integrity.py` |
 | Schedule | cron lines in `.github/workflows/*.yml` |
 
 ## Dashboard
 
-Recommended / All open / Shortlist / Recently closed / Filtered out views, search, category and state filters, CSV export,
+Recommended / All open / Shortlist / Filtered out views (open tenders only), search, category and state filters, CSV export,
 a detail sheet with the AI assessment, and tracking (Shortlisted → Preparing bid → Submitted) with notes.
 Tracking lives in your browser; export it from the settings panel to back it up or move devices.
 A link to a single tender is `…/#t=td-<number>`.

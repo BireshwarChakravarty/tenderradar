@@ -69,7 +69,7 @@ USER_AGENT = os.getenv("USER_AGENT") or (
 )
 
 # ── Retention ─────────────────────────────────────────────────────────
-KEEP_CLOSED_DAYS = _int("KEEP_CLOSED_DAYS", 30)   # closed tenders stay visible this long
+KEEP_CLOSED_DAYS = _int("KEEP_CLOSED_DAYS", 30)   # closed tenders stay in data/store.json this long (never published)
 STALE_DAYS       = _int("STALE_DAYS", 45)         # no-deadline tenders not seen for this long are dropped
 
 # ── Notifications ─────────────────────────────────────────────────────

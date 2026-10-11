@@ -8,7 +8,9 @@ the tenders that pass the publish gate in integrity.py.
 Keeps one record per TenderDetail notice and applies the house rules:
   - a tender already closed when first found is never stored
   - titles that match the exclusion rules are never stored
-  - closed tenders are kept for KEEP_CLOSED_DAYS so recent history stays visible
+  - notices published before 2026 are never stored
+  - closed tenders stay in the working store for KEEP_CLOSED_DAYS (to recognise
+    duplicates) but are never published
   - a tender with no stated deadline is dropped once it hasn't been seen
     on the site for STALE_DAYS
 
@@ -52,7 +54,7 @@ def load() -> tuple[dict[str, Tender], dict]:
             t.authority = ""  # stored before sector labels were recognised
         if t.location:
             t.location = split_location(t.location)[0]
-        for f in ("title", "headline", "authority", "fit", "reason", "eligibility"):
+        for f in ("title", "headline", "authority", "location", "fit", "reason", "eligibility"):
             setattr(t, f, plain(getattr(t, f)))
     return store, meta
 
