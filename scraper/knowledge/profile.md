@@ -24,10 +24,26 @@ state capitals and tier 2 cities. Content teams write in English and Hindi.
   graphics, roundup videos, AI enabled content at scale.
 - Government communications retainers generally (IEC/BCC where the work is
   content, creative and digital rather than physical supply).
+- Website development: design and build of government and institutional
+  websites and web portals, CMS builds (WordPress, Drupal, headless),
+  bilingual sites, GIGW and accessibility compliance, redesign and migration.
+- Website maintenance: annual maintenance contracts, content updates,
+  security patching, uptime and hosting management as part of a website
+  contract.
+- Website audits: SEO, performance, accessibility (GIGW, WCAG), security and
+  content audits.
+- Search engine optimisation: technical and content SEO, AEO and GEO,
+  analytics (GA4) and reporting.
+
+Website and SEO work is a core service (updated October 2026). Where older
+private notes describe websites as only content led or exclude web
+maintenance, this guide takes precedence.
 
 ## Partial fit
 
-- Websites and microsites delivered as content and SEO led builds.
+- Websites bundled with mobile apps, dashboards or MIS/ERP modules, where
+  the website is a substantial part of the scope.
+- IT empanelments whose scope includes website development or maintenance.
 - Influencer programmes.
 - Event and summit communications, case studies, decks, reports.
 - Public affairs, advocacy, CSR, corporate, executive, internal and crisis
@@ -37,7 +53,9 @@ state capitals and tier 2 cities. Content teams write in English and Hindi.
 
 - Training of trainers, curriculum and course module development (consortium
   only).
-- Software, app and platform engineering, web hosting, technical management.
+- Standalone mobile apps, ERP/MIS, enterprise software and data systems
+  where there is no substantial website or communications element.
+- Hosting, data centre or network infrastructure contracts on their own.
 - Paid media buying as the main scope.
 - Goods, construction, equipment supply, printing and physical outdoor media.
 - Tenders that make an empanelment mandatory that the company does not hold

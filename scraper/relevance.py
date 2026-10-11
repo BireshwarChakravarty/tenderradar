@@ -27,6 +27,8 @@ SEARCH_KEYWORDS = [
     "event-publicity",
     "content-development",
     "website-development",
+    "website-designing",
+    "website-maintenance",
     "seo-services",
 ]
 
@@ -130,6 +132,7 @@ _KEYWORD_CATEGORY = {
     "event-publicity": "Events & Publicity",
     "content-development": "Creative & Content",
     "website-development": "Website & SEO", "seo-services": "Website & SEO",
+    "website-designing": "Website & SEO", "website-maintenance": "Website & SEO",
 }
 
 
