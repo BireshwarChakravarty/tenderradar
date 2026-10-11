@@ -57,7 +57,8 @@ tenders with no stated deadline are dropped once not seen for 45 days. Rejected 
 **Scored by Claude** (`scraper/ai_scorer.py`): a short headline, the issuing authority, the kind of
 procurement, a 1–10 fit score, Bid / Watch / Skip, and one-line reasons. A tender is *recommended*
 when it scores at or above `MIN_RELEVANCE_SCORE`, isn't Skip, and isn't goods, works or an auction. Goods,
-works, auctions and anything scoring under 3 are kept out of "All open" and listed under "Filtered out".
+works, auctions and anything scoring under 3 are not published at all; they stay in the working
+store and are re-checked like everything else.
 
 **Dates** (`scraper/dates.py`, `scraper/page_parser.py`): every date is an Indian calendar date,
 and a tender is open through its closing day. The closing date is the one the source page prints;
@@ -77,7 +78,8 @@ keeps its working copy in `data/store.json`; only tenders that pass the publish 
    every expired tender, so a zero countdown never keeps a tender open.
 3. **The publish gate** shows a tender only if: the source states a closing date; it is today or
    later (IST); it is within a year; it was published in 2026 or later (when a publish date is
-   given); its page was re-read within the last 36 hours; and its link matches its reference.
+   given); its page was re-read within the last 36 hours; its link matches its reference; and the
+   AI has assessed it as relevant (not goods, works or an auction, fit 3 or more).
    Contradictory values (an EMD above the tender value, a publish date in the future) are cleared,
    and AI text that mentions private names or internal process is wiped and re-scored.
    `data/quality.json` lists everything held back or corrected, with the reason.
@@ -101,7 +103,7 @@ keeps its working copy in `data/store.json`; only tenders that pass the publish 
 
 ## Dashboard
 
-Recommended / All open / Shortlist / Filtered out views (open tenders only), search, category and state filters, CSV export,
+Recommended / All open / Shortlist views (open, relevant tenders only), search, category and state filters, CSV export,
 a detail sheet with the AI assessment, and tracking (Shortlisted → Preparing bid → Submitted) with notes.
 Tracking lives in your browser; export it from the settings panel to back it up or move devices.
 A link to a single tender is `…/#t=td-<number>`.

@@ -57,8 +57,8 @@ def run() -> int:
 
     today = today_ist()
     gate(store, today)   # correct bad fields and clear unpublishable AI text before scoring
-    # Score only what can be published: new tenders, AI text that was cleared,
-    # and anything scored with an older version of the prompt
+    # Score what passes the source checks (relevance is what scoring decides):
+    # new tenders, AI text that was cleared, and older prompt versions
     unscored = [t for t in store.values()
                 if (t.score is None or t.scoring_version < SCORING_VERSION)
                 and not blockers(t, today)]
