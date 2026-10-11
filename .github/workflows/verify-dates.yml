@@ -1,0 +1,43 @@
+name: Verify tender deadlines
+
+# Read-only check: re-opens each open tender on TenderDetail and compares the
+# stored deadline with what the page says. Nothing is committed.
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [claude/zen-edison-2nzih6]
+    paths:
+      - scraper/verify_dates.py
+      - .github/workflows/verify-dates.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Use the latest stored data
+        run: |
+          git fetch --depth=1 origin main
+          git checkout origin/main -- docs/data/
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+          playwright install chromium --with-deps
+      - name: Verify deadlines
+        run: python scraper/verify_dates.py
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: verify-dates
+          path: verify_dates.json
+          if-no-files-found: ignore
