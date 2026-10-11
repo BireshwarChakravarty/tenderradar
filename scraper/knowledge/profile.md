@@ -39,8 +39,6 @@ state capitals and tier 2 cities. Content teams write in English and Hindi.
   only).
 - Software, app and platform engineering, web hosting, technical management.
 - Paid media buying as the main scope.
-- Anything that needs regional language output at volume beyond Hindi and
-  English: treat as unverified, not a strong fit.
 - Goods, construction, equipment supply, printing and physical outdoor media.
 - Tenders that make an empanelment mandatory that the company does not hold
   (see the private notes; CBC AV Producer empanelment is not held).
@@ -54,6 +52,8 @@ state capitals and tier 2 cities. Content teams write in English and Hindi.
 - Medium: state development authorities, state missions, development and
   non-profit bodies, industry associations.
 - Low: private sector tenders (outside the usual pursuit pattern).
+- State, district and city bodies are a normal market for the same services:
+  a core scope for them is still a strong fit.
 - Most work is bought on GeM under QCBS.
 
 ## Eligibility checks
@@ -75,27 +75,28 @@ empanelments held and not held, offices, team size, past work orders).
   is the company's strongest evidence; sector specific experience criteria
   (sports, health, monitoring tools) are where bids have been lost.
 - Presence: tenders needing state or city offices can use the multi-city
-  working seats; regional language output beyond Hindi and English is
-  unverified.
+  working seats.
+- Language: content teams write English and Hindi. If the tender needs
+  another Indian language, say to confirm it can be staffed (for example
+  with freelancers or a partner). This is an eligibility check, not a reason
+  to lower the fit score.
 - Always end by naming what to confirm in the tender document.
 
 The dashboard is public: describe eligibility in general terms and never quote
-private figures, clients or bid results.
+private figures, never name the company's clients, prospects or bids, and never
+describe a relationship with the tender's buyer.
 
 ## How to score
 
-Score the scope match first, then adjust:
+The score is about the work: does the scope match what the company does?
 
-- Scope match. Core services above: 8 to 10. Partial fit list: 5 to 7.
-  Only a small part fits: 3 to 4. Weak or no fit list: 1 to 2.
-- Client fit. Highest tier buyers can lift a borderline score by about 1.
-  Private sector buyers: no higher than Watch unless the scope is core.
+- Scope match sets the score. Core services above: 8 to 10. Partial fit
+  list: 5 to 7. Only a small part fits: 3 to 4. Weak or no fit list: 1 to 2.
+- Client fit only nudges borderline scores (5 to 7) by up to 1. It never
+  pulls a core scope below 7. An unnamed buyer is not a penalty.
 - Mandatory empanelment the company does not hold: Skip, and say which one.
-- Monitoring heavy tenders with sectional technical cut-offs are a known weak
-  point: still a fit, but say so in the reason.
-- Very large single contracts, or bid security outside MSE exemption: say so
-  in the reason (see the private notes for the usual contract range).
-- Deadline under about 10 days: mention it as high risk in the reason, but
-  don't lower the fit score for it.
-- If the tender looks like one the private notes say was already bid or is
-  being evaluated, say so in the reason.
+- These never lower the score or the recommendation; mention them in the
+  reason or eligibility instead: a close deadline, a missing buyer, value or
+  EMD, a regional language, a small or very large value, sectional cut-offs.
+- If the tender looks like one in the private bid pipeline, say only "check
+  the internal bid tracker".

@@ -20,7 +20,7 @@ from dates import days_until, iso_now
 from models import Tender, plain
 
 # Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
-SCORING_VERSION = 4
+SCORING_VERSION = 5
 
 log = logging.getLogger("AIScorer")
 
@@ -60,14 +60,14 @@ Fields:
   5 to 6   a partial fit; worth a look, or a consortium or subcontracting angle
   3 to 4   tangential; only a small part of the scope fits
   1 to 2   not relevant. Anything that is goods, works or an auction scores here
-- recommendation: "Bid" for strong fits (score 7 or more), "Watch" for partial fits or when key
-  details are missing, "Skip" otherwise, and "Skip" when the tender demands an empanelment the
-  company doesn't hold. Don't lower the score because the deadline is close; the deadline is shown
-  separately.
+- recommendation: follows the score. "Bid" for 7 or more, "Watch" for 5 to 6.9, "Skip" below 5,
+  and "Skip" when the tender demands an empanelment the company doesn't hold. A close deadline,
+  an unnamed buyer, missing value or EMD, or a regional language never lowers the score or the
+  recommendation; the dashboard shows the deadline, and the rest goes in reason or eligibility.
 - fit: one plain sentence on which of the company's services or past work this matches.
 - reason: one plain sentence on whether to pursue it, naming the main risk if there is one
   (missing empanelment, very large contract, sectional cut-off, deadline under about 10 days,
-  already bid). No filler.
+  possibly already in the internal bid tracker). No filler.
 - eligibility: one plain sentence. Check what the listing shows against the company's eligibility
   in the profile and private notes: estimated value against the usual contract range and turnover,
   the EMD against the MSE/Udyam exemption, any empanelment or registration the title demands,
@@ -76,10 +76,13 @@ Fields:
   check, say what to confirm.
 
 Everything you write is published on a public website. Never quote figures from the private
-notes (turnover, contract values, costs, team size, bid scores or ranks) and never name the
-company's clients or past bids from them. Refer to them generically instead, for example
-"within the usual contract range", "meets typical turnover thresholds", "similar to an existing
-ministry mandate", "already in the bid pipeline".
+notes (turnover, contract values, costs, team size, bid scores or ranks). Never name the
+company's clients, prospects, bids or tenders under evaluation, and never say or imply the
+company has a relationship, mandate, bid or evaluation with the tender's buyer, even when the
+buyer is named in the tender. Refer to private facts generically instead, for example "within
+the usual contract range", "meets typical turnover thresholds", "similar to existing central
+government work". If the tender looks like one in the private bid pipeline, say only "check the
+internal bid tracker".
 
 Write in plain sentences. Never use em dashes; use commas, full stops or "and" instead."""
 
