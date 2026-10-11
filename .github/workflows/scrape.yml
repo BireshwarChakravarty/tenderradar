@@ -23,6 +23,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          # A run queued behind another must start from the data that run
+          # pushed, not from the commit it was triggered on
+          ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v7
         with:
