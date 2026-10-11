@@ -45,6 +45,70 @@ Published Date : 01/10/2026
 """
 
 
+# Real TenderDetail pages, October 2026 (from the deadline verification run).
+# Expired tenders still say "Closing in 0 days"; the header box has the date.
+EXPIRED_2019 = """Home  ›
+Indian Tenders  › Tender #20524678
+Road Transport and Highways
+Government Departments
+Closing in 0 days
+TDR #20524678
+Paper and Printing Services, Paper Materials, Paper Products, Stationery
+Share
+Set Alert
+TENDER VALUE
+Ref. Documents
+Estimated cost
+BID SUBMISSION
+15 Jun 2019
+0 days left
+EMD
+10000
+"""
+
+EXPIRED_2024 = """Closing in 0 days
+TDR #45640369
+Tender For Request For Proposal For Selection Of Agency For Mass Media Network Platform
+TENDER VALUE
+21.16 Crore
+BID SUBMISSION
+29 Oct 2024
+0 days left
+Corrigendum
+Sr No Corrigendum Date Corrigendum Type New Submission Date
+1
+17-Oct-2024
+Final RFP After Prebid
+TENDER VALUE 21.16 Crore
+LAST DATE
+29-10-2024
+KEY DATES
+PUBLISH DATE
+10 Oct 2024
+SUBMISSION DATE
+29 Oct 2024
+"""
+
+# Live tender with a corrigendum table whose first date is the corrigendum's own
+LIVE_WITH_CORRIGENDUM = """Closing in 1 days
+TDR #57529822
+Bids Are invited for Equipment For Establishment Of Police Research Institute
+BID SUBMISSION
+12 Oct 2026
+1 days left
+Corrigendum
+Sr No Corrigendum Date Corrigendum Type New Submission Date
+1
+03-Oct-2026
+12-Oct-2026
+LAST DATE
+12-10-2026
+KEY DATES
+PUBLISH DATE
+19 Sep 2026
+"""
+
+
 class DateTests(unittest.TestCase):
     def test_formats_are_day_first(self):
         self.assertEqual(parse_date("15-10-2026"), date(2026, 10, 15))
@@ -104,6 +168,38 @@ class PageParserTests(unittest.TestCase):
     def test_no_deadline_is_left_empty(self):
         text = NEW_LAYOUT.replace("Closing in 6 days\n", "")
         self.assertEqual(parse_detail(text, TODAY)["deadline"], "")
+
+    def test_expired_tender_with_zero_countdown_is_closed(self):
+        # "Closing in 0 days" on a 2019 tender used to read as "closes today"
+        today = date(2026, 10, 11)
+        p = parse_detail(EXPIRED_2019, today)
+        self.assertEqual(p["deadline"], "2019-06-15")
+        self.assertTrue(p["closed"])
+        p = parse_detail(EXPIRED_2024, today)
+        self.assertEqual(p["deadline"], "2024-10-29")
+        self.assertTrue(p["closed"])
+
+    def test_header_date_beats_corrigendum_table(self):
+        p = parse_detail(LIVE_WITH_CORRIGENDUM, date(2026, 10, 11))
+        self.assertEqual(p["deadline"], "2026-10-12")
+        self.assertEqual(p["published"], "2026-09-19")
+        self.assertFalse(p["closed"])
+
+    def test_zero_countdown_without_a_date_is_unknown(self):
+        text = NEW_LAYOUT.replace("Closing in 6 days", "Closing in 0 days")
+        p = parse_detail(text, TODAY)
+        self.assertEqual(p["deadline"], "")
+        self.assertFalse(p["closed"])
+
+    def test_closes_today_when_the_page_says_today(self):
+        text = EXPIRED_2019.replace("15 Jun 2019", "10 Oct 2026")
+        p = parse_detail(text, TODAY)
+        self.assertEqual(p["deadline"], "2026-10-10")
+        self.assertFalse(p["closed"])
+
+    def test_future_published_date_is_dropped(self):
+        text = LIVE_WITH_CORRIGENDUM.replace("19 Sep 2026", "19 Sep 2027")
+        self.assertEqual(parse_detail(text, date(2026, 10, 11))["published"], "")
 
     def test_gem_not_matched_inside_management(self):
         self.assertEqual(detect_portal("TENDER FOR SOCIAL MEDIA MANAGEMENT AGENCY"), "")

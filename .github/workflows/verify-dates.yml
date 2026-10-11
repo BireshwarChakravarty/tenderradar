@@ -8,6 +8,7 @@ on:
     branches: [claude/zen-edison-2nzih6]
     paths:
       - scraper/verify_dates.py
+      - scraper/page_parser.py
       - .github/workflows/verify-dates.yml
 
 permissions:

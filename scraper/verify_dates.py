@@ -102,6 +102,15 @@ def main() -> None:
     counts = Counter(r["bucket"] for r in rows)
     print("\n==== SUMMARY ====")
     print(f"checked {len(rows)}  " + "  ".join(f"{k}={v}" for k, v in sorted(counts.items())))
+    loaded = [r for r in rows if r["bucket"] != "failed"]
+    fresh = Counter("closed" if r["fresh"]["closed"] else ("no date" if not r["fresh"]["deadline"]
+                    else ("today" if r["fresh"]["deadline"] == today else "future")) for r in loaded)
+    print("current parser: " + "  ".join(f"{k}={v}" for k, v in sorted(fresh.items())))
+    same = sum(1 for r in loaded if r["fresh"]["deadline"] == r["stored"])
+    print(f"current parser agrees with stored deadline for {same} of {len(loaded)}")
+    for r in loaded:
+        if not r["fresh"]["closed"] and r["fresh"]["deadline"] == today:
+            print(f"  closes today per page: {r['id']} {r['title'][:70]}")
 
     by = defaultdict(list)
     for r in rows:
