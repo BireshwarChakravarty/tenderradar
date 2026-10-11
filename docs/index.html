@@ -800,9 +800,11 @@ function renderSync() {
   if (!meta.last_updated) { $("#sync-txt").textContent = "Not synced yet"; return; }
   const hours = (Date.now() - Date.parse(meta.last_updated)) / 36e5;
   $("#sync-dot").className = "dot " + (lr.ok === false ? "fail" : hours > 9 ? "stale" : "ok");
-  $("#sync-txt").textContent = lr.ok === false ? "Last sync failed" : `Synced ${ago(meta.last_updated)}`;
+  $("#sync-txt").textContent = lr.ok === false ? "Update incomplete" : `Synced ${ago(meta.last_updated)}`;
   $("#sync").title = new Date(meta.last_updated).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" }) + " IST";
-  const a = lr.ok === false ? `The last sync failed. ${lr.error || ""}` : hours > 12 ? `No sync for ${Math.round(hours)} hours. The scheduled job may be paused.` : "";
+  const checked = meta.oldest_check ? ` Every tender shown was verified against its source ${ago(meta.oldest_check)} or more recently.` : "";
+  const a = lr.ok === false ? `The latest update didn't finish.${checked}`
+    : hours > 12 ? `No update for ${Math.round(hours)} hours.${checked}` : "";
   $("#alert").innerHTML = a ? `<div class="card" style="padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:center;border-color:color-mix(in srgb,var(--bad) 35%,transparent)"><svg class="i" style="color:var(--bad)"><use href="#i-alert"/></svg>${esc(a)}</div>` : "";
 }
 
