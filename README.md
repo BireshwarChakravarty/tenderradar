@@ -100,3 +100,7 @@ python -m http.server -d docs                          # dashboard at http://loc
 ## Restoring the original version
 
 The pre-redesign files are in `backup/2026-10-10-original/`. See `RESTORE.md` there.
+
+---
+
+Designed and built by Bireshwar Chakravarty. © 2026 Bireshwar Chakravarty.
