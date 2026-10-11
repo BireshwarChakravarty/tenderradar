@@ -5,6 +5,7 @@ This is the exact shape written to docs/data/tenders.json and read by the
 dashboard, alerts and digest. Dates are IST calendar dates ("YYYY-MM-DD")
 or "" when the source doesn't state one; money is whole rupees or None.
 """
+import html
 import re
 from dataclasses import asdict, dataclass, fields
 
@@ -14,8 +15,13 @@ _DASH = re.compile(r"\s*[\u2014\u2015]\s*")
 
 
 def plain(s: str) -> str:
-    """House style: no em dashes in anything we show. "A \u2014 B" becomes "A, B"."""
-    return _DASH.sub(", ", s or "").strip(", ")
+    """
+    Clean text for display: decode HTML character codes the source leaves in
+    ("Media Buying &#45 Publication" becomes "Media Buying - Publication") and
+    apply the house style of no em dashes ("A \u2014 B" becomes "A, B").
+    """
+    s = re.sub(r"\s+", " ", html.unescape(s or ""))
+    return _DASH.sub(", ", s).strip(", ")
 
 
 @dataclass

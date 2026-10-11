@@ -9,6 +9,7 @@ so they can be tested without a browser. Handles both page layouts:
   since July 2026    "Closing in 13 days / TDR #57185957 / <title> /
                       Issued by <authority> · <city>, <state>"
 """
+import html
 import re
 from datetime import date, timedelta
 
@@ -68,7 +69,7 @@ def is_sector_label(s: str) -> bool:
 
 
 def _clean(s: str) -> str:
-    return re.sub(r"\s+", " ", s or "").strip(" .,-:")
+    return re.sub(r"\s+", " ", html.unescape(s or "")).strip(" .,-:")
 
 
 def parse_title(text: str) -> str:
