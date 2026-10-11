@@ -159,7 +159,9 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
 
     log.info("Fetched %d pages: %d parsed, %d closed on arrival, %d unparsed",
              res.pages, len(res.tenders), res.closed_on_arrival, res.unparsed)
-    if res.unparsed and not res.tenders and not res.closed_on_arrival:
+    # One odd notice is normal (a quiet run may open only a page or two); a
+    # layout change shows as several pages read and none understood
+    if res.unparsed >= 3 and not res.tenders and not res.closed_on_arrival:
         raise LayoutChanged(
             f"Parsed 0 of {res.unparsed} TenderDetail pages, the page layout has probably "
             "changed. Update the patterns in scraper/page_parser.py.")
