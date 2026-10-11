@@ -1,26 +1,18 @@
 {
  "meta": {
   "schema": 2,
-  "last_updated": "2026-10-11T14:09:45Z",
+  "last_updated": "2026-10-11T14:12:45Z",
   "total": 131,
   "open": 131,
   "min_score": 6.0,
   "oldest_check": "2026-10-11T13:50:54Z",
   "held_back": 16,
   "last_run": {
-   "started": "2026-10-11T13:46:26Z",
-   "ok": true,
-   "listed": 424,
-   "pages": 221,
-   "new": 0,
-   "updated": 220,
-   "excluded": 0,
-   "duplicates": 0,
-   "closed_on_arrival": 0,
-   "unparsed": 1,
-   "backlog": 0,
-   "pruned": 77,
-   "finished": "2026-10-11T14:09:45Z"
+   "started": "2026-10-11T14:10:23Z",
+   "ok": false,
+   "error": "Parsed 0 of 1 TenderDetail pages, the page layout has probably changed. Update the patterns in scraper/page_parser.py.",
+   "pruned": 0,
+   "finished": "2026-10-11T14:12:45Z"
   }
  },
  "tenders": [
