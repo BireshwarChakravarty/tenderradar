@@ -20,7 +20,7 @@ from dates import days_until, iso_now
 from models import Tender, plain
 
 # Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
-SCORING_VERSION = 6
+SCORING_VERSION = 7
 
 log = logging.getLogger("AIScorer")
 
