@@ -94,19 +94,6 @@ def exclusion_reason(title: str) -> str:
     return m.group(0)
 
 
-CATEGORIES = [
-    "Public Relations",
-    "Integrated Communications",
-    "Social Media",
-    "Digital Marketing",
-    "Media Monitoring",
-    "Advertising & Media Buying",
-    "Events & Publicity",
-    "Creative & Content",
-    "Website & SEO",
-    "Other",
-]
-
 # First match wins, so the most specific phrases come first
 _CATEGORY_RULES = [
     ("Media Monitoring",           r"media monitoring|media analysis|news monitoring"),
