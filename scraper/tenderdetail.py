@@ -6,9 +6,9 @@ ranges directly. The site renders with JavaScript, so this drives headless
 Chromium through Playwright:
 
   1. Listing pages: one per search keyword, collecting notice URLs.
-  2. Detail pages:  new notices first, then known ones closing within
-                    REFRESH_DAYS (to pick up extended deadlines), capped at
-                    MAX_DETAIL_PAGES per run.
+  2. Detail pages:  new notices first, then every stored open tender whose
+                    last check is older than REVERIFY_HOURS, oldest first,
+                    within MAX_DETAIL_PAGES and CRAWL_BUDGET_MIN per run.
 
 Field extraction lives in page_parser.py so it can be tested without a browser.
 """
@@ -17,8 +17,9 @@ import random
 import time
 from dataclasses import dataclass, field
 
-from config import MAX_DETAIL_PAGES, REFRESH_DAYS, USER_AGENT
-from dates import days_until, iso_now
+from config import CRAWL_BUDGET_MIN, MAX_DETAIL_PAGES, REVERIFY_HOURS, USER_AGENT
+from dates import iso_now, today_ist
+from integrity import _hours_since
 from models import Tender, tender_id
 from page_parser import parse_detail, ref_from_url
 from relevance import SEARCH_KEYWORDS, categorise
@@ -108,17 +109,25 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
 
         new = [(u, k) for u, k in listed.items()
                if (tid := tender_id(ref_from_url(u))) not in store and tid not in rejected]
-        refresh = [
-            (u, k) for u, k in listed.items()
-            if (t := store.get(tender_id(ref_from_url(u))))
-            and (n := days_until(t.deadline)) is not None and 0 <= n <= REFRESH_DAYS
-        ]
+        # Re-read every open tender we hold (listed today or not), least
+        # recently checked first: the site only shows what was re-verified
+        today = today_ist().isoformat()
+        listed_kw = {tender_id(ref_from_url(u)): k for u, k in listed.items()}
+        due = sorted(
+            (t for t in store.values()
+             if t.deadline >= today and t.url
+             and ((age := _hours_since(t.verified_at)) is None or age >= REVERIFY_HOURS)),
+            key=lambda t: t.verified_at)
+        refresh = [(t.url, listed_kw.get(t.id, "")) for t in due]
         queue = (new + refresh)[:MAX_DETAIL_PAGES]
-        res.backlog = max(0, len(new) - MAX_DETAIL_PAGES)
-        log.info("%d notices listed: %d new, %d to re-check, fetching %d",
+        log.info("%d notices listed: %d new, %d due for re-verification, fetching %d",
                  len(listed), len(new), len(refresh), len(queue))
 
+        started = time.monotonic()
         for n, (url, kw) in enumerate(queue, 1):
+            if time.monotonic() - started > CRAWL_BUDGET_MIN * 60:
+                log.warning("Time budget reached after %d pages; the rest wait for the next run", n - 1)
+                break
             if n % 10 == 0:
                 log.info("  %d / %d detail pages", n, len(queue))
             _pause(2, 4)
@@ -142,8 +151,10 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
                 state=p["state"], category=categorise(p["title"], kw),
                 value_inr=p["value_inr"], emd_inr=p["emd_inr"],
                 published=p["published"], deadline=p["deadline"],
-                first_seen=now, last_seen=now,
+                deadline_source=p["deadline_source"],
+                first_seen=now, last_seen=now, verified_at=now,
             ))
+        res.backlog = max(0, len(new) + len(refresh) - res.pages)
         browser.close()
 
     log.info("Fetched %d pages: %d parsed, %d closed on arrival, %d unparsed",

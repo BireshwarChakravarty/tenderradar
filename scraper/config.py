@@ -55,9 +55,14 @@ MIN_RELEVANCE_SCORE = _float("MIN_RELEVANCE_SCORE", 6.0)
 # ── Scraping ──────────────────────────────────────────────────────────
 # Detail pages take ~6 s each; this keeps a run well inside the 45-minute
 # job limit. Anything left over is picked up on the next run.
-MAX_DETAIL_PAGES = _int("MAX_DETAIL_PAGES", 150)
-# Re-check open tenders this often, to catch extended deadlines (corrigenda)
-REFRESH_DAYS     = _int("REFRESH_DAYS", 3)
+MAX_DETAIL_PAGES = _int("MAX_DETAIL_PAGES", 260)
+# Stop opening detail pages after this long, whatever is left, so the run
+# always finishes and saves inside the job limit
+CRAWL_BUDGET_MIN = _int("CRAWL_BUDGET_MIN", 30)
+# Every stored open tender is re-read from the source once its last check is
+# older than this, to catch extensions, cancellations and closures. The
+# publish gate (integrity.py) hides anything not re-read within 36 hours.
+REVERIFY_HOURS   = _int("REVERIFY_HOURS", 18)
 USER_AGENT = os.getenv("USER_AGENT") or (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
@@ -85,6 +90,12 @@ TELEGRAM_ENABLED   = bool(TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID)
 # Data lives inside docs/ so GitHub Pages serves it next to the dashboard.
 DATA_DIR = ROOT_DIR / "docs" / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
-TENDERS_FILE   = DATA_DIR / "tenders.json"
+TENDERS_FILE   = DATA_DIR / "tenders.json"     # published: only tenders that pass scraper/integrity.py
+# The scraper's working store (everything, including held-back and recently
+# closed tenders) lives outside docs/ so the website never serves it.
+STORE_DIR      = ROOT_DIR / "data"
+STORE_DIR.mkdir(parents=True, exist_ok=True)
+STORE_FILE     = STORE_DIR / "store.json"
+QUALITY_FILE   = STORE_DIR / "quality.json"   # what was held back or corrected, and why
 ALERT_LOG_FILE = DATA_DIR / "alert_log.json"
 REJECTED_FILE  = DATA_DIR / "rejected.json"   # notices not worth storing, so they aren't re-fetched

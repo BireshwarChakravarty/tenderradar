@@ -90,17 +90,38 @@ def _labelled_date(text: str, label: re.Pattern) -> date | None:
     return None
 
 
+# Deadline labels, most reliable first. Every TenderDetail page has a header
+# box "BID SUBMISSION 15 Jun 2019" and most a summary "LAST DATE 15-06-2019";
+# other labels (including corrigendum tables, whose first date is the
+# corrigendum's own date) are only a fallback.
+_HEADER_DEADLINE = re.compile(r"\bBid\s+Submission\b(?!\s+(?:Start|Opening|Open)\b)", re.I)
+_LAST_DATE = re.compile(r"\bLast\s+Date\b", re.I)
+
+
+def _stated_date(text: str, label: re.Pattern, today: date) -> date | None:
+    """Date right after `label`, even if long past (an old date means the tender is closed)."""
+    for m in label.finditer(text):
+        d = parse_date(text[m.end():m.end() + 40])
+        if d and date(2000, 1, 1) <= d <= today + timedelta(days=2 * 365):
+            return d
+    return None
+
+
 def parse_dates(text: str, today: date | None = None) -> dict:
     """
     {"deadline", "published", "closed"}: deadline/published are "YYYY-MM-DD" or "".
 
-    A labelled date ("Submission Date 15-10-2026") is exact, so it wins, unless
-    the page also shows a live countdown and the labelled date is already past.
-    That combination appeared on the July 2026 layout, where the label picked up
-    an unrelated date; the countdown ("Closing in 13 days") is right there.
+    The date the page states wins. A countdown ("Closing in 13 days") is only
+    used when the page states no date, or when the stated date is past but the
+    countdown says the tender is still open (an extension the summary missed).
+    TenderDetail shows "Closing in 0 days" for every expired tender, however
+    old, so a zero countdown never makes a tender look open: without a stated
+    date it leaves the deadline unknown.
     """
     today = today or today_ist()
-    labelled = _labelled_date(text, _DEADLINE_LABEL)
+    stated = (_stated_date(text, _HEADER_DEADLINE, today)
+              or _stated_date(text, _LAST_DATE, today)
+              or _labelled_date(text, _DEADLINE_LABEL))
     published = _labelled_date(text, _PUBLISHED_LABEL)
 
     countdown = None
@@ -109,19 +130,21 @@ def parse_dates(text: str, today: date | None = None) -> dict:
         n_in, is_today, is_tomorrow, n_left, last_day = m.groups()
         days = int(n_in or n_left) if (n_in or n_left) else (1 if is_tomorrow else 0)
         countdown = today + timedelta(days=days)
+    live = countdown is not None and countdown > today   # at least a day left
 
-    if labelled and (countdown is None or labelled >= today):
-        deadline = labelled
+    if stated and (stated >= today or not live):
+        deadline, source = stated, "stated"
+    elif live:
+        deadline, source = countdown, "countdown"
     else:
-        deadline = countdown
+        deadline, source = None, ""
 
-    if published and deadline and published > deadline:
-        published = None  # mis-read; a tender can't close before it's published
+    if published and (published > today or (deadline and published > deadline)):
+        published = None  # mis-read: not yet published, or "published" after it closed
 
-    closed = bool(_CLOSED.search(text)) and countdown is None
-    if deadline and deadline < today:
-        closed = True
-    return {"deadline": to_str(deadline), "published": to_str(published), "closed": closed}
+    closed = bool(deadline and deadline < today) or (bool(_CLOSED.search(text)) and not live)
+    return {"deadline": to_str(deadline), "deadline_source": source,
+            "published": to_str(published), "closed": closed}
 
 
 def to_inr(amount: str, unit: str | None) -> float | None:

@@ -1,5 +1,9 @@
 """
-TenderRadar: the tender store (docs/data/tenders.json).
+TenderRadar: the tender store.
+
+data/store.json is the scraper's working copy of everything it knows.
+docs/data/tenders.json, which the website, alerts and digest read, gets only
+the tenders that pass the publish gate in integrity.py.
 
 Keeps one record per TenderDetail notice and applies the house rules:
   - a tender already closed when first found is never stored
@@ -15,8 +19,9 @@ import logging
 import re
 from datetime import timedelta
 
-from config import (ALERT_LOG_FILE, KEEP_CLOSED_DAYS, MIN_RELEVANCE_SCORE, REJECTED_FILE, STALE_DAYS,
-                    TENDERS_FILE)
+from config import (ALERT_LOG_FILE, KEEP_CLOSED_DAYS, MIN_RELEVANCE_SCORE, QUALITY_FILE, REJECTED_FILE,
+                    STALE_DAYS, STORE_FILE, TENDERS_FILE)
+from integrity import MIN_PUBLISHED, gate
 from dates import from_str, iso_now, plausible, today_ist
 from models import SCHEMA_VERSION, Tender, plain, tender_id
 from page_parser import detect_portal, is_sector_label, parse_where, ref_from_url, split_location
@@ -28,13 +33,14 @@ log = logging.getLogger("Store")
 # ── Load / save ───────────────────────────────────────────────────────
 
 def load() -> tuple[dict[str, Tender], dict]:
-    """({id: Tender}, meta). Converts v1 files transparently."""
-    if not TENDERS_FILE.exists():
+    """The working store: ({id: Tender}, meta). Converts older files transparently."""
+    src = STORE_FILE if STORE_FILE.exists() else TENDERS_FILE   # first run after the split
+    if not src.exists():
         return {}, {}
     try:
-        data = json.loads(TENDERS_FILE.read_text(encoding="utf-8"))
+        data = json.loads(src.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as e:
-        log.error("Could not read %s: %s", TENDERS_FILE, e)
+        log.error("Could not read %s: %s", src, e)
         raise
     meta = data.get("meta", {})
     rows = data.get("tenders", [])
@@ -51,26 +57,44 @@ def load() -> tuple[dict[str, Tender], dict]:
     return store, meta
 
 
-def save(tenders: dict[str, Tender], run: dict | None = None) -> None:
-    today = today_ist()
+def _write(path, payload: dict) -> None:
+    path.write_text(json.dumps(payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def save(tenders: dict[str, Tender], run: dict | None = None) -> dict:
+    """Write the working store, then publish only what passes the gate. Returns the quality report."""
+    now = iso_now()
     rows = sorted(tenders.values(), key=lambda t: (t.first_seen, t.id), reverse=True)
-    open_n = sum(1 for t in rows if not t.deadline or from_str(t.deadline) >= today)
+    published, report = gate(tenders)          # also corrects bad fields in place
+    _write(STORE_FILE, {"meta": {"schema": SCHEMA_VERSION, "last_updated": now, "total": len(rows)},
+                        "tenders": [t.to_dict() for t in rows]})
+
+    pub_rows = sorted(published, key=lambda t: (t.first_seen, t.id), reverse=True)
     meta = {
         "schema": SCHEMA_VERSION,
-        "last_updated": iso_now(),
-        "total": len(rows),
-        "open": open_n,
+        "last_updated": now,
+        "total": len(pub_rows),
+        "open": len(pub_rows),
         "min_score": MIN_RELEVANCE_SCORE,   # the dashboard's "Recommended" threshold
-        "keep_closed_days": KEEP_CLOSED_DAYS,
+        "oldest_check": min((t.verified_at for t in pub_rows), default=""),
+        "held_back": report["held_back"],
     }
     if run:
         meta["last_run"] = run
-    TENDERS_FILE.write_text(
-        json.dumps({"meta": meta, "tenders": [t.to_dict() for t in rows]},
-                   indent=1, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-    log.info("Saved %d tenders (%d open) to %s", len(rows), open_n, TENDERS_FILE)
+    _write(TENDERS_FILE, {"meta": meta, "tenders": [t.to_dict() for t in pub_rows]})
+    _write(QUALITY_FILE, {"checked_at": now, **report})
+    log.info("Store: %d tenders. Published %d; held back %d %s; fields corrected %d; AI text reset %d",
+             len(rows), report["published"], report["held_back"], report["held_reasons"],
+             report["fields_fixed"], report["ai_text_reset"])
+    return report
+
+
+def load_published() -> list[Tender]:
+    """What the website shows: tenders that passed the publish gate on the last run."""
+    if not TENDERS_FILE.exists():
+        return []
+    data = json.loads(TENDERS_FILE.read_text(encoding="utf-8"))
+    return [Tender.from_dict(r) for r in data.get("tenders", []) if r.get("id")]
 
 
 # ── Merge a scrape into the store ─────────────────────────────────────
@@ -99,9 +123,12 @@ def merge(store: dict[str, Tender], scraped: list[Tender]) -> dict:
     for t in scraped:
         known = store.get(t.id)
         if known:
-            # Refresh what the source may have changed (corrigenda extend deadlines)
-            for f in ("deadline", "published", "value_inr", "emd_inr", "authority",
-                      "location", "state", "portal"):
+            # The fresh read is the truth for the closing date, even when the
+            # page no longer states one (an old date must not look re-verified)
+            known.deadline, known.deadline_source = t.deadline, t.deadline_source
+            known.verified_at = t.verified_at
+            # Other fields: refresh what the page states, keep the rest
+            for f in ("published", "value_inr", "emd_inr", "authority", "location", "state", "portal"):
                 v = getattr(t, f)
                 if v not in ("", None):
                     setattr(known, f, v)
@@ -113,8 +140,9 @@ def merge(store: dict[str, Tender], scraped: list[Tender]) -> dict:
             stats["rejected_ids"].append(t.id)
             continue
         d = from_str(t.deadline)
-        if d and d < today:
-            stats["closed_on_arrival"] += 1
+        pub = from_str(t.published)
+        if (d and d < today) or (pub and pub < MIN_PUBLISHED):
+            stats["closed_on_arrival"] += 1     # closed, or a pre-2026 notice
             stats["rejected_ids"].append(t.id)
             continue
         if dupe_key(t) in seen:

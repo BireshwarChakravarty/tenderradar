@@ -34,6 +34,8 @@ class Tender:
     emd_inr:        float | None = None         # earnest money deposit
     published:      str = ""
     deadline:       str = ""                    # last date for bid submission
+    deadline_source: str = ""                   # "stated" (printed on the page) or "countdown" ("N days left")
+    verified_at:    str = ""                    # UTC time the source page was last read and parsed
     first_seen:     str = ""                    # UTC timestamps
     last_seen:      str = ""
     # AI assessment, empty until scored

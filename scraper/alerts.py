@@ -8,19 +8,17 @@ import logging
 import sys
 
 from config import EMAIL_ENABLED, TELEGRAM_ENABLED
-from dates import is_open
 from notify import email_page, email_section, send_email, send_telegram, telegram_message
 from relevance import is_recommended
-from store import load, load_alerted, save_alerted
+from store import load_alerted, load_published, save_alerted
 
 log = logging.getLogger("Alerts")
 
 
 def run() -> None:
-    tenders, _ = load()
     alerted = load_alerted()
-    fresh = [t for t in tenders.values()
-             if t.id not in alerted and is_recommended(t) and is_open(t.deadline) is not False]
+    # Only what the website shows: verified, open, and passed the publish gate
+    fresh = [t for t in load_published() if t.id not in alerted and is_recommended(t)]
     if not fresh:
         log.info("No new recommended tenders to alert on.")
         return
