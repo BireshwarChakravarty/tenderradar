@@ -1,17 +1,137 @@
 {
- "checked_at": "2026-10-11T15:10:50Z",
+ "checked_at": "2026-10-11T15:15:20Z",
  "published": 84,
  "held_back": 97,
  "held_reasons": {
+  "not relevant (goods, works or auction)": 74,
   "no closing date stated": 4,
   "never verified against the source": 4,
   "not relevant (fit under 3)": 19,
-  "not relevant (goods, works or auction)": 74,
   "closed": 12
  },
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "td-57868194",
+   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works - Cleaning Of Ash Water Pump House Sump During The Forthcomin",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868212",
+   "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Overhauling Of Steam And Condensate Valves Of Turbine Regeneration System During The ",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868196",
+   "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Inspection, Painting & Overhauling Of Condenser, Cw Pipelines, Hotwells, Etc During T",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868189",
+   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Attending Overhauling Works In Unit - Iii Eco & Aph Hoppers Ash Disposal System Flushi",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859610",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 5",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859594",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boile",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859602",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Repairing Of Worn-Out Skin Casing Inside The Dog House And Coutant Bottom Area In Boile",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859593",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Replacement Of Boiler Pressure Parts Tubes & Bends In Ii Pass Of Unit Iii Boiler During",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859609",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During The Overh",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859598",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Dismantling The Existing Seal Plates And Re-Erection After Rectification Works In Bah A",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859608",
+   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection & Rectification Of Emitting Electrode Suspension Frame In Esp During Annual ",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57819576",
+   "title": "Tender For Non-Comprehensive Annual Maintenance Contract (Amc) For Composite Curing Aerospace- Grade Lab Scale Autoclave",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57807596",
+   "title": "Ttps – Mech.Ii – Tm Ii - Overhauling Of Various Size Of Valves In Instrument And Service Air Compressors, Pressure Vesse",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57859603",
+   "title": "Ttps – Mech.Ii - Bm – Unit I - Rectification Of Supporting Structure Of Aph Duct & Hopper Area, Reconditioning Of Eroded",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57868215",
+   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works Of Valves, Replacement Of Corroded Pipes Of Sea Water Booster",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "td-8935699",
    "title": "Services, Other Services, Consultancy Service, Space Planning and Designing, Architect Work",
@@ -682,126 +802,6 @@
    "reasons": [
     "closed",
     "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57868215",
-   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works Of Valves, Replacement Of Corroded Pipes Of Sea Water Booster",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859603",
-   "title": "Ttps – Mech.Ii - Bm – Unit I - Rectification Of Supporting Structure Of Aph Duct & Hopper Area, Reconditioning Of Eroded",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57807596",
-   "title": "Ttps – Mech.Ii – Tm Ii - Overhauling Of Various Size Of Valves In Instrument And Service Air Compressors, Pressure Vesse",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57819576",
-   "title": "Tender For Non-Comprehensive Annual Maintenance Contract (Amc) For Composite Curing Aerospace- Grade Lab Scale Autoclave",
-   "deadline": "2026-10-30",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859608",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection & Rectification Of Emitting Electrode Suspension Frame In Esp During Annual ",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859598",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Dismantling The Existing Seal Plates And Re-Erection After Rectification Works In Bah A",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859609",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During The Overh",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859593",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Replacement Of Boiler Pressure Parts Tubes & Bends In Ii Pass Of Unit Iii Boiler During",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859602",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Repairing Of Worn-Out Skin Casing Inside The Dog House And Coutant Bottom Area In Boile",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859594",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boile",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57859610",
-   "title": "Ttps – Mech.Ii – Bm – Unit Iii - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 5",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57868189",
-   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Attending Overhauling Works In Unit - Iii Eco & Aph Hoppers Ash Disposal System Flushi",
-   "deadline": "2026-10-16",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57868196",
-   "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Inspection, Painting & Overhauling Of Condenser, Cw Pipelines, Hotwells, Etc During T",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57868212",
-   "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Overhauling Of Steam And Condensate Valves Of Turbine Regeneration System During The ",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57868194",
-   "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works - Cleaning Of Ash Water Pump House Sump During The Forthcomin",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
    ]
   }
  ],
