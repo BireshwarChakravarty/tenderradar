@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-10-12T04:36:30Z",
+ "checked_at": "2026-10-12T05:02:04Z",
  "published": 83,
  "held_back": 99,
  "held_reasons": {
@@ -12,6 +12,14 @@
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "td-57733613",
+   "title": "Tender For Purchase Of Instrumentation Trainer Kits For Instrumentation Laboratory Of The Department Of Electronics & Co",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "td-57868194",
    "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works - Cleaning Of Ash Water Pump House Sump During The Forthcomin",
@@ -810,14 +818,6 @@
    "reasons": [
     "closed",
     "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57733613",
-   "title": "Tender For Purchase Of Instrumentation Trainer Kits For Instrumentation Laboratory Of The Department Of Electronics & Co",
-   "deadline": "2026-10-12",
-   "reasons": [
-    "not relevant (goods, works or auction)"
    ]
   }
  ],
