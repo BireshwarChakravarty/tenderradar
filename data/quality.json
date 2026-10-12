@@ -1,12 +1,12 @@
 {
- "checked_at": "2026-10-12T05:02:04Z",
- "published": 83,
- "held_back": 99,
+ "checked_at": "2026-10-12T17:52:26Z",
+ "published": 89,
+ "held_back": 113,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 75,
+  "not relevant (goods, works or auction)": 85,
   "no closing date stated": 4,
   "never verified against the source": 4,
-  "not relevant (fit under 3)": 19,
+  "not relevant (fit under 3)": 23,
   "closed": 13
  },
  "fields_fixed": 0,
@@ -818,6 +818,118 @@
    "reasons": [
     "closed",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57979928",
+   "title": "Tender for Tender for Picture Archieving And Communication System Picture Archieving And Communication System At Hamidia",
+   "deadline": "2026-11-02",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57978431",
+   "title": "Tender For Renovation Of Office Store Room At O/O The Agm, La Communication Division, Kahilipara, Aegcl",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57195868",
+   "title": "Bids Are invited for Hiring Of Consultants - Milestone/Deliverable Based - Architectural Engineering Design Consultant; ",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57989042",
+   "title": "Bids Are invited for Sitc Of Audio Video Conferencing System For Conference Room At Telephone Bhavan Ctd Kolkata",
+   "deadline": "2026-10-24",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57975162",
+   "title": "Bids Are invited for Educational Software Portals For Enhanced Learning And Firewall Hardware",
+   "deadline": "2026-10-31",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57387541",
+   "title": "Bids Are invited for Customized Amc/Cmc For Pre-Owned Products - Comprehensive Annual Maintenance Contract (Camc) Of Rf ",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57991544",
+   "title": "Bids Are invited for Repair, Maintenance, And Installation Of Plant/ Systems/Equipments (Version 2) - 132 Kv Substation;",
+   "deadline": "2026-10-24",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57403905",
+   "title": "Bids Are invited for Sitc Of Cyber Security Infrastructure For Cns/Atm Systems At Chennai Airport - Supply Of Ngfw 8 Por",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57978965",
+   "title": "Tender for Annual Rate Contract For Providing Mic Set Sound System In Various Events/Programs Of Municipality Mundawar A",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57982930",
+   "title": "Bids Are invited for Conduct Of Trg For Local Youth For Radio Stn At Bn",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57989394",
+   "title": "Ttps – Mech.Ii - Bm – Unit V – Replacement Of Worn-Out Supports Of Eco. Hoppers During Overhaul For The Year 2026 - 2027",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57989393",
+   "title": "Ttps – Mech.Ii - Bm – Unit V - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During Overhaul Fo",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57989401",
+   "title": "Ttps – Mech.Ii - Bm – Unit V - Repairing Of Worn-Out Skin Casing Inside The Dog-House And Coutant Bottom Area In Boiler ",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57989397",
+   "title": "Ttps – Mech.Ii - Bm – Unit V - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 56 ",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   }
  ],
