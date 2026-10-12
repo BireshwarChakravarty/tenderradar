@@ -1,9 +1,9 @@
 {
- "checked_at": "2026-10-11T23:39:37Z",
+ "checked_at": "2026-10-12T04:36:30Z",
  "published": 83,
- "held_back": 98,
+ "held_back": 99,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 74,
+  "not relevant (goods, works or auction)": 75,
   "no closing date stated": 4,
   "never verified against the source": 4,
   "not relevant (fit under 3)": 19,
@@ -810,6 +810,14 @@
    "reasons": [
     "closed",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57733613",
+   "title": "Tender For Purchase Of Instrumentation Trainer Kits For Instrumentation Laboratory Of The Department Of Electronics & Co",
+   "deadline": "2026-10-12",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   }
  ],
