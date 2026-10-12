@@ -241,6 +241,10 @@ table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 thead th { height: 40px; padding: 0 14px; text-align: left; font-size: 12px; font-weight: 500; color: var(--text-3); background: var(--surface-2); border-bottom: 1px solid var(--border); white-space: nowrap; }
 thead th:first-child, tbody td:first-child { padding-left: 20px; }
 th.r, td.r { text-align: right; }
+.th-sort { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; color: inherit; font: inherit; }
+.th-sort:hover, th[aria-sort="ascending"] .th-sort, th[aria-sort="descending"] .th-sort { color: var(--text); }
+.th-sort:focus-visible { outline: 2px solid var(--accent, #6d7cff); outline-offset: 3px; border-radius: 3px; }
+.th-sort .arr { font-size: 11px; opacity: .8; }
 tbody tr { cursor: pointer; transition: background .12s; }
 tbody tr:hover { background: var(--surface-2); }
 tbody tr + tr td { border-top: 1px solid var(--border); }
@@ -459,7 +463,7 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
       <label class="search"><span class="sr-only">Search</span><svg class="i"><use href="#i-search"/></svg><input class="field" id="q" type="search" placeholder="Search tenders, buyers, places" title="Shortcut: press / to search" autocomplete="off"></label>
       <label><span class="sr-only">Category</span><select class="field" id="f-cat"><option value="">All categories</option></select></label>
       <label><span class="sr-only">State</span><select class="field" id="f-state"><option value="">All states</option></select></label>
-      <label><span class="sr-only">Sort</span><select class="field" id="f-sort"><option value="closing">Closing soonest</option><option value="score">Best fit</option><option value="newest">Newest</option><option value="value">Highest value</option></select></label>
+      <label><span class="sr-only">Sort</span><select class="field" id="f-sort"><option value="closing">Closing first</option><option value="closing-desc">Closing last</option><option value="score">Best fit</option><option value="newest">Newest</option><option value="value">Highest value</option></select></label>
     </div>
     <div class="active-filters" id="active-filters" hidden></div>
     <div id="results"></div>
@@ -719,6 +723,7 @@ function renderActiveFilters() {
 }
 function sorted(list) {
   const key = { closing: t => { const n = daysLeft(t.deadline); return n === null ? 1e6 : (n < 0 ? 2e6 - n : n); },
+    "closing-desc": t => { const n = daysLeft(t.deadline); return n === null ? 1e6 : -n; },
     score: t => -(t.score ?? -1), newest: t => -Date.parse(t.first_seen || 0), value: t => -(t.value_inr || 0) }[$("#f-sort").value];
   return [...list].sort((a, b) => (key(a) - key(b)) || (b.score ?? 0) - (a.score ?? 0));
 }
@@ -767,7 +772,7 @@ function renderTenders() {
   }
   out.innerHTML = `<div class="card table-card"><table>
     <colgroup><col style="width:78px"><col><col class="col-cat" style="width:200px"><col style="width:150px"><col style="width:110px"></colgroup>
-    <thead><tr><th>Fit</th><th>Tender</th><th class="col-cat">Category</th><th>Deadline</th><th class="r">Value</th></tr></thead>
+    <thead><tr><th>Fit</th><th>Tender</th><th class="col-cat">Category</th><th aria-sort="${{ closing: "ascending", "closing-desc": "descending" }[$("#f-sort").value] || "none"}"><button type="button" class="th-sort" data-sort-toggle title="Sort by deadline">Deadline<span class="arr" aria-hidden="true">${{ closing: "\u2191", "closing-desc": "\u2193" }[$("#f-sort").value] || "\u2195"}</span></button></th><th class="r">Value</th></tr></thead>
     <tbody>${list.map(rowHTML).join("")}</tbody></table></div>`;
 }
 function fillFilters() {
@@ -951,6 +956,12 @@ function wire() {
   $$(".view").forEach(b => b.addEventListener("click", () => { view = b.dataset.view; renderTenders(); }));
   $("#q").addEventListener("input", renderTenders);
   for (const s of ["#f-cat", "#f-state", "#f-sort"]) $(s).addEventListener("change", () => { if (s === "#f-sort") { prefs.sort = $(s).value; savePrefs(); } renderTenders(); });
+  $("#results").addEventListener("click", e => {
+    if (!e.target.closest("[data-sort-toggle]")) return;
+    e.stopPropagation();
+    $("#f-sort").value = $("#f-sort").value === "closing" ? "closing-desc" : "closing";
+    prefs.sort = $("#f-sort").value; savePrefs(); renderTenders();
+  });
   $("#export-btn").addEventListener("click", exportCSV);
   $("#settings-btn").addEventListener("click", openSettings);
   $("#theme-btn").addEventListener("click", () => { prefs.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark"; savePrefs(); applyTheme(prefs.theme); });
