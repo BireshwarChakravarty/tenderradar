@@ -1,23 +1,64 @@
 {
- "checked_at": "2026-10-13T11:35:42Z",
- "published": 86,
- "held_back": 139,
+ "checked_at": "2026-10-13T19:19:10Z",
+ "published": 81,
+ "held_back": 151,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 98,
   "not relevant (fit under 3)": 27,
-  "closed": 32,
+  "not relevant (goods, works or auction)": 101,
+  "closed": 60,
+  "not re-verified recently": 14,
   "no closing date stated": 4,
-  "never verified against the source": 4,
-  "not re-verified recently": 13
+  "never verified against the source": 4
  },
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
   {
+   "id": "td-58009490",
+   "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-58009486",
+   "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58009495",
+   "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58004204",
+   "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
+   "deadline": "2026-10-29",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57998252",
+   "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
+   "deadline": "2026-11-09",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
    "id": "td-57888872",
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / V-6 At Gokulpur Gp Under Patashpu",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -26,6 +67,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur /Xvi-18 At Naipur Gp Under Patashpur ",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -34,6 +76,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Brajalalpur / X-11 At Brajalalpur Gp Under P",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -42,6 +85,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gopalpur / Ix-10 At Gopalpur Gp Under Patash",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -50,6 +94,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gopalpur / Xiii-14 At Gopalpur Gp Under Pata",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -58,6 +103,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Xiv-16 At Naipur Gp Under Patashpur",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -66,6 +112,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / Xviii-20 At Gokulpur Gp Under Pat",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -74,6 +121,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Brajalalpur / Iii-3 At Brajalalpur Gp Under ",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -178,6 +226,7 @@
    "title": "Bids Are invited for Customized Amc/Cmc For Pre-Owned Products - Comprehensive Annual Maintenance Contract (Camc) Of Rf ",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -227,6 +276,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 39 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -391,6 +441,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Iv-5 At Naipur Gp Under Patashpur -",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -399,6 +450,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / Vi-7 At Gokulpur Gp Under Patashp",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -407,6 +459,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Iv-6 At Naipur Gp Under Patashpur -",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -415,6 +468,7 @@
    "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Ii-3 At Naipur Gp Under Patashpur -",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -431,6 +485,7 @@
    "title": "Tender For Supply Of Pacs (Picture Archiving And Communication System) Equipment For The Department Of Radio Diagnosis",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -464,7 +519,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -474,8 +529,16 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57903445",
+   "title": "Tender For Pre-Bid Expression Of Interest For Selection Of Implementation Partner For Design, Development, Implementatio",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -499,6 +562,7 @@
    "title": "Tender For Rates Of Different Type Of Plantation / Nursery / Display Board / Construction Related Materials Of Vb-G Ram ",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -516,7 +580,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -526,7 +590,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -536,7 +600,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -546,7 +610,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -556,7 +620,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -566,7 +630,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours",
+    "not re-verified for 53 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -613,12 +677,20 @@
    ]
   },
   {
+   "id": "td-57852293",
+   "title": "Bids Are invited for Hiring Of Creative Agency - Content Development Of Rain Forest Plant Species; As Per Sow; Na; Na; N",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57662707",
    "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Storyboarding And Conversion Of Content To Multimedia Fo",
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours"
+    "not re-verified for 53 hours"
    ]
   },
   {
@@ -679,6 +751,14 @@
    ]
   },
   {
+   "id": "td-57921099",
+   "title": "Tender For Advertising & Campaign Partner Tender 2026",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57883110",
    "title": "Tender For Empanelment Of Advertising Agencies For Publication Of Advertisements In Newspapers And Periodicals The Adver",
    "deadline": "2026-10-21",
@@ -690,6 +770,30 @@
    "id": "td-57817495",
    "title": "Rate Contract For Advertising",
    "deadline": "2026-10-12",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57812273",
+   "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, C Aign M",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57768929",
+   "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, Basic Re",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57769598",
+   "title": "Selection Of An Agency For Management Of Media Campaigns And Social Media Platforms Of Odisha State Disaster Management ",
+   "deadline": "2026-10-13",
    "reasons": [
     "closed"
    ]
@@ -714,6 +818,14 @@
    "id": "td-57835469",
    "title": "Selection Of Project Mangement Agency For Social Media Management",
    "deadline": "2026-10-12",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57894363",
+   "title": "Tender For Selection Of Social Media Management Agency",
+   "deadline": "2026-10-13",
    "reasons": [
     "closed"
    ]
@@ -763,6 +875,7 @@
    "title": "Bids Are invited for Item 1 - Online Ph, Cod, Bod & Tss Analyzer, Tnpcb Connectivity Software For Waterrangeph - 0 To 14",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -796,7 +909,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 46 hours"
+    "not re-verified for 53 hours"
    ]
   },
   {
@@ -821,6 +934,7 @@
    "title": "Tender For Providing Lan/Internet Connectivity To Continuous Ambient Air Quality Monitoring System Stations (Caaqms) At ",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -927,7 +1041,16 @@
    "title": "Bids Are invited for Setting Up Of Integrated Command Open Communication Line Between Bridge And Ops Room Romulators",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57720065",
+   "title": "Tender For DEVELOPMENT AND IMPLEMENTATION OF IEC (Information, Education Communication) Capacity building Program under ",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -953,7 +1076,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 45 hours"
+    "not re-verified for 53 hours"
    ]
   },
   {
@@ -1002,6 +1125,7 @@
    "title": "Bids Are Invited For Repair, Maintenance, And Installation Of Plant/ Systems/Equipments (Version 2) - Conversion Of Comm",
    "deadline": "2026-10-13",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1062,7 +1186,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 45 hours"
+    "not re-verified for 53 hours"
    ]
   },
   {
@@ -1112,8 +1236,16 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 45 hours",
+    "not re-verified for 53 hours",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57674380",
+   "title": "Selection Of An Agency For Integrated Social Media Management, Public Relations & Communication And Event Support For Th",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -1125,43 +1257,27 @@
    ]
   },
   {
-   "id": "td-57998252",
-   "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
-   "deadline": "2026-11-09",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-58004204",
-   "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
-   "deadline": "2026-10-29",
+   "id": "td-58005908",
+   "title": "Bids Are invited for Optical Fibre Cable Network And Allied Communication System As Per Specifications",
+   "deadline": "2026-11-03",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "td-58009495",
-   "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
-   "deadline": "2026-10-27",
+   "id": "td-58012378",
+   "title": "Bids Are invited for Sudarshan Qty 01",
+   "deadline": "2026-11-03",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "td-58009486",
-   "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
-   "deadline": "2026-10-27",
+   "id": "td-58011441",
+   "title": "Bids Are Invited For Paper Fs 75 Gsm, Paper A4 75 Gsm, Register 300 Pages, Register 200 Pages, Register 500 Pages, Regis",
+   "deadline": "2026-10-22",
    "reasons": [
     "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-58009490",
-   "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (fit under 3)"
    ]
   }
  ],
