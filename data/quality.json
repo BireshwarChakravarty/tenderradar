@@ -1,10 +1,10 @@
 {
- "checked_at": "2026-10-13T19:19:10Z",
+ "checked_at": "2026-10-13T23:41:38Z",
  "published": 81,
  "held_back": 151,
  "held_reasons": {
-  "not relevant (fit under 3)": 27,
   "not relevant (goods, works or auction)": 101,
+  "not relevant (fit under 3)": 27,
   "closed": 60,
   "not re-verified recently": 14,
   "no closing date stated": 4,
@@ -13,6 +13,30 @@
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "td-58011441",
+   "title": "Bids Are Invited For Paper Fs 75 Gsm, Paper A4 75 Gsm, Register 300 Pages, Register 200 Pages, Register 500 Pages, Regis",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58012378",
+   "title": "Bids Are invited for Sudarshan Qty 01",
+   "deadline": "2026-11-03",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58005908",
+   "title": "Bids Are invited for Optical Fibre Cable Network And Allied Communication System As Per Specifications",
+   "deadline": "2026-11-03",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "td-58009490",
    "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
@@ -276,7 +300,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 39 hours",
+    "not re-verified for 43 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -519,7 +543,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -529,7 +553,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -580,7 +604,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -590,7 +614,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -600,7 +624,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -610,7 +634,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -620,7 +644,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -630,7 +654,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -690,7 +714,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours"
+    "not re-verified for 58 hours"
    ]
   },
   {
@@ -909,7 +933,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours"
+    "not re-verified for 58 hours"
    ]
   },
   {
@@ -1076,7 +1100,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours"
+    "not re-verified for 58 hours"
    ]
   },
   {
@@ -1186,7 +1210,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours"
+    "not re-verified for 58 hours"
    ]
   },
   {
@@ -1236,7 +1260,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 53 hours",
+    "not re-verified for 58 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1254,30 +1278,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed"
-   ]
-  },
-  {
-   "id": "td-58005908",
-   "title": "Bids Are invited for Optical Fibre Cable Network And Allied Communication System As Per Specifications",
-   "deadline": "2026-11-03",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-58012378",
-   "title": "Bids Are invited for Sudarshan Qty 01",
-   "deadline": "2026-11-03",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-58011441",
-   "title": "Bids Are Invited For Paper Fs 75 Gsm, Paper A4 75 Gsm, Register 300 Pages, Register 200 Pages, Register 500 Pages, Regis",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (goods, works or auction)"
    ]
   }
  ],
