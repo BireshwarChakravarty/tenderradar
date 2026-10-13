@@ -1,18 +1,114 @@
 {
- "checked_at": "2026-10-13T01:59:08Z",
- "published": 81,
- "held_back": 134,
+ "checked_at": "2026-10-13T11:35:42Z",
+ "published": 86,
+ "held_back": 139,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 95,
-  "not relevant (fit under 3)": 25,
+  "not relevant (goods, works or auction)": 98,
+  "not relevant (fit under 3)": 27,
   "closed": 32,
   "no closing date stated": 4,
   "never verified against the source": 4,
-  "not re-verified recently": 9
+  "not re-verified recently": 13
  },
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "td-57888872",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / V-6 At Gokulpur Gp Under Patashpu",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57889086",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur /Xvi-18 At Naipur Gp Under Patashpur ",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57894658",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Brajalalpur / X-11 At Brajalalpur Gp Under P",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57894526",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gopalpur / Ix-10 At Gopalpur Gp Under Patash",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57894373",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gopalpur / Xiii-14 At Gopalpur Gp Under Pata",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57888894",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Xiv-16 At Naipur Gp Under Patashpur",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57894610",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / Xviii-20 At Gokulpur Gp Under Pat",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57893885",
+   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Brajalalpur / Iii-3 At Brajalalpur Gp Under ",
+   "deadline": "2026-10-13",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57693904",
+   "title": "Tender For Empanelment Of Vendors/ Suppliers/ Contractors/ Manufactuturers/ Printers/ Service Providers For Lic Of India",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57766936",
+   "title": "Tender For Empanelment Of Vendors, Printers, Suppliers, And Service Providers Stationery, Printing, Electronics (Acs, Co",
+   "deadline": "2026-11-02",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57806044",
+   "title": "Tender for RFP FOR Imparting English and Communication Skills Training To 270 Govt. ITI Trainees studying across the Kar",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57902013",
+   "title": "Supply Of Vestibules (UIC Type Elastomer Flange Connection for inter-communication between intermediate cabs)",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "td-57989397",
    "title": "Ttps – Mech.Ii - Bm – Unit V - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 56 ",
@@ -368,7 +464,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -378,7 +474,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -420,7 +516,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -430,7 +526,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -440,7 +536,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -450,7 +546,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -460,7 +556,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -470,7 +566,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours",
+    "not re-verified for 46 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -522,7 +618,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 36 hours"
+    "not re-verified for 46 hours"
    ]
   },
   {
@@ -699,7 +795,8 @@
    "title": "Bids Are invited for Manpower Outsourcing Services - Fixed Remuneration - Social Media Handler; Social Media Expert; Gra",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 46 hours"
    ]
   },
   {
@@ -855,7 +952,8 @@
    "title": "Tender For Tor For The Post Of Nmm-Knowledge Management And Communication For Day-Nrlm Nrlps",
    "deadline": "2026-10-11",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 45 hours"
    ]
   },
   {
@@ -963,7 +1061,8 @@
    "title": "Tender For Communication, Content Production And Digital Platform Management Consultant",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 45 hours"
    ]
   },
   {
@@ -1013,6 +1112,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
+    "not re-verified for 45 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1025,99 +1125,43 @@
    ]
   },
   {
-   "id": "td-57902013",
-   "title": "Supply Of Vestibules (UIC Type Elastomer Flange Connection for inter-communication between intermediate cabs)",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57806044",
-   "title": "Tender for RFP FOR Imparting English and Communication Skills Training To 270 Govt. ITI Trainees studying across the Kar",
-   "deadline": "2026-10-15",
+   "id": "td-57998252",
+   "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
+   "deadline": "2026-11-09",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   },
   {
-   "id": "td-57766936",
-   "title": "Tender For Empanelment Of Vendors, Printers, Suppliers, And Service Providers Stationery, Printing, Electronics (Acs, Co",
-   "deadline": "2026-11-02",
+   "id": "td-58004204",
+   "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
+   "deadline": "2026-10-29",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58009495",
+   "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58009486",
+   "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-58009490",
+   "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
+   "deadline": "2026-10-26",
    "reasons": [
     "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57693904",
-   "title": "Tender For Empanelment Of Vendors/ Suppliers/ Contractors/ Manufactuturers/ Printers/ Service Providers For Lic Of India",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57893885",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Brajalalpur / Iii-3 At Brajalalpur Gp Under ",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57894610",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / Xviii-20 At Gokulpur Gp Under Pat",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57888894",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur / Xiv-16 At Naipur Gp Under Patashpur",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57894373",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gopalpur / Xiii-14 At Gopalpur Gp Under Pata",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57894526",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gopalpur / Ix-10 At Gopalpur Gp Under Patash",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57894658",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Brajalalpur / X-11 At Brajalalpur Gp Under P",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57889086",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Naipur /Xvi-18 At Naipur Gp Under Patashpur ",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57888872",
-   "title": "Tender For Supply Rate Of Different Type Of Materials Of Vb-Ram G Works For Gokulpur / V-6 At Gokulpur Gp Under Patashpu",
-   "deadline": "2026-10-13",
-   "reasons": [
-    "not relevant (goods, works or auction)"
    ]
   }
  ],
