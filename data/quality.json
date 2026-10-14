@@ -1,18 +1,34 @@
 {
- "checked_at": "2026-10-14T04:08:16Z",
+ "checked_at": "2026-10-14T13:50:22Z",
  "published": 81,
  "held_back": 153,
  "held_reasons": {
   "not relevant (goods, works or auction)": 102,
   "not relevant (fit under 3)": 28,
   "closed": 60,
-  "not re-verified recently": 14,
+  "not re-verified recently": 52,
   "no closing date stated": 4,
   "never verified against the source": 4
  },
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "td-57926150",
+   "title": "Bids Are invited for Communication View Glass 8Mm Display Bd , Electric Acrylic Letter Display Bd With Iron Frame",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "td-57618967",
+   "title": "Bids Are invited for Repair And Overhauling Service - Tractors (V1); Mobile Communication Terminal (Hub); Yes; Buyer Pre",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
   {
    "id": "td-58011441",
    "title": "Bids Are Invited For Paper Fs 75 Gsm, Paper A4 75 Gsm, Register 300 Pages, Register 200 Pages, Register 500 Pages, Regis",
@@ -251,6 +267,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -300,7 +317,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 57 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -357,7 +374,8 @@
    "title": "Bids Are Invited For Custom Bid For Services - Dbim 3.0 Audit And Stqc Certification Of Websites",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -437,7 +455,8 @@
    "title": "Tender For Appointment of Agency for Annual Maintenance Contract of Online Platform (Website and Mobile Application) cov",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -466,6 +485,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -475,6 +495,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -484,6 +505,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -493,6 +515,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -510,6 +533,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -543,7 +567,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -553,7 +577,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -562,7 +586,8 @@
    "title": "Tender For Pre-Bid Expression Of Interest For Selection Of Implementation Partner For Design, Development, Implementatio",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -578,7 +603,8 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Designing And Development Of Website",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -587,6 +613,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -604,7 +631,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -614,7 +641,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -624,7 +651,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -634,7 +661,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -644,7 +671,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -654,7 +681,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -672,6 +699,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -681,6 +709,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -697,7 +726,8 @@
    "title": "Tender For Design And Development Of Website With Content Management System For V.P. Socorro And Implementation Of House",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -705,7 +735,8 @@
    "title": "Bids Are invited for Hiring Of Creative Agency - Content Development Of Rain Forest Plant Species; As Per Sow; Na; Na; N",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -714,7 +745,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours"
+    "not re-verified for 72 hours"
    ]
   },
   {
@@ -739,6 +770,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -771,7 +803,8 @@
    "title": "Tender For Empanelment Of Multimedia Advertising Agencies For Corporate Centre And Rhqs",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -779,7 +812,8 @@
    "title": "Tender For Advertising & Campaign Partner Tender 2026",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -795,7 +829,8 @@
    "title": "Rate Contract For Advertising",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -803,7 +838,8 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, C Aign M",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -811,7 +847,8 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, Basic Re",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -819,7 +856,8 @@
    "title": "Selection Of An Agency For Management Of Media Campaigns And Social Media Platforms Of Odisha State Disaster Management ",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -835,7 +873,8 @@
    "title": "Tender For Selection of an Agency for Social Media Management DigitalCommunication services for Ahmedabad Municipal Corp",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -843,7 +882,8 @@
    "title": "Selection Of Project Mangement Agency For Social Media Management",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -851,7 +891,8 @@
    "title": "Tender For Selection Of Social Media Management Agency",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -900,6 +941,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -933,7 +975,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours"
+    "not re-verified for 72 hours"
    ]
   },
   {
@@ -950,6 +992,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -959,6 +1002,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1024,6 +1068,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1049,6 +1094,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1066,6 +1112,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1074,7 +1121,8 @@
    "title": "Tender For DEVELOPMENT AND IMPLEMENTATION OF IEC (Information, Education Communication) Capacity building Program under ",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -1091,6 +1139,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1100,7 +1149,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours"
+    "not re-verified for 72 hours"
    ]
   },
   {
@@ -1109,6 +1158,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1150,6 +1200,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1201,6 +1252,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 44 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1210,7 +1262,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours"
+    "not re-verified for 72 hours"
    ]
   },
   {
@@ -1260,7 +1312,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 62 hours",
+    "not re-verified for 72 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1269,7 +1321,8 @@
    "title": "Selection Of An Agency For Integrated Social Media Management, Public Relations & Communication And Event Support For Th",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   },
   {
@@ -1277,23 +1330,8 @@
    "title": "Corrigendum Appointment Of Public Relations (Pr) And Social Media Agency",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed"
-   ]
-  },
-  {
-   "id": "td-57618967",
-   "title": "Bids Are invited for Repair And Overhauling Service - Tractors (V1); Mobile Communication Terminal (Hub); Yes; Buyer Pre",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-57926150",
-   "title": "Bids Are invited for Communication View Glass 8Mm Display Bd , Electric Acrylic Letter Display Bd With Iron Frame",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (goods, works or auction)"
+    "closed",
+    "not re-verified for 44 hours"
    ]
   }
  ],
