@@ -64,6 +64,18 @@ _SECTOR_LABEL = re.compile(
     r"|banks?\b|educational institutions?|research institutes?)", re.I)
 
 
+# A bot-protection interstitial (Cloudflare and similar) served instead of the page
+_BOT_CHECK = re.compile(
+    r"Performing security verification|verifies you are not a bot|Verify you are human"
+    r"|Checking (?:if the site connection is secure|your browser)|Attention Required!.{0,20}Cloudflare"
+    r"|Just a moment\.\.\.", re.I)
+
+
+def is_bot_check(text: str) -> bool:
+    """True when the source showed a bot check instead of the tender page."""
+    return bool(_BOT_CHECK.search((text or "")[:3000]))
+
+
 def is_sector_label(s: str) -> bool:
     return bool(_SECTOR_LABEL.match((s or "").strip()))
 

@@ -21,7 +21,7 @@ from config import CRAWL_BUDGET_MIN, MAX_DETAIL_PAGES, REVERIFY_HOURS, USER_AGEN
 from dates import iso_now, today_ist
 from integrity import _hours_since
 from models import Tender, tender_id
-from page_parser import parse_detail, ref_from_url
+from page_parser import is_bot_check, parse_detail, ref_from_url
 from relevance import SEARCH_KEYWORDS, categorise
 
 log = logging.getLogger("TenderDetail")
@@ -34,6 +34,15 @@ class LayoutChanged(RuntimeError):
     """Pages loaded but nothing could be parsed; the site's HTML has changed."""
 
 
+class SourceBlocked(RuntimeError):
+    """The source showed a bot-protection check instead of its pages."""
+
+
+# Stop after this many bot checks with nothing read: requesting more pages
+# only wastes the run and adds load the site has said it doesn't want
+BLOCKED_STOP_AFTER = 5
+
+
 @dataclass
 class CrawlResult:
     tenders: list[Tender] = field(default_factory=list)
@@ -43,6 +52,7 @@ class CrawlResult:
     closed_on_arrival: int = 0
     closed_ids: set[str] = field(default_factory=set)
     backlog: int = 0                                    # new notices left for the next run
+    blocked: int = 0                                    # pages answered with a bot check
 
 
 def _pause(lo: float, hi: float) -> None:
@@ -52,6 +62,7 @@ def _pause(lo: float, hi: float) -> None:
 def _collect_listing_urls(page) -> dict[str, str]:
     """{notice_url: keyword} across all search keywords."""
     found: dict[str, str] = {}
+    checks = 0
     for i, kw in enumerate(SEARCH_KEYWORDS):
         if i:
             _pause(4, 7)
@@ -62,6 +73,12 @@ def _collect_listing_urls(page) -> dict[str, str]:
             links = page.query_selector_all(NOTICE_LINKS)
         except Exception as e:
             log.warning("Listing %-26s failed: %s", kw, e)
+            links = []
+        if not links and _showing_bot_check(page):
+            checks += 1
+            if checks >= 3 and not found:
+                log.warning("Listing pages are showing a bot check; skipping the remaining keywords")
+                break
             continue
         before = len(found)
         for el in links:
@@ -72,6 +89,13 @@ def _collect_listing_urls(page) -> dict[str, str]:
             found.setdefault(full, kw)
         log.info("Listing %-26s %3d links, %3d new", kw, len(links), len(found) - before)
     return found
+
+
+def _showing_bot_check(page) -> bool:
+    try:
+        return is_bot_check(page.evaluate("() => document.body ? document.body.innerText : ''"))
+    except Exception:
+        return False
 
 
 def _read_page(page, url: str) -> str:
@@ -133,6 +157,12 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
             _pause(2, 4)
             text = _read_page(page, url)
             res.pages += 1
+            if is_bot_check(text):
+                res.blocked += 1
+                if res.blocked >= BLOCKED_STOP_AFTER and not res.tenders:
+                    log.warning("Source is showing a bot check on every page; stopping after %d", n)
+                    break
+                continue
             p = parse_detail(text)
             if not p.get("title"):
                 res.unparsed += 1
@@ -157,8 +187,13 @@ def crawl(store: dict[str, Tender], rejected: set[str] = frozenset()) -> CrawlRe
         res.backlog = max(0, len(new) + len(refresh) - res.pages)
         browser.close()
 
-    log.info("Fetched %d pages: %d parsed, %d closed on arrival, %d unparsed",
-             res.pages, len(res.tenders), res.closed_on_arrival, res.unparsed)
+    log.info("Fetched %d pages: %d parsed, %d closed on arrival, %d unparsed, %d bot checks",
+             res.pages, len(res.tenders), res.closed_on_arrival, res.unparsed, res.blocked)
+    if res.blocked and not res.tenders and not res.closed_on_arrival:
+        raise SourceBlocked(
+            f"TenderDetail answered {res.blocked} of {res.pages} pages with a bot-protection check "
+            "(Cloudflare) instead of tender pages, so nothing could be read or re-verified. "
+            "Published tenders stay visible until their last check is 36 hours old.")
     # One odd notice is normal (a quiet run may open only a page or two); a
     # layout change shows as several pages read and none understood
     if res.unparsed >= 3 and not res.tenders and not res.closed_on_arrival:
