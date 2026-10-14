@@ -3,7 +3,7 @@ import unittest
 from datetime import date
 
 from dates import days_until, parse_date, plausible
-from page_parser import detect_portal, parse_detail, parse_money, split_location, to_inr
+from page_parser import detect_portal, is_bot_check, parse_detail, parse_money, split_location, to_inr
 
 TODAY = date(2026, 10, 10)
 
@@ -199,6 +199,18 @@ class PageParserTests(unittest.TestCase):
     def test_future_published_date_is_dropped(self):
         text = LIVE_WITH_CORRIGENDUM.replace("19 Sep 2026", "19 Sep 2027")
         self.assertEqual(parse_detail(text, date(2026, 10, 11))["published"], "")
+
+    def test_bot_check_page_is_recognised(self):
+        # Served by TenderDetail on 14 October 2026 instead of tender pages
+        page = ("www.tenderdetail.com\nPerforming security verification\n\nThis website uses a security "
+                "service to protect against malicious bots. This page is displayed while the website "
+                "verifies you are not a bot.\n\nRay ID: a4a6f8eadc866bb6\nPerformance and Security by Cloudflare")
+        self.assertTrue(is_bot_check(page))
+        self.assertEqual(parse_detail(page, TODAY).get("title", ""), "")
+
+    def test_real_pages_are_not_bot_checks(self):
+        for page in (NEW_LAYOUT, OLD_LAYOUT, EXPIRED_2019, LIVE_WITH_CORRIGENDUM):
+            self.assertFalse(is_bot_check(page))
 
     def test_gem_not_matched_inside_management(self):
         self.assertEqual(detect_portal("TENDER FOR SOCIAL MEDIA MANAGEMENT AGENCY"), "")
