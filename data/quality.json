@@ -1,11 +1,11 @@
 {
- "checked_at": "2026-10-14T17:42:00Z",
- "published": 81,
- "held_back": 153,
+ "checked_at": "2026-10-14T20:04:31Z",
+ "published": 73,
+ "held_back": 161,
  "held_reasons": {
   "not relevant (goods, works or auction)": 102,
   "not relevant (fit under 3)": 28,
-  "closed": 60,
+  "closed": 72,
   "not re-verified recently": 60,
   "no closing date stated": 4,
   "never verified against the source": 4
@@ -99,7 +99,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -109,7 +109,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -119,7 +119,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -129,7 +129,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -139,7 +139,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -149,7 +149,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -159,7 +159,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -169,7 +169,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 40 hours",
+    "not re-verified for 42 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -275,7 +275,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 51 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -325,7 +325,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 61 hours",
+    "not re-verified for 63 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -383,7 +383,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -464,7 +464,15 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
+   ]
+  },
+  {
+   "id": "td-57888139",
+   "title": "Tender For Engaging Agency For Providing Non Comprehensive Annual Maintenance Contract For Website, Payment Gateway And ",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -493,7 +501,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -503,7 +511,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -513,7 +521,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -523,7 +531,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -541,7 +549,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -575,7 +583,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -585,8 +593,16 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "td-57834922",
+   "title": "Tender For Ai-Based Integrated Animal Birth Control (Abc) And Animal Welfare Management System Development, Supply, Impl",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -595,7 +611,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -607,12 +623,36 @@
    ]
   },
   {
+   "id": "td-57838187",
+   "title": "Tender For Design, Development, Hosting And Technical Maintenance Of The Official Website Of District Mineral Foundation",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57591411",
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Designing And Development Of Website",
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
+   ]
+  },
+  {
+   "id": "td-57817693",
+   "title": "Tender For Development, Hosting And Technical Maintenance Of The Official Website Of Dmft, Jamtara",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57921109",
+   "title": "Tender For Restoration / Migration Of The Directorate Of Library Services Website Www.Wbpublibnet.Gov.In",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -621,7 +661,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -639,7 +679,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -649,7 +689,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -659,7 +699,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -669,7 +709,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -679,7 +719,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -689,7 +729,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -707,7 +747,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -717,7 +757,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -735,7 +775,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -744,7 +784,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -753,7 +793,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours"
+    "not re-verified for 78 hours"
    ]
   },
   {
@@ -778,7 +818,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -807,12 +847,20 @@
    ]
   },
   {
+   "id": "td-57473318",
+   "title": "Tender For Empanelment Of Multimedia Advertising Agencies For Corporate Centre And Rhqs",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57461732",
    "title": "Tender For Empanelment Of Multimedia Advertising Agencies For Corporate Centre And Rhqs",
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -821,7 +869,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -838,7 +886,23 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
+   ]
+  },
+  {
+   "id": "td-57674331",
+   "title": "Tender For Selection Of Digital & Social Media Marketing Agency For Hoh",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57852530",
+   "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, C Aign Management, Basic Reporting And Analytics,",
+   "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -847,7 +911,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -856,7 +920,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -865,7 +929,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -882,7 +946,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -891,7 +955,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -900,7 +964,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -916,6 +980,7 @@
    "title": "Tender For Supply And Repairing Of Miscellaneous / Electrical Articles / Items In The F.Y. 2026-2027 In Paschim Medinipu",
    "deadline": "2026-10-14",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -949,7 +1014,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -983,7 +1048,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours"
+    "not re-verified for 78 hours"
    ]
   },
   {
@@ -1000,7 +1065,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1010,7 +1075,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1035,6 +1100,7 @@
    "title": "Bids Are invited for Tender For 19 Nos Dc And Ac Ev Charging Stations At Different Locations Of Sbi In Uttar Pradesh",
    "deadline": "2026-10-14",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1076,7 +1142,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1102,7 +1168,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1120,7 +1186,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1130,7 +1196,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -1147,7 +1213,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1157,7 +1223,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours"
+    "not re-verified for 78 hours"
    ]
   },
   {
@@ -1166,7 +1232,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1208,7 +1274,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1260,7 +1326,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours",
+    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1270,7 +1336,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours"
+    "not re-verified for 78 hours"
    ]
   },
   {
@@ -1278,6 +1344,7 @@
    "title": "Bids Are invited for Counter Communication System (Q4)",
    "deadline": "2026-10-14",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1311,6 +1378,7 @@
    "title": "Bids Are invited for Lora Based Communication",
    "deadline": "2026-10-14",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1320,7 +1388,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 76 hours",
+    "not re-verified for 78 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1330,7 +1398,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   },
   {
@@ -1339,7 +1407,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 48 hours"
+    "not re-verified for 50 hours"
    ]
   }
  ],
