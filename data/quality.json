@@ -1,12 +1,12 @@
 {
- "checked_at": "2026-10-14T13:50:22Z",
+ "checked_at": "2026-10-14T17:42:00Z",
  "published": 81,
  "held_back": 153,
  "held_reasons": {
   "not relevant (goods, works or auction)": 102,
   "not relevant (fit under 3)": 28,
   "closed": 60,
-  "not re-verified recently": 52,
+  "not re-verified recently": 60,
   "no closing date stated": 4,
   "never verified against the source": 4
  },
@@ -99,6 +99,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -108,6 +109,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -117,6 +119,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -126,6 +129,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -135,6 +139,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -144,6 +149,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -153,6 +159,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -162,6 +169,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
+    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -267,7 +275,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -317,7 +325,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 57 hours",
+    "not re-verified for 61 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -375,7 +383,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -456,7 +464,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -485,7 +493,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -495,7 +503,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -505,7 +513,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -515,7 +523,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -533,7 +541,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -567,7 +575,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -577,7 +585,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -587,7 +595,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -604,7 +612,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -613,7 +621,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -631,7 +639,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -641,7 +649,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -651,7 +659,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -661,7 +669,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -671,7 +679,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -681,7 +689,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -699,7 +707,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -709,7 +717,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -727,7 +735,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -736,7 +744,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -745,7 +753,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours"
+    "not re-verified for 76 hours"
    ]
   },
   {
@@ -770,7 +778,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -804,7 +812,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -813,7 +821,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -830,7 +838,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -839,7 +847,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -848,7 +856,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -857,7 +865,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -874,7 +882,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -883,7 +891,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -892,7 +900,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -941,7 +949,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -975,7 +983,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours"
+    "not re-verified for 76 hours"
    ]
   },
   {
@@ -992,7 +1000,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1002,7 +1010,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1068,7 +1076,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1094,7 +1102,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1112,7 +1120,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1122,7 +1130,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -1139,7 +1147,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1149,7 +1157,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours"
+    "not re-verified for 76 hours"
    ]
   },
   {
@@ -1158,7 +1166,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1200,7 +1208,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1252,7 +1260,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours",
+    "not re-verified for 48 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1262,7 +1270,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours"
+    "not re-verified for 76 hours"
    ]
   },
   {
@@ -1312,7 +1320,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 72 hours",
+    "not re-verified for 76 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1322,7 +1330,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   },
   {
@@ -1331,7 +1339,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 44 hours"
+    "not re-verified for 48 hours"
    ]
   }
  ],
