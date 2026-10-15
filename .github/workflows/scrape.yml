@@ -2,13 +2,15 @@ name: TenderRadar Scraper
 
 on:
   schedule:
-    - cron: '0 */4 * * *'      # every 4 hours; every listing is re-read twice a day
+    - cron: '0 */4 * * *'      # every 4 hours; every listing is re-read about once a day
   workflow_dispatch:
     inputs:
       mode:
-        description: 'auto (default), incremental (newest tenders only) or sweep (re-read every listing)'
+        description: 'auto (default), or full to read as much of the source as time allows (first fill, up to 4 hours)'
         required: false
         default: 'auto'
+        type: choice
+        options: [auto, full]
 
 permissions:
   contents: write
@@ -21,7 +23,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 110
+    timeout-minutes: ${{ github.event.inputs.mode == 'full' && 260 || 110 }}
     env:
       DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}

@@ -91,6 +91,42 @@ class ListParsingTests(unittest.TestCase):
         self.assertEqual(res.closed_ids, {"cppp-14203125"})
 
 
+def _gem_row(start, end, bid, item, org, dept):
+    td = '<td style="text-align: left;color: #252525;font-family: tahoma;font-size: 12px">'
+    return (f"<tr>{td}1.</td>{td}{start}</td>{td}{end}</td>"
+            f"{td}<a href=\"https://eprocure.gov.in/cppp/gemfullview/MzgxMmUy==A13h1OGQ2\">{bid}</a></td>"
+            f"{td}{item}</td>{td}{org}</td>{td}{dept}</td></tr>")
+
+
+GEM_PAGE = ("<div>Total Bid(s) : 38744</div><table>"
+            + _gem_row("01-Oct-2026 10:54 AM", "21-Oct-2026 12:00 PM", "GEM/2026/B/7832446/ 1",
+                       "Social Media Agency Services - Content creation and page management",
+                       "Ministry of Coal", "Department of Coal")
+            + _gem_row("31-Aug-2026 11:28 AM", "15-Oct-2026 12:00 PM", "GEM/2026/B/7973219/ 384905",
+                       "Handloom Cotton Pillow Covers (V3)", "West Central Railway", "Indian Railways")
+            + "</table>")
+
+
+class GemTests(unittest.TestCase):
+    def test_gem_rows(self):
+        rows = cppp.parse_gem(GEM_PAGE)
+        self.assertEqual([r.key for r in rows], ["gem-7832446", "gem-7973219"])
+        r = rows[0]
+        self.assertEqual((r.tender_id, r.published, r.closing), ("GEM/2026/B/7832446", "2026-10-01T10:54", "2026-10-21T12:00"))
+        self.assertEqual(r.organisation, "Ministry of Coal, Department of Coal")
+        self.assertEqual(cppp.total_tenders(GEM_PAGE), 38744)
+
+    def test_gem_tender_passes_the_gate(self):
+        res = cppp.CrawlResult()
+        cppp._collect(res, cppp.parse_gem(GEM_PAGE), "2026-10-15", _ts(1), cppp.FEEDS["gem"])
+        self.assertEqual([t.id for t in res.tenders], ["cppp-gem-7832446"])
+        t = res.tenders[0]
+        self.assertEqual((t.portal, t.url), ("GeM", "https://bidplus.gem.gov.in/all-bids"))
+        self.assertEqual(blockers(t, TODAY), [])
+        t.ref_no = "GEM/2026/B/1"
+        self.assertIn("source link doesn't match the reference", blockers(t, TODAY))
+
+
 class CandidateTests(unittest.TestCase):
     def test_communications_work_is_a_candidate(self):
         for title in ["Hiring of PR agency for Ministry", "Selection of agency for social media management",

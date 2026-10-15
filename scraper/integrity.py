@@ -36,7 +36,9 @@ MAX_DAYS_AHEAD = 365
 
 _URL = re.compile(r"^https://www\.tenderdetail\.com/[^ ]*TenderNotice/(\d+)")
 _CPPP_URL = re.compile(r"^https://eprocure\.gov\.in/cppp/")
+_GEM_URL = re.compile(r"^https://bidplus\.gem\.gov\.in/")
 _CPPP_ID = re.compile(r"^cppp-\d+$")        # CPPP's own listing number
+_GEM_ID = re.compile(r"^cppp-gem-(\d+)$")   # GeM bid number, from CPPP's copy of the GeM list
 _BANNED = re.compile(r"bid tracker|bid pipeline|in the pipeline|already bid|internal tracker|"
                      r"company_knowledge|private notes", re.I)
 # Acronyms and abbreviations that are fine anywhere
@@ -112,6 +114,9 @@ def reset_assessment(t: Tender) -> None:
 def link_matches(t: Tender) -> bool:
     """The link points at the tender's source and the ID agrees with its reference."""
     if t.source == "CPPP":
+        gem = _GEM_ID.match(t.id)
+        if gem:
+            return bool(_GEM_URL.match(t.url or "") and (t.ref_no or "").endswith("/" + gem.group(1)))
         return bool(_CPPP_URL.match(t.url or "") and _CPPP_ID.match(t.id) and (t.ref_no or "").strip())
     m = _URL.match(t.url or "")
     return bool(m and f"td-{m.group(1)}" == t.id and m.group(1) == t.ref_no)

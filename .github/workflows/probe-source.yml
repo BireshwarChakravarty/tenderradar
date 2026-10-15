@@ -12,11 +12,11 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
-      - run: pip install python-dotenv
+      - run: pip install -r scraper/requirements.txt
       - run: python probe/cppp_probe.py

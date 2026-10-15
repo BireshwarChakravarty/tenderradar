@@ -47,7 +47,7 @@ _ROW = re.compile(r"<tr[^>]*>(.*?)</tr>", re.S | re.I)
 _CELL = re.compile(r"<td[^>]*>(.*?)</td>", re.S | re.I)
 _HREF = re.compile(r'href="([^"]*tendersfullview/[^"]+)"', re.I)
 _ANCHOR = re.compile(r"<a\b[^>]*>(.*?)</a>", re.S | re.I)
-_TOTAL = re.compile(r"Total\s+Tenders\s*:\s*([\d,]+)", re.I)
+_TOTAL = re.compile(r"Total\s+(?:Tenders|Bid\(s\)|Bids)\s*:\s*([\d,]+)", re.I)
 _DT_FORMATS = ("%d-%b-%Y %I:%M %p", "%d-%b-%Y %H:%M", "%d-%b-%Y")
 _CTX = ssl.create_default_context()
 
@@ -83,11 +83,12 @@ class CrawlResult:
     newest_published: str = ""                             # YYYY-MM-DDTHH:MM, IST
 
 
-def page_url(n: int) -> str:
+def page_url(n: int, base: str = LIST) -> str:
+    """CPPP pages its lists with the target URL base64-encoded in ?url= (?page=1 is the first page)."""
     if n <= 1:
-        return LIST
-    target = f"{LIST}?page={n}".encode()
-    return LIST + "?url=" + urllib.parse.quote(base64.b64encode(target).decode(), safe="")
+        return base
+    target = f"{base}?page={n}".encode()
+    return base + "?url=" + urllib.parse.quote(base64.b64encode(target).decode(), safe="")
 
 
 def _text(s: str) -> str:
@@ -151,6 +152,45 @@ def parse_list(page_html: str) -> list[Row]:
     return rows
 
 
+_GEM_BID = re.compile(r"(GEM/\d{4}/[A-Z]/(\d+))")
+
+
+def parse_gem(page_html: str) -> list[Row]:
+    """CPPP's copy of the GeM bid list: start, end, bid number, item or service, organisation, department."""
+    rows = []
+    for tr in _ROW.findall(page_html):
+        cells = _CELL.findall(tr)
+        if len(cells) < 6:
+            continue
+        published, closing = _when(cells[1]), _when(cells[2])
+        m = _GEM_BID.search(_text(cells[3]))
+        title = _text(cells[4])
+        if not (published and closing and m) or len(title) < 8:
+            continue
+        org = ", ".join(x for x in (_text(cells[5]), _text(cells[6]) if len(cells) > 6 else "") if x)
+        rows.append(Row(key="gem-" + m.group(2), tender_id=m.group(1), title=title, ref=m.group(1),
+                        organisation=org, published=published, closing=closing, corrigendum=False))
+    return rows
+
+
+@dataclass(frozen=True)
+class Feed:
+    name: str
+    url: str
+    parse: object
+    portal: str
+    lookup: str              # where people find the tender by its ID
+    newest_first: bool       # sorted by publish time, so new tenders are on the first pages
+    budget_min: float        # time allowed per run
+
+
+FEEDS = {
+    "cppp": Feed("CPPP tenders", LIST, parse_list, "CPPP", LOOKUP, True, 35),
+    # GeM bids as republished on CPPP (sorted by closing date, so read in full over the cycle)
+    "gem": Feed("GeM bids", BASE + "gemtender", parse_gem, "GeM", "https://bidplus.gem.gov.in/all-bids", False, 60),
+}
+
+
 def total_tenders(page_html: str) -> int:
     m = _TOTAL.search(_text(page_html))
     return int(m.group(1).replace(",", "")) if m else 0
@@ -161,7 +201,7 @@ def fetch(url: str, attempts: int = 3) -> str:
     for i in range(attempts):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "en-IN,en"})
-            with urllib.request.urlopen(req, timeout=60, context=_CTX) as r:
+            with urllib.request.urlopen(req, timeout=90, context=_CTX) as r:
                 body = r.read().decode("utf-8", "replace")
             if is_bot_check(_text(body[:20000])):
                 raise SourceUnavailable("CPPP answered with a bot-protection check")
@@ -178,16 +218,17 @@ def tender_id(key: str) -> str:
     return f"cppp-{key}"
 
 
-def to_tender(r: Row, now: str) -> Tender:
+def to_tender(r: Row, now: str, feed: Feed | None = None) -> Tender:
+    feed = feed or FEEDS["cppp"]
     return Tender(
-        id=tender_id(r.key), ref_no=r.tender_id, url=LOOKUP, title=r.title,
-        source=SOURCE, portal=SOURCE, authority=r.organisation,
+        id=tender_id(r.key), ref_no=r.tender_id, url=feed.lookup, title=r.title,
+        source=SOURCE, portal=feed.portal, authority=r.organisation,
         category=categorise(r.title), published=r.published[:10], deadline=r.closing[:10],
         deadline_source="stated", first_seen=now, last_seen=now, verified_at=now,
     )
 
 
-def _collect(res: CrawlResult, rows: list[Row], today: str, now: str) -> None:
+def _collect(res: CrawlResult, rows: list[Row], today: str, now: str, feed: Feed | None = None) -> None:
     for r in rows:
         res.seen_rows += 1
         res.newest_published = max(res.newest_published, r.published)
@@ -199,7 +240,7 @@ def _collect(res: CrawlResult, rows: list[Row], today: str, now: str) -> None:
             res.closed_on_arrival += 1
             res.closed_ids.add(tid)
             continue
-        res.tenders.append(to_tender(r, now))
+        res.tenders.append(to_tender(r, now, feed))
 
 
 def plan(last_page: int, newest_end: int, cursor: int, chunk: int, full: bool) -> list[int]:
@@ -223,54 +264,58 @@ OVERLAP_PAGES = 40
 MAX_NEWEST_PAGES = 200
 
 
-def crawl(since_published: str = "", cursor: int = 0, cycle_runs: int = 3, full: bool = False,
-          workers: int = 3, budget_min: float = 80, pause: float = 0.5) -> CrawlResult:
+def crawl(feed: Feed | str = "cppp", since_published: str = "", cursor: int = 0, cycle_runs: int = 6,
+          full: bool = False, workers: int = 3, budget_min: float | None = None,
+          pause: float = 0.5) -> CrawlResult:
     """
-    One run: the newest pages back to `since_published` (the newest e-published
-    time the last run saw), then the next 1/cycle_runs of the list from `cursor`,
-    so every listing is re-read every `cycle_runs` runs. `full` reads everything.
+    One run over one list: for a newest-first list, the newest pages back to
+    `since_published` (the newest e-published time the last run saw); then the
+    next 1/cycle_runs of the list from `cursor`, so every listing is re-read
+    every `cycle_runs` runs. `full` reads the rest of the list, time allowing.
     """
     from dates import today_ist
 
+    feed = FEEDS[feed] if isinstance(feed, str) else feed
+    budget = budget_min if budget_min is not None else feed.budget_min
     res, today, now = CrawlResult(), today_ist().isoformat(), iso_now()
     started = time.monotonic()
-    first = fetch(LIST)
+    first = fetch(feed.url)
     res.pages = 1
     total = total_tenders(first)
-    rows = parse_list(first)
+    rows = feed.parse(first)
     if not rows:
-        raise SourceUnavailable("CPPP's tender list could not be read; its page layout may have changed")
-    _collect(res, rows, today, now)
+        raise SourceUnavailable(f"The {feed.name} list could not be read; its page layout may have changed")
+    _collect(res, rows, today, now, feed)
     res.last_page = last_page = max(1, -(-total // 10)) if total else 1
-    log.info("CPPP lists %d active tenders (%d pages)", total, last_page)
+    log.info("%s: %d listed (%d pages)", feed.name, total, last_page)
 
     # Newest first, until a page holds only tenders the last run already saw
     n = 1
-    while n < min(last_page, MAX_NEWEST_PAGES) and since_published and \
+    while feed.newest_first and since_published and n < min(last_page, MAX_NEWEST_PAGES) and \
             max(r.published for r in rows) >= since_published:
         n += 1
         time.sleep(pause)
-        rows = parse_list(fetch(page_url(n)))
+        rows = feed.parse(fetch(page_url(n, feed.url)))
         res.pages += 1
         if not rows:
             res.unparsed += 1
             break
-        _collect(res, rows, today, now)
+        _collect(res, rows, today, now, feed)
     newest_end = n
-    log.info("Newest: %d pages", newest_end)
 
     chunk = -(-last_page // max(1, cycle_runs)) + OVERLAP_PAGES
-    todo = plan(last_page, newest_end, cursor, chunk, full or not since_published)
-    log.info("Re-reading pages %s to %s", todo[0] if todo else "-", todo[-1] if todo else "-")
+    todo = plan(last_page, newest_end, cursor, chunk, full)
+    log.info("%s: newest %d pages; re-reading pages %s to %s", feed.name, newest_end,
+             todo[0] if todo else "-", todo[-1] if todo else "-")
 
     def get(p: int):
-        if time.monotonic() - started > budget_min * 60:
+        if time.monotonic() - started > budget * 60:
             return p, None
         time.sleep(pause)
         try:
-            return p, parse_list(fetch(page_url(p)))
+            return p, feed.parse(fetch(page_url(p, feed.url)))
         except SourceUnavailable as e:
-            log.warning("Page %d failed: %s", p, e)
+            log.warning("%s page %d failed: %s", feed.name, p, e)
             return p, []
 
     unread = []
@@ -282,8 +327,8 @@ def crawl(since_published: str = "", cursor: int = 0, cycle_runs: int = 3, full:
             res.pages += 1
             if not got:
                 res.unparsed += 1
-            _collect(res, got, today, now)
-            if i % 200 == 0:
+            _collect(res, got, today, now, feed)
+            if i % 100 == 0:
                 log.info("  %d / %d pages, %d candidates so far", i, len(todo), len(res.listed_ids))
     res.backlog = len(unread)
     if unread:
@@ -293,10 +338,10 @@ def crawl(since_published: str = "", cursor: int = 0, cycle_runs: int = 3, full:
     else:
         res.next_cursor = 0                     # wrapped: the next run starts again from the top
 
-    log.info("CPPP: %d pages, %d rows, %d candidates (%d open, %d closed), %d unreadable, %d left",
-             res.pages, res.seen_rows, len(res.listed_ids), len(res.tenders), res.closed_on_arrival,
-             res.unparsed, res.backlog)
+    log.info("%s: %d pages, %d rows, %d candidates (%d open, %d closed), %d unreadable, %d left",
+             feed.name, res.pages, res.seen_rows, len(res.listed_ids), len(res.tenders),
+             res.closed_on_arrival, res.unparsed, res.backlog)
     if res.pages > 5 and res.unparsed > res.pages // 2:
-        raise SourceUnavailable(f"CPPP returned {res.unparsed} of {res.pages} pages without a readable "
-                                f"tender list; it may be down or its layout may have changed")
+        raise SourceUnavailable(f"The {feed.name} list returned {res.unparsed} of {res.pages} pages without "
+                                f"readable rows; CPPP may be down or its layout may have changed")
     return res
