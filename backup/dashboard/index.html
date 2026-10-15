@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TenderRadar</title>
+<meta name="description" content="Government tenders for PR and communications, scored for fit.">
+<meta name="author" content="Bireshwar Chakravarty">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/manifest.webmanifest">
+<meta name="theme-color" content="#07090d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TenderRadar">
+<meta property="og:description" content="Government tenders for PR and communications, found, filtered and scored every four hours.">
+<meta property="og:image" content="https://bireshwarchakravarty.github.io/tenderradar/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══ Tokens ═══════════════════════════════════════════════════════════ */
+:root {
+  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r-lg: 16px; --r: 12px; --r-sm: 8px;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+:root, :root[data-theme="dark"] {
+  --bg: #07090d;
+  --surface: #0e1118;
+  --surface-2: #131722;
+  --surface-3: #191e2b;
+  --border: rgba(255, 255, 255, .07);
+  --border-2: rgba(255, 255, 255, .12);
+  --text: #eef1f6; --text-2: #9aa3b2; --text-3: #646d7d;
+  --accent: #8a96ff; --accent-soft: rgba(138, 150, 255, .12);
+  --grad: linear-gradient(135deg, #8b7bff 0%, #6c8cff 45%, #4fb8ff 100%);
+  --glow: rgba(110, 120, 255, .16); --glow-2: rgba(79, 184, 255, .10);
+  /* chart, validated (dataviz validator, all-pairs, dark surface #10141c) */
+  --bid: #199e70; --watch: #d95926; --other: #4b5262;
+  --grid: #1b202b; --axis: #2a303d; --week: rgba(138, 150, 255, .06);
+  --bar: #3987e5;
+  --good: #3fcf8e; --good-soft: rgba(63, 207, 142, .12);
+  --warn: #f0a44b; --warn-soft: rgba(240, 164, 75, .12);
+  --bad: #ff7a72;  --bad-soft: rgba(255, 122, 114, .12);
+  --chip: rgba(255, 255, 255, .06);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 24px 48px -28px rgba(0, 0, 0, .9);
+  --shadow-lg: 0 40px 100px -20px rgba(0, 0, 0, .8);
+  --glass: rgba(11, 14, 20, .72);
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f4f5f8;
+  --surface: #ffffff;
+  --surface-2: #f8f9fb;
+  --surface-3: #eff1f5;
+  --border: rgba(15, 20, 35, .08);
+  --border-2: rgba(15, 20, 35, .14);
+  --text: #0d1220; --text-2: #4b5565; --text-3: #8a93a3;
+  --accent: #4f5bd5; --accent-soft: rgba(79, 91, 213, .09);
+  --grad: linear-gradient(135deg, #6d5cf6 0%, #4f5bd5 45%, #1d8fe0 100%);
+  --glow: rgba(110, 100, 255, .10); --glow-2: rgba(40, 150, 240, .07);
+  /* chart, validated (all-pairs, light surface #ffffff; aqua < 3:1 → legend, tooltip and table carry identity) */
+  --bid: #1baf7a; --watch: #eb6834; --other: #b9c0cc;
+  --grid: #eef0f4; --axis: #d9dde5; --week: rgba(79, 91, 213, .05);
+  --bar: #2a78d6;
+  --good: #11804f; --good-soft: rgba(17, 128, 79, .09);
+  --warn: #a65e00; --warn-soft: rgba(200, 120, 0, .10);
+  --bad: #c3352e;  --bad-soft: rgba(195, 53, 46, .08);
+  --chip: rgba(15, 20, 35, .05);
+  --shadow: 0 1px 2px rgba(15, 20, 35, .04), 0 16px 40px -24px rgba(15, 20, 35, .22);
+  --shadow-lg: 0 40px 100px -24px rgba(15, 20, 35, .35);
+  --glass: rgba(255, 255, 255, .78);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--text); min-height: 100vh;
+  font: 14px/1.5 var(--font); font-feature-settings: "cv11", "ss03"; letter-spacing: -.006em;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: 560px; z-index: -1; pointer-events: none;
+  background: radial-gradient(50% 70% at 20% -10%, var(--glow), transparent 70%),
+              radial-gradient(40% 60% at 85% -15%, var(--glow-2), transparent 70%);
+}
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--text-3); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+.site-foot { padding-top: 40px; padding-bottom: 32px; color: var(--text-3); font-size: 12.5px; }
+
+/* ══ Top bar ══════════════════════════════════════════════════════════ */
+.top { position: sticky; top: 0; z-index: 40; background: var(--glass); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); }
+.top .wrap { display: flex; align-items: center; gap: 22px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 650; font-size: 15px; letter-spacing: -.02em; }
+.mark { width: 28px; height: 28px; border-radius: 8px; display: block; box-shadow: 0 4px 14px -4px rgba(110, 120, 255, .6); }
+
+.tabs { display: flex; gap: 2px; }
+.tab { border: 0; background: none; height: 34px; padding: 0 12px; border-radius: var(--r-sm); color: var(--text-2); font-weight: 500; cursor: pointer; transition: .15s; }
+.tab:hover { color: var(--text); background: var(--chip); }
+.tab[aria-current="true"] { color: var(--text); background: var(--surface-3); }
+.top .spacer { flex: 1; }
+.pill { display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); font-size: 12.5px; white-space: nowrap; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-3); flex: none; }
+.dot.ok { background: var(--good); box-shadow: 0 0 0 3px var(--good-soft); }
+.dot.stale { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-soft); }
+.dot.fail { background: var(--bad); box-shadow: 0 0 0 3px var(--bad-soft); }
+.icon-btn { width: 34px; height: 34px; border-radius: var(--r-sm); border: 1px solid transparent; background: none; color: var(--text-2); display: grid; place-items: center; cursor: pointer; transition: .15s; }
+.icon-btn:hover { color: var(--text); background: var(--chip); }
+
+/* ══ Overview ═════════════════════════════════════════════════════════ */
+.page { padding: 36px 0 72px; }
+.page[hidden] { display: none; }
+.head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 26px; flex-wrap: wrap; }
+.head h1 { margin: 0; font-size: 30px; line-height: 1.15; font-weight: 650; letter-spacing: -.03em; }
+.head p { margin: 6px 0 0; color: var(--text-2); font-size: 14.5px; }
+.btn { height: 36px; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: var(--r-sm); border: 1px solid var(--border-2); background: var(--surface); color: var(--text); font-weight: 500; cursor: pointer; white-space: nowrap; transition: .15s; }
+.btn:hover { background: var(--surface-2); border-color: var(--text-3); }
+.btn.primary { border: 0; color: #fff; background: var(--grad); box-shadow: 0 10px 24px -12px rgba(100, 110, 255, .8); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.sm { height: 30px; padding: 0 10px; font-size: 13px; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); }
+.card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px 0; flex-wrap: wrap; }
+.card-title { font-size: 14px; font-weight: 600; letter-spacing: -.01em; }
+.card-sub { font-size: 12.5px; color: var(--text-3); margin-top: 2px; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
+.kpi { position: relative; padding: 18px 20px 20px; overflow: hidden; cursor: pointer; text-align: left; border: 1px solid var(--border); transition: border-color .2s, transform .2s var(--ease); }
+.kpi:hover { border-color: var(--border-2); transform: translateY(-1px); }
+.kpi::after { content: ""; position: absolute; inset: auto -30% -60% auto; width: 160px; height: 160px; border-radius: 50%; background: var(--glow); filter: blur(30px); opacity: 0; transition: opacity .3s; }
+.kpi:hover::after { opacity: 1; }
+.kpi-label { color: var(--text-2); font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.kpi-label svg { color: var(--text-3); }
+.kpi-value { font-size: 34px; font-weight: 650; letter-spacing: -.035em; line-height: 1.1; margin-top: 12px; }
+.kpi-value small { font-size: 16px; font-weight: 500; color: var(--text-3); margin-left: 4px; letter-spacing: -.01em; }
+.kpi-sub { color: var(--text-3); font-size: 12.5px; margin-top: 4px; }
+
+.grid-main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 14px; margin-bottom: 14px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+
+/* Runway chart */
+.legend { display: flex; gap: 16px; font-size: 12.5px; color: var(--text-2); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.legend i { width: 9px; height: 9px; border-radius: 50%; }
+.grid-main > .card { display: flex; flex-direction: column; }
+.chart { position: relative; flex: 1; min-height: 300px; margin: 8px 12px 10px 6px; }
+.chart svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; overflow: visible; }
+.chart text { font-family: var(--font); font-size: 11.5px; fill: var(--text-3); }
+.chart .dotg { cursor: pointer; }
+.chart .dotg circle.m { transition: r .15s var(--ease); }
+.chart .dotg.hot circle.m, .chart .dotg:focus circle.m { r: 8; }
+.tip { position: absolute; pointer-events: none; z-index: 5; min-width: 220px; max-width: 280px; padding: 10px 12px; border-radius: 10px;
+  background: var(--surface-3); border: 1px solid var(--border-2); box-shadow: var(--shadow-lg); font-size: 12.5px; opacity: 0; transform: translateY(4px); transition: opacity .12s, transform .12s; }
+.tip.show { opacity: 1; transform: none; }
+.tip b { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; line-height: 1.35; }
+.tip .row { display: flex; justify-content: space-between; gap: 12px; color: var(--text-2); }
+.tip .row span:last-child { color: var(--text); font-variant-numeric: tabular-nums; }
+.tip .key { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+
+/* Closing soon */
+.soon { list-style: none; margin: 0; padding: 10px 8px 10px; }
+.soon li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 12px; border-radius: var(--r); cursor: pointer; transition: background .15s; }
+.soon li:hover { background: var(--surface-2); }
+.cal { width: 46px; height: 50px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); display: grid; place-items: center; align-content: center; gap: 0; }
+.cal b { font-size: 18px; font-weight: 650; line-height: 1; letter-spacing: -.02em; }
+.cal span { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); margin-top: 3px; }
+.cal.urgent { border-color: color-mix(in srgb, var(--bad) 40%, transparent); background: var(--bad-soft); }
+.cal.urgent span { color: var(--bad); }
+.soon .t { font-weight: 550; font-size: 13.5px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.soon .s { font-size: 12.5px; color: var(--text-3); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.soon .s em { font-style: normal; color: var(--text-2); }
+.soon .s em.urgent { color: var(--bad); font-weight: 500; }
+
+/* Top matches */
+.section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 34px 0 14px; }
+.section-head h2 { margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -.02em; }
+.matches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.match { position: relative; padding: 20px; cursor: pointer; display: flex; flex-direction: column; gap: 14px; transition: transform .2s var(--ease), border-color .2s; overflow: hidden; }
+.match:hover { transform: translateY(-2px); border-color: var(--border-2); }
+.match::before { content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: var(--grad); opacity: .7; }
+.match-top { display: flex; align-items: center; justify-content: space-between; }
+.ring { position: relative; width: 52px; height: 52px; display: grid; place-items: center; }
+.ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.ring b { font-size: 15px; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.match h3 { margin: 0; font-size: 15.5px; line-height: 1.38; font-weight: 600; letter-spacing: -.015em; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; min-height: 64px; }
+.match .by { color: var(--text-3); font-size: 13px; margin-top: -6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.match-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-2); margin-top: auto; }
+.match-foot b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Bars */
+.bars { padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 11px; }
+.bar-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 28px; gap: 12px; align-items: center; font-size: 13px; cursor: pointer; }
+.bar-row:hover .bar-label { color: var(--text); }
+.bar-label { color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { height: 8px; }
+.bar-fill { height: 100%; border-radius: 0 4px 4px 0; background: var(--bar); min-width: 4px; transition: width .6s var(--ease); }
+.bar-val { text-align: right; color: var(--text); font-variant-numeric: tabular-nums; font-weight: 500; }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 9px; border-radius: 999px; font-size: 12px; font-weight: 500; background: var(--chip); color: var(--text-2); white-space: nowrap; }
+.chip.bid { background: var(--good-soft); color: var(--good); }
+.chip.watch { background: var(--warn-soft); color: var(--warn); }
+.chip.accent { background: var(--accent-soft); color: var(--accent); }
+.chip i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ══ Tenders page ═════════════════════════════════════════════════════ */
+.views { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 16px; overflow-x: auto; scrollbar-width: none; }
+.view { border: 0; background: none; padding: 10px 12px; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--text-2); font-weight: 500; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; white-space: nowrap; }
+.view:hover { color: var(--text); }
+.view[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); }
+.view .n { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.field { height: 36px; border-radius: var(--r-sm); border: 1px solid var(--border-2); background: var(--surface); padding: 0 12px; outline: none; color: var(--text); }
+.field:hover { border-color: var(--text-3); }
+.field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+select.field { appearance: none; padding-right: 30px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238a93a3' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 11px center; }
+.search { position: relative; flex: 1 1 260px; max-width: 420px; }
+.search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text-3); pointer-events: none; }
+.search .field { width: 100%; padding-left: 34px; }
+.toolbar .spacer { flex: 1; }
+.active-filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: -4px 0 14px; }
+.active-filters[hidden] { display: none; }
+.fchip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 6px 0 11px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border)); background: var(--accent-soft); color: var(--text); font-size: 12.5px; font-weight: 500; cursor: pointer; }
+.fchip:hover { border-color: var(--accent); }
+.fchip svg { width: 13px; height: 13px; color: var(--text-2); }
+.linkbtn { border: 0; background: none; color: var(--accent); font-weight: 500; font-size: 12.5px; cursor: pointer; padding: 4px 6px; }
+.empty .btn { margin-top: 16px; }
+.table-card { overflow: hidden; }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+thead th { height: 40px; padding: 0 14px; text-align: left; font-size: 12px; font-weight: 500; color: var(--text-3); background: var(--surface-2); border-bottom: 1px solid var(--border); white-space: nowrap; }
+thead th:first-child, tbody td:first-child { padding-left: 20px; }
+th.r, td.r { text-align: right; }
+.th-sort { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; color: inherit; font: inherit; }
+.th-sort:hover, th[aria-sort="ascending"] .th-sort, th[aria-sort="descending"] .th-sort { color: var(--text); }
+.th-sort:focus-visible { outline: 2px solid var(--accent, #6d7cff); outline-offset: 3px; border-radius: 3px; }
+.th-sort .arr { font-size: 11px; opacity: .8; }
+tbody tr { cursor: pointer; transition: background .12s; }
+tbody tr:hover { background: var(--surface-2); }
+tbody tr + tr td { border-top: 1px solid var(--border); }
+tbody td { padding: 14px; vertical-align: middle; }
+tbody tr.dim td > * { opacity: .55; }
+.fit { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; height: 26px; border-radius: 7px; font-weight: 650; font-size: 12.5px; font-variant-numeric: tabular-nums; background: var(--chip); color: var(--text-2); }
+.fit.bid { background: var(--good-soft); color: var(--good); }
+.fit.watch { background: var(--warn-soft); color: var(--warn); }
+.fit.none { background: none; color: var(--text-3); font-weight: 400; }
+.tt { font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-cat .muted { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ts { color: var(--text-3); font-size: 12.5px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.due b { font-weight: 500; display: block; font-variant-numeric: tabular-nums; }
+.due span { font-size: 12.5px; color: var(--text-3); }
+.due span.urgent { color: var(--bad); font-weight: 500; } .due span.soon { color: var(--warn); }
+.empty { padding: 72px 24px; text-align: center; color: var(--text-2); }
+.empty .orb { width: 44px; height: 44px; margin: 0 auto 14px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.empty h3 { margin: 0 0 4px; color: var(--text); font-size: 15px; font-weight: 600; }
+.empty p { margin: 0 auto; max-width: 420px; }
+
+/* Shortlist board */
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.col { padding: 14px; background: var(--surface-2); }
+.col-h { display: flex; justify-content: space-between; font-weight: 600; padding: 2px 4px 12px; }
+.col-h span:last-child { color: var(--text-3); font-weight: 500; }
+.bcard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px; margin-bottom: 10px; cursor: pointer; transition: .15s; }
+.bcard:hover { border-color: var(--border-2); }
+
+/* ══ Sheet ════════════════════════════════════════════════════════════ */
+.scrim { position: fixed; inset: 0; z-index: 50; background: rgba(3, 5, 9, .55); backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: opacity .25s; }
+:root[data-theme="light"] .scrim { background: rgba(15, 20, 35, .25); }
+.scrim.open { opacity: 1; pointer-events: auto; }
+.sheet { position: fixed; top: 10px; right: 10px; bottom: 10px; width: min(560px, calc(100vw - 20px)); z-index: 60; display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--border-2); border-radius: 18px; box-shadow: var(--shadow-lg); overflow: hidden;
+  transform: translateX(calc(100% + 20px)); visibility: hidden; transition: transform .4s var(--ease), visibility .4s; }
+.sheet.open { transform: none; visibility: visible; }
+.sheet:focus { outline: none; }
+.sheet-hero { position: relative; padding: 18px 20px 22px; border-bottom: 1px solid var(--border);
+  background: radial-gradient(80% 140% at 0% 0%, var(--glow), transparent 60%), radial-gradient(60% 120% at 100% 0%, var(--glow-2), transparent 60%); }
+.sheet-bar { display: flex; align-items: center; gap: 4px; margin-bottom: 14px; }
+.sheet-bar .ref { color: var(--text-3); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.sheet-bar .spacer { flex: 1; }
+.sheet-title { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; align-items: start; }
+.sheet h2 { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 650; letter-spacing: -.02em; }
+.sheet .orig { margin: 6px 0 0; color: var(--text-3); font-size: 12.5px; }
+.sheet .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.sheet-body { flex: 1; overflow-y: auto; padding: 20px; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+.fact { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px; min-width: 0; }
+.fact dt { font-size: 12px; color: var(--text-3); }
+.fact dd { margin: 3px 0 0; font-weight: 550; overflow-wrap: anywhere; }
+.fact dd .sub { display: block; font-weight: 400; font-size: 12.5px; color: var(--text-2); }
+.fact dd .na { color: var(--text-3); font-weight: 400; }
+.ai { border-radius: var(--r); padding: 1px; margin-bottom: 20px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 55%, transparent), var(--border) 50%, rgba(79, 184, 255, .35)); }
+.ai-in { border-radius: calc(var(--r) - 1px); background: var(--surface); padding: 16px; }
+.ai-h { display: flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 10px; }
+.ai-h svg { stroke: url(#gs); }
+.ai p { margin: 0 0 8px; color: var(--text-2); line-height: 1.6; }
+.ai p b { color: var(--text); font-weight: 600; }
+.ai .note { font-size: 12px; color: var(--text-3); margin: 10px 0 0; }
+.lbl { font-size: 12px; font-weight: 600; color: var(--text-3); margin: 0 0 10px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.seg button { height: 32px; padding: 0 12px; border-radius: var(--r-sm); border: 1px solid var(--border-2); background: var(--surface); cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text-2); }
+.seg button:hover { color: var(--text); }
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical; line-height: 1.5; }
+.sheet-foot { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+.sheet-foot:empty { display: none; }
+.sheet-foot .btn { height: 42px; font-size: 14.5px; }
+.sheet-foot .btn.primary { flex: 1; justify-content: center; }
+.kv { display: grid; grid-template-columns: 150px 1fr; gap: 8px 14px; margin: 0 0 24px; }
+.kv dt { color: var(--text-3); } .kv dd { margin: 0; }
+.prose p { color: var(--text-2); margin: 0 0 10px; line-height: 1.6; }
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 14px); opacity: 0; pointer-events: none; transition: .2s; z-index: 80;
+  background: var(--text); color: var(--bg); padding: 9px 16px; border-radius: 999px; font-weight: 500; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ══ Responsive ═══════════════════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .grid-main { grid-template-columns: 1fr; }
+  .col-cat, .c-cat { display: none; }
+}
+@media (max-width: 900px) {
+  .matches { grid-template-columns: 1fr 1fr; }
+  .matches .match:nth-child(3) { display: none; }
+  .col-cat, .c-cat { display: none; }
+}
+@media (max-width: 720px) {
+  .wrap { padding: 0 16px; }
+  .top .wrap { gap: 10px; }
+  .brand > span:last-child, .pill .txt { display: none; }
+  .pill { padding: 0; width: 30px; justify-content: center; }
+  .tab { padding: 0 9px; }
+  .icon-btn { width: 32px; }
+  .page { padding-top: 24px; }
+  .head h1 { font-size: 24px; }
+  .kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi { padding: 14px 16px 16px; }
+  .kpi-value { font-size: 26px; }
+  .grid-2, .matches, .board { grid-template-columns: 1fr; }
+  .matches .match:nth-child(3) { display: flex; }
+  .bar-row { grid-template-columns: 110px minmax(0, 1fr) 24px; }
+  .search { max-width: none; flex-basis: 100%; }
+  .toolbar .field:not(.search .field) { flex: 1 1 calc(50% - 4px); }
+  .toolbar .spacer { display: none; }
+  thead { display: none; }
+  table, tbody, tr, td { display: block; }
+  tbody tr { display: grid; grid-template-columns: 48px minmax(0, 1fr); padding: 14px 16px; }
+  tbody tr + tr td { border-top: 0; }
+  tbody tr + tr { border-top: 1px solid var(--border); }
+  tbody td { padding: 0 !important; }
+  td.c-due { grid-column: 2; margin-top: 8px; display: flex; gap: 8px; align-items: baseline; }
+  td.c-cat, td.c-val { display: none; }
+  .sheet { top: auto; left: 0; right: 0; bottom: 0; width: 100%; height: 92vh; border-radius: 18px 18px 0 0; transform: translateY(100%); }
+  .facts { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; gap: 2px; }
+  .kv dd { margin-bottom: 8px; }
+}
+@media (max-width: 400px) {
+  .top .wrap { gap: 4px; padding: 0 12px; }
+  .tab { padding: 0 6px; font-size: 13px; }
+  .icon-btn { width: 30px; }
+  .pill, .icon-btn { flex-shrink: 0; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b7bff"/><stop offset="1" stop-color="#4fb8ff"/></linearGradient></defs>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" opacity=".55"/><circle cx="12" cy="12" r="3.5"/><path d="M12 12l5.5-5.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M17 7L7 17M7 7l10 10"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M8 16L16 8M9 8h7v7"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4.5v10M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4.5M12 16h.01"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-rupee" viewBox="0 0 24 24"><path d="M7 5h10M7 9h10M7 5h3.5a4 4 0 0 1 0 8H7l7 6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 4l1.7 4.8L18.5 10.5l-4.8 1.7L12 17l-1.7-4.8L5.5 10.5l4.8-1.7z"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3.5 13h5l1.5 2.5h4l1.5-2.5h5"/><path d="M6 5h12l2.5 8v5.5a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1V13z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><img class="mark" src="assets/logo-mark.svg" alt="" width="28" height="28"><span>TenderRadar</span></div>
+    <nav class="tabs" aria-label="Pages">
+      <button class="tab" data-page="overview">Overview</button>
+      <button class="tab" data-page="tenders">Tenders</button>
+      <button class="tab" data-page="shortlist">Shortlist</button>
+    </nav>
+    <span class="spacer"></span>
+    <span class="pill" id="sync"><span class="dot" id="sync-dot"></span><span class="txt" id="sync-txt">Loading…</span></span>
+    <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch theme"><svg class="i"><use href="#i-sun"/></svg></button>
+    <button class="icon-btn" id="settings-btn" type="button" aria-label="Status and data"><svg class="i"><use href="#i-sliders"/></svg></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ── Overview ─────────────────────────────────────────── -->
+  <section class="page" id="page-overview" aria-label="Overview">
+    <div class="head">
+      <div><h1 id="ov-title">Opportunity radar</h1><p id="ov-sub">Loading…</p></div>
+      <button class="btn" type="button" data-goto="tenders">All tenders <svg class="i"><use href="#i-arrow"/></svg></button>
+    </div>
+    <div id="alert"></div>
+
+    <div class="kpis">
+      <button class="card kpi" type="button" data-kpi="recommended"><div class="kpi-label"><svg class="i"><use href="#i-star"/></svg>Recommended</div><div class="kpi-value" id="k1">&nbsp;</div><div class="kpi-sub" id="k1s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="week"><div class="kpi-label"><svg class="i"><use href="#i-clock"/></svg>Closing this week</div><div class="kpi-value" id="k2">&nbsp;</div><div class="kpi-sub" id="k2s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="new"><div class="kpi-label"><svg class="i"><use href="#i-spark"/></svg>New this week</div><div class="kpi-value" id="k3">&nbsp;</div><div class="kpi-sub" id="k3s">&nbsp;</div></button>
+      <button class="card kpi" type="button" data-kpi="fit"><div class="kpi-label"><svg class="i"><use href="#i-target"/></svg>Average fit</div><div class="kpi-value" id="k4">&nbsp;</div><div class="kpi-sub" id="k4s">&nbsp;</div></button>
+    </div>
+
+    <div class="grid-main">
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Deadline runway</div><div class="card-sub">Every open tender by days left and fit. Top left is urgent and strong.</div></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="chart" id="chart"><div class="tip" id="tip" role="tooltip"></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Closing soon</div><div class="card-sub">Recommended, by deadline</div></div></div>
+        <ul class="soon" id="soon"></ul>
+      </div>
+    </div>
+
+    <div class="section-head"><h2>Top matches</h2><button class="btn sm" type="button" data-goto="tenders">See all recommended</button></div>
+    <div class="matches" id="matches"></div>
+
+    <div class="section-head"><h2>Where the work is</h2></div>
+    <div class="grid-2">
+      <div class="card"><div class="card-head"><div><div class="card-title">By category</div><div class="card-sub">Open, relevant tenders</div></div></div><div class="bars" id="bars-cat"></div></div>
+      <div class="card"><div class="card-head"><div><div class="card-title">By state</div><div class="card-sub">Open, relevant tenders</div></div></div><div class="bars" id="bars-state"></div></div>
+    </div>
+  </section>
+
+  <!-- ── Tenders / Shortlist ──────────────────────────────── -->
+  <section class="page" id="page-tenders" aria-label="Tenders" hidden>
+    <div class="head"><div><h1 id="t-title">Tenders</h1><p id="t-sub">&nbsp;</p></div>
+      <button class="btn" type="button" id="export-btn"><svg class="i"><use href="#i-download"/></svg>Export CSV</button></div>
+    <div class="views" role="tablist" id="views">
+      <button class="view" data-view="recommended">Recommended <span class="n" id="n-recommended"></span></button>
+      <button class="view" data-view="open">All open <span class="n" id="n-open"></span></button>
+    </div>
+    <div class="toolbar" id="toolbar">
+      <label class="search"><span class="sr-only">Search</span><svg class="i"><use href="#i-search"/></svg><input class="field" id="q" type="search" placeholder="Search tenders, buyers, places" title="Shortcut: press / to search" autocomplete="off"></label>
+      <label><span class="sr-only">Category</span><select class="field" id="f-cat"><option value="">All categories</option></select></label>
+      <label><span class="sr-only">State</span><select class="field" id="f-state"><option value="">All states</option></select></label>
+      <label><span class="sr-only">Sort</span><select class="field" id="f-sort"><option value="closing">Closing first</option><option value="closing-desc">Closing last</option><option value="score">Best fit</option><option value="newest">Newest</option><option value="value">Highest value</option></select></label>
+    </div>
+    <div class="active-filters" id="active-filters" hidden></div>
+    <div id="results"></div>
+  </section>
+</main>
+<footer class="wrap site-foot">Tender data: Central Public Procurement Portal (eprocure.gov.in) and Government e-Marketplace bids as listed there, Government of India.<br>Designed and built by Bireshwar Chakravarty · © 2026 Bireshwar Chakravarty. All rights reserved.</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" tabindex="-1">
+  <div class="sheet-hero" id="sheet-hero"></div>
+  <div class="sheet-body" id="sheet-body"></div>
+  <div class="sheet-foot" id="sheet-foot"></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+"use strict";
+/* ── State ──────────────────────────────────────────────────────────── */
+const STORE_KEY = "tenderradar.tracking.v2", PREFS_KEY = "tenderradar.prefs.v2";
+const STATUSES = [
+  { id: "", label: "Not tracked" }, { id: "shortlisted", label: "Shortlisted" },
+  { id: "preparing", label: "Preparing bid" }, { id: "submitted", label: "Submitted" }, { id: "dropped", label: "Not pursuing" },
+];
+const TRACKED = ["shortlisted", "preparing", "submitted"];
+const statusLabel = id => (STATUSES.find(s => s.id === id) || STATUSES[0]).label;
+let raw = [], tenders = [], meta = {}, page = "overview", view = "recommended", openId = null, lastFocus = null;
+const F = { week: false, fresh: false };   // quick filters set from the overview cards
+const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+const safe = fn => { try { return fn(); } catch { return undefined; } };
+let tracking = safe(() => JSON.parse(localStorage.getItem(STORE_KEY))) || {};
+const prefs = safe(() => JSON.parse(localStorage.getItem(PREFS_KEY))) || {};
+const savePrefs = () => safe(() => localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)));
+const saveTracking = () => safe(() => localStorage.setItem(STORE_KEY, JSON.stringify(tracking)));
+const track = id => tracking[id] || {};
+
+/* ── Dates & formatting, tender dates are IST calendar dates ───────── */
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const todayIST = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(new Date());
+const dayNum = iso => { const [y, m, d] = iso.split("-").map(Number); return Date.UTC(y, m - 1, d) / 864e5; };
+let TODAY = todayIST();
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const daysLeft = dl => dl ? Math.round(dayNum(dl) - dayNum(TODAY)) : null;
+const isClosed = t => { const n = daysLeft(t.deadline); return n !== null && n < 0; };
+// Only open tenders with a stated closing date are ever shown. The data is already
+// filtered at publish time; this also covers the hours between midnight and the next sync.
+const isLive = t => !!t.deadline && daysLeft(t.deadline) >= 0;
+function refreshLive() { TODAY = todayIST(); tenders = raw.filter(isLive); }
+const fmtDate = iso => { if (!iso) return ""; const [y, m, d] = iso.split("-").map(Number); return `${d} ${MONTHS[m - 1]}${String(y) !== TODAY.slice(0, 4) ? " " + y : ""}`; };
+function relDays(n) {
+  if (n === null) return "";
+  if (n === 0) return "Closes today";
+  if (n === 1) return "Closes tomorrow";
+  if (n > 1) return `${n} days left`;
+  return n === -1 ? "Closed yesterday" : `Closed ${-n} days ago`;
+}
+const urgency = n => n === null || n < 0 ? "" : n <= 2 ? "urgent" : n <= 7 ? "soon" : "";
+function fmtINR(v) {
+  if (!v) return "";
+  const trim = x => x.toFixed(2).replace(/\.?0+$/, "");
+  if (v >= 1e7) return `₹${trim(v / 1e7)} Cr`;
+  if (v >= 1e5) return `₹${trim(v / 1e5)} L`;
+  return "₹" + Math.round(v).toLocaleString("en-IN");
+}
+function ago(ts) {
+  if (!ts) return "";
+  const mins = Math.round((Date.now() - Date.parse(ts)) / 6e4);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins} min ago`;
+  const h = Math.round(mins / 60);
+  return h < 24 ? `${h}h ago` : `${Math.round(h / 24)}d ago`;
+}
+const title = t => t.headline || t.title;
+const buyer = t => [t.authority, t.location].filter(Boolean).join(" · ");
+
+/* ── Classification ─────────────────────────────────────────────────── */
+const isRecommended = t => t.score != null && t.score >= (meta.min_score ?? 6) && t.recommendation !== "Skip" && !["goods", "works", "auction"].includes(t.kind);
+// Irrelevant tenders are not published (scraper/integrity.py); this is a second guard
+const isFiltered = t => t.score == null || ["goods", "works", "auction"].includes(t.kind) || t.score < 3;
+const isNew = (t, d = 2) => t.first_seen && (Date.now() - Date.parse(t.first_seen)) < d * 864e5;
+const isTracked = t => TRACKED.includes(track(t.id).status);
+const openRelevant = () => tenders.filter(t => !isClosed(t) && !isFiltered(t));
+const recommended = () => tenders.filter(t => !isClosed(t) && isRecommended(t) && track(t.id).status !== "dropped");
+function inView(t, v) {
+  if (v === "shortlist") return isTracked(t);
+  if (isClosed(t)) return false;
+  if (v === "recommended") return isRecommended(t) && track(t.id).status !== "dropped";
+  return !isFiltered(t);
+}
+const kind = t => !isRecommended(t) ? "other" : t.recommendation === "Bid" ? "bid" : "watch";
+
+/* ── Shared pieces ──────────────────────────────────────────────────── */
+function ring(t, size = 52) {
+  const r = size / 2 - 4, c = 2 * Math.PI * r, s = t.score ?? 0;
+  const k = kind(t), stroke = k === "bid" ? "var(--bid)" : k === "watch" ? "var(--watch)" : "var(--other)";
+  return `<div class="ring" style="width:${size}px;height:${size}px">
+    <svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="var(--surface-3)" stroke-width="4"/>
+    <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${stroke}" stroke-width="4" stroke-linecap="round"
+      stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${(c * (1 - s / 10)).toFixed(1)}"/></svg>
+    <b ${size > 56 ? 'style="font-size:18px"' : ""}>${t.score != null ? t.score.toFixed(1) : "–"}</b></div>`;
+}
+const recChip = t => t.recommendation ? `<span class="chip ${{ Bid: "bid", Watch: "watch" }[t.recommendation] || ""}"><i></i>${esc(t.recommendation)}</span>` : "";
+
+/* ── Overview ───────────────────────────────────────────────────────── */
+function renderOverview() {
+  refreshLive();
+  const open = openRelevant(), rec = recommended();
+  const week = rec.filter(t => { const n = daysLeft(t.deadline); return n !== null && n <= 7; });
+  const avg = rec.length ? rec.reduce((a, t) => a + t.score, 0) / rec.length : 0;
+  const [y, m, d] = TODAY.split("-").map(Number);
+  $("#ov-sub").textContent = `${DAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]}, ${d} ${MONTHS[m - 1]} · ${open.length} open tenders in PR & communications`;
+  $("#k1").innerHTML = `${rec.length}<small>of ${open.length}</small>`;
+  $("#k1s").textContent = `Fit ${meta.min_score ?? 6}+ and not Skip`;
+  $("#k2").textContent = week.length;
+  $("#k2s").textContent = week.length ? `Next: ${fmtDate(week.sort((a, b) => a.deadline.localeCompare(b.deadline))[0].deadline)}` : "Nothing urgent";
+  const fresh = open.filter(t => isNew(t, 7)), freshRec = fresh.filter(isRecommended);
+  $("#k3").innerHTML = `${fresh.length}`;
+  $("#k3s").textContent = `${freshRec.length} of them recommended`;
+  $("#k4").innerHTML = rec.length ? `${avg.toFixed(1)}<small>/ 10</small>` : `<small style="margin:0">None yet</small>`;
+  $("#k4s").textContent = rec.length ? `Across ${rec.length} recommended` : "No recommended tenders";
+
+  const soon = rec.filter(t => t.deadline).sort((a, b) => a.deadline.localeCompare(b.deadline)).slice(0, 6);
+  $("#soon").innerHTML = soon.length ? soon.map(t => {
+    const n = daysLeft(t.deadline), [, mm, dd] = t.deadline.split("-").map(Number);
+    return `<li data-id="${esc(t.id)}" tabindex="0"><div class="cal ${n <= 2 ? "urgent" : ""}"><b>${dd}</b><span>${MONTHS[mm - 1]}</span></div>
+      <div><div class="t">${esc(title(t))}</div><div class="s"><em class="${urgency(n)}">${relDays(n)}</em> · ${esc(t.authority || t.location || "")}</div></div></li>`;
+  }).join("") : `<li style="cursor:default"><div></div><div class="s">Nothing recommended is closing yet.</div></li>`;
+
+  const top = [...rec].sort((a, b) => (b.score - a.score) || ((daysLeft(a.deadline) ?? 99) - (daysLeft(b.deadline) ?? 99))).slice(0, 3);
+  $("#matches").innerHTML = top.length ? top.map(t => {
+    const n = daysLeft(t.deadline);
+    return `<article class="card match" data-id="${esc(t.id)}" tabindex="0">
+      <div class="match-top">${ring(t)}${recChip(t)}</div>
+      <div><h3>${esc(title(t))}</h3></div>
+      <div class="by">${esc(buyer(t)) || "&nbsp;"}</div>
+      <div class="match-foot"><span>${t.deadline ? `<b>${esc(fmtDate(t.deadline))}</b> · ${relDays(n)}` : "No deadline listed"}</span><span>${t.value_inr ? `<b>${fmtINR(t.value_inr)}</b>` : esc(t.category || "")}</span></div>
+    </article>`;
+  }).join("") : `<div class="card empty" style="grid-column:1/-1"><h3>No top matches yet</h3><p>Recommended tenders appear here after the next sync.</p></div>`;
+
+  bars("#bars-cat", open, t => t.category, "cat");
+  bars("#bars-state", open, t => t.state, "state");
+  renderRunway(open);   // last: the card's height depends on the closing-soon list
+}
+
+function bars(sel, list, keyFn, filterKey) {
+  const counts = {};
+  list.forEach(t => { const k = keyFn(t); if (k) counts[k] = (counts[k] || 0) + 1; });
+  const rows = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6);
+  const max = rows[0]?.[1] || 1;
+  $(sel).innerHTML = rows.length ? rows.map(([k, n]) =>
+    `<div class="bar-row" data-filter="${filterKey}" data-value="${esc(k)}" title="Show ${esc(k)} tenders"><span class="bar-label">${esc(k)}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${(n / max * 100).toFixed(1)}%"></div></div><span class="bar-val">${n}</span></div>`).join("")
+    : `<div class="muted" style="padding:6px 0">No data yet</div>`;
+}
+
+/* Deadline runway: x = days left (0–30, 30+ clamped), y = fit (0–10) */
+function renderRunway(list) {
+  const box = $("#chart"), W = Math.max(280, box.clientWidth), H = Math.max(260, box.clientHeight);
+  const pad = { l: 34, r: 14, t: 14, b: 30 }, iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+  const X = d => pad.l + Math.min(d, 31) / 31 * iw, Y = s => pad.t + ih - s / 10 * ih;
+  const pts = list.filter(t => t.score != null && t.deadline).map(t => ({ t, d: daysLeft(t.deadline), k: kind(t) }));
+  // Nudge dots sideways until none overlaps another (14px apart), so every tender stays clickable.
+  // Recommended tenders are placed first, so they keep their exact position.
+  const placed = [], GAP = 14;
+  [...pts].sort((a, b) => (a.k === "other") - (b.k === "other") || a.d - b.d).forEach(p => {
+    const cy = Y(p.t.score), x0 = X(p.d);
+    for (let i = 0; i < 40; i++) {
+      const cx = Math.min(W - pad.r - 7, Math.max(pad.l + 7, x0 + (i % 2 ? 1 : -1) * Math.ceil(i / 2) * GAP));
+      if (!placed.some(q => Math.hypot(q.cx - cx, q.cy - cy) < GAP)) { p.cx = cx; p.cy = cy; break; }
+    }
+    if (p.cx === undefined) { p.cx = x0; p.cy = cy; }
+    placed.push(p);
+  });
+  const counts = { bid: 0, watch: 0, other: 0 }; pts.forEach(p => counts[p.k]++);
+  $("#legend").innerHTML = [["bid", "Bid"], ["watch", "Watch"], ["other", "Other"]].map(([k, l]) =>
+    `<span><i style="background:var(--${k})"></i>${l} <span class="muted num">${counts[k]}</span></span>`).join("");
+
+  const min = meta.min_score ?? 6;
+  const xt = [[0, "Today"], [7, "1 week"], [14, "2 weeks"], [21, "3 weeks"], [28, "4 weeks"], [31, "30+"]];
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Scatter of open tenders: days until deadline against fit score">
+    <rect x="${X(0)}" y="${pad.t}" width="${X(7) - X(0)}" height="${ih}" fill="var(--week)" rx="4"/>
+    <text x="${X(0) + 8}" y="${pad.t + 16}" style="fill:var(--text-3);font-weight:500">This week</text>`;
+  for (let v = 0; v <= 10; v += 2) s += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)" stroke-width="1"/>
+    <text x="${pad.l - 10}" y="${Y(v) + 4}" text-anchor="end" class="num">${v}</text>`;
+  s += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${Y(min)}" y2="${Y(min)}" stroke="var(--text-3)" stroke-width="1" opacity=".55"/>
+    <text x="${W - pad.r}" y="${Y(min) - 6}" text-anchor="end">Recommended ≥ ${min}</text>`;
+  (iw < 520 ? xt.filter(([d]) => d !== 28) : xt).forEach(([d, l]) => { s += `<text x="${X(d)}" y="${H - 8}" text-anchor="${d === 0 ? "start" : d === 31 ? "end" : "middle"}">${l}</text>`; });
+  s += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${pad.t + ih}" y2="${pad.t + ih}" stroke="var(--axis)" stroke-width="1"/>`;
+  // draw "other" first so recommended marks sit on top
+  [...pts].sort((a, b) => (a.k === "other") - (b.k === "other")).reverse().forEach(p => {
+    const { cx, cy } = p;
+    s += `<g class="dotg" data-id="${esc(p.t.id)}" tabindex="0" role="button" aria-label="${esc(title(p.t))}, fit ${p.t.score}, ${relDays(p.d)}">
+      <circle cx="${cx}" cy="${cy}" r="7" fill="transparent"/>
+      <circle class="m" cx="${cx}" cy="${cy}" r="6" fill="var(--${p.k})" stroke="var(--surface)" stroke-width="2"/></g>`;
+  });
+  // Pointer layer on top: snaps to the nearest dot, so crowded areas stay easy to use
+  s += `<rect class="hit" x="${pad.l - 12}" y="${pad.t - 12}" width="${iw + 24}" height="${ih + 24}" fill="transparent"/></svg>`;
+  runwayPts = placed.map(p => ({ id: p.t.id, cx: p.cx, cy: p.cy }));
+  box.querySelector("svg")?.remove();
+  box.insertAdjacentHTML("beforeend", s);
+}
+
+let runwayPts = [], hotId = null;
+function nearestDot(evt) {
+  const r = $("#chart svg")?.getBoundingClientRect(); if (!r) return null;
+  const x = evt.clientX - r.left, y = evt.clientY - r.top;
+  let best = null, bd = 18;
+  for (const p of runwayPts) { const d = Math.hypot(p.cx - x, p.cy - y); if (d < bd) { bd = d; best = p; } }
+  return best;
+}
+function setHot(id) {
+  if (hotId === id) return;
+  $$("#chart .dotg.hot").forEach(g => g.classList.remove("hot"));
+  hotId = id;
+  const g = id && $(`#chart .dotg[data-id="${CSS.escape(id)}"]`);
+  if (g) { g.classList.add("hot"); showTip(g); } else $("#tip").classList.remove("show");
+  $("#chart").style.cursor = g ? "pointer" : "";
+}
+function showTip(g, evt) {
+  const t = tenders.find(x => x.id === g.dataset.id); if (!t) return;
+  const tip = $("#tip"), box = $("#chart").getBoundingClientRect(), n = daysLeft(t.deadline);
+  tip.innerHTML = `<b>${esc(title(t))}</b><div class="row"><span><span class="key" style="background:var(--${kind(t)})"></span>${esc(t.recommendation || "Not rated")}</span><span>Fit ${t.score.toFixed(1)}</span></div>
+    <div class="row"><span>Deadline</span><span>${esc(fmtDate(t.deadline))} · ${relDays(n)}</span></div>
+    ${t.value_inr ? `<div class="row"><span>Value</span><span>${fmtINR(t.value_inr)}</span></div>` : ""}
+    ${t.authority ? `<div class="row"><span>Buyer</span><span>${esc(t.authority).slice(0, 34)}</span></div>` : ""}`;
+  const r = g.querySelector("circle.m").getBoundingClientRect();
+  let x = r.left - box.left + 14, y = r.top - box.top - 10;
+  tip.classList.add("show");
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  if (x + tw > box.width - 8) x = r.left - box.left - tw - 14;
+  if (y + th > box.height) y = box.height - th - 4;
+  tip.style.left = Math.max(4, x) + "px"; tip.style.top = Math.max(4, y) + "px";
+}
+
+/* ── Tenders page ───────────────────────────────────────────────────── */
+function filtered() {
+  const q = $("#q").value.trim().toLowerCase(), cat = $("#f-cat").value, st = $("#f-state").value;
+  const v = page === "shortlist" ? "shortlist" : view;
+  return tenders.filter(t => inView(t, v) && (!cat || t.category === cat) && (!st || t.state === st)
+    && (!F.week || ((n => n !== null && n >= 0 && n <= 7)(daysLeft(t.deadline))))
+    && (!F.fresh || isNew(t, 7))
+    && (!q || [t.headline, t.title, t.authority, t.location, t.ref_no].join(" ").toLowerCase().includes(q)));
+}
+const hasFilters = () => !!($("#q").value.trim() || $("#f-cat").value || $("#f-state").value || F.week || F.fresh);
+function clearFilters() { $("#q").value = ""; $("#f-cat").value = ""; $("#f-state").value = ""; F.week = F.fresh = false; }
+function renderActiveFilters() {
+  const chips = [];
+  if ($("#q").value.trim()) chips.push(["q", `Search: “${$("#q").value.trim()}”`]);
+  if ($("#f-cat").value) chips.push(["cat", $("#f-cat").value]);
+  if ($("#f-state").value) chips.push(["state", $("#f-state").value]);
+  if (F.week) chips.push(["week", "Closing within 7 days"]);
+  if (F.fresh) chips.push(["fresh", "Found in the last 7 days"]);
+  const el = $("#active-filters");
+  el.hidden = !chips.length;
+  el.innerHTML = chips.map(([k, l]) => `<button class="fchip" type="button" data-clear="${k}" aria-label="Remove filter ${esc(l)}">${esc(l)}<svg class="i"><use href="#i-x"/></svg></button>`).join("")
+    + (chips.length > 1 ? `<button class="linkbtn" type="button" data-clear="all">Clear all</button>` : "");
+}
+function sorted(list) {
+  const key = { closing: t => { const n = daysLeft(t.deadline); return n === null ? 1e6 : (n < 0 ? 2e6 - n : n); },
+    "closing-desc": t => { const n = daysLeft(t.deadline); return n === null ? 1e6 : -n; },
+    score: t => -(t.score ?? -1), newest: t => -Date.parse(t.first_seen || 0), value: t => -(t.value_inr || 0) }[$("#f-sort").value];
+  return [...list].sort((a, b) => (key(a) - key(b)) || (b.score ?? 0) - (a.score ?? 0));
+}
+function fitBadge(t) {
+  if (t.score == null) return `<span class="fit none" title="Waiting for the AI review">Pending</span>`;
+  const k = kind(t);
+  return `<span class="fit ${k === "other" ? "" : k}">${t.score.toFixed(1)}</span>`;
+}
+function rowHTML(t) {
+  const n = daysLeft(t.deadline), st = track(t.id).status;
+  return `<tr data-id="${esc(t.id)}"${isClosed(t) || st === "dropped" ? ' class="dim"' : ""}>
+    <td class="c-fit">${fitBadge(t)}</td>
+    <td class="c-main"><div class="tt">${esc(title(t))}</div><div class="ts">${isNew(t) && !isClosed(t) ? '<span class="chip accent" style="height:18px;padding:0 6px;margin-right:6px"><i></i>New</span>' : ""}${esc(buyer(t)) || "Buyer not listed"}${st ? ` · ${esc(statusLabel(st))}` : ""}</div></td>
+    <td class="c-cat"><span class="muted">${esc(t.category || "Other")}</span></td>
+    <td class="c-due due">${t.deadline ? `<b>${esc(fmtDate(t.deadline))}</b><span class="${urgency(n)}">${relDays(n)}</span>` : `<span>Not listed</span>`}</td>
+    <td class="c-val r">${fmtINR(t.value_inr) || '<span class="muted">Not listed</span>'}</td></tr>`;
+}
+function renderTenders() {
+  refreshLive();
+  const short = page === "shortlist";
+  $("#t-title").textContent = short ? "Shortlist" : "Tenders";
+  $("#views").hidden = short;
+  for (const v of ["recommended", "open"]) $("#n-" + v).textContent = tenders.filter(t => inView(t, v)).length || "";
+  $$(".view").forEach(b => b.setAttribute("aria-selected", b.dataset.view === view));
+  renderActiveFilters();
+  const list = sorted(filtered());
+  $("#t-sub").textContent = short ? "Tenders you're preparing to bid on" : `${list.length} shown · sorted by ${$("#f-sort").selectedOptions[0].text.toLowerCase()}`;
+  const out = $("#results");
+  if (!list.length) {
+    const msg = !tenders.length ? ["No tenders yet", `Tenders appear after the next sync (every 4 hours).${meta.last_updated ? " Last sync " + ago(meta.last_updated) + "." : ""}`]
+      : short ? ["Your shortlist is empty", "Open any tender and set it to Shortlisted to track it here."]
+      : hasFilters() ? ["No tenders match these filters", "Remove a filter above, or clear them all."]
+      : ["Nothing here yet", "Tenders in this view will appear after the next sync."];
+    out.innerHTML = `<div class="card empty"><div class="orb"><svg class="i"><use href="#i-inbox"/></svg></div><h3>${esc(msg[0])}</h3><p>${esc(msg[1])}</p>
+      ${hasFilters() && tenders.length ? '<button class="btn" type="button" data-clear="all">Clear filters</button>' : ""}</div>`;
+    return;
+  }
+  if (short) {
+    out.innerHTML = `<div class="board">${TRACKED.map(s => {
+      const items = list.filter(t => track(t.id).status === s);
+      return `<div class="card col"><div class="col-h"><span>${esc(statusLabel(s))}</span><span>${items.length}</span></div>
+        ${items.map(t => `<div class="bcard" data-id="${esc(t.id)}"><div class="tt" style="white-space:normal">${esc(title(t))}</div>
+          <div class="ts">${t.deadline ? esc(fmtDate(t.deadline)) + " · " + relDays(daysLeft(t.deadline)) : "No deadline listed"}</div></div>`).join("") || '<div class="muted" style="padding:4px">Nothing here yet</div>'}</div>`;
+    }).join("")}</div>`;
+    return;
+  }
+  out.innerHTML = `<div class="card table-card"><table>
+    <colgroup><col style="width:78px"><col><col class="col-cat" style="width:200px"><col style="width:150px"><col style="width:110px"></colgroup>
+    <thead><tr><th>Fit</th><th>Tender</th><th class="col-cat">Category</th><th aria-sort="${{ closing: "ascending", "closing-desc": "descending" }[$("#f-sort").value] || "none"}"><button type="button" class="th-sort" data-sort-toggle title="Sort by deadline">Deadline<span class="arr" aria-hidden="true">${{ closing: "\u2191", "closing-desc": "\u2193" }[$("#f-sort").value] || "\u2195"}</span></button></th><th class="r">Value</th></tr></thead>
+    <tbody>${list.map(rowHTML).join("")}</tbody></table></div>`;
+}
+function fillFilters() {
+  const fill = (sel, label, items) => { const el = $(sel), cur = el.value; el.innerHTML = `<option value="">${label}</option>` + items.map(i => `<option>${esc(i)}</option>`).join(""); el.value = items.includes(cur) ? cur : ""; };
+  fill("#f-cat", "All categories", [...new Set(tenders.map(t => t.category).filter(Boolean))].sort());
+  fill("#f-state", "All states", [...new Set(tenders.map(t => t.state).filter(Boolean))].sort());
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────── */
+function go(p, opts = {}) {
+  page = p; prefs.page = p; savePrefs();
+  $$(".tab").forEach(b => b.setAttribute("aria-current", b.dataset.page === p));
+  $("#page-overview").hidden = p !== "overview";
+  $("#page-tenders").hidden = p === "overview";
+  if (opts.reset) clearFilters();
+  if (opts.view) view = opts.view;
+  if (opts.cat !== undefined) $("#f-cat").value = opts.cat;
+  if (opts.state !== undefined) $("#f-state").value = opts.state;
+  if (opts.week) F.week = true;
+  if (opts.fresh) F.fresh = true;
+  if (opts.sort) $("#f-sort").value = opts.sort;
+  if (p === "overview") renderOverview(); else renderTenders();
+  window.scrollTo({ top: 0 });
+}
+function renderAll() { fillFilters(); renderSync(); if (page === "overview") renderOverview(); else renderTenders(); }
+
+function renderSync() {
+  const lr = meta.last_run || {};
+  if (!meta.last_updated) { $("#sync-txt").textContent = "Not synced yet"; return; }
+  const hours = (Date.now() - Date.parse(meta.last_updated)) / 36e5;
+  $("#sync-dot").className = "dot " + (lr.ok === false ? "fail" : hours > 9 ? "stale" : "ok");
+  $("#sync-txt").textContent = lr.ok === false ? "Update incomplete" : `Synced ${ago(meta.last_updated)}`;
+  $("#sync").title = new Date(meta.last_updated).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" }) + " IST";
+  const checked = meta.oldest_check ? ` Every tender shown was verified against its source ${ago(meta.oldest_check)} or more recently.` : "";
+  const a = lr.ok === false ? `The latest update didn't finish.${checked}`
+    : hours > 12 ? `No update for ${Math.round(hours)} hours.${checked}` : "";
+  $("#alert").innerHTML = a ? `<div class="card" style="padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:center;border-color:color-mix(in srgb,var(--bad) 35%,transparent)"><svg class="i" style="color:var(--bad)"><use href="#i-alert"/></svg>${esc(a)}</div>` : "";
+}
+
+/* ── Sheet ──────────────────────────────────────────────────────────── */
+function showSheet() {
+  if (!$("#sheet").classList.contains("open")) lastFocus = document.activeElement;
+  $("#sheet").classList.add("open"); $("#scrim").classList.add("open");
+  document.body.style.overflow = "hidden"; $("#sheet").focus();
+}
+function closeSheet() {
+  $("#sheet").classList.remove("open"); $("#scrim").classList.remove("open");
+  document.body.style.overflow = ""; openId = null;
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+}
+const fact = (k, v, sub = "") => `<div class="fact"><dt>${esc(k)}</dt><dd>${v || '<span class="na">Not stated</span>'}${sub ? `<span class="sub">${sub}</span>` : ""}</dd></div>`;
+const isCPPP = t => t.source === "CPPP";
+const isGeM = t => t.portal === "GeM";
+function openTender(id, push = true) {
+  const t = tenders.find(x => x.id === id); if (!t) return;
+  openId = id;
+  const n = daysLeft(t.deadline), tr = track(id);
+  $("#sheet-hero").innerHTML = `
+    <div class="sheet-bar"><span class="ref">${t.ref_no ? (isCPPP(t) ? (isGeM(t) ? "Bid " : "Tender ID ") : "TDR ") + esc(t.ref_no) : ""}</span><span class="spacer"></span>
+      <button class="icon-btn" data-act="copy" aria-label="Copy link"><svg class="i"><use href="#i-link"/></svg></button>
+      <button class="icon-btn" data-act="close" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></div>
+    <div class="sheet-title">${ring(t, 64)}<div>
+      <h2 id="sheet-title">${esc(title(t))}</h2>
+      ${t.headline && t.headline !== t.title ? `<p class="orig">${esc(t.title)}</p>` : ""}
+      <div class="chips">${recChip(t)}${t.category ? `<span class="chip">${esc(t.category)}</span>` : ""}${t.portal ? `<span class="chip">${esc(t.portal)}</span>` : ""}${isNew(t) ? '<span class="chip accent"><i></i>New</span>' : ""}</div>
+    </div></div>`;
+  $("#sheet-body").innerHTML = `
+    <dl class="facts">
+      ${fact("Bid deadline", t.deadline ? esc(fmtDate(t.deadline)) : "", t.deadline ? relDays(n) : "")}
+      ${fact("Estimated value", esc(fmtINR(t.value_inr)))}
+      ${fact("Buyer", esc(t.authority))}
+      ${fact("Location", esc(t.location))}
+      ${fact("EMD", esc(fmtINR(t.emd_inr)))}
+      ${fact("Published", esc(fmtDate(t.published)))}
+    </dl>
+    <div class="ai"><div class="ai-in">
+      <div class="ai-h"><svg class="i"><use href="#i-spark"/></svg>AI assessment</div>
+      ${t.score != null ? `${t.fit ? `<p><b>Fit.</b> ${esc(t.fit)}</p>` : ""}${t.reason ? `<p><b>Worth pursuing?</b> ${esc(t.reason)}</p>` : ""}${t.eligibility ? `<p><b>Eligibility.</b> ${esc(t.eligibility)}</p>` : ""}
+        <p class="note">Estimated against your company profile, read the tender document before bidding.</p>`
+      : `<p class="note">Not assessed yet. It will be scored on the next sync.</p>`}
+    </div></div>
+    <div class="lbl">Your tracking</div>
+    <div class="seg" role="group" aria-label="Tracking status">${STATUSES.map(s => `<button type="button" data-status="${s.id}" aria-pressed="${(tr.status || "") === s.id}">${esc(s.label)}</button>`).join("")}</div>
+    <label class="sr-only" for="notes">Notes</label>
+    <textarea class="field" id="notes" placeholder="Notes: contacts, eligibility, documents needed…">${esc(tr.notes || "")}</textarea>`;
+  $("#sheet-foot").innerHTML = !t.url ? "" : isCPPP(t)
+    ? `<button class="btn" type="button" data-act="copy-id" data-ref="${esc(t.ref_no)}" data-what="${isGeM(t) ? "Bid number" : "Tender ID"}">Copy ${isGeM(t) ? "bid number" : "Tender ID"}</button>
+       <a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">Find on ${isGeM(t) ? "GeM" : "CPPP"} <svg class="i"><use href="#i-ext"/></svg></a>`
+    : `<a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">Open tender notice <svg class="i"><use href="#i-ext"/></svg></a>`;
+  if (push) history.replaceState(null, "", "#t=" + encodeURIComponent(id));
+  showSheet();
+}
+function openSettings() {
+  openId = null;
+  const lr = meta.last_run || {};
+  const rows = [["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " (failed)" : ""}` : "Never"],
+    ["Tenders shown", `${tenders.length} open, each with a closing date stated by the source`],
+    meta.oldest_check && ["Source checks", `Every tender re-checked against its source; oldest check ${ago(meta.oldest_check)}`],
+    meta.held_back != null && ["Held back", `${meta.held_back} not shown: not relevant, closed, published before 2026, no closing date, or not re-verified`],
+    lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered, ${lr.duplicates ?? 0} duplicates`],
+    lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
+    ["Recommended", `Fit ${meta.min_score ?? 6}+ and not marked Skip`]].filter(Boolean);
+  $("#sheet-hero").innerHTML = `<div class="sheet-bar"><strong style="font-size:16px">Status &amp; data</strong><span class="spacer"></span>
+    <button class="icon-btn" data-act="close" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></div>`;
+  $("#sheet-body").innerHTML = `<dl class="kv">${rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+    <div class="lbl">Your tracking data</div>
+    <div class="prose"><p>Statuses and notes are saved in this browser. Export them to keep a backup or move to another device.</p></div>
+    <div style="display:flex;gap:8px;margin-bottom:24px"><button class="btn" type="button" data-act="export-tracking"><svg class="i"><use href="#i-download"/></svg>Export</button>
+      <label class="btn">Import<input type="file" accept="application/json" id="import-file" hidden></label></div>
+    <div class="lbl">How tenders are chosen</div>
+    <div class="prose"><p>Every 4 hours new notices are collected from the Central Public Procurement Portal (CPPP, eprocure.gov.in): its list of open tenders from central ministries and PSUs, and its copy of the GeM bid list. Every listing is re-read about once a day. Auctions, works and goods supply are removed, and each remaining tender is assessed against your company profile. New recommended tenders go out by email and Telegram, with a digest at 8 AM IST.</p></div>`;
+  $("#sheet-foot").innerHTML = "";
+  showSheet();
+}
+function setStatus(id, s) {
+  const cur = track(id);
+  tracking[id] = { ...cur, status: s, updated: new Date().toISOString() };
+  if (!s && !cur.notes) delete tracking[id];
+  saveTracking(); renderAll(); openTender(id, false);
+}
+
+/* ── Export, toast, theme ───────────────────────────────────────────── */
+function download(name, text, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+function exportCSV() {
+  const cols = [["Title", title], ["Original title", t => t.title], ["Buyer", t => t.authority], ["Location", t => t.location], ["State", t => t.state],
+    ["Category", t => t.category], ["Fit", t => t.score ?? ""], ["Recommendation", t => t.recommendation], ["Eligibility", t => t.eligibility || ""], ["Deadline", t => t.deadline],
+    ["Published", t => t.published], ["Value (INR)", t => t.value_inr ?? ""], ["EMD (INR)", t => t.emd_inr ?? ""],
+    ["Status", t => track(t.id).status ? statusLabel(track(t.id).status) : ""], ["Notes", t => track(t.id).notes || ""], ["Reference", t => t.ref_no], ["Link", t => t.url]];
+  const cell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const rows = sorted(filtered()).map(t => cols.map(([, f]) => cell(f(t))).join(","));
+  download(`tenders-${TODAY}.csv`, "﻿" + [cols.map(([h]) => cell(h)).join(","), ...rows].join("\r\n"), "text/csv");
+  toast(`Exported ${rows.length} tender${rows.length === 1 ? "" : "s"}`);
+}
+function toast(m) { const el = $("#toast"); el.textContent = m; el.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("show"), 2000); }
+function applyTheme(th) {
+  document.documentElement.dataset.theme = th;
+  $("#theme-btn use").setAttribute("href", th === "dark" ? "#i-sun" : "#i-moon");
+  if (page === "overview" && tenders.length) renderRunway(openRelevant());
+}
+
+/* ── Events ─────────────────────────────────────────────────────────── */
+function wire() {
+  $$(".tab").forEach(b => b.addEventListener("click", () => go(b.dataset.page)));
+  document.addEventListener("click", e => {
+    const g = e.target.closest("[data-goto]"); if (g) { go(g.dataset.goto, { view: "recommended", reset: true }); return; }
+    const k = e.target.closest("[data-kpi]");
+    if (k) {
+      go("tenders", {
+        recommended: { view: "recommended", reset: true },
+        week: { view: "recommended", reset: true, week: true, sort: "closing" },
+        new: { view: "open", reset: true, fresh: true, sort: "newest" },
+        fit: { view: "recommended", reset: true, sort: "score" },
+      }[k.dataset.kpi]);
+      return;
+    }
+    const b = e.target.closest(".bar-row");
+    if (b) { go("tenders", { view: "open", reset: true, [b.dataset.filter]: b.dataset.value }); return; }
+    const c = e.target.closest("[data-clear]");
+    if (c) {
+      const k2 = c.dataset.clear;
+      if (k2 === "all") clearFilters();
+      else if (k2 === "q") $("#q").value = "";
+      else if (k2 === "cat") $("#f-cat").value = "";
+      else if (k2 === "state") $("#f-state").value = "";
+      else if (k2 === "week") F.week = false;
+      else if (k2 === "fresh") F.fresh = false;
+      renderTenders(); return;
+    }
+    const item = e.target.closest("#page-overview [data-id], #results [data-id]");
+    if (item) openTender(item.dataset.id);
+  });
+  document.addEventListener("keydown", e => {
+    const item = e.target.closest?.("[data-id]");
+    if (item && (e.key === "Enter" || e.key === " ") && !e.target.closest("#sheet")) { e.preventDefault(); openTender(item.dataset.id); return; }
+    const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName);
+    if (e.key === "Escape" && $("#sheet").classList.contains("open")) closeSheet();
+    else if (e.key === "/" && !typing) { e.preventDefault(); if (page === "overview") go("tenders", { view: "open", reset: true }); $("#q").focus(); }
+  });
+  const chart = $("#chart");
+  chart.addEventListener("pointermove", e => setHot(nearestDot(e)?.id || null));
+  chart.addEventListener("pointerleave", () => setHot(null));
+  chart.addEventListener("click", e => { const p = nearestDot(e); if (p) { e.stopPropagation(); setHot(null); openTender(p.id); } });
+  chart.addEventListener("focusin", e => { const g = e.target.closest(".dotg"); if (g) showTip(g, e); });
+  chart.addEventListener("focusout", () => $("#tip").classList.remove("show"));
+  $$(".view").forEach(b => b.addEventListener("click", () => { view = b.dataset.view; renderTenders(); }));
+  $("#q").addEventListener("input", renderTenders);
+  for (const s of ["#f-cat", "#f-state", "#f-sort"]) $(s).addEventListener("change", () => { if (s === "#f-sort") { prefs.sort = $(s).value; savePrefs(); } renderTenders(); });
+  $("#results").addEventListener("click", e => {
+    if (!e.target.closest("[data-sort-toggle]")) return;
+    e.stopPropagation();
+    $("#f-sort").value = $("#f-sort").value === "closing" ? "closing-desc" : "closing";
+    prefs.sort = $("#f-sort").value; savePrefs(); renderTenders();
+  });
+  $("#export-btn").addEventListener("click", exportCSV);
+  $("#settings-btn").addEventListener("click", openSettings);
+  $("#theme-btn").addEventListener("click", () => { prefs.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark"; savePrefs(); applyTheme(prefs.theme); });
+  $("#scrim").addEventListener("click", closeSheet);
+  $("#sheet").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.act === "close") closeSheet();
+    else if (b.dataset.act === "copy") navigator.clipboard?.writeText(location.href).then(() => toast("Link copied"), () => toast("Couldn't copy link"));
+    else if (b.dataset.act === "copy-id") navigator.clipboard?.writeText(b.dataset.ref).then(() => toast(`${b.dataset.what} copied`), () => toast(`Couldn't copy the ${b.dataset.what}`));
+    else if (b.dataset.act === "export-tracking") download(`tenderradar-tracking-${TODAY}.json`, JSON.stringify(tracking, null, 2), "application/json");
+    else if (b.dataset.status !== undefined && openId) setStatus(openId, b.dataset.status);
+  });
+  $("#sheet").addEventListener("input", e => { if (e.target.id === "notes" && openId) { tracking[openId] = { ...track(openId), notes: e.target.value, updated: new Date().toISOString() }; saveTracking(); } });
+  $("#sheet").addEventListener("change", async e => {
+    if (e.target.id !== "import-file" || !e.target.files[0]) return;
+    try { const d = JSON.parse(await e.target.files[0].text()); if (!d || typeof d !== "object" || Array.isArray(d)) throw 0;
+      tracking = { ...tracking, ...d }; saveTracking(); renderAll(); toast(`Imported ${Object.keys(d).length} tracked tenders`);
+    } catch { toast("That file isn't a TenderRadar export"); }
+  });
+  // Redraw the runway whenever its box changes size (layout settling, resize, theme)
+  let lastSize = "";
+  new ResizeObserver(([e]) => {
+    const size = `${Math.round(e.contentRect.width)}x${Math.round(e.contentRect.height)}`;
+    if (size !== lastSize && page === "overview" && tenders.length) { lastSize = size; renderRunway(openRelevant()); }
+  }).observe($("#chart"));
+}
+
+/* ── Load ───────────────────────────────────────────────────────────── */
+async function load() {
+  try {
+    const res = await fetch("data/tenders.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    meta = data.meta || {};
+    raw = meta.schema >= 2 ? (data.tenders || []) : [];
+    refreshLive();
+  } catch (err) {
+    $("#ov-sub").textContent = `Couldn't load tender data (${err.message}).`;
+    $("#sync-txt").textContent = "Load failed"; $("#sync-dot").className = "dot fail";
+    return;
+  }
+  renderAll();
+  const m = location.hash.match(/^#t=(.+)$/);
+  if (m) {
+    const id = decodeURIComponent(m[1]);
+    if (tenders.some(t => t.id === id)) openTender(id, false);
+    else { history.replaceState(null, "", location.pathname); toast("That tender is no longer listed. It may have closed or been merged with a duplicate."); }
+  }
+}
+
+applyTheme(prefs.theme || "dark");
+if (prefs.sort) $("#f-sort").value = prefs.sort;
+wire();
+go(prefs.page && prefs.page !== "shortlist" ? prefs.page : "overview");
+load();
+setInterval(renderSync, 60_000);
+</script>
+</body>
+</html>
