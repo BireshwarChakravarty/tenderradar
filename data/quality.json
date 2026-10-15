@@ -1,19 +1,138 @@
 {
- "checked_at": "2026-10-15T16:53:20Z",
- "published": 219,
- "held_back": 234,
+ "checked_at": "2026-10-15T23:41:16Z",
+ "published": 220,
+ "held_back": 269,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 144,
-  "not relevant (fit under 3)": 58,
-  "not yet assessed": 1,
-  "closed": 72,
+  "not relevant (fit under 3)": 61,
+  "not relevant (goods, works or auction)": 152,
+  "closed": 120,
   "no closing date stated": 4,
   "never verified against the source": 4,
   "not re-verified recently": 13
  },
  "fields_fixed": 0,
- "ai_text_reset": 1,
+ "ai_text_reset": 0,
  "held": [
+  {
+   "id": "cppp-gem-8151942",
+   "title": "Outdoor Advertisement Service - BOQ Mode",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8148569",
+   "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Infrastruct",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8147626",
+   "title": "DIGITAL MEDIA ENCODER",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8144921",
+   "title": "Artillery shamiana size 15 ft x 15 ftt,Artillery shamiana size 20 ft x 20 ft,Battery Operated hedge cutting Machine,Batt",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8143790",
+   "title": "Chamois Leather 50 x 80cm,Fuel Pipe,Souvenir,Professional event video editing and Post Production Services,Cap,Expeditio",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8143666",
+   "title": "Camera Battery,Camera Bag,Digital Single Lens Reflex Camera,Photography Umbrella,Portrait Lens",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8141525",
+   "title": "Tentage Service Lumpsum Based - State Level Senior Citizen Men-Women Athletics Competition; Lighting, Tent Rentals, Them",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8136648",
+   "title": "Custom Bid for Services - Designing, Printing and Fixing cloth banner & others for Publicity works of NTPC Ramagundam & ",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8133757",
+   "title": "Five-Tier Tapered Glass Exhibition Display Unit",
+   "deadline": "2026-11-02",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8111670",
+   "title": "Stage Banner 12 x 10 fit,Stage and Decoration 15 x 20 fit,Balloon,Printing of Rally Badges,Printing of Invitation Cards ",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8103346",
+   "title": "Trophy to winner team for Cricket Tournament,trophy to first runner up team for Cricket Tournament,trophy to second runn",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8102824",
+   "title": "Rent for Hiring of Room Hall,Fees for Hiring of Civ Instr,Hiring of Microphones and Accessories,Hiring of Sound Card Aud",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8100292",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 14001 - Environmental Management System (EMS); Consulting; Guidance",
+   "deadline": "2026-11-03",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7998804",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; ANNUAL SPORTSMEET - 2026 AND ONE DAY T",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7991888",
+   "title": "Tuition fees for students,Books for computer Coaching classes,Expenditure on print social media and publicity banners,St",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
   {
    "id": "cppp-gem-8142159",
    "title": "Publicity Material Laminated Carry Paper Bag with Logos and others Medium Size,Publicity Material Packing Laminated Pape",
@@ -95,6 +214,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8101060",
+   "title": "Videography and Photography Services - Photography and Videography; Event Coverage, Success Story, Fleet Motivation, Med",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8054599",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisionning of Dinner for Navy Day R",
    "deadline": "2026-10-29",
@@ -143,14 +270,6 @@
    ]
   },
   {
-   "id": "cppp-14196471",
-   "title": "Selection of an agency for Production of 12 (Twelve) TVCs, each up to 2 Minutes in duration, covering various Road-Safet",
-   "deadline": "2026-10-20",
-   "reasons": [
-    "not yet assessed"
-   ]
-  },
-  {
    "id": "cppp-gem-8131011",
    "title": "Medium Publicity Laminated Paper Bag with Logos and Others,Large Publicity Laminated Paper Bag with Logos and Others,Pri",
    "deadline": "2026-10-17",
@@ -179,7 +298,24 @@
    "title": "Situational Awareness System",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8119511",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; AS PER ATC; Participation arrangements",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8118489",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESHI MELA; SWADESHI MELA; Outdoor ",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -187,7 +323,40 @@
    "title": "Paper-based Printing Services - Printing with Material; Bid for selection of agency for providing Advocacy materials, ph",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8118367",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Complete Execut",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8118317",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SAILORS MUSICAL EVENING AT GUJARAT NAV",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8118162",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; undefined; SWADESHI MELA; SWADESHI MEL",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8117462",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Event Management Services; Event Manag",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -203,6 +372,7 @@
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of refreshment for CIP As",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -211,7 +381,16 @@
    "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Code Review",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8114707",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Participation a",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -223,6 +402,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8114235",
+   "title": "Hiring of PR Agency",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8113454",
    "title": "Custom Bid for Services - HIRING OF AGENCY UNDER RATE CONTRACT FOR CARRYING OUT LAST MILE CONNECTIVITY LMC AND DIRECT MA",
    "deadline": "2026-10-27",
@@ -231,11 +418,27 @@
    ]
   },
   {
+   "id": "cppp-gem-8109245",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESI MELO; Venue Development, AS PE",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8108818",
    "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Guidance for do",
    "deadline": "2026-10-16",
    "reasons": [
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8108334",
+   "title": "Cyber Security Audit - Website Accessibility Audit of DVC website",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -255,6 +458,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8101950",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Theme Based Events; IT related work, M",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8098350",
    "title": "Custom Bid for Services - Provision of Data Entry operators at CTLC office at Rayagada and Sr. DEE (TR) RGDA Office,Cust",
    "deadline": "2026-10-21",
@@ -268,6 +479,14 @@
    "deadline": "2026-10-28",
    "reasons": [
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8095593",
+   "title": "Hiring of Creative Agency - Category A,B or C; Other Creatives; NA; NA; NA; NA; NA; Printing of leaflets and Foam Banner",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -291,6 +510,7 @@
    "title": "Vulnerability and Penetration Testing - Network, Web Application, Details Mentioned in SoW, IOT devices; Application Sec",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -299,6 +519,7 @@
    "title": "INTEGRATION OF SITUATIONAL AWARENESS SYSTEMS INCL TRISHUL LINK, SABRE 2.0 & SIVAS",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -331,6 +552,7 @@
    "title": "Custom Bid for Services - Subscription of E-library portal & mobile app",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -347,6 +569,7 @@
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; CONDUCT OF JUNGLE SURVIVAL CAMP FOR TH",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -355,6 +578,7 @@
    "title": "PRINTING OF COFFEE TABLE BOOK",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -371,6 +595,7 @@
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Procurement of service for Venue Devel",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -471,10 +696,19 @@
    ]
   },
   {
+   "id": "cppp-14149826",
+   "title": "Tender for still Photography Videography video coverage for NDWBF 2027",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-14140946",
    "title": "Supply, deployment, testing and commissioning of mobile application interface for locomotive wiper testing device, which",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -483,6 +717,7 @@
    "title": "Execution of outdoor advertising services",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -491,6 +726,7 @@
    "title": "Licensing of Co-branding Rights of Amausi Metro Station of N-S Corridor of Lucknow Metro Rail Project in UPMRC network",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -507,6 +743,7 @@
    "title": "Bids Are invited for Repair And Overhauling Service - Tractors (V1); Mobile Communication Terminal (Hub); Yes; Buyer Pre",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -651,6 +888,7 @@
    "title": "Tender For Empanelment Of Vendors/ Suppliers/ Contractors/ Manufactuturers/ Printers/ Service Providers For Lic Of India",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -667,6 +905,7 @@
    "title": "Tender for RFP FOR Imparting English and Communication Skills Training To 270 Govt. ITI Trainees studying across the Kar",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -909,6 +1148,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii - Overhauling Of Various Size Of Valves In Instrument And Service Air Compressors, Pressure Vesse",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -940,6 +1180,14 @@
    "id": "td-57888139",
    "title": "Tender For Engaging Agency For Providing Non Comprehensive Annual Maintenance Contract For Website, Payment Gateway And ",
    "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57768588",
+   "title": "Tender For Contract For Revamping And Re-Designing Of Official Website Of Sardar Patel University Of Police, Security & ",
+   "deadline": "2026-10-15",
    "reasons": [
     "closed"
    ]
@@ -1030,6 +1278,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis - Comprehensive Services & Maintenance Contract F",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -1047,7 +1296,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1057,7 +1306,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1065,6 +1314,14 @@
    "id": "td-57834922",
    "title": "Tender For Ai-Based Integrated Animal Birth Control (Abc) And Animal Welfare Management System Development, Supply, Impl",
    "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57072729",
+   "title": "Tender For Empanelment Of Companies/Firms As Start-Up Company For Solution Design, Development Of Application Software/ ",
+   "deadline": "2026-10-15",
    "reasons": [
     "closed"
    ]
@@ -1089,6 +1346,14 @@
    "id": "td-57838187",
    "title": "Tender For Design, Development, Hosting And Technical Maintenance Of The Official Website Of District Mineral Foundation",
    "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57891058",
+   "title": "Tender For For Empanelment/Onboarding Of An It Firm For Website Backend Management And Mis Development & Maintenance",
+   "deadline": "2026-10-15",
    "reasons": [
     "closed"
    ]
@@ -1140,7 +1405,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1150,7 +1415,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1160,7 +1425,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1170,7 +1435,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1180,7 +1445,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1190,7 +1455,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1250,7 +1515,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours"
+    "not re-verified for 106 hours"
    ]
   },
   {
@@ -1266,6 +1531,7 @@
    "title": "Tender for Annual Rate Contract For Tent, Gate, Chair, Matinee, Barricading, Sound, Publicity, Entire Arrangement Work D",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -1283,6 +1549,7 @@
    "title": "Tender For Empanelment Of Advertising Agencies For Supply Of Catering Disposables, Railneer Bottles Labels, Other Permis",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1319,6 +1586,14 @@
    ]
   },
   {
+   "id": "td-57887501",
+   "title": "Tender For Advertising Agency Empanelment",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57817495",
    "title": "Rate Contract For Advertising",
    "deadline": "2026-10-12",
@@ -1327,9 +1602,57 @@
    ]
   },
   {
+   "id": "td-57857716",
+   "title": "SELECTION OF AGENCY FOR DEVELOPMENT IMPLEMENTATION,OPERATION AND MANAGEMENT OF AN INTEGRATED DIGITAL COMMERCE ECOSYSTEM ",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57785313",
+   "title": "Expression Of Interest (Eoi) Regarding Empanelment Of Various Technical And Professional Service Providers/Firms/Compani",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57674331",
    "title": "Tender For Selection Of Digital & Social Media Marketing Agency For Hoh",
    "deadline": "2026-10-14",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57417712",
+   "title": "Tender For Appointment Of Agency For Promotion, Outreach And Branding, Digital Marketing And Production Work Of Mpmkvvcl",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57814671",
+   "title": "Tender For Appointment Of Agency For Promotion, Outreach & Branding, Digital Marketing And Production Work Of Mpmkvvcl, ",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57852828",
+   "title": "Bids Are invited for Cultural Festival",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-56726835",
+   "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, C Aign M",
+   "deadline": "2026-10-15",
    "reasons": [
     "closed"
    ]
@@ -1478,7 +1801,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours"
+    "not re-verified for 106 hours"
    ]
   },
   {
@@ -1646,7 +1969,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours"
+    "not re-verified for 106 hours"
    ]
   },
   {
@@ -1722,6 +2045,7 @@
    "title": "Supply Of Two way counter communication system (Public Announcement System) => Limited",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1730,6 +2054,7 @@
    "title": "Tender For Purchase Of Otdr For The Use Of Communication Section ,Kannur",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1756,7 +2081,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours"
+    "not re-verified for 106 hours"
    ]
   },
   {
@@ -1773,6 +2098,7 @@
    "title": "Tender For Purchase Of Advance Fiber Optics Communication Trainer For Telematics Laboratory",
    "deadline": "2026-10-15",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1808,7 +2134,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 99 hours",
+    "not re-verified for 106 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1816,6 +2142,14 @@
    "id": "td-57674380",
    "title": "Selection Of An Agency For Integrated Social Media Management, Public Relations & Communication And Event Support For Th",
    "deadline": "2026-10-13",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57831481",
+   "title": "Tender For Selection Of A Professional Social Media, Digital Communications And Public Relations Agency For Bareilly Dev",
+   "deadline": "2026-10-15",
    "reasons": [
     "closed"
    ]
@@ -1829,131 +2163,94 @@
    ]
   },
   {
-   "id": "cppp-gem-8143666",
-   "title": "Camera Battery,Camera Bag,Digital Single Lens Reflex Camera,Photography Umbrella,Portrait Lens",
-   "deadline": "2026-10-20",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8143790",
-   "title": "Chamois Leather 50 x 80cm,Fuel Pipe,Souvenir,Professional event video editing and Post Production Services,Cap,Expeditio",
-   "deadline": "2026-10-20",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8136648",
-   "title": "Custom Bid for Services - Designing, Printing and Fixing cloth banner & others for Publicity works of NTPC Ramagundam & ",
-   "deadline": "2026-10-20",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8144921",
-   "title": "Artillery shamiana size 15 ft x 15 ftt,Artillery shamiana size 20 ft x 20 ft,Battery Operated hedge cutting Machine,Batt",
-   "deadline": "2026-10-20",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8102824",
-   "title": "Rent for Hiring of Room Hall,Fees for Hiring of Civ Instr,Hiring of Microphones and Accessories,Hiring of Sound Card Aud",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8133757",
-   "title": "Five-Tier Tapered Glass Exhibition Display Unit",
-   "deadline": "2026-11-02",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8103346",
-   "title": "Trophy to winner team for Cricket Tournament,trophy to first runner up team for Cricket Tournament,trophy to second runn",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8141525",
-   "title": "Tentage Service Lumpsum Based - State Level Senior Citizen Men-Women Athletics Competition; Lighting, Tent Rentals, Them",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8147626",
-   "title": "DIGITAL MEDIA ENCODER",
+   "id": "cppp-gem-8153927",
+   "title": "SPECIAL INVESTIGATION FORM 100 PAGES PACK OF PAD,DENTAL APPLIANCES FORMS 100 PAGES PACK OF PAD,POST EXTRACTION INSTRUCTI",
    "deadline": "2026-10-23",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-gem-7991888",
-   "title": "Tuition fees for students,Books for computer Coaching classes,Expenditure on print social media and publicity banners,St",
-   "deadline": "2026-10-23",
+   "id": "cppp-gem-8156172",
+   "title": "PUBLICITY VAN WITH OUTDOOR LED",
+   "deadline": "2026-11-27",
    "reasons": [
-    "not relevant (fit under 3)"
+    "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-gem-7998804",
-   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; ANNUAL SPORTSMEET - 2026 AND ONE DAY T",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8148569",
-   "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Infrastruct",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8111670",
-   "title": "Stage Banner 12 x 10 fit,Stage and Decoration 15 x 20 fit,Balloon,Printing of Rally Badges,Printing of Invitation Cards ",
+   "id": "cppp-gem-8157103",
+   "title": "Metric Scale (V2) Conforming to IS 1480,Metric Steel Scales (V3) Conforming to IS 1481,Pressure Sensitive Adhesive Tapes",
    "deadline": "2026-10-23",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-gem-8100292",
-   "title": "Hiring Of Agency For ISO Certification Service - ISO 14001 - Environmental Management System (EMS); Consulting; Guidance",
-   "deadline": "2026-11-03",
+   "id": "cppp-gem-8147700",
+   "title": "Paper-based Printing Services - Printing with Material; Coffee Table Books; Offset",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8073744",
+   "title": "Procurement for establ techno exp & exhibition centre list of deliverables as per Ann-A of tech RFP",
+   "deadline": "2026-10-24",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8158226",
+   "title": "Custom Bid for Services - Custom bid for catering Services,Custom Bid for Services - Event management Services",
+   "deadline": "2026-10-28",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   },
   {
-   "id": "cppp-gem-8151942",
-   "title": "Outdoor Advertisement Service - BOQ Mode",
-   "deadline": "2026-10-20",
+   "id": "cppp-gem-8135443",
+   "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Code Review",
+   "deadline": "2026-10-29",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8144094",
+   "title": "Technical Team and Electronic Measuring Device,Travel for Technical Team from Home Base and Back,Local Transportation Bo",
+   "deadline": "2026-10-29",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8119529",
+   "title": "Custom Bid for Services - Repair or changing levelling or alignment work in roller tables from 12 13 and 16 and depilers",
+   "deadline": "2026-10-29",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8098344",
+   "title": "Paper-based Printing Services - Printing with Material; Forms; Offset,Paper-based Printing Services - Printing with Mate",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8159344",
+   "title": "Tentage Service Lumpsum Based - DISTRICT LEVEL YUVA UTSAV 2026-27 AT VADODARA DISTRICT; Lighting, Tent Rentals, Theme Ba",
+   "deadline": "2026-10-24",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   }
  ],
  "fixes": [],
- "ai_resets": [
-  {
-   "id": "cppp-14196471",
-   "problem": "mentions a private name (NHAI)"
-  }
- ]
+ "ai_resets": []
 }
