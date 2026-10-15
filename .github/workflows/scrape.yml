@@ -20,6 +20,11 @@ jobs:
     env:
       DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
+      # TEMPORARY (15 Oct 2026): TenderDetail is blocking automated access, so
+      # tenders can't be re-verified. Keep showing open tenders verified within
+      # 96 hours instead of 36 until the replacement source is live; expired
+      # tenders are still never shown. Remove this line to return to 36.
+      MAX_VERIFY_AGE_HOURS: '96'
 
     steps:
       - uses: actions/checkout@v7
