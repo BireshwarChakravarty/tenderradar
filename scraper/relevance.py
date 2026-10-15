@@ -131,6 +131,34 @@ def categorise(title: str, keyword: str = "") -> str:
     return _KEYWORD_CATEGORY.get(keyword, "Other")
 
 
+# Sources that list every government tender (CPPP) are screened by title
+# first: only titles that mention communications, publicity, digital, creative
+# or website work go further. Broad on purpose; the AI decides fit.
+CANDIDATE_PATTERNS = [
+    r"\bpublic relations?\b", r"\bpr (?:agency|agencies|firm|consultan|services?|activit)",
+    r"\bmedia\b", r"\bsocial media\b", r"\bpublicity\b", r"\badverti[sz]", r"\bcampaigns?\b",
+    r"\biec\b", r"\bbcc\b", r"\bsbcc\b", r"\boutreach\b", r"\bawareness\b", r"\bcommunications?\b",
+    r"\bbranding\b", r"\bbrand\b", r"\bcreative\b", r"\bcontent\b", r"\bcopy ?writ",
+    r"\bvideo(?:graphy)?\b", r"\bfilms?\b", r"\bdocumentar", r"\bphotograph", r"\bshort films?\b",
+    r"\bevents?\b", r"\bexhibitions?\b", r"\bexpo\b", r"\bconclave\b", r"\bsummit\b", r"\bmela\b",
+    r"\bconferences?\b", r"\bseminars?\b", r"\bfestivals?\b", r"\binvestors? meet\b",
+    r"\bwebsites?\b", r"\bweb ?portals?\b", r"\bweb (?:design|development|application)",
+    r"\bseo\b", r"\bsearch engine\b", r"\bdigital (?:marketing|media|promotion|outreach|campaign|agency)",
+    r"\bnewsletters?\b", r"\bmagazines?\b", r"\bcoffee table book\b", r"\bbrochures?\b",
+    r"\binfluencers?\b", r"\bpodcasts?\b", r"\bjingles?\b", r"\banimation\b", r"\bgraphic",
+    r"\bmonitoring of (?:news|media|print)", r"\bpress\b", r"\bmarketing\b", r"\bpromotion(?:al)?\b",
+    r"\btvc\b", r"\bradio\b", r"\bfm\b", r"\bcommunity radio\b", r"\be-?learning\b",
+    r"\bknowledge products?\b", r"\bdocumentation\b", r"\bpublications?\b", r"\btele-?films?\b",
+    r"\bmobile app(?:lication)?s?\b",
+]
+_CANDIDATE = re.compile("|".join(f"(?:{p})" for p in CANDIDATE_PATTERNS), re.IGNORECASE)
+
+
+def is_candidate(title: str) -> bool:
+    """Worth collecting from a source that lists every kind of tender."""
+    return bool(_CANDIDATE.search(title or "")) and not exclusion_reason(title)
+
+
 def is_recommended(t) -> bool:
     """Worth the user's attention: scored at or above the threshold, not Skip, and not goods/works/auction."""
     return (t.score is not None and t.score >= MIN_RELEVANCE_SCORE

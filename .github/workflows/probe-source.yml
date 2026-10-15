@@ -4,7 +4,7 @@ name: Probe alternative source (temporary)
 on:
   push:
     branches: [claude/zen-edison-2nzih6]
-    paths: [probe/**, .github/workflows/probe-source.yml]
+    paths: [probe/**, scraper/cppp.py, .github/workflows/probe-source.yml]
 
 permissions:
   contents: read
@@ -18,5 +18,5 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
-      - run: pip install playwright && playwright install chromium --with-deps
-      - run: python probe/official_probe.py
+      - run: pip install python-dotenv
+      - run: python probe/cppp_probe.py
