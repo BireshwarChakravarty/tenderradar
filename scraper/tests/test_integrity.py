@@ -49,7 +49,7 @@ class GateTests(unittest.TestCase):
         self.assertIn("never verified against the source", blockers(good(verified_at=""), TODAY))
 
     def test_stale_verification_is_held(self):
-        reasons = blockers(good(verified_at=_ts(40)), TODAY)
+        reasons = blockers(good(verified_at=_ts(integrity.MAX_VERIFY_AGE_HOURS + 4)), TODAY)
         self.assertTrue(any(r.startswith("not re-verified") for r in reasons))
 
     def test_far_future_deadline_is_held(self):
