@@ -11,13 +11,13 @@ dashboard, email and Telegram.
 
 ## What it does
 
-- **Discovers** new tenders from government procurement sources (GeM, CPPP and state portals)
-  several times a day.
+- **Discovers** new tenders on the Central Public Procurement Portal (CPPP), which lists open
+  tenders from central ministries, PSUs and state e-procurement portals, several times a day.
 - **Screens out** what is never a fit, such as goods supply, civil works and auctions.
 - **Assesses** every remaining tender with AI: a plain-English headline, a fit score, a
   Bid / Watch / Skip recommendation, and notes on fit, risk and eligibility.
-- **Verifies** every published tender against its source page at least once a day, and publishes
-  only tenders that are open, current and confirmed.
+- **Verifies** every published tender against the source twice a day, and publishes only tenders
+  that are open, current and confirmed. A tender the source stops listing is taken down.
 - **Alerts** the team when a strong new match appears, and sends a morning digest of what is
   closing this week.
 - **Tracks** bids from shortlist to submission on the dashboard, with notes and CSV export.
@@ -28,7 +28,7 @@ Accuracy comes first. A tender appears on the dashboard, in an alert or in the d
 
 - its source states a closing date, and that date has not passed;
 - it was published in 2026 or later;
-- its source page was re-read within the last 36 hours;
+- the source was re-read within the last 36 hours and still lists it;
 - it has been assessed and judged relevant.
 
 Anything that fails a check is held back, never shown. Contradictory values are removed rather
@@ -42,6 +42,7 @@ owner is notified by email.
 
 ```
 GitHub Actions   every 4 hours   discover, verify, assess, publish, alert
+                                 (every listing re-read twice a day)
                  08:00 IST       morning digest
                  03:47 IST       independent audit of published data
 GitHub Pages     dashboard (docs/), reading only the published data
@@ -68,8 +69,9 @@ GitHub Pages     dashboard (docs/), reading only the published data
    | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Telegram alerts | For Telegram |
    | `MIN_RELEVANCE_SCORE` | Score treated as recommended (default 6.0) | No |
 
-3. **First run:** Actions, TenderRadar Scraper, Run workflow. The first run verifies every tender
-   and takes up to 40 minutes; later runs take a few minutes.
+3. **First run:** Actions, TenderRadar Scraper, Run workflow. The first run reads every listing
+   and takes about an hour; later runs take a few minutes, and a full re-read twice a day takes
+   about an hour.
 
 ## Operations
 
@@ -86,12 +88,18 @@ from the Actions tab if that happens.
 ## Local development
 
 ```bash
-pip install -r scraper/requirements.txt && playwright install chromium
+pip install -r scraper/requirements.txt
 cp .env.example .env                                   # add keys
 python -m unittest discover -s scraper/tests -t scraper
 python scraper/main.py
 python -m http.server -d docs                          # dashboard at http://localhost:8000
 ```
+
+## Data source
+
+Tender data comes from the Central Public Procurement Portal (eprocure.gov.in), Government of
+India, and is shown with the source acknowledged. Only its public tender list is read, at a
+measured pace; search forms and anything behind a captcha are never used.
 
 ---
 

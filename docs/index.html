@@ -313,7 +313,8 @@ tbody tr.dim td > * { opacity: .55; }
 textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical; line-height: 1.5; }
 .sheet-foot { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
 .sheet-foot:empty { display: none; }
-.sheet-foot .btn.primary { flex: 1; justify-content: center; height: 42px; font-size: 14.5px; }
+.sheet-foot .btn { height: 42px; font-size: 14.5px; }
+.sheet-foot .btn.primary { flex: 1; justify-content: center; }
 .kv { display: grid; grid-template-columns: 150px 1fr; gap: 8px 14px; margin: 0 0 24px; }
 .kv dt { color: var(--text-3); } .kv dd { margin: 0; }
 .prose p { color: var(--text-2); margin: 0 0 10px; line-height: 1.6; }
@@ -469,7 +470,7 @@ textarea.field { width: 100%; height: 96px; padding: 10px 12px; resize: vertical
     <div id="results"></div>
   </section>
 </main>
-<footer class="wrap site-foot">Designed and built by Bireshwar Chakravarty · © 2026 Bireshwar Chakravarty. All rights reserved.</footer>
+<footer class="wrap site-foot">Tender data: Central Public Procurement Portal (eprocure.gov.in), Government of India.<br>Designed and built by Bireshwar Chakravarty · © 2026 Bireshwar Chakravarty. All rights reserved.</footer>
 
 <div class="scrim" id="scrim"></div>
 <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" tabindex="-1">
@@ -825,12 +826,13 @@ function closeSheet() {
   if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
 }
 const fact = (k, v, sub = "") => `<div class="fact"><dt>${esc(k)}</dt><dd>${v || '<span class="na">Not stated</span>'}${sub ? `<span class="sub">${sub}</span>` : ""}</dd></div>`;
+const isCPPP = t => t.source === "CPPP";
 function openTender(id, push = true) {
   const t = tenders.find(x => x.id === id); if (!t) return;
   openId = id;
   const n = daysLeft(t.deadline), tr = track(id);
   $("#sheet-hero").innerHTML = `
-    <div class="sheet-bar"><span class="ref">${t.ref_no ? "TDR " + esc(t.ref_no) : ""}</span><span class="spacer"></span>
+    <div class="sheet-bar"><span class="ref">${t.ref_no ? (isCPPP(t) ? "Tender ID " : "TDR ") + esc(t.ref_no) : ""}</span><span class="spacer"></span>
       <button class="icon-btn" data-act="copy" aria-label="Copy link"><svg class="i"><use href="#i-link"/></svg></button>
       <button class="icon-btn" data-act="close" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button></div>
     <div class="sheet-title">${ring(t, 64)}<div>
@@ -857,7 +859,10 @@ function openTender(id, push = true) {
     <div class="seg" role="group" aria-label="Tracking status">${STATUSES.map(s => `<button type="button" data-status="${s.id}" aria-pressed="${(tr.status || "") === s.id}">${esc(s.label)}</button>`).join("")}</div>
     <label class="sr-only" for="notes">Notes</label>
     <textarea class="field" id="notes" placeholder="Notes: contacts, eligibility, documents needed…">${esc(tr.notes || "")}</textarea>`;
-  $("#sheet-foot").innerHTML = t.url ? `<a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">Open tender notice <svg class="i"><use href="#i-ext"/></svg></a>` : "";
+  $("#sheet-foot").innerHTML = !t.url ? "" : isCPPP(t)
+    ? `<button class="btn" type="button" data-act="copy-id" data-ref="${esc(t.ref_no)}">Copy Tender ID</button>
+       <a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">${t.url.includes("tendersfullview") ? "Open on CPPP" : "Find on CPPP"} <svg class="i"><use href="#i-ext"/></svg></a>`
+    : `<a class="btn primary" href="${esc(t.url)}" target="_blank" rel="noopener">Open tender notice <svg class="i"><use href="#i-ext"/></svg></a>`;
   if (push) history.replaceState(null, "", "#t=" + encodeURIComponent(id));
   showSheet();
 }
@@ -866,7 +871,7 @@ function openSettings() {
   const lr = meta.last_run || {};
   const rows = [["Last sync", meta.last_updated ? `${ago(meta.last_updated)}${lr.ok === false ? " (failed)" : ""}` : "Never"],
     ["Tenders shown", `${tenders.length} open, each with a closing date stated by the source`],
-    meta.oldest_check && ["Source checks", `Every tender re-checked against its source page; oldest check ${ago(meta.oldest_check)}`],
+    meta.oldest_check && ["Source checks", `Every tender re-checked against its source; oldest check ${ago(meta.oldest_check)}`],
     meta.held_back != null && ["Held back", `${meta.held_back} not shown: not relevant, closed, published before 2026, no closing date, or not re-verified`],
     lr.listed != null && ["Last run", `${lr.listed} listed, ${lr.new ?? 0} new, ${lr.excluded ?? 0} filtered, ${lr.duplicates ?? 0} duplicates`],
     lr.backlog ? ["Queued", `${lr.backlog} notices for the next sync`] : null,
@@ -879,7 +884,7 @@ function openSettings() {
     <div style="display:flex;gap:8px;margin-bottom:24px"><button class="btn" type="button" data-act="export-tracking"><svg class="i"><use href="#i-download"/></svg>Export</button>
       <label class="btn">Import<input type="file" accept="application/json" id="import-file" hidden></label></div>
     <div class="lbl">How tenders are chosen</div>
-    <div class="prose"><p>Every 4 hours new notices are collected from GeM, CPPP and state portals via TenderDetail.com. Auctions, works and goods supply are removed, and each remaining tender is assessed against your company profile. New recommended tenders go out by email and Telegram, with a digest at 8 AM IST.</p></div>`;
+    <div class="prose"><p>Every 4 hours new notices are collected from the Central Public Procurement Portal (CPPP, eprocure.gov.in), which lists open tenders from central ministries, PSUs and state e-procurement portals, and every listing is re-read twice a day. Auctions, works and goods supply are removed, and each remaining tender is assessed against your company profile. New recommended tenders go out by email and Telegram, with a digest at 8 AM IST.</p></div>`;
   $("#sheet-foot").innerHTML = "";
   showSheet();
 }
@@ -970,6 +975,7 @@ function wire() {
     const b = e.target.closest("button"); if (!b) return;
     if (b.dataset.act === "close") closeSheet();
     else if (b.dataset.act === "copy") navigator.clipboard?.writeText(location.href).then(() => toast("Link copied"), () => toast("Couldn't copy link"));
+    else if (b.dataset.act === "copy-id") navigator.clipboard?.writeText(b.dataset.ref).then(() => toast("Tender ID copied"), () => toast("Couldn't copy the Tender ID"));
     else if (b.dataset.act === "export-tracking") download(`tenderradar-tracking-${TODAY}.json`, JSON.stringify(tracking, null, 2), "application/json");
     else if (b.dataset.status !== undefined && openId) setStatus(openId, b.dataset.status);
   });

@@ -11,7 +11,7 @@ A tender is published only when:
   - the closing date is within a year (anything later is a mis-read)
   - it was published in 2026 or later, when the source states a publish date
   - its page was re-read from the source within MAX_VERIFY_AGE_HOURS
-  - its link and reference number point to the same TenderDetail notice
+  - its link and reference number point to the same notice on its source
   - the AI has assessed it and judged it relevant: not goods, works or an
     auction, and a fit score of 3 or more
 
@@ -35,6 +35,8 @@ MAX_VERIFY_AGE_HOURS = int(os.getenv("MAX_VERIFY_AGE_HOURS") or 36)
 MAX_DAYS_AHEAD = 365
 
 _URL = re.compile(r"^https://www\.tenderdetail\.com/[^ ]*TenderNotice/(\d+)")
+_CPPP_URL = re.compile(r"^https://eprocure\.gov\.in/cppp/")
+_CPPP_ID = re.compile(r"^cppp-\d+$")        # CPPP's own listing number
 _BANNED = re.compile(r"bid tracker|bid pipeline|in the pipeline|already bid|internal tracker|"
                      r"company_knowledge|private notes", re.I)
 # Acronyms and abbreviations that are fine anywhere
@@ -107,6 +109,14 @@ def reset_assessment(t: Tender) -> None:
     t.scoring_version = 0
 
 
+def link_matches(t: Tender) -> bool:
+    """The link points at the tender's source and the ID agrees with its reference."""
+    if t.source == "CPPP":
+        return bool(_CPPP_URL.match(t.url or "") and _CPPP_ID.match(t.id) and (t.ref_no or "").strip())
+    m = _URL.match(t.url or "")
+    return bool(m and f"td-{m.group(1)}" == t.id and m.group(1) == t.ref_no)
+
+
 def blockers(t: Tender, today: date) -> list[str]:
     """Reasons this tender can't be published. Empty means it can."""
     out = []
@@ -125,8 +135,7 @@ def blockers(t: Tender, today: date) -> list[str]:
         out.append("never verified against the source")
     elif age > MAX_VERIFY_AGE_HOURS:
         out.append(f"not re-verified for {age:.0f} hours")
-    m = _URL.match(t.url or "")
-    if not m or f"td-{m.group(1)}" != t.id or m.group(1) != t.ref_no:
+    if not link_matches(t):
         out.append("source link doesn't match the reference")
     if len((t.title or "").strip()) < 15:
         out.append("title missing")
