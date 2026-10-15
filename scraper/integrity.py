@@ -29,7 +29,9 @@ from dates import from_str, today_ist
 from models import Tender
 
 MIN_PUBLISHED = date(2026, 1, 1)
-MAX_VERIFY_AGE_HOURS = 36
+# Normally 36. Raised temporarily with the MAX_VERIFY_AGE_HOURS variable in
+# scrape.yml when the source can't be re-read; closing dates are still enforced.
+MAX_VERIFY_AGE_HOURS = int(os.getenv("MAX_VERIFY_AGE_HOURS") or 36)
 MAX_DAYS_AHEAD = 365
 
 _URL = re.compile(r"^https://www\.tenderdetail\.com/[^ ]*TenderNotice/(\d+)")
