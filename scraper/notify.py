@@ -67,6 +67,13 @@ def _chip(text: str, fg: str, bg: str) -> str:
             f'background:{bg};color:{fg};font-size:12px;font-weight:600">{E(text)}</span>')
 
 
+def link_of(t: Tender) -> str:
+    """The tender on the dashboard (assessment, ID and source link), or the source if there's no dashboard."""
+    if DASHBOARD_URL:
+        return f"{DASHBOARD_URL}#t={urllib.parse.quote(t.id, safe='')}"
+    return t.url
+
+
 def email_card(t: Tender) -> str:
     fg, bg = _REC_COLOURS.get(t.recommendation, ("#475569", "#f1f5f9"))
     n = days_until(t.deadline)
@@ -84,7 +91,7 @@ def email_card(t: Tender) -> str:
                    f'<b>Eligibility:</b> {E(t.eligibility)}</p>')
     return f"""
       <tr><td style="padding:16px 0;border-bottom:1px solid #e2e8f0">
-        <a href="{E(t.url)}" style="color:#0f172a;font-size:15px;font-weight:600;text-decoration:none;line-height:1.4">{E(title_of(t))}</a>
+        <a href="{E(link_of(t))}" style="color:#0f172a;font-size:15px;font-weight:600;text-decoration:none;line-height:1.4">{E(title_of(t))}</a>
         <div style="color:#64748b;font-size:13px;margin-top:3px">{E(where_of(t)) or "&nbsp;"}</div>
         <div style="margin-top:8px">{" ".join(chips)}</div>
         {reason}
@@ -163,7 +170,7 @@ def telegram_line(t: Tender) -> str:
     score = f"<b>{t.score:.1f}</b> {E(t.recommendation)} · " if t.score is not None else ""
     value = f" · {E(fmt_inr(t.value_inr))}" if t.value_inr else ""
     where = f"\n{E(where_of(t))}" if where_of(t) else ""
-    return (f'• <a href="{E(t.url)}">{E(title_of(t)[:110])}</a>{where}\n'
+    return (f'• <a href="{E(link_of(t))}">{E(title_of(t)[:110])}</a>{where}\n'
             f"  {score}{E(fmt_closing(t.deadline))}{value}")
 
 

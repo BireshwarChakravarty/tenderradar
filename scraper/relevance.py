@@ -131,6 +131,51 @@ def categorise(title: str, keyword: str = "") -> str:
     return _KEYWORD_CATEGORY.get(keyword, "Other")
 
 
+# Sources that list every government tender (CPPP) are screened by title
+# first: only titles that mention communications, publicity, digital, creative
+# or website work go further. Broad on purpose; the AI decides fit.
+CANDIDATE_PATTERNS = [
+    r"\bpublic relations?\b", r"\bpr (?:agency|agencies|firm|consultan|services?|activit)",
+    r"\b(?:social|digital|print|electronic|news|mass|new|outdoor) media\b",
+    r"\bmedia (?:planning|buying|monitoring|agency|agencies|campaign|plan|relations|management|cell|centre|center|house|services?|analysis)\b",
+    r"\bpublicity\b", r"\badverti[sz]", r"\bcampaigns?\b", r"\boutreach\b", r"\bawareness\b",
+    r"\biec (?:(?:and|&|/) ?bcc )?(?:activit|campaign|material|programme|program|plan|component|strategy|agency)",
+    r"\b(?:s?bcc|ipc) (?:activit|campaign|material|strategy)",
+    r"\binformation,? education (?:and|&) communication", r"\bbehaviou?r(?:al)? change communication",
+    r"\bcommunications? (?:agency|agencies|strategy|consult|campaign|plan|support|services?|activit|material|cell)",
+    r"\b(?:strategic|integrated|corporate|digital|mass|public) communications?\b",
+    r"\bbranding\b", r"\bbrand (?:building|promotion|campaign|identity|strategy|ambassador)",
+    r"\bcreative (?:agency|agencies|services?|design|content|partner)", r"\bcopy ?writ",
+    r"\bcontent (?:creation|development|writing|management|production|marketing|creators?)",
+    r"\bvideo (?:production|shoot|documentation|content|films?|editing|making)", r"\bvideography\b",
+    r"\b(?:short|documentary|promotional|corporate|ad|tele|animated)[- ]?films?\b",
+    r"\bfilm (?:production|making|shoot)", r"\bfilm-?making\b", r"\bdocumentar(?:y|ies)\b",
+    r"\bphotograph(?:y|er|ers)\b",
+    r"\bevent (?:management|manager|agency|agencies|organi[sz])", r"\bevents? and exhibitions?\b",
+    r"\b(?:organi[sz](?:e|ing|ation)|management|managing|conduct(?:ing)?|hosting) of (?:a |the )?"
+    r"(?:\w+ ){0,3}(?:conferences?|seminars?|summits?|conclaves?|workshops?|events?|exhibitions?|festivals?|expos?|melas?)",
+    r"\bexhibitions?\b", r"\bconclave\b", r"\bsummit\b", r"\binvestors? meet\b",
+    r"\bwebsites?\b", r"\bweb ?portals?\b", r"\bweb (?:design|development|application|hosting)",
+    r"\bseo\b", r"\bsearch engine\b",
+    r"\b(?:digital|social media|performance|content|online) marketing\b",
+    r"\bmarketing (?:agency|agencies|campaign|communication|consult|support)",
+    r"\bdigital (?:media|promotion|outreach|campaign|agency|agencies)",
+    r"\bpromotion(?:al)? (?:campaign|activit|video|material|events?)", r"\b(?:tourism|investment|trade) promotion",
+    r"\bnewsletters?\b", r"\bcoffee table books?\b", r"\bbrochures?\b", r"\bhouse (?:magazine|journal)",
+    r"\binfluencers?\b", r"\bpodcasts?\b", r"\bjingles?\b", r"\banimation\b", r"\bgraphic design",
+    r"\bmonitoring of (?:news|media|print)", r"\bpress (?:release|conference|coverage|notes?|clippings?)",
+    r"\btvcs? (?:production|making|shoot|films?|ads?)\b", r"\btelevision commercials?\b", r"\b(?:radio|fm) (?:spots?|jingles?|campaign|advertis|programmes?|programs?)",
+    r"\bcommunity radio\b", r"\be-?learning\b", r"\bknowledge products?\b",
+    r"\bmobile app(?:lication)?s?\b",
+]
+_CANDIDATE = re.compile("|".join(f"(?:{p})" for p in CANDIDATE_PATTERNS), re.IGNORECASE)
+
+
+def is_candidate(title: str) -> bool:
+    """Worth collecting from a source that lists every kind of tender."""
+    return bool(_CANDIDATE.search(title or "")) and not exclusion_reason(title)
+
+
 def is_recommended(t) -> bool:
     """Worth the user's attention: scored at or above the threshold, not Skip, and not goods/works/auction."""
     return (t.score is not None and t.score >= MIN_RELEVANCE_SCORE

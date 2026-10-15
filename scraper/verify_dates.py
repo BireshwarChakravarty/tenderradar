@@ -1,151 +1,122 @@
 """
 TenderRadar: independent audit of the published data.
 
-Re-opens every tender the website shows (docs/data/tenders.json) on
-TenderDetail and checks its closing date against what the page says now.
-Read-only: nothing is saved. Exits 1 if any published tender is closed or
-dated differently on its source page, so the GitHub run turns red and the
-owner is emailed.
+Runs daily, separately from the scraper. Read-only: nothing is saved.
 
-Each tender lands in one bucket:
-  ok          explicit closing date on the page, in the future, equals the stored one
-  changed     explicit future date on the page differs from the stored one
-  countdown   no explicit date; the deadline comes only from "Closing in N days" style text
-  override    the page states a closing date that has already passed, but a
-              countdown phrase made the parser treat it as still open
-  no_date     the page states no date and no countdown
-  failed      the page didn't load
+  1. Every tender the website shows (docs/data/tenders.json) is checked
+     against the publish rules again: closing date stated and not passed,
+     re-verified against the source within the allowed window.
+  2. A sample of CPPP list pages (the newest, plus random pages across the
+     list) is read again and every row is parsed twice: by the collector's
+     parser, and by a deliberately different one that works on the page text
+     alone. Any disagreement on a closing date, publish date or Tender ID
+     fails the audit.
+  3. Any published tender that appears in the sample is compared with its
+     stored closing date.
 
-Run: python scraper/verify_dates.py   (VERIFY_LIMIT caps how many are checked)
+Exits 1 on any problem, so the GitHub run turns red and the owner is emailed.
+
+Run: python scraper/verify_dates.py   (AUDIT_PAGES sets the sample size)
 """
-import json
+import base64
 import logging
 import os
+import random
 import re
 import sys
-from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
 
-from config import USER_AGENT
-from dates import parse_date, plausible, today_ist
-from page_parser import _COUNTDOWN, _DEADLINE_LABEL, _PUBLISHED_LABEL, parse_dates
+import cppp
+from dates import today_ist
+from integrity import MAX_VERIFY_AGE_HOURS, _hours_since
 from store import load_published
-from tenderdetail import _read_page
 
-log = logging.getLogger("Verify")
+log = logging.getLogger("Audit")
 
-
-def _ctx(text: str, start: int, end: int, before: int = 50, after: int = 60) -> str:
-    return re.sub(r"\s+", " ", text[max(0, start - before):end + after]).strip()
-
-
-def inspect(text: str) -> dict:
-    today = today_ist()
-    labelled = []
-    for m in _DEADLINE_LABEL.finditer(text):
-        d = parse_date(text[m.end():m.end() + 40])
-        if d and plausible(d):
-            labelled.append({"date": d.isoformat(), "at": m.start(), "ctx": _ctx(text, m.start(), m.end())})
-    countdowns = [{"match": m.group(0), "at": m.start(), "ctx": _ctx(text, m.start(), m.end(), 80, 80)}
-                  for m in _COUNTDOWN.finditer(text)]
-    published = []
-    for m in _PUBLISHED_LABEL.finditer(text):
-        d = parse_date(text[m.end():m.end() + 40])
-        if d and plausible(d):
-            published.append({"date": d.isoformat(), "ctx": _ctx(text, m.start(), m.end())})
-            break
-    first_label = labelled[0]["date"] if labelled else ""
-    return {"fresh": parse_dates(text), "labelled": labelled, "countdowns": countdowns,
-            "published": published, "first_label": first_label, "today": today.isoformat(),
-            "length": len(text)}
+# The second parser: a row's visible text is
+#   "<n>. <published> <closing> <opening> <title>/<ref>/<tender id> <organisation> <corrigendum>"
+_DT = r"(\d{2}-[A-Z][a-z]{2}-\d{4} \d{2}:\d{2} [AP]M)"
+_ROW_TEXT = re.compile(rf"^\d+\.\s+{_DT}\s+{_DT}\s+{_DT}\s+(.+)$")
 
 
-def bucket(stored: str, info: dict) -> str:
-    fresh = info["fresh"]["deadline"]
-    label = info["first_label"]
-    today = info["today"]
-    if label and label < today and info["countdowns"] and fresh >= today:
-        return "override"
-    if label and label >= today:
-        return "ok" if label == stored else "changed"
-    if info["countdowns"]:
-        return "countdown"
-    return "no_date"
+def text_rows(page_html: str) -> dict[str, tuple[str, str, str]]:
+    """{CPPP key: (published, closing, tender id)} from the page text, independently of cppp.parse_list."""
+    out = {}
+    for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", page_html, re.S | re.I):
+        key = re.search(r"tendersfullview/([A-Za-z0-9+/=]+?)A13h1", tr)
+        cells = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", c)).strip()
+                 for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S | re.I)]
+        m = _ROW_TEXT.match(" ".join(cells[:5]).replace("&amp;", "&"))
+        if not (key and m):
+            continue
+        k = base64.b64decode(key.group(1) + "=" * (-len(key.group(1)) % 4)).decode()
+        iso = lambda s: datetime.strptime(s, "%d-%b-%Y %I:%M %p").strftime("%Y-%m-%dT%H:%M")
+        out[k] = (iso(m.group(1)), iso(m.group(2)), m.group(4).rsplit("/", 1)[-1].strip())
+    return out
 
 
 def main() -> None:
-    from playwright.sync_api import sync_playwright
-
     today = today_ist().isoformat()
-    todo = sorted(load_published(), key=lambda t: t.deadline or "9999")
-    limit = int(os.getenv("VERIFY_LIMIT") or 400)
-    todo = todo[:limit]
-    log.info("Checking %d open tenders against their pages (today %s)", len(todo), today)
+    problems = []
 
-    rows = []
-    with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"])
-        page = browser.new_context(user_agent=USER_AGENT, viewport={"width": 1280, "height": 800},
-                                   locale="en-IN").new_page()
-        for i, t in enumerate(todo, 1):
-            text = _read_page(page, t.url)
-            if not text:
-                rows.append({"id": t.id, "stored": t.deadline, "bucket": "failed", "title": t.title})
-                continue
-            info = inspect(text)
-            b = bucket(t.deadline, info)
-            rows.append({"id": t.id, "url": t.url, "title": t.title[:90], "stored": t.deadline,
-                         "stored_published": t.published, "bucket": b, "excerpt": text[:2500], **info})
-            log.info("[%d/%d] %-9s stored=%-10s page=%-10s countdown=%s  %s", i, len(todo), b,
-                     t.deadline or "-", info["first_label"] or "-",
-                     ",".join(c["match"] for c in info["countdowns"]) or "-", t.title[:60])
-        browser.close()
+    published = load_published()
+    log.info("Website shows %d tenders", len(published))
+    for t in published:
+        age = _hours_since(t.verified_at)
+        if not t.deadline or t.deadline < today:
+            problems.append(f"{t.id}: closing date {t.deadline or 'missing'} is not open")
+        if age is None or age > MAX_VERIFY_AGE_HOURS:
+            problems.append(f"{t.id}: last verified {t.verified_at or 'never'}")
 
-    counts = Counter(r["bucket"] for r in rows)
-    print("\n==== SUMMARY ====")
-    print(f"checked {len(rows)}  " + "  ".join(f"{k}={v}" for k, v in sorted(counts.items())))
-    loaded = [r for r in rows if r["bucket"] != "failed"]
-    fresh = Counter("closed" if r["fresh"]["closed"] else ("no date" if not r["fresh"]["deadline"]
-                    else ("today" if r["fresh"]["deadline"] == today else "future")) for r in loaded)
-    print("current parser: " + "  ".join(f"{k}={v}" for k, v in sorted(fresh.items())))
-    same = sum(1 for r in loaded if r["fresh"]["deadline"] == r["stored"])
-    print(f"current parser agrees with stored deadline for {same} of {len(loaded)}")
-    for r in loaded:
-        if not r["fresh"]["closed"] and r["fresh"]["deadline"] == today:
-            print(f"  closes today per page: {r['id']} {r['title'][:70]}")
+    first = cppp.fetch(cppp.LIST)
+    last = max(1, -(-cppp.total_tenders(first) // 10))
+    n = int(os.getenv("AUDIT_PAGES") or 60)
+    pages = sorted(set(range(2, min(last, 10) + 1)) | set(random.sample(range(2, last + 1), min(n, last - 1))))
+    log.info("Re-reading %d of %d CPPP list pages", len(pages) + 1, last)
 
-    by = defaultdict(list)
-    for r in rows:
-        by[r["bucket"]].append(r)
-    for b in ("override", "changed", "countdown", "no_date", "failed", "ok"):
-        if not by[b]:
-            continue
-        print(f"\n==== {b.upper()} ({len(by[b])}) ====")
-        for r in by[b][:40]:
-            print(f"- {r['id']} stored={r['stored'] or '-'} page_label={r.get('first_label') or '-'} "
-                  f"fresh={r.get('fresh', {}).get('deadline') or '-'} | {r['title']}")
-            for lab in r.get("labelled", [])[:2]:
-                print(f"    label: {lab['ctx']}")
-            for c in r.get("countdowns", [])[:3]:
-                print(f"    countdown @{c['at']}/{r.get('length')}: {c['ctx']}")
-    # A few full page excerpts so the layout can be checked by eye
-    print("\n==== PAGE EXCERPTS ====")
-    for b in ("override", "countdown", "ok"):
-        for r in by[b][:2]:
-            print(f"\n--- {b} {r['id']} {r.get('url')}")
-            print(r.get("excerpt", ""))
-    with open("verify_dates.json", "w", encoding="utf-8") as f:
-        json.dump(rows, f, ensure_ascii=False, indent=1)
+    def get(p):
+        try:
+            return p, cppp.fetch(cppp.page_url(p))
+        except cppp.SourceUnavailable as e:
+            return p, e
 
-    # The audit verdict: does every published closing date match its source page?
-    wrong = [r for r in loaded if r["fresh"]["closed"] or r["fresh"]["deadline"] != r["stored"]]
-    failed = counts.get("failed", 0)
+    htmls = [(1, first)]
+    failed = 0
+    with ThreadPoolExecutor(3) as pool:
+        for p, h in pool.map(get, pages):
+            if isinstance(h, Exception):
+                failed += 1
+                log.warning("Page %d: %s", p, h)
+            else:
+                htmls.append((p, h))
+
+    by_key = {t.id.removeprefix("cppp-"): t for t in published if t.source == cppp.SOURCE}
+    rows = matched = 0
+    for p, h in htmls:
+        a = {r.key: r for r in cppp.parse_list(h)}
+        b = text_rows(h)
+        for key, r in a.items():
+            rows += 1
+            if key not in b:
+                continue          # the text parser skips nothing the collector keeps, except odd rows
+            if (r.published, r.closing, r.tender_id) != b[key]:
+                problems.append(f"page {p} row {key}: parsers disagree {(r.published, r.closing, r.tender_id)} vs {b[key]}")
+            t = by_key.get(key)
+            if t:
+                matched += 1
+                if t.deadline != r.closing[:10]:
+                    problems.append(f"{t.id}: site shows closing {t.deadline}, CPPP now says {r.closing[:10]}")
+        if len(b) >= 5 and len(a) < len(b) // 2:
+            problems.append(f"page {p}: collector read {len(a)} rows, the page has {len(b)}")
+
     print("\n==== AUDIT ====")
-    for r in wrong:
-        what = "closed on the source" if r["fresh"]["closed"] else f"source now says {r['fresh']['deadline'] or 'no date'}"
-        print(f"MISMATCH {r['id']}: site shows {r['stored']}, {what} | {r['title']}")
-    print(f"{len(loaded) - len(wrong)} of {len(loaded)} published closing dates match their source pages; "
-          f"{len(wrong)} mismatches; {failed} pages didn't load")
-    if wrong or failed > max(3, len(rows) // 20):
+    for pr in problems:
+        print("PROBLEM", pr)
+    print(f"{len(published)} published tenders re-checked against the rules; {rows} rows on {len(htmls)} "
+          f"CPPP pages parsed twice; {matched} published tenders found in the sample; {failed} pages didn't load; "
+          f"{len(problems)} problems")
+    if problems or failed > max(3, len(pages) // 10):
         sys.exit(1)
 
 

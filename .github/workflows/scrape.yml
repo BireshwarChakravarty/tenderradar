@@ -2,8 +2,15 @@ name: TenderRadar Scraper
 
 on:
   schedule:
-    - cron: '0 */4 * * *'      # every 4 hours
-  workflow_dispatch: {}
+    - cron: '0 */4 * * *'      # every 4 hours; every listing is re-read about once a day
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'auto (default), or full to read as much of the source as time allows (first fill, up to 2 hours)'
+        required: false
+        default: 'auto'
+        type: choice
+        options: [auto, full]
 
 permissions:
   contents: write
@@ -16,14 +23,14 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: ${{ github.event.inputs.mode == 'full' && 160 || 110 }}
     env:
       DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
-      # TEMPORARY (15 Oct 2026): TenderDetail is blocking automated access, so
-      # tenders can't be re-verified. Keep showing open tenders verified within
-      # 96 hours instead of 36 until the replacement source is live; expired
-      # tenders are still never shown. Remove this line to return to 36.
+      SCRAPE_MODE: ${{ github.event.inputs.mode || 'auto' }}
+      # TEMPORARY (15 Oct 2026): keeps the last TenderDetail tenders visible
+      # while CPPP data builds up; expired tenders are still never shown.
+      # Remove this line to return to 36.
       MAX_VERIFY_AGE_HOURS: '96'
 
     steps:
@@ -39,9 +46,7 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: |
-          pip install -r scraper/requirements.txt
-          playwright install chromium --with-deps
+        run: pip install -r scraper/requirements.txt
 
       - name: Run tests
         run: python -m unittest discover -s scraper/tests -t scraper

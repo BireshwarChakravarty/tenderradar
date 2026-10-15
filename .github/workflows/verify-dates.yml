@@ -1,8 +1,9 @@
 name: Audit published tenders
 
-# Independent daily check: re-opens every tender the website shows and
-# compares its closing date with the source page. Nothing is committed. The
-# run fails, and GitHub emails the owner, if any published date is wrong.
+# Independent daily check: re-checks every tender the website shows against
+# the publish rules, and re-reads a sample of the source with a second
+# parser. Nothing is committed. The run fails, and GitHub emails the owner,
+# if anything is wrong.
 on:
   schedule:
     - cron: '17 22 * * *'      # 03:47 IST, between scrape runs
@@ -28,14 +29,10 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
       - name: Install dependencies
-        run: |
-          pip install -r scraper/requirements.txt
-          playwright install chromium --with-deps
+        run: pip install -r scraper/requirements.txt
       - name: Audit published closing dates
+        env:
+          # TEMPORARY: matches scrape.yml while the last TenderDetail tenders
+          # are still shown. Remove with the line in scrape.yml.
+          MAX_VERIFY_AGE_HOURS: '96'
         run: python scraper/verify_dates.py
-      - uses: actions/upload-artifact@v7
-        if: always()
-        with:
-          name: verify-dates
-          path: verify_dates.json
-          if-no-files-found: ignore

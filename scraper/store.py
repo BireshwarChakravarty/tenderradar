@@ -5,7 +5,7 @@ data/store.json is the scraper's working copy of everything it knows.
 docs/data/tenders.json, which the website, alerts and digest read, gets only
 the tenders that pass the publish gate in integrity.py.
 
-Keeps one record per TenderDetail notice and applies the house rules:
+Keeps one record per tender notice and applies the house rules:
   - a tender already closed when first found is never stored
   - titles that match the exclusion rules are never stored
   - notices published before 2026 are never stored
@@ -62,12 +62,16 @@ def _write(path, payload: dict) -> None:
     path.write_text(json.dumps(payload, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def save(tenders: dict[str, Tender], run: dict | None = None) -> dict:
-    """Write the working store, then publish only what passes the gate. Returns the quality report."""
+def save(tenders: dict[str, Tender], run: dict | None = None, state: dict | None = None) -> dict:
+    """
+    Write the working store, then publish only what passes the gate. Returns the quality report.
+    `state` is kept in the store's meta for the next run (where the collector got to).
+    """
     now = iso_now()
     rows = sorted(tenders.values(), key=lambda t: (t.first_seen, t.id), reverse=True)
     published, report = gate(tenders)          # also corrects bad fields in place
-    _write(STORE_FILE, {"meta": {"schema": SCHEMA_VERSION, "last_updated": now, "total": len(rows)},
+    _write(STORE_FILE, {"meta": {"schema": SCHEMA_VERSION, "last_updated": now, "total": len(rows),
+                                 **(state or {})},
                         "tenders": [t.to_dict() for t in rows]})
 
     pub_rows = sorted(published, key=lambda t: (t.first_seen, t.id), reverse=True)
@@ -106,7 +110,7 @@ _BOILERPLATE = re.compile(r"\b(?:corrigendum|tender for|tender|bids are invited 
 def dupe_key(t: Tender) -> str:
     """
     The same tender is often listed several times: the original notice plus each
-    corrigendum gets its own TenderDetail number. Same wording + same deadline = same tender.
+    corrigendum gets its own number. Same wording + same deadline = same tender.
     """
     words = _BOILERPLATE.sub(" ", t.title.lower()).split()
     return " ".join(words) + "|" + t.deadline
@@ -120,7 +124,7 @@ def merge(store: dict[str, Tender], scraped: list[Tender]) -> dict:
     today = today_ist()
     stats = {"new": 0, "updated": 0, "excluded": 0, "closed_on_arrival": 0, "duplicates": 0,
              "new_ids": [], "rejected_ids": []}
-    seen = {dupe_key(t) for t in store.values()}
+    seen = {dupe_key(t) for t in store.values() if t.source not in LEGACY_SOURCES}
     for t in scraped:
         known = store.get(t.id)
         if known:
@@ -157,12 +161,35 @@ def merge(store: dict[str, Tender], scraped: list[Tender]) -> dict:
     return stats
 
 
+# Sources TenderRadar used to read and no longer can. Their records stay
+# published only until their last verification expires.
+LEGACY_SOURCES = ("TenderDetail",)
+_ASSESSMENT = ("headline", "score", "recommendation", "kind", "fit", "reason", "eligibility",
+               "scored_at", "scoring_version")
+
+
+# {dropped duplicate id: id kept in its place} from the last prune(), so alerts
+# already sent for the dropped record aren't sent again for the one kept
+replaced: dict[str, str] = {}
+
+
+def _inherit(keep: Tender, dupe: Tender) -> None:
+    """Carry an assessment over from a duplicate that is being dropped, so it isn't paid for twice."""
+    if keep.score is None and dupe.score is not None:
+        for f in _ASSESSMENT:
+            setattr(keep, f, getattr(dupe, f))
+    for f in ("value_inr", "emd_inr", "location", "state"):
+        if getattr(keep, f) in ("", None) and getattr(dupe, f) not in ("", None):
+            setattr(keep, f, getattr(dupe, f))
+
+
 def prune(store: dict[str, Tender]) -> int:
     """Remove long-closed and stale tenders. Returns how many were removed."""
     today = today_ist()
     closed_cutoff = today - timedelta(days=KEEP_CLOSED_DAYS)
     stale_cutoff = (today - timedelta(days=STALE_DAYS)).isoformat()
     doomed = []
+    replaced.clear()
     for tid, t in store.items():
         d = from_str(t.deadline)
         if d and d < closed_cutoff:
@@ -171,15 +198,20 @@ def prune(store: dict[str, Tender]) -> int:
             doomed.append(tid)
         elif exclusion_reason(t.title):  # rules may have been tightened since it was stored
             doomed.append(tid)
-    # Collapse duplicates already in the store, keeping the first one found. Two keys:
-    # the source wording, and the AI headline (catches corrigenda worded differently).
+    # Collapse duplicates already in the store, keeping the first one found, but
+    # always preferring a record from a source that is still read (LEGACY_SOURCES
+    # can no longer be re-verified). Two keys: the source wording, and the AI
+    # headline (catches corrigenda worded differently).
     first: dict[str, str] = {}
-    for t in sorted(store.values(), key=lambda t: (t.first_seen, t.id)):
+    for t in sorted(store.values(), key=lambda t: (t.source in LEGACY_SOURCES, t.first_seen, t.id)):
         keys = [dupe_key(t)]
         if t.headline and t.deadline:
             keys.append("h|" + re.sub(r"[^a-z0-9]+", " ", t.headline.lower()).strip() + "|" + t.deadline + "|" + t.state)
-        if any(k in first for k in keys) and t.id not in doomed:
+        kept = next((first[k] for k in keys if k in first), None)
+        if kept and t.id not in doomed:
             doomed.append(t.id)
+            _inherit(store[kept], t)
+            replaced[t.id] = kept
         for k in keys:
             first.setdefault(k, t.id)
     for tid in doomed:

@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 from config import AI_MODEL, ANTHROPIC_API_KEY, COMPANY_PROFILE, HAS_PRIVATE_KNOWLEDGE
 from dates import days_until, iso_now
 from models import Tender, plain
+from page_parser import _STATE_LOOKUP
 
 # Bump when SYSTEM_PROMPT changes in a way that should re-score stored tenders
 SCORING_VERSION = 7
@@ -28,6 +29,7 @@ log = logging.getLogger("AIScorer")
 class Assessment(BaseModel):
     headline: str = Field(description="What is being procured, in under 80 characters of plain English")
     authority: str = Field(description="Issuing organisation if identifiable from the text, else empty")
+    state: str = Field(default="", description="Indian state or union territory the work is for, if the text names one, else empty")
     kind: Literal["services", "goods", "works", "auction", "other"]
     score: float = Field(description="Fit for the company, 1.0 to 10.0")
     recommendation: Literal["Bid", "Watch", "Skip"]
@@ -50,6 +52,10 @@ Fields:
   and location suffixes. Example: "Social media management agency for the Ministry of Coal".
 - authority: the buyer's name (ministry, department, PSU, municipal body) if the text names it;
   otherwise an empty string. Don't guess.
+- state: the Indian state or union territory the work is for, only when the title, buyer or
+  location names it (for example "Directorate of Information, Government of Assam" is Assam).
+  Write its full name, for example "Uttar Pradesh". Empty for central or all-India work, or when
+  unclear. Don't guess.
 - kind: "services" when the buyer hires an agency or service provider (including empanelment);
   "goods" for supply of items or equipment; "works" for construction or civil works;
   "auction" when the government sells or licenses something (for example advertising rights on
@@ -155,6 +161,10 @@ def score(tenders: list[Tender]) -> int:
         t.headline = plain(a.headline)[:120]
         t.authority = plain(a.authority) or t.authority
         t.kind = a.kind
+        state = _STATE_LOOKUP.get(plain(a.state).lower().replace(" & ", " and "), "")
+        if state and not t.state:
+            t.state = state
+            t.location = t.location or state
         t.score = round(min(10.0, max(1.0, a.score)), 1)
         t.recommendation = a.recommendation
         t.fit = plain(a.fit)
