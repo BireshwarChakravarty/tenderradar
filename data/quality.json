@@ -1,17 +1,362 @@
 {
- "checked_at": "2026-10-15T07:44:57Z",
- "published": 151,
- "held_back": 202,
+ "checked_at": "2026-10-15T09:42:15Z",
+ "published": 189,
+ "held_back": 219,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 125,
-  "not relevant (fit under 3)": 46,
+  "not relevant (goods, works or auction)": 136,
+  "not relevant (fit under 3)": 51,
   "closed": 72,
   "no closing date stated": 4,
-  "never verified against the source": 4
+  "never verified against the source": 4,
+  "not yet assessed": 1
  },
  "fields_fixed": 0,
- "ai_text_reset": 0,
+ "ai_text_reset": 1,
  "held": [
+  {
+   "id": "cppp-gem-8131011",
+   "title": "Medium Publicity Laminated Paper Bag with Logos and Others,Large Publicity Laminated Paper Bag with Logos and Others,Pri",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8127187",
+   "title": "Manpower Outsourcing Services - Fixed Remuneration - Others; PROTECTION OFFICER IC; Post Graduate,Manpower Outsourcing S",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8124577",
+   "title": "Paper-based Printing Services - Printing with Material; Coffee Table Books; Offset",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8119703",
+   "title": "Situational Awareness System",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8118484",
+   "title": "Paper-based Printing Services - Printing with Material; Bid for selection of agency for providing Advocacy materials, ph",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8117287",
+   "title": "4K Camcorder,Memory Card CFex Card 256 GB or higher,Camera Tripod Aluminium Alloy Fluid Head MYT801,Podcast Microphone w",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8117042",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of refreshment for CIP As",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8115609",
+   "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Code Review",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8114460",
+   "title": "RJ 45 Box,Gimble for Content Creation,CDRW,DVDRW,CDR,DVDR,Flexible Wire 0.75mm Dual Core for electric installation",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8113454",
+   "title": "Custom Bid for Services - HIRING OF AGENCY UNDER RATE CONTRACT FOR CARRYING OUT LAST MILE CONNECTIVITY LMC AND DIRECT MA",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8108818",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Guidance for do",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8106030",
+   "title": "Repair and Overhauling Service - UNDER WATER HULL SCANNING AND VIDEOGRAPHY; H233- UNDER WATER HULL SCANNING AND VIDEOGRA",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8105290",
+   "title": "Matlab,Simulink,Digital signal Processing system tool box,Statistical and Machine Learning tool box,Aerospace Blockset,A",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8098350",
+   "title": "Custom Bid for Services - Provision of Data Entry operators at CTLC office at Rayagada and Sr. DEE (TR) RGDA Office,Cust",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8098319",
+   "title": "VLSI Laboratory bundle,Embedded Arm Trainer Kit,Digital Communication Laboratory Bundle,Analog Communication Laboratory ",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8092961",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of Packed refreshment, Br",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8092189",
+   "title": "Custom Bid for Services - 9070C26D16 Agency lineup for supplying Flex banners, printing items and stickers for safety pr",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8090932",
+   "title": "Vulnerability and Penetration Testing - Network, Web Application, Details Mentioned in SoW, IOT devices; Application Sec",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8080699",
+   "title": "INTEGRATION OF SITUATIONAL AWARENESS SYSTEMS INCL TRISHUL LINK, SABRE 2.0 & SIVAS",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8078552",
+   "title": "digital forensic toolkit for analysis of various internet artifacts,software based tool for the logical level analysis o",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8076658",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Workshop on awa",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8076550",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); ISO Certification as mentio",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8067237",
+   "title": "Custom Bid for Services - Subscription of E-library portal & mobile app",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8064492",
+   "title": "Track Suits for Participants comma 12 staff and officials size Small 32 comma Medium 32 and XL 32,Flexes oblique Banners",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8046317",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; CONDUCT OF JUNGLE SURVIVAL CAMP FOR TH",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7972789",
+   "title": "PRINTING OF COFFEE TABLE BOOK",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7928376",
+   "title": "Erection of new publicity hoarding with steel frame, cement work and pasting of printed flex",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7907331",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Procurement of service for Venue Devel",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14199601",
+   "title": "Exhibition Stall during 28th Energy Technology Meet (ETM) organized by Centre for High Technology (CHT) under the aegis ",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14199286",
+   "title": "Urgent cleaning, upkeeping and repairing work for different places under Special Campaign 6.0 under the Swachhata Missio",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14197133",
+   "title": "Publication of Window advertisement of Recruitment of Artisan",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14196673",
+   "title": "SOR FOR BRANDING JOBS FOR BHOPAL LUBES TERRITORY FOR A PERIOD OF TWO YEARS",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14196641",
+   "title": "Notice Inviting Tender for designing and fabrication of Spices Boards stall in Indus Food 2026 Bangalore at Bangalore In",
+   "deadline": "2026-10-24",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14187129",
+   "title": "Renovation, Branding and Design of Mogra Post Office under North Hooghly Division as per SPA design Manual for 2026-27(C",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14172664",
+   "title": "SCHEDULE OF RATES FOR ADVERTISING AND BRANDING IN NOIDA LUBES TERRITORY, IN THE STATE OF UTTAR PRADESH & UTTARAKHAND, FO",
+   "deadline": "2026-10-18",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14170120",
+   "title": "Mini hinge and nut plate made of Stainless steel 304 equivalent to DIRAK part No. 354 - 2160.04 - 00000 (Mini hinge) & 3",
+   "deadline": "2026-11-05",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14169188",
+   "title": "(1) Mumbai Central Division - Establishment of Computer Lab as a part of MDDTI. (2) Mumbai Division - Establishment of C",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14168932",
+   "title": "Tender Document for Exclusive Co-Branding rights at Selected Metro Stations of outside Delhi region of DMRC Network in 7",
+   "deadline": "2026-11-02",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14158220",
+   "title": "Annual Rate Contract for Empanelment of New Advertising Agency for publication of various Statutory Advertisement in Pri",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14156660",
+   "title": "BRANDING AND FABRICATION",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14140946",
+   "title": "Supply, deployment, testing and commissioning of mobile application interface for locomotive wiper testing device, which",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14126036",
+   "title": "Execution of outdoor advertising services",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14101973",
+   "title": "Licensing of Co-branding Rights of Amausi Metro Station of N-S Corridor of Lucknow Metro Rail Project in UPMRC network",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "td-57926150",
    "title": "Bids Are invited for Communication View Glass 8Mm Display Bd , Electric Acrylic Letter Display Bd With Iron Frame",
@@ -1334,350 +1679,147 @@
    ]
   },
   {
-   "id": "cppp-14199286",
-   "title": "Urgent cleaning, upkeeping and repairing work for different places under Special Campaign 6.0 under the Swachhata Missio",
+   "id": "cppp-14203460",
+   "title": "Design, Printing, Supply and Replacement of Safety Awareness Posters and",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14196471",
+   "title": "Selection of an agency for Production of 12 (Twelve) TVCs, each up to 2 Minutes in duration, covering various Road-Safet",
    "deadline": "2026-10-20",
    "reasons": [
+    "not yet assessed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8132137",
+   "title": "RJ 45 Box,DJI Gimbal for content creation,CDRW,DVDRW,CDR,DVDR,Electric Wire 0.75mm Dual Core,Mouse Mat Heavy,Secure Pape",
+   "deadline": "2026-10-19",
+   "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-14199601",
-   "title": "Exhibition Stall during 28th Energy Technology Meet (ETM) organized by Centre for High Technology (CHT) under the aegis ",
-   "deadline": "2026-10-16",
+   "id": "cppp-gem-8125625",
+   "title": "Tentage Service Lumpsum Based - JILLA KAKSHA YUVA UTSAV 2026-27; Lighting, Tent Rentals, Theme Based Installation, Decor",
+   "deadline": "2026-10-19",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   },
   {
-   "id": "cppp-14197133",
-   "title": "Publication of Window advertisement of Recruitment of Artisan",
-   "deadline": "2026-10-16",
+   "id": "cppp-gem-8018975",
+   "title": "Diesel,Engine oil,Oil filter,Fuel filter,Air filter,Photo frames,Tea,Biscuits,Milk Powder,Cookies,Stationery items,Hygie",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8135144",
+   "title": "Custom Bid for Services - ERECTION OF NEW PUBLICITY HOARDING (QTY-01) AT KHAMMAM TELANGANA STATE IN 12 ASC AOR",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8054599",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisionning of Dinner for Navy Day R",
+   "deadline": "2026-10-29",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   },
   {
-   "id": "cppp-14196641",
-   "title": "Notice Inviting Tender for designing and fabrication of Spices Boards stall in Indus Food 2026 Bangalore at Bangalore In",
-   "deadline": "2026-10-24",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-14196673",
-   "title": "SOR FOR BRANDING JOBS FOR BHOPAL LUBES TERRITORY FOR A PERIOD OF TWO YEARS",
-   "deadline": "2026-10-28",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-14187129",
-   "title": "Renovation, Branding and Design of Mogra Post Office under North Hooghly Division as per SPA design Manual for 2026-27(C",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-14172664",
-   "title": "SCHEDULE OF RATES FOR ADVERTISING AND BRANDING IN NOIDA LUBES TERRITORY, IN THE STATE OF UTTAR PRADESH & UTTARAKHAND, FO",
-   "deadline": "2026-10-18",
+   "id": "cppp-gem-7934726",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; VENUE PREPARATION FOR CONDUCT OF 58TH ",
+   "deadline": "2026-10-29",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   },
   {
-   "id": "cppp-14168932",
-   "title": "Tender Document for Exclusive Co-Branding rights at Selected Metro Stations of outside Delhi region of DMRC Network in 7",
-   "deadline": "2026-11-02",
+   "id": "cppp-gem-8136879",
+   "title": "Laminated Publicity Materials Carry Paper Bag with Logos and Others Medium Size,Publicity Mterials Laminated Paper Bag w",
+   "deadline": "2026-10-19",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-14170120",
-   "title": "Mini hinge and nut plate made of Stainless steel 304 equivalent to DIRAK part No. 354 - 2160.04 - 00000 (Mini hinge) & 3",
-   "deadline": "2026-11-05",
+   "id": "cppp-gem-8136968",
+   "title": "Gross photography System",
+   "deadline": "2026-10-29",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-14169188",
-   "title": "(1) Mumbai Central Division - Establishment of Computer Lab as a part of MDDTI. (2) Mumbai Division - Establishment of C",
+   "id": "cppp-gem-8137376",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; VENUE PREPARATION FOR CONDUCT OF 58TH ",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8137492",
+   "title": "Server,Storage RAID Configuration,Installation of Server,Website Compatibility,Overall Configuration of Server",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8139596",
+   "title": "Posters/Pamphlets/Brochures (V2)",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8046774",
+   "title": "File/Folder (V3),Tags For Files (V3) Conforming to IS 8499,Tags For Files (V3) Conforming to IS 8499,Self Adhesive Flags",
    "deadline": "2026-10-23",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   },
   {
-   "id": "cppp-14158220",
-   "title": "Annual Rate Contract for Empanelment of New Advertising Agency for publication of various Statutory Advertisement in Pri",
+   "id": "cppp-gem-7994579",
+   "title": "Outdoor Advertisement Service - BOQ Mode",
    "deadline": "2026-10-19",
    "reasons": [
     "not relevant (fit under 3)"
    ]
   },
   {
-   "id": "cppp-14156660",
-   "title": "BRANDING AND FABRICATION",
+   "id": "cppp-gem-8141787",
+   "title": "Custom Bid for Services - DESGINING AND PRINTING OF CUSTOMIZED BROCHURE AND LEAFLETS",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8142159",
+   "title": "Publicity Material Laminated Carry Paper Bag with Logos and others Medium Size,Publicity Material Packing Laminated Pape",
    "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-14140946",
-   "title": "Supply, deployment, testing and commissioning of mobile application interface for locomotive wiper testing device, which",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-14126036",
-   "title": "Execution of outdoor advertising services",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-14101973",
-   "title": "Licensing of Co-branding Rights of Amausi Metro Station of N-S Corridor of Lucknow Metro Rail Project in UPMRC network",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8067237",
-   "title": "Custom Bid for Services - Subscription of E-library portal & mobile app",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8080699",
-   "title": "INTEGRATION OF SITUATIONAL AWARENESS SYSTEMS INCL TRISHUL LINK, SABRE 2.0 & SIVAS",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8098350",
-   "title": "Custom Bid for Services - Provision of Data Entry operators at CTLC office at Rayagada and Sr. DEE (TR) RGDA Office,Cust",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8092961",
-   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of Packed refreshment, Br",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8105290",
-   "title": "Matlab,Simulink,Digital signal Processing system tool box,Statistical and Machine Learning tool box,Aerospace Blockset,A",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8106030",
-   "title": "Repair and Overhauling Service - UNDER WATER HULL SCANNING AND VIDEOGRAPHY; H233- UNDER WATER HULL SCANNING AND VIDEOGRA",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8076550",
-   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); ISO Certification as mentio",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8076658",
-   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Workshop on awa",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8108818",
-   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Guidance for do",
-   "deadline": "2026-10-16",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-7972789",
-   "title": "PRINTING OF COFFEE TABLE BOOK",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8090932",
-   "title": "Vulnerability and Penetration Testing - Network, Web Application, Details Mentioned in SoW, IOT devices; Application Sec",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8092189",
-   "title": "Custom Bid for Services - 9070C26D16 Agency lineup for supplying Flex banners, printing items and stickers for safety pr",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8117287",
-   "title": "4K Camcorder,Memory Card CFex Card 256 GB or higher,Camera Tripod Aluminium Alloy Fluid Head MYT801,Podcast Microphone w",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8117042",
-   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of refreshment for CIP As",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-7907331",
-   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Procurement of service for Venue Devel",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8046317",
-   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; CONDUCT OF JUNGLE SURVIVAL CAMP FOR TH",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8118484",
-   "title": "Paper-based Printing Services - Printing with Material; Bid for selection of agency for providing Advocacy materials, ph",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8078552",
-   "title": "digital forensic toolkit for analysis of various internet artifacts,software based tool for the logical level analysis o",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8115609",
-   "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Code Review",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8119703",
-   "title": "Situational Awareness System",
-   "deadline": "2026-10-15",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8113454",
-   "title": "Custom Bid for Services - HIRING OF AGENCY UNDER RATE CONTRACT FOR CARRYING OUT LAST MILE CONNECTIVITY LMC AND DIRECT MA",
-   "deadline": "2026-10-27",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8124577",
-   "title": "Paper-based Printing Services - Printing with Material; Coffee Table Books; Offset",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8098319",
-   "title": "VLSI Laboratory bundle,Embedded Arm Trainer Kit,Digital Communication Laboratory Bundle,Analog Communication Laboratory ",
-   "deadline": "2026-10-28",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-7928376",
-   "title": "Erection of new publicity hoarding with steel frame, cement work and pasting of printed flex",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8114460",
-   "title": "RJ 45 Box,Gimble for Content Creation,CDRW,DVDRW,CDR,DVDR,Flexible Wire 0.75mm Dual Core for electric installation",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8127187",
-   "title": "Manpower Outsourcing Services - Fixed Remuneration - Others; PROTECTION OFFICER IC; Post Graduate,Manpower Outsourcing S",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8131011",
-   "title": "Medium Publicity Laminated Paper Bag with Logos and Others,Large Publicity Laminated Paper Bag with Logos and Others,Pri",
-   "deadline": "2026-10-17",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8064492",
-   "title": "Track Suits for Participants comma 12 staff and officials size Small 32 comma Medium 32 and XL 32,Flexes oblique Banners",
-   "deadline": "2026-10-17",
    "reasons": [
     "not relevant (goods, works or auction)"
    ]
   }
  ],
  "fixes": [],
- "ai_resets": []
+ "ai_resets": [
+  {
+   "id": "cppp-14196471",
+   "problem": "mentions a private name (NHAI)"
+  }
+ ]
 }
