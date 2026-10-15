@@ -17,7 +17,8 @@ dashboard, email and Telegram.
 - **Assesses** every remaining tender with AI: a plain-English headline, a fit score, a
   Bid / Watch / Skip recommendation, and notes on fit, risk and eligibility.
 - **Verifies** every published tender against the source twice a day, and publishes only tenders
-  that are open, current and confirmed. A tender the source stops listing is taken down.
+  that are open, current and confirmed. A tender the source stops listing comes down within
+  36 hours.
 - **Alerts** the team when a strong new match appears, and sends a morning digest of what is
   closing this week.
 - **Tracks** bids from shortlist to submission on the dashboard, with notes and CSV export.
@@ -34,9 +35,9 @@ Accuracy comes first. A tender appears on the dashboard, in an alert or in the d
 Anything that fails a check is held back, never shown. Contradictory values are removed rather
 than displayed, and the dashboard hides any tender that passes its closing date between updates.
 
-An independent audit runs every night. It re-opens every published tender and compares its
-closing date with the source. If a single date disagrees, the audit fails and the repository
-owner is notified by email.
+An independent audit runs every night. It re-checks every published tender against these rules,
+re-reads a sample of the source with a second, separate parser, and compares closing dates. If a
+single date disagrees, the audit fails and the repository owner is notified by email.
 
 ## Architecture
 
@@ -69,9 +70,9 @@ GitHub Pages     dashboard (docs/), reading only the published data
    | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Telegram alerts | For Telegram |
    | `MIN_RELEVANCE_SCORE` | Score treated as recommended (default 6.0) | No |
 
-3. **First run:** Actions, TenderRadar Scraper, Run workflow. The first run reads every listing
-   and takes about an hour; later runs take a few minutes, and a full re-read twice a day takes
-   about an hour.
+3. **First run:** Actions, TenderRadar Scraper, Run workflow. The first run reads the whole
+   source list, which takes one or two runs of up to 90 minutes; later runs take about half an
+   hour each.
 
 ## Operations
 

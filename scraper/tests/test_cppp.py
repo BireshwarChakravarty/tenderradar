@@ -102,7 +102,10 @@ class CandidateTests(unittest.TestCase):
     def test_everything_else_is_not(self):
         for title in ["Term Contract for Repairing roads", "Supply of communication equipment",
                       "Construction of conference hall", "Procurement of laboratory chemicals",
-                      "Auction of scrap vehicles for publicity vans"]:
+                      "Auction of scrap vehicles for publicity vans", "1-Long travelling wheel press fitted with fire axle",
+                      "FLEET GRAPHICS FILM", "C/O Magazine building at BSF campus",
+                      "Transformer oil for locomotives as per IEC 60296", "Spares kit, Make/Brand-Schunk",
+                      "Provision of conference system at RDSO office"]:
             self.assertFalse(is_candidate(title), title)
 
 
@@ -144,6 +147,14 @@ class StoreTests(unittest.TestCase):
         kept = store["cppp-14203125"]
         self.assertEqual((kept.score, kept.headline, kept.value_inr), (7.5, "PR agency for schemes", 5_00_000))
         self.assertEqual(store_mod.replaced, {"td-1": "cppp-14203125"})
+
+
+class AuditParserTests(unittest.TestCase):
+    def test_second_parser_agrees_with_the_collector(self):
+        import verify_dates
+        b = verify_dates.text_rows(PAGE)
+        for r in cppp.parse_list(PAGE):
+            self.assertEqual(b[r.key], (r.published, r.closing, r.tender_id))
 
 
 class PlanTests(unittest.TestCase):
