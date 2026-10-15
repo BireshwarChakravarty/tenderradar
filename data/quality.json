@@ -1,11 +1,10 @@
 {
- "checked_at": "2026-10-15T03:47:59Z",
- "published": 67,
- "held_back": 167,
+ "checked_at": "2026-10-15T07:44:57Z",
+ "published": 151,
+ "held_back": 202,
  "held_reasons": {
-  "not relevant (goods, works or auction)": 102,
-  "not relevant (fit under 3)": 28,
-  "not re-verified recently": 72,
+  "not relevant (goods, works or auction)": 125,
+  "not relevant (fit under 3)": 46,
   "closed": 72,
   "no closing date stated": 4,
   "never verified against the source": 4
@@ -58,16 +57,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 40 hours",
     "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "td-58009169",
-   "title": "Development, Inegration, Enhancements, Operation and Maintenance of Forest department web portal",
-   "deadline": "2026-10-29",
-   "reasons": [
-    "not re-verified for 40 hours"
    ]
   },
   {
@@ -75,7 +65,6 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -84,24 +73,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-58001372",
-   "title": "Tender For Upgradation, Redesign & Maintenance Of Official Website",
-   "deadline": "2026-11-02",
-   "reasons": [
-    "not re-verified for 40 hours"
-   ]
-  },
-  {
-   "id": "td-57993436",
-   "title": "Tender For Development Of Official Website For Mahagenco Rel Along With 3 Years Amc",
-   "deadline": "2026-11-16",
-   "reasons": [
-    "not re-verified for 40 hours"
    ]
   },
   {
@@ -109,24 +81,7 @@
    "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-58004238",
-   "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, C Aign Management, Response Management/Helpdesk S",
-   "deadline": "2026-11-12",
-   "reasons": [
-    "not re-verified for 40 hours"
-   ]
-  },
-  {
-   "id": "td-58001798",
-   "title": "Tender For Hiring Of Agency For The Work Of Website Updation Maintenance Social Media Management Digital Media Managemen",
-   "deadline": "2026-10-27",
-   "reasons": [
-    "not re-verified for 40 hours"
    ]
   },
   {
@@ -134,7 +89,6 @@
    "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
    "deadline": "2026-11-09",
    "reasons": [
-    "not re-verified for 40 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -144,7 +98,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -154,7 +107,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -164,7 +116,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -174,7 +125,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -184,7 +134,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -194,7 +143,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -204,7 +152,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -214,7 +161,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 50 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -320,7 +266,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -357,19 +302,10 @@
    ]
   },
   {
-   "id": "td-57991402",
-   "title": "Tender For Selection Of Agency For Information, Education And Communication (Iec) And Behaviour Change Communication (Bc",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not re-verified for 40 hours"
-   ]
-  },
-  {
    "id": "td-57979928",
    "title": "Tender for Tender for Picture Archieving And Communication System Picture Archieving And Communication System At Hamidia",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 40 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -379,7 +315,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 71 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -436,8 +371,7 @@
    "title": "Bids Are Invited For Custom Bid For Services - Dbim 3.0 Audit And Stqc Certification Of Websites",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -517,8 +451,7 @@
    "title": "Tender For Appointment of Agency for Annual Maintenance Contract of Online Platform (Website and Mobile Application) cov",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -555,7 +488,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -565,7 +497,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -575,7 +506,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -585,7 +515,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -603,7 +532,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -637,7 +565,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -647,7 +574,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -664,8 +590,7 @@
    "title": "Tender For Pre-Bid Expression Of Interest For Selection Of Implementation Partner For Design, Development, Implementatio",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -689,8 +614,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Designing And Development Of Website",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -715,7 +639,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -733,7 +656,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -743,7 +665,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -753,7 +674,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -763,7 +683,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -773,7 +692,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -783,7 +701,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -801,7 +718,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -811,7 +727,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -828,8 +743,7 @@
    "title": "Tender For Design And Development Of Website With Content Management System For V.P. Socorro And Implementation Of House",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -837,8 +751,7 @@
    "title": "Bids Are invited for Hiring Of Creative Agency - Content Development Of Rain Forest Plant Species; As Per Sow; Na; Na; N",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -846,8 +759,7 @@
    "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Storyboarding And Conversion Of Content To Multimedia Fo",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed",
-    "not re-verified for 86 hours"
+    "closed"
    ]
   },
   {
@@ -872,16 +784,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57860227",
-   "title": "Schedule Of Rates For Advertising And Branding In Noida Lubes Territory, In The State Of Uttar Pradesh Uttarakhand, For ",
-   "deadline": "2026-10-18",
-   "reasons": [
-    "not relevant (fit under 3)"
    ]
   },
   {
@@ -890,14 +793,6 @@
    "deadline": "2026-10-15",
    "reasons": [
     "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "td-57771920",
-   "title": "Tender For Annual Rate Contract For Empanelment Of New Advertising Agency For Publication Of Various Statutory Advertise",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (fit under 3)"
    ]
   },
   {
@@ -913,8 +808,7 @@
    "title": "Tender For Empanelment Of Multimedia Advertising Agencies For Corporate Centre And Rhqs",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -922,8 +816,7 @@
    "title": "Tender For Advertising & Campaign Partner Tender 2026",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -939,8 +832,7 @@
    "title": "Rate Contract For Advertising",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -964,8 +856,7 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, C Aign M",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -973,8 +864,7 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, Basic Re",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -982,8 +872,7 @@
    "title": "Selection Of An Agency For Management Of Media Campaigns And Social Media Platforms Of Odisha State Disaster Management ",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -999,8 +888,7 @@
    "title": "Tender For Selection of an Agency for Social Media Management DigitalCommunication services for Ahmedabad Municipal Corp",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -1008,8 +896,7 @@
    "title": "Selection Of Project Mangement Agency For Social Media Management",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -1017,8 +904,7 @@
    "title": "Tender For Selection Of Social Media Management Agency",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -1068,7 +954,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1101,8 +986,7 @@
    "title": "Bids Are invited for Manpower Outsourcing Services - Fixed Remuneration - Social Media Handler; Social Media Expert; Gra",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed",
-    "not re-verified for 86 hours"
+    "closed"
    ]
   },
   {
@@ -1119,7 +1003,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1129,7 +1012,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1196,7 +1078,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1222,7 +1103,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1240,7 +1120,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1249,8 +1128,7 @@
    "title": "Tender For DEVELOPMENT AND IMPLEMENTATION OF IEC (Information, Education Communication) Capacity building Program under ",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -1267,7 +1145,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1276,8 +1153,7 @@
    "title": "Tender For Tor For The Post Of Nmm-Knowledge Management And Communication For Day-Nrlm Nrlps",
    "deadline": "2026-10-11",
    "reasons": [
-    "closed",
-    "not re-verified for 86 hours"
+    "closed"
    ]
   },
   {
@@ -1286,7 +1162,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1328,7 +1203,6 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1380,7 +1254,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 58 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1389,8 +1262,7 @@
    "title": "Tender For Communication, Content Production And Digital Platform Management Consultant",
    "deadline": "2026-10-10",
    "reasons": [
-    "closed",
-    "not re-verified for 86 hours"
+    "closed"
    ]
   },
   {
@@ -1442,7 +1314,6 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 86 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1451,8 +1322,7 @@
    "title": "Selection Of An Agency For Integrated Social Media Management, Public Relations & Communication And Event Support For Th",
    "deadline": "2026-10-13",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
    ]
   },
   {
@@ -1460,8 +1330,351 @@
    "title": "Corrigendum Appointment Of Public Relations (Pr) And Social Media Agency",
    "deadline": "2026-10-12",
    "reasons": [
-    "closed",
-    "not re-verified for 58 hours"
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-14199286",
+   "title": "Urgent cleaning, upkeeping and repairing work for different places under Special Campaign 6.0 under the Swachhata Missio",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14199601",
+   "title": "Exhibition Stall during 28th Energy Technology Meet (ETM) organized by Centre for High Technology (CHT) under the aegis ",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14197133",
+   "title": "Publication of Window advertisement of Recruitment of Artisan",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14196641",
+   "title": "Notice Inviting Tender for designing and fabrication of Spices Boards stall in Indus Food 2026 Bangalore at Bangalore In",
+   "deadline": "2026-10-24",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14196673",
+   "title": "SOR FOR BRANDING JOBS FOR BHOPAL LUBES TERRITORY FOR A PERIOD OF TWO YEARS",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14187129",
+   "title": "Renovation, Branding and Design of Mogra Post Office under North Hooghly Division as per SPA design Manual for 2026-27(C",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14172664",
+   "title": "SCHEDULE OF RATES FOR ADVERTISING AND BRANDING IN NOIDA LUBES TERRITORY, IN THE STATE OF UTTAR PRADESH & UTTARAKHAND, FO",
+   "deadline": "2026-10-18",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14168932",
+   "title": "Tender Document for Exclusive Co-Branding rights at Selected Metro Stations of outside Delhi region of DMRC Network in 7",
+   "deadline": "2026-11-02",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14170120",
+   "title": "Mini hinge and nut plate made of Stainless steel 304 equivalent to DIRAK part No. 354 - 2160.04 - 00000 (Mini hinge) & 3",
+   "deadline": "2026-11-05",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14169188",
+   "title": "(1) Mumbai Central Division - Establishment of Computer Lab as a part of MDDTI. (2) Mumbai Division - Establishment of C",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14158220",
+   "title": "Annual Rate Contract for Empanelment of New Advertising Agency for publication of various Statutory Advertisement in Pri",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14156660",
+   "title": "BRANDING AND FABRICATION",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14140946",
+   "title": "Supply, deployment, testing and commissioning of mobile application interface for locomotive wiper testing device, which",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14126036",
+   "title": "Execution of outdoor advertising services",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14101973",
+   "title": "Licensing of Co-branding Rights of Amausi Metro Station of N-S Corridor of Lucknow Metro Rail Project in UPMRC network",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8067237",
+   "title": "Custom Bid for Services - Subscription of E-library portal & mobile app",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8080699",
+   "title": "INTEGRATION OF SITUATIONAL AWARENESS SYSTEMS INCL TRISHUL LINK, SABRE 2.0 & SIVAS",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8098350",
+   "title": "Custom Bid for Services - Provision of Data Entry operators at CTLC office at Rayagada and Sr. DEE (TR) RGDA Office,Cust",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8092961",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of Packed refreshment, Br",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8105290",
+   "title": "Matlab,Simulink,Digital signal Processing system tool box,Statistical and Machine Learning tool box,Aerospace Blockset,A",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8106030",
+   "title": "Repair and Overhauling Service - UNDER WATER HULL SCANNING AND VIDEOGRAPHY; H233- UNDER WATER HULL SCANNING AND VIDEOGRA",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8076550",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); ISO Certification as mentio",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8076658",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Workshop on awa",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8108818",
+   "title": "Hiring Of Agency For ISO Certification Service - ISO 9001 - Quality Management System (QMS); Consulting; Guidance for do",
+   "deadline": "2026-10-16",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7972789",
+   "title": "PRINTING OF COFFEE TABLE BOOK",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8090932",
+   "title": "Vulnerability and Penetration Testing - Network, Web Application, Details Mentioned in SoW, IOT devices; Application Sec",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8092189",
+   "title": "Custom Bid for Services - 9070C26D16 Agency lineup for supplying Flex banners, printing items and stickers for safety pr",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8117287",
+   "title": "4K Camcorder,Memory Card CFex Card 256 GB or higher,Camera Tripod Aluminium Alloy Fluid Head MYT801,Podcast Microphone w",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8117042",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Provisioning of refreshment for CIP As",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7907331",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Procurement of service for Venue Devel",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8046317",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; CONDUCT OF JUNGLE SURVIVAL CAMP FOR TH",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8118484",
+   "title": "Paper-based Printing Services - Printing with Material; Bid for selection of agency for providing Advocacy materials, ph",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8078552",
+   "title": "digital forensic toolkit for analysis of various internet artifacts,software based tool for the logical level analysis o",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8115609",
+   "title": "Vulnerability and Penetration Testing - Web Application; Application Security Audit (OWASP Top 10), Security Code Review",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8119703",
+   "title": "Situational Awareness System",
+   "deadline": "2026-10-15",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8113454",
+   "title": "Custom Bid for Services - HIRING OF AGENCY UNDER RATE CONTRACT FOR CARRYING OUT LAST MILE CONNECTIVITY LMC AND DIRECT MA",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8124577",
+   "title": "Paper-based Printing Services - Printing with Material; Coffee Table Books; Offset",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8098319",
+   "title": "VLSI Laboratory bundle,Embedded Arm Trainer Kit,Digital Communication Laboratory Bundle,Analog Communication Laboratory ",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7928376",
+   "title": "Erection of new publicity hoarding with steel frame, cement work and pasting of printed flex",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8114460",
+   "title": "RJ 45 Box,Gimble for Content Creation,CDRW,DVDRW,CDR,DVDR,Flexible Wire 0.75mm Dual Core for electric installation",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8127187",
+   "title": "Manpower Outsourcing Services - Fixed Remuneration - Others; PROTECTION OFFICER IC; Post Graduate,Manpower Outsourcing S",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8131011",
+   "title": "Medium Publicity Laminated Paper Bag with Logos and Others,Large Publicity Laminated Paper Bag with Logos and Others,Pri",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8064492",
+   "title": "Track Suits for Participants comma 12 staff and officials size Small 32 comma Medium 32 and XL 32,Flexes oblique Banners",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "not relevant (goods, works or auction)"
    ]
   }
  ],
