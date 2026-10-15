@@ -19,4 +19,4 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install playwright && playwright install chromium --with-deps
-      - run: python probe/aggregators_probe.py
+      - run: python probe/aggregators_probe.py && python probe/official_probe.py
