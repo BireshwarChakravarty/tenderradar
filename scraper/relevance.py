@@ -164,7 +164,7 @@ CANDIDATE_PATTERNS = [
     r"\bnewsletters?\b", r"\bcoffee table books?\b", r"\bbrochures?\b", r"\bhouse (?:magazine|journal)",
     r"\binfluencers?\b", r"\bpodcasts?\b", r"\bjingles?\b", r"\banimation\b", r"\bgraphic design",
     r"\bmonitoring of (?:news|media|print)", r"\bpress (?:release|conference|coverage|notes?|clippings?)",
-    r"\btvc\b", r"\b(?:radio|fm) (?:spots?|jingles?|campaign|advertis|programmes?|programs?)",
+    r"\btvcs? (?:production|making|shoot|films?|ads?)\b", r"\btelevision commercials?\b", r"\b(?:radio|fm) (?:spots?|jingles?|campaign|advertis|programmes?|programs?)",
     r"\bcommunity radio\b", r"\be-?learning\b", r"\bknowledge products?\b",
     r"\bmobile app(?:lication)?s?\b",
 ]

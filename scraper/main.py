@@ -33,7 +33,7 @@ log = logging.getLogger("Run")
 
 CYCLE_RUNS = int(os.getenv("CPPP_CYCLE_RUNS") or 6)    # runs to re-read each whole list (6 = a day)
 WORKERS = {"cppp": 3, "gem": 4}                         # GeM pages are slower to serve
-FULL_BUDGET_MIN = float(os.getenv("FULL_BUDGET_MIN") or 200)
+FULL_BUDGET_MIN = float(os.getenv("FULL_BUDGET_MIN") or 100)
 
 
 def collect(state: dict, full: bool) -> tuple[list, list[str]]:

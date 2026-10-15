@@ -132,7 +132,9 @@ class CandidateTests(unittest.TestCase):
         for title in ["Hiring of PR agency for Ministry", "Selection of agency for social media management",
                       "Design and development of website for the institute",
                       "Engagement of agency for IEC and BCC activities", "Production of documentary films",
-                      "Event management for the investors summit", "Media monitoring services"]:
+                      "Event management for the investors summit", "Media monitoring services",
+                      "PROFESSIONAL PHOTOGRAPHY, VIDEOGRAPHY, MULTI-CAMERA EVENT PRODUCTION AND LIVE STREAMING",
+                      "Exhibition Stall during 28th Energy Technology Meet"]:
             self.assertTrue(is_candidate(title), title)
 
     def test_everything_else_is_not(self):
@@ -141,7 +143,8 @@ class CandidateTests(unittest.TestCase):
                       "Auction of scrap vehicles for publicity vans", "1-Long travelling wheel press fitted with fire axle",
                       "FLEET GRAPHICS FILM", "C/O Magazine building at BSF campus",
                       "Transformer oil for locomotives as per IEC 60296", "Spares kit, Make/Brand-Schunk",
-                      "Provision of conference system at RDSO office"]:
+                      "Provision of conference system at RDSO office",
+                      "Custom Bid for Services - REPAIR AND MAINTENANCE OF ENGINE, BKA AND TVC NOZZLE"]:
             self.assertFalse(is_candidate(title), title)
 
 

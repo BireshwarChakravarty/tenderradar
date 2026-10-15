@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'auto (default), or full to read as much of the source as time allows (first fill, up to 4 hours)'
+        description: 'auto (default), or full to read as much of the source as time allows (first fill, up to 2 hours)'
         required: false
         default: 'auto'
         type: choice
@@ -23,7 +23,7 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: ${{ github.event.inputs.mode == 'full' && 260 || 110 }}
+    timeout-minutes: ${{ github.event.inputs.mode == 'full' && 160 || 110 }}
     env:
       DASHBOARD_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
       MIN_RELEVANCE_SCORE: ${{ secrets.MIN_RELEVANCE_SCORE || '6.0' }}
