@@ -31,7 +31,9 @@ with sync_playwright() as pw:
     for u in ["https://eprocure.gov.in/cppp/latestactivetendersnew/cpppdata?page=2",
               "https://eprocure.gov.in/cppp/latestactivetendersnew/cpppdata/page/2"]:
         r = go(u); t2 = txt(p)
-        print(f"\n{u} -> {r.status} final {p.url} | first row: {re.sub(r'\\s+',' ', t2[t2.find('1.'):t2.find('1.')+250]) if '1.' in t2 else 'n/a'}")
+        k = t2.find("1.")
+        first = re.sub(r"\s+", " ", t2[k:k + 250]) if k >= 0 else "n/a"
+        print(f"\n{u} -> {r.status} final {p.url} | first row: {first}")
 
     # ---- NIC central portal: latest active tenders + by organisation + a detail
     base = "https://eprocure.gov.in/eprocure/app"
