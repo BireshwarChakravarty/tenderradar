@@ -1,18 +1,90 @@
 {
- "checked_at": "2026-10-16T04:09:04Z",
- "published": 238,
+ "checked_at": "2026-10-16T09:19:34Z",
+ "published": 240,
  "held_back": 278,
  "held_reasons": {
-  "not relevant (fit under 3)": 63,
   "not relevant (goods, works or auction)": 159,
+  "not relevant (fit under 3)": 63,
   "closed": 120,
+  "not re-verified recently": 14,
   "no closing date stated": 4,
-  "never verified against the source": 4,
-  "not re-verified recently": 13
+  "never verified against the source": 4
  },
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "cppp-gem-8168469",
+   "title": "Lamination Films (V2),Lamination Films (V2),Photography paper Conforming to IS 6139,Markers and Highlighters,Markers and",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8164964",
+   "title": "Advertisement Service - Newspaper - Display Type Advertisement; Any inside page of main page; Financial Express; English",
+   "deadline": "2026-10-22",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8163772",
+   "title": "NKG Inauguration Board,Banner with Frame 10 Ftx15 Ft,Banner 5 Ftx10 Ft,Banner 4Ftx3Ft,Banner with Frame 2.5Ftx8Ft,Banner",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8162779",
+   "title": "Writing Pens,Writing Pens,Writing Pens,Correction Fluid Pen(V3),Black Lead Pencils (V3) Conforming to IS 1375,Glue Stick",
+   "deadline": "2026-10-21",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8153726",
+   "title": "Star flex designing printing and pasting,1 sq inch square pipe 18 gauge frame fabrication charges,Vinyl printing with 5m",
+   "deadline": "2026-10-24",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8140153",
+   "title": "DIGITAL COMMUNICATION TRAINER KIT SETUP",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8120131",
+   "title": "A2 Size Colour inkjet printer Minimum A2 print media support with stand and accessories,5.5 KVA Pure Sine wave Power bac",
+   "deadline": "2026-10-30",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8072219",
+   "title": "Advertisement Service - Newspaper - Tender Notices Advertisement; Any inside page of main page; Dainik Bhaskar; Hindi; B",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-14176101",
+   "title": "PROVN OF ADDN/ ALTN OF CONNECTIONG PASSAGE FROM SALUTING DIAS TOWARDS FORT WALL AT CARIAPPA PARADE GROUND AND PROVISION ",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "cppp-gem-8159344",
    "title": "Tentage Service Lumpsum Based - DISTRICT LEVEL YUVA UTSAV 2026-27 AT VADODARA DISTRICT; Lighting, Tent Rentals, Theme Ba",
@@ -1124,6 +1196,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
+    "not re-verified for 101 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1384,7 +1457,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1394,7 +1467,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1493,7 +1566,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1503,7 +1576,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1513,7 +1586,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1523,7 +1596,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1533,7 +1606,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1543,7 +1616,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1603,7 +1676,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours"
+    "not re-verified for 115 hours"
    ]
   },
   {
@@ -1889,7 +1962,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours"
+    "not re-verified for 115 hours"
    ]
   },
   {
@@ -2057,7 +2130,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours"
+    "not re-verified for 115 hours"
    ]
   },
   {
@@ -2169,7 +2242,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours"
+    "not re-verified for 115 hours"
    ]
   },
   {
@@ -2222,7 +2295,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 115 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2248,78 +2321,6 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed"
-   ]
-  },
-  {
-   "id": "cppp-14176101",
-   "title": "PROVN OF ADDN/ ALTN OF CONNECTIONG PASSAGE FROM SALUTING DIAS TOWARDS FORT WALL AT CARIAPPA PARADE GROUND AND PROVISION ",
-   "deadline": "2026-10-20",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8153726",
-   "title": "Star flex designing printing and pasting,1 sq inch square pipe 18 gauge frame fabrication charges,Vinyl printing with 5m",
-   "deadline": "2026-10-24",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8072219",
-   "title": "Advertisement Service - Newspaper - Tender Notices Advertisement; Any inside page of main page; Dainik Bhaskar; Hindi; B",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8164964",
-   "title": "Advertisement Service - Newspaper - Display Type Advertisement; Any inside page of main page; Financial Express; English",
-   "deadline": "2026-10-22",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8140153",
-   "title": "DIGITAL COMMUNICATION TRAINER KIT SETUP",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8120131",
-   "title": "A2 Size Colour inkjet printer Minimum A2 print media support with stand and accessories,5.5 KVA Pure Sine wave Power bac",
-   "deadline": "2026-10-30",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8162779",
-   "title": "Writing Pens,Writing Pens,Writing Pens,Correction Fluid Pen(V3),Black Lead Pencils (V3) Conforming to IS 1375,Glue Stick",
-   "deadline": "2026-10-21",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8163772",
-   "title": "NKG Inauguration Board,Banner with Frame 10 Ftx15 Ft,Banner 5 Ftx10 Ft,Banner 4Ftx3Ft,Banner with Frame 2.5Ftx8Ft,Banner",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8168469",
-   "title": "Lamination Films (V2),Lamination Films (V2),Photography paper Conforming to IS 6139,Markers and Highlighters,Markers and",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
    ]
   }
  ],
