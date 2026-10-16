@@ -1,10 +1,10 @@
 {
- "checked_at": "2026-10-16T09:19:34Z",
- "published": 240,
- "held_back": 278,
+ "checked_at": "2026-10-16T16:38:48Z",
+ "published": 243,
+ "held_back": 279,
  "held_reasons": {
   "not relevant (goods, works or auction)": 159,
-  "not relevant (fit under 3)": 63,
+  "not relevant (fit under 3)": 64,
   "closed": 120,
   "not re-verified recently": 14,
   "no closing date stated": 4,
@@ -1196,7 +1196,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 101 hours",
+    "not re-verified for 108 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1457,7 +1457,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1467,7 +1467,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1566,7 +1566,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1576,7 +1576,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1586,7 +1586,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1596,7 +1596,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1606,7 +1606,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1616,7 +1616,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1676,7 +1676,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours"
+    "not re-verified for 123 hours"
    ]
   },
   {
@@ -1962,7 +1962,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours"
+    "not re-verified for 123 hours"
    ]
   },
   {
@@ -2130,7 +2130,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours"
+    "not re-verified for 123 hours"
    ]
   },
   {
@@ -2242,7 +2242,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours"
+    "not re-verified for 123 hours"
    ]
   },
   {
@@ -2295,7 +2295,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 115 hours",
+    "not re-verified for 123 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2321,6 +2321,14 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-7985220",
+   "title": "Manpower Outsourcing Services - Minimum wage - Unskilled; ANY DOCUMENTARY PROOF FOR DOB; Others,Manpower Outsourcing Ser",
+   "deadline": "2026-10-28",
+   "reasons": [
+    "not relevant (fit under 3)"
    ]
   }
  ],
