@@ -1,11 +1,11 @@
 {
- "checked_at": "2026-10-17T15:36:53Z",
- "published": 257,
- "held_back": 321,
+ "checked_at": "2026-10-17T18:46:24Z",
+ "published": 240,
+ "held_back": 338,
  "held_reasons": {
   "not relevant (goods, works or auction)": 173,
   "not relevant (fit under 3)": 66,
-  "closed": 149,
+  "closed": 185,
   "not re-verified recently": 71,
   "no closing date stated": 4,
   "never verified against the source": 4
@@ -13,6 +13,102 @@
  "fields_fixed": 0,
  "ai_text_reset": 0,
  "held": [
+  {
+   "id": "cppp-gem-8173852",
+   "title": "Track suit jacket and lower with branding,T-shirt round neck half sleeve with branding,Team cap with embroidered logo,Ba",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8173811",
+   "title": "Repair, Maintenance, and Installation of Plant/ Systems/Equipments (Version 2) - Renovation, Repairing and Branding of A",
+   "deadline": "2026-10-29",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8173621",
+   "title": "Manpower Outsourcing Services - Fixed Remuneration - Admin; Services of Hatchery / Fisheries Expert; Graduate,Manpower O",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8171462",
+   "title": "Mission Safety Awareness Magazines,Flight Reference Checklist",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8171121",
+   "title": "Souvenir for outreach Big,Souvenir for outreach Medium,Souvenir for outreach Small,Memento for outreach Big,Memento for ",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8170453",
+   "title": "Writing Pens,Air Freshener Solid or Gel (V2),Air Freshener liquid (V3),Photography paper Conforming to IS 6139,Plain Cop",
+   "deadline": "2026-10-27",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8170237",
+   "title": "Photography paper Conforming to IS 6139,Vinyl Tape,File/Folder (V3),Markers and Highlighters,Sticky Notes (V2)",
+   "deadline": "2026-10-19",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8167867",
+   "title": "Hiring of Creative Agency - Selection of an Agency for Supply and Delivery of Sports Equipment on an As-and-When-Require",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8163081",
+   "title": "PDF CONVERTOR SOFTWARE 1 YEAR,CANVA SOFTWARE IFFLINE 1 YEAR,FILMORA GRAPHIC DESIGN SOFTWARE 1 YEAR",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8147056",
+   "title": "POWER TOOL FOR FASTENING,Knurling tool Diamond AND straight AND Diagonal,DRILLS GUAGE STRAIGHT SHANK,DRILLS GUAGE STRAIG",
+   "deadline": "2026-10-31",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8109447",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; OUTSOURCING OF CATERING SERVICES FOR C",
+   "deadline": "2026-10-23",
+   "reasons": [
+    "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8039760",
+   "title": "Aluminum Partition Work,12 mm Toughened Glass Door,Frosted Film on Glass,Branding Frosted Film,Roller Blinds with Pelmet",
+   "deadline": "2026-10-26",
+   "reasons": [
+    "not relevant (goods, works or auction)"
+   ]
+  },
   {
    "id": "cppp-gem-8094219",
    "title": "Plain Copier Paper (V3) ISI Marked to IS 14490,Plain Copier Paper (V3) ISI Marked to IS 14490,12a,88a,78a,Epson774,ricoh",
@@ -43,6 +139,14 @@
    "deadline": "2026-10-19",
    "reasons": [
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8129785",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESHI MELA; SWADESHI MELA; below 25",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -123,6 +227,14 @@
    "deadline": "2026-10-20",
    "reasons": [
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8160726",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; As per scope of work; As per scope of ",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -254,11 +366,27 @@
    ]
   },
   {
+   "id": "cppp-gem-8143931",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Virtual Event; IT related work; 1470; ",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8143790",
    "title": "Chamois Leather 50 x 80cm,Fuel Pipe,Souvenir,Professional event video editing and Post Production Services,Cap,Expeditio",
    "deadline": "2026-10-20",
    "reasons": [
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8143671",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Virtual Event; AS PER BUYER REQUIREMEN",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -330,6 +458,7 @@
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; ANNUAL SPORTSMEET - 2026 AND ONE DAY T",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -490,7 +619,64 @@
    "title": "Medium Publicity Laminated Paper Bag with Logos and Others,Large Publicity Laminated Paper Bag with Logos and Others,Pri",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8130510",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Organization of Swadeshi Mela; Organiz",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8129668",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Seminar; Complete Execution of Activit",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8129143",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; As per ATC; Conceptualization and Plan",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8128804",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Theme Based Events; Complete Execution",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8128434",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Conceptualizati",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8128341",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; As per tender Documents; As per tender",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8128318",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESHI MELA; Venue Development; 500;",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -498,7 +684,16 @@
    "title": "Manpower Outsourcing Services - Fixed Remuneration - Others; PROTECTION OFFICER IC; Post Graduate,Manpower Outsourcing S",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8126663",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESI MELO; Venue Development, AS PE",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -506,6 +701,7 @@
    "title": "Paper-based Printing Services - Printing with Material; Coffee Table Books; Offset",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -686,6 +882,7 @@
    "title": "RJ 45 Box,Gimble for Content Creation,CDRW,DVDRW,CDR,DVDR,Flexible Wire 0.75mm Dual Core for electric installation",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -820,6 +1017,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8081673",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Adventure Activity; CYCLING EXPENDITIO",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8080699",
    "title": "INTEGRATION OF SITUATIONAL AWARENESS SYSTEMS INCL TRISHUL LINK, SABRE 2.0 & SIVAS",
    "deadline": "2026-10-15",
@@ -874,7 +1079,24 @@
    "title": "Track Suits for Participants comma 12 staff and officials size Small 32 comma Medium 32 and XL 32,Flexes oblique Banners",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8058485",
+   "title": "Custom Bid for Services - Conduct of 5th Coast Guard Global Summit",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8047035",
+   "title": "Videography and Photography Services - Photography and Videography; Cinematic narrative; Cinematic",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -917,6 +1139,7 @@
    "title": "Exhibition Stall during 28th Energy Technology Meet (ETM) organized by Centre for High Technology (CHT) under the aegis ",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -1106,7 +1329,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 100 hours",
+    "not re-verified for 103 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1115,7 +1338,7 @@
    "title": "Development, Inegration, Enhancements, Operation and Maintenance of Forest department web portal",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 100 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1123,7 +1346,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 100 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1132,7 +1355,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 100 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1141,7 +1364,7 @@
    "title": "Tender For Upgradation, Redesign & Maintenance Of Official Website",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 100 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1149,7 +1372,7 @@
    "title": "Tender For Development Of Official Website For Mahagenco Rel Along With 3 Years Amc",
    "deadline": "2026-11-16",
    "reasons": [
-    "not re-verified for 100 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1157,7 +1380,7 @@
    "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 100 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1166,7 +1389,7 @@
    "title": "Tender For Hiring Of Agency For The Work Of Website Updation Maintenance Social Media Management Digital Media Managemen",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 100 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1174,7 +1397,7 @@
    "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
    "deadline": "2026-11-09",
    "reasons": [
-    "not re-verified for 100 hours",
+    "not re-verified for 103 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1184,7 +1407,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1194,7 +1417,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1204,7 +1427,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1214,7 +1437,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1224,7 +1447,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1234,7 +1457,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1244,7 +1467,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1254,7 +1477,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 110 hours",
+    "not re-verified for 113 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1371,7 +1594,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1412,7 +1635,7 @@
    "title": "Tender For Selection Of Agency For Information, Education And Communication (Iec) And Behaviour Change Communication (Bc",
    "deadline": "2026-10-19",
    "reasons": [
-    "not re-verified for 100 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1420,7 +1643,7 @@
    "title": "Tender for Tender for Picture Archieving And Communication System Picture Archieving And Communication System At Hamidia",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 100 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1430,7 +1653,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 134 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1439,6 +1662,7 @@
    "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works - Cleaning Of Ash Water Pump House Sump During The Forthcomin",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1447,6 +1671,7 @@
    "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Overhauling Of Steam And Condensate Valves Of Turbine Regeneration System During The ",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1455,6 +1680,7 @@
    "title": "Ttps – Mech.Ii – Tm I – Unit-Iii - Inspection, Painting & Overhauling Of Condenser, Cw Pipelines, Hotwells, Etc During T",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1472,6 +1698,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 5",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1480,6 +1707,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boile",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1489,7 +1717,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1497,6 +1725,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Repairing Of Worn-Out Skin Casing Inside The Dog House And Coutant Bottom Area In Boile",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1505,6 +1734,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Replacement Of Boiler Pressure Parts Tubes & Bends In Ii Pass Of Unit Iii Boiler During",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1512,6 +1742,14 @@
    "id": "td-57902773",
    "title": "Bids Are Invited For Customized Amc/Cmc For Pre-Owned Products - Annual Maintenance Contract (Amc) And Renewal Of Server",
    "deadline": "2026-10-16",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "td-57921483",
+   "title": "Bids Are Invited For Customized Amc/Cmc For Pre-Owned Products - Annual Maintenance Contract (Amc) And Renewal Of Server",
+   "deadline": "2026-10-17",
    "reasons": [
     "closed"
    ]
@@ -1529,6 +1767,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During The Overh",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1545,6 +1784,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Dismantling The Existing Seal Plates And Re-Erection After Rectification Works In Bah A",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1553,6 +1793,7 @@
    "title": "Ttps – Mech.Ii – Bm – Unit Iii - Inspection & Rectification Of Emitting Electrode Suspension Frame In Esp During Annual ",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1578,6 +1819,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit I - Rectification Of Supporting Structure Of Aph Duct & Hopper Area, Reconditioning Of Eroded",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1586,6 +1828,7 @@
    "title": "Ttps – Mech.Ii – Ahp – Unit-Iii - Annual Overhauling Works Of Valves, Replacement Of Corroded Pipes Of Sea Water Booster",
    "deadline": "2026-10-17",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1595,7 +1838,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1640,7 +1883,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1650,7 +1893,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1660,7 +1903,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1670,7 +1913,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1688,7 +1931,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1723,7 +1966,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1733,7 +1976,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1759,7 +2002,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1800,7 +2043,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1825,7 +2068,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1843,7 +2086,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1853,7 +2096,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1863,7 +2106,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1873,7 +2116,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1883,7 +2126,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1893,7 +2136,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours",
+    "not re-verified for 149 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1911,7 +2154,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1921,7 +2164,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1934,12 +2177,20 @@
    ]
   },
   {
+   "id": "td-57845570",
+   "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Request For Proposal (Rfp) For End-To-End Develo",
+   "deadline": "2026-10-17",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "td-57879503",
    "title": "Tender For Design And Development Of Website With Content Management System For V.P. Socorro And Implementation Of House",
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1948,7 +2199,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1957,7 +2208,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours"
+    "not re-verified for 149 hours"
    ]
   },
   {
@@ -1983,7 +2234,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2010,7 +2261,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2019,7 +2270,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2044,7 +2295,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2117,7 +2368,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2126,7 +2377,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2135,7 +2386,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2152,7 +2403,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2161,7 +2412,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2170,7 +2421,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2220,7 +2471,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2254,7 +2505,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours"
+    "not re-verified for 149 hours"
    ]
   },
   {
@@ -2271,7 +2522,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2281,7 +2532,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2350,7 +2601,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2376,7 +2627,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2395,7 +2646,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2405,7 +2656,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2422,7 +2673,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2432,7 +2683,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 146 hours"
+    "not re-verified for 149 hours"
    ]
   },
   {
@@ -2441,7 +2692,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2483,7 +2734,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2537,7 +2788,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours",
+    "not re-verified for 121 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2547,7 +2798,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 145 hours"
+    "not re-verified for 149 hours"
    ]
   },
   {
@@ -2601,7 +2852,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 145 hours",
+    "not re-verified for 149 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2611,7 +2862,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -2628,103 +2879,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 118 hours"
-   ]
-  },
-  {
-   "id": "cppp-gem-8167867",
-   "title": "Hiring of Creative Agency - Selection of an Agency for Supply and Delivery of Sports Equipment on an As-and-When-Require",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8147056",
-   "title": "POWER TOOL FOR FASTENING,Knurling tool Diamond AND straight AND Diagonal,DRILLS GUAGE STRAIGHT SHANK,DRILLS GUAGE STRAIG",
-   "deadline": "2026-10-31",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8170237",
-   "title": "Photography paper Conforming to IS 6139,Vinyl Tape,File/Folder (V3),Markers and Highlighters,Sticky Notes (V2)",
-   "deadline": "2026-10-19",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8171121",
-   "title": "Souvenir for outreach Big,Souvenir for outreach Medium,Souvenir for outreach Small,Memento for outreach Big,Memento for ",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8163081",
-   "title": "PDF CONVERTOR SOFTWARE 1 YEAR,CANVA SOFTWARE IFFLINE 1 YEAR,FILMORA GRAPHIC DESIGN SOFTWARE 1 YEAR",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8170453",
-   "title": "Writing Pens,Air Freshener Solid or Gel (V2),Air Freshener liquid (V3),Photography paper Conforming to IS 6139,Plain Cop",
-   "deadline": "2026-10-27",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8171462",
-   "title": "Mission Safety Awareness Magazines,Flight Reference Checklist",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8039760",
-   "title": "Aluminum Partition Work,12 mm Toughened Glass Door,Frosted Film on Glass,Branding Frosted Film,Roller Blinds with Pelmet",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8173811",
-   "title": "Repair, Maintenance, and Installation of Plant/ Systems/Equipments (Version 2) - Renovation, Repairing and Branding of A",
-   "deadline": "2026-10-29",
-   "reasons": [
-    "not relevant (goods, works or auction)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8173621",
-   "title": "Manpower Outsourcing Services - Fixed Remuneration - Admin; Services of Hatchery / Fisheries Expert; Graduate,Manpower O",
-   "deadline": "2026-10-26",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8109447",
-   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; OUTSOURCING OF CATERING SERVICES FOR C",
-   "deadline": "2026-10-23",
-   "reasons": [
-    "not relevant (fit under 3)"
-   ]
-  },
-  {
-   "id": "cppp-gem-8173852",
-   "title": "Track suit jacket and lower with branding,T-shirt round neck half sleeve with branding,Team cap with embroidered logo,Ba",
-   "deadline": "2026-10-27",
-   "reasons": [
-    "not relevant (goods, works or auction)"
+    "not re-verified for 121 hours"
    ]
   }
  ],
