@@ -1,11 +1,11 @@
 {
- "checked_at": "2026-10-20T16:59:22Z",
- "published": 186,
- "held_back": 422,
+ "checked_at": "2026-10-20T23:33:06Z",
+ "published": 158,
+ "held_back": 450,
  "held_reasons": {
   "not relevant (goods, works or auction)": 180,
   "not relevant (fit under 3)": 69,
-  "closed": 248,
+  "closed": 287,
   "not re-verified recently": 284,
   "no closing date stated": 4,
   "never verified against the source": 4
@@ -59,6 +59,14 @@
    "deadline": "2026-10-27",
    "reasons": [
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8176544",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Seminar; Complete Execution of Activit",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -231,10 +239,27 @@
    ]
   },
   {
+   "id": "cppp-gem-8143071",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; MUKHYAMANTRI SAMUHIK VIVAH YOJNA SHESH",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8142042",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Complete Execut",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8094219",
    "title": "Plain Copier Paper (V3) ISI Marked to IS 14490,Plain Copier Paper (V3) ISI Marked to IS 14490,12a,88a,78a,Epson774,ricoh",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -277,7 +302,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -310,6 +335,14 @@
    "deadline": "2026-10-22",
    "reasons": [
     "not relevant (fit under 3)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8164403",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - International; AS PER SCOPE OF WORK; AS PER SCOP",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -365,6 +398,7 @@
    "title": "PROVN OF ADDN/ ALTN OF CONNECTIONG PASSAGE FROM SALUTING DIAS TOWARDS FORT WALL AT CARIAPPA PARADE GROUND AND PROVISION ",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -414,7 +448,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 114 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -478,6 +512,7 @@
    "title": "Outdoor Advertisement Service - BOQ Mode",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (fit under 3)"
    ]
   },
@@ -502,7 +537,32 @@
    "title": "Artillery shamiana size 15 ft x 15 ftt,Artillery shamiana size 20 ft x 20 ft,Battery Operated hedge cutting Machine,Batt",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8144360",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Participation a",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8144133",
+   "title": "Videography and Photography Services - Photography and Videography; Event Coverage, Celebration Ceremony, Success Story,",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8144060",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; As per scope of work and Tender Docume",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -518,6 +578,7 @@
    "title": "Chamois Leather 50 x 80cm,Fuel Pipe,Souvenir,Professional event video editing and Post Production Services,Cap,Expeditio",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -534,6 +595,7 @@
    "title": "Camera Battery,Camera Bag,Digital Single Lens Reflex Camera,Photography Umbrella,Portrait Lens",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -550,6 +612,7 @@
    "title": "Custom Bid for Services - Designing, Printing and Fixing cloth banner & others for Publicity works of NTPC Ramagundam & ",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -594,6 +657,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8030751",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Convention; Coordination and Staffing,",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-7998804",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; ANNUAL SPORTSMEET - 2026 AND ONE DAY T",
    "deadline": "2026-10-17",
@@ -624,7 +695,16 @@
    "title": "Custom Bid for Services - DESGINING AND PRINTING OF CUSTOMIZED BROCHURE AND LEAFLETS",
    "deadline": "2026-10-20",
    "reasons": [
+    "closed",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-8141408",
+   "title": "Videography and Photography Services - Photography; Accused Photo Left Right Middle; Passport Photo Service, Passport Si",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -636,12 +716,20 @@
    ]
   },
   {
+   "id": "cppp-gem-8140947",
+   "title": "Videography and Photography Services - Photography and Videography; Event Coverage, Celebration Ceremony, Success Story,",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8140921",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Conceptualizati",
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 128 hours"
+    "not re-verified for 135 hours"
    ]
   },
   {
@@ -726,6 +814,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8136942",
+   "title": "Printing of Banners and leaflets,Marketing through Meta on Instagram, Subscription fee yearly, fees of 03 x influencers.",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8136879",
    "title": "Laminated Publicity Materials Carry Paper Bag with Logos and Others Medium Size,Publicity Mterials Laminated Paper Bag w",
    "deadline": "2026-10-19",
@@ -760,6 +856,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8135143",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Workshop; Organisation and Conduct of ",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8135088",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESHI MELO; SWADESHI MELO; below 25",
    "deadline": "2026-10-19",
@@ -768,9 +872,25 @@
    ]
   },
   {
+   "id": "cppp-gem-8135055",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Trade shows and expos; Conceptualizati",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8134415",
    "title": "Videography and Photography Services - Photography and Videography; Event Coverage; Digital Photography",
    "deadline": "2026-10-19",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8134024",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESHI MELO; AS PER ATC; AS PER ATC;",
+   "deadline": "2026-10-20",
    "reasons": [
     "closed"
    ]
@@ -834,6 +954,14 @@
    ]
   },
   {
+   "id": "cppp-gem-8121915",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Workshop; Complete Execution of Activi",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8120916",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; 15 Lakh; Complete Execution of Activit",
    "deadline": "2026-10-19",
@@ -855,7 +983,15 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 128 hours"
+    "not re-verified for 135 hours"
+   ]
+  },
+  {
+   "id": "cppp-gem-8079186",
+   "title": "Software Support Services 2.0 - Bug Fixes, minor modifications and the Operation & maintenance contract of Web-based por",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -900,6 +1036,14 @@
    ]
   },
   {
+   "id": "cppp-gem-7994637",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Seminar; Venue Development; Buyer prem",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-7994579",
    "title": "Outdoor Advertisement Service - BOQ Mode",
    "deadline": "2026-10-19",
@@ -925,12 +1069,20 @@
    ]
   },
   {
+   "id": "cppp-14196471",
+   "title": "Selection of an agency for Production of 12 (Twelve) TVCs, each up to 2 Minutes in duration, covering various Road-Safet",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8131011",
    "title": "Medium Publicity Laminated Paper Bag with Logos and Others,Large Publicity Laminated Paper Bag with Logos and Others,Pri",
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -940,7 +1092,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -949,7 +1101,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -958,7 +1110,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -967,7 +1119,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -976,7 +1128,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -985,7 +1137,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -994,7 +1146,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1003,7 +1155,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 103 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1013,7 +1165,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1022,7 +1174,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1032,7 +1184,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1041,7 +1193,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1050,7 +1202,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1059,7 +1211,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1068,7 +1220,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1077,7 +1229,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1086,7 +1238,15 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
+   ]
+  },
+  {
+   "id": "cppp-gem-8121637",
+   "title": "Hiring of Creative Agency - None of the above; As per RFP; As per RFP; As per RFP; As per RFP; As per RFP; As per RFP; N",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -1095,7 +1255,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1104,7 +1264,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1113,7 +1273,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1123,7 +1283,15 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
+   ]
+  },
+  {
+   "id": "cppp-gem-8119046",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Theme Based Events; Conceptualization ",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -1132,7 +1300,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1141,7 +1309,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1151,7 +1319,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1160,7 +1328,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1169,7 +1337,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1178,7 +1346,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1195,7 +1363,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1205,7 +1373,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1215,7 +1383,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1224,7 +1392,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1234,7 +1402,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1254,12 +1422,20 @@
    ]
   },
   {
+   "id": "cppp-gem-8109352",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SHGs Mela; Venue Development; Outdoor ",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8109245",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; SWADESI MELO; Venue Development, AS PE",
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1268,7 +1444,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 104 hours",
+    "not re-verified for 111 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1278,7 +1454,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1304,13 +1480,29 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
+   ]
+  },
+  {
+   "id": "cppp-gem-8099484",
+   "title": "Custom Bid for Services - Videogrpahy and Photography Services",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
    "id": "cppp-gem-8098682",
    "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Hiring of services for OP Trident Nite",
    "deadline": "2026-10-19",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-8098377",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - International; Workshop; Conceptualization and P",
+   "deadline": "2026-10-20",
    "reasons": [
     "closed"
    ]
@@ -1337,7 +1529,15 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 104 hours"
+    "not re-verified for 111 hours"
+   ]
+  },
+  {
+   "id": "cppp-gem-8095621",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; FOOTBALL TOURNAMENT AT GIDI-A ARGADA A",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -1346,7 +1546,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1372,7 +1572,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1390,7 +1590,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1399,7 +1599,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 104 hours"
+    "not re-verified for 111 hours"
    ]
   },
   {
@@ -1408,7 +1608,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1418,7 +1618,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1446,12 +1646,20 @@
    ]
   },
   {
+   "id": "cppp-gem-8073995",
+   "title": "Custom Bid for Services - Customized Videography and Photography Services",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
    "id": "cppp-gem-8067237",
    "title": "Custom Bid for Services - Subscription of E-library portal & mobile app",
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1461,7 +1669,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 103 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1471,7 +1679,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1488,7 +1696,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 103 hours"
    ]
   },
   {
@@ -1497,7 +1705,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1507,8 +1715,24 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-gem-7971746",
+   "title": "Videography and Photography Services - Photography and Videography; AS PER SCOPE OF WORK; AS PER SCOPE OF WORK",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
+   ]
+  },
+  {
+   "id": "cppp-gem-7967366",
+   "title": "Event or Seminar or Workshop or Exhibition or Expo Management Service - National; Launch Event; Complete Execution of Ac",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -1525,7 +1749,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1543,8 +1767,17 @@
    "title": "Urgent cleaning, upkeeping and repairing work for different places under Special Campaign 6.0 under the Swachhata Missio",
    "deadline": "2026-10-20",
    "reasons": [
-    "not re-verified for 131 hours",
+    "closed",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
+   ]
+  },
+  {
+   "id": "cppp-14198903",
+   "title": "Selection of an Event Management Agency for conducting Sundays on Cycle (SOC) at Hubballi on 25th October 2026",
+   "deadline": "2026-10-20",
+   "reasons": [
+    "closed"
    ]
   },
   {
@@ -1553,7 +1786,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 128 hours",
+    "not re-verified for 135 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1563,7 +1796,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 128 hours"
+    "not re-verified for 135 hours"
    ]
   },
   {
@@ -1588,7 +1821,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 114 hours"
+    "not re-verified for 121 hours"
    ]
   },
   {
@@ -1654,7 +1887,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1663,7 +1896,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1673,7 +1906,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1683,7 +1916,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 131 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1693,7 +1926,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 157 hours",
+    "not re-verified for 163 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1703,7 +1936,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 157 hours",
+    "not re-verified for 163 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1712,7 +1945,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Selection Of Service Provider For Coding & Decod",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1721,7 +1954,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1729,7 +1962,7 @@
    "title": "Bids Are invited for Venue Prep , Catering For Participants Guests , Guest Hospitality And Felicitation , Branding And P",
    "deadline": "2026-10-23",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1737,7 +1970,7 @@
    "title": "Tender For Engagement Of Advertising Agency For Initial Public Offering (Ipo) Of India Infrastructure Finance Company Li",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1745,7 +1978,7 @@
    "title": "Bids Are Invited For Paper Fs 75 Gsm, Paper A4 75 Gsm, Register 300 Pages, Register 200 Pages, Register 500 Pages, Regis",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1754,7 +1987,7 @@
    "title": "Bids Are invited for Sudarshan Qty 01",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1763,7 +1996,7 @@
    "title": "Bids Are invited for Optical Fibre Cable Network And Allied Communication System As Per Specifications",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1772,7 +2005,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 173 hours",
+    "not re-verified for 180 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1781,7 +2014,7 @@
    "title": "Development, Inegration, Enhancements, Operation and Maintenance of Forest department web portal",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 173 hours"
+    "not re-verified for 180 hours"
    ]
   },
   {
@@ -1789,7 +2022,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 173 hours",
+    "not re-verified for 180 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1798,7 +2031,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 173 hours",
+    "not re-verified for 180 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1807,7 +2040,7 @@
    "title": "Tender For Upgradation, Redesign & Maintenance Of Official Website",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 173 hours"
+    "not re-verified for 180 hours"
    ]
   },
   {
@@ -1815,7 +2048,7 @@
    "title": "Tender For Development Of Official Website For Mahagenco Rel Along With 3 Years Amc",
    "deadline": "2026-11-16",
    "reasons": [
-    "not re-verified for 173 hours"
+    "not re-verified for 180 hours"
    ]
   },
   {
@@ -1823,7 +2056,7 @@
    "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 173 hours",
+    "not re-verified for 180 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1832,7 +2065,7 @@
    "title": "Tender For Hiring Of Agency For The Work Of Website Updation Maintenance Social Media Management Digital Media Managemen",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 173 hours"
+    "not re-verified for 180 hours"
    ]
   },
   {
@@ -1840,7 +2073,7 @@
    "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
    "deadline": "2026-11-09",
    "reasons": [
-    "not re-verified for 173 hours",
+    "not re-verified for 180 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1850,7 +2083,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1860,7 +2093,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1870,7 +2103,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1880,7 +2113,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1890,7 +2123,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1900,7 +2133,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1910,7 +2143,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1920,7 +2153,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 183 hours",
+    "not re-verified for 190 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1930,7 +2163,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 161 hours",
+    "not re-verified for 168 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1939,7 +2172,7 @@
    "title": "Tender For Empanelment Of Vendors, Printers, Suppliers, And Service Providers Stationery, Printing, Electronics (Acs, Co",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 161 hours",
+    "not re-verified for 168 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1949,7 +2182,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 161 hours",
+    "not re-verified for 168 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1958,7 +2191,7 @@
    "title": "Supply Of Vestibules (UIC Type Elastomer Flange Connection for inter-communication between intermediate cabs)",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 161 hours",
+    "not re-verified for 168 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1967,7 +2200,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 56 ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1976,7 +2209,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V - Repairing Of Worn-Out Skin Casing Inside The Dog-House And Coutant Bottom Area In Boiler ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1985,7 +2218,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During Overhaul Fo",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1994,7 +2227,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V – Replacement Of Worn-Out Supports Of Eco. Hoppers During Overhaul For The Year 2026 - 2027",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2003,7 +2236,7 @@
    "title": "Tender for Redisgn, Development, Hosting and Maintenance of Existing Website for Yogi Vemana University, Kadapa",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2012,7 +2245,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2020,7 +2253,7 @@
    "title": "Bids Are invited for Conduct Of Trg For Local Youth For Radio Stn At Bn",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2029,7 +2262,7 @@
    "title": "Tender for Annual Rate Contract For Providing Mic Set Sound System In Various Events/Programs Of Municipality Mundawar A",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2038,7 +2271,7 @@
    "title": "REQUEST FOR PROPOSAL (RFP) FOR SELECTION OF A PROFESSIONAL AGENCY FOR MANAGEMENT OF SOCIAL MEDIA ACCOUNTS, CONTENT PRODU",
    "deadline": "2026-11-12",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2046,7 +2279,7 @@
    "title": "Bids Are invited for Hiring Of Multimedia Creative Consultants - Manpower Based - Social Media Manager Team Lead; On Sit",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2055,7 +2288,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2064,7 +2297,7 @@
    "title": "Bids Are invited for Event Or Seminar Or Workshop Or Exhibition Or Expo Management Service - National; As Per Rfp; As Pe",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2072,7 +2305,7 @@
    "title": "Bids Are invited for Repair, Maintenance, And Installation Of Plant/ Systems/Equipments (Version 2) - 132 Kv Substation;",
    "deadline": "2026-10-24",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2082,7 +2315,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2091,7 +2324,7 @@
    "title": "Bids Are invited for Educational Software Portals For Enhanced Learning And Firewall Hardware",
    "deadline": "2026-10-31",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2100,7 +2333,7 @@
    "title": "Bids Are invited for Sitc Of Audio Video Conferencing System For Conference Room At Telephone Bhavan Ctd Kolkata",
    "deadline": "2026-10-24",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2110,7 +2343,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2119,7 +2352,7 @@
    "title": "Tender For Renovation Of Office Store Room At O/O The Agm, La Communication Division, Kahilipara, Aegcl",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2129,7 +2362,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 173 hours"
+    "not re-verified for 180 hours"
    ]
   },
   {
@@ -2137,7 +2370,7 @@
    "title": "Tender for Tender for Picture Archieving And Communication System Picture Archieving And Communication System At Hamidia",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 173 hours",
+    "not re-verified for 180 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2147,7 +2380,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 204 hours",
+    "not re-verified for 211 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2157,7 +2390,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2167,7 +2400,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2177,7 +2410,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2187,7 +2420,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2197,7 +2430,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2207,7 +2440,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2217,7 +2450,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -2226,7 +2459,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2235,7 +2468,8 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Annual Maintenance Contract (Amc) For Dgms Websi",
    "deadline": "2026-10-20",
    "reasons": [
-    "not re-verified for 166 hours"
+    "closed",
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2244,7 +2478,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2253,7 +2487,7 @@
    "title": "Tender For Hosting, Comprehensive Management And Maintenance Of Bihar Museum Society, Patna Website",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2262,7 +2496,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2271,7 +2505,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2280,7 +2514,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2289,7 +2523,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2298,7 +2532,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2307,7 +2541,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2317,7 +2551,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2326,7 +2560,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2336,7 +2570,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2345,7 +2579,7 @@
    "title": "Tender For Non-Comprehensive Annual Maintenance Contract (Amc) For Composite Curing Aerospace- Grade Lab Scale Autoclave",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2354,7 +2588,7 @@
    "title": "Tender For Hosting, Comprehensive Management And Maintenance Of Bihar Museum Website",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2363,7 +2597,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2373,7 +2607,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2383,7 +2617,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2393,7 +2627,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -2402,7 +2636,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2410,7 +2644,7 @@
    "title": "Bids Are Invited For Customized Amc/Cmc For Pre-Owned Products Annual Maintenance Contract (Amc) For Maintenance And Upd",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2419,7 +2653,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2427,7 +2661,7 @@
    "title": "Bids Are Invited For Custom Bid For Services - Request For Proposal For Hosting & Maintenance Of Scilal Website And Emai",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2436,7 +2670,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2445,7 +2679,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2474,7 +2708,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2484,7 +2718,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2494,7 +2728,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2504,7 +2738,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2513,7 +2747,7 @@
    "title": "Provision of miscellaneous Signal and Telecommunication facilities for operational monitoring, communication and safety ",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2523,7 +2757,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2532,7 +2766,7 @@
    "title": "Tender For Design, Development & Maintenance Of Landscaping Work, Including Plant Irrigation System At Dhagwar, Kangra, ",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2542,7 +2776,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2551,7 +2785,8 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis Invitation For Bids (Ifb) For Design, Development",
    "deadline": "2026-10-20",
    "reasons": [
-    "not re-verified for 166 hours",
+    "closed",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2561,7 +2796,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2571,7 +2806,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2581,7 +2816,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2589,7 +2824,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis Design, Development, Deployment And One (1) Year ",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2598,7 +2833,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2606,7 +2841,7 @@
    "title": "Tender For Design, Development, Implementation, Testing, Commissioning, Data Migration And Support Of The Open Access Sc",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2614,7 +2849,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Development And Maintenance Of New And Existing ",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2623,7 +2858,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -2631,7 +2866,7 @@
    "title": "Tender For For Selection Of Agency/Agencies For Development & Maintenance Of Website Of Chittaranjan Seva Sadan College ",
    "deadline": "2026-11-18",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2639,7 +2874,7 @@
    "title": "Tender For Amd Kintex Ultrascale Xcku060 Or Equivalent Fpga Development Board, For More Details Refer Our Website Http//",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2649,7 +2884,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2658,7 +2893,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2667,7 +2902,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2675,7 +2910,7 @@
    "title": "Tender For Development And Maintenance Of New And Existing Creda Website, Dashboard, Android Apps, And Online Projects O",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2683,7 +2918,7 @@
    "title": "Tender for Pre-Examination and Post-Examination Data Processing and Results Processing, Digitization of reverification r",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2691,7 +2926,7 @@
    "title": "REQUEST FOR PROPOSAL (RFP) Selection Of Agency For Design, Development, Deployment, Hosting, Security Audit And Maintena",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2700,7 +2935,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2709,7 +2944,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -2717,7 +2952,7 @@
    "title": "Tender For Empanelment Of Eligible Information Technology Solutions And Service Providing Firms For Software/Website Dev",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2726,7 +2961,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2735,7 +2970,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2744,7 +2979,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2752,7 +2987,7 @@
    "title": "Tender For Request For Empanelment (Rfe) For Empanelment Of It Agencies For Software/ Website Development",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2761,7 +2996,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2771,7 +3006,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2781,7 +3016,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2791,7 +3026,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2801,7 +3036,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2811,7 +3046,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2821,7 +3056,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2831,7 +3066,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 226 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2840,7 +3075,7 @@
    "title": "Tender For Selection Of Supplies Of Material Items For Implementation Of Vbgramg Schemes All Area Of Jemari Gram Panchay",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2850,7 +3085,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2860,7 +3095,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2870,7 +3105,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2880,7 +3115,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2889,7 +3124,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2897,7 +3132,7 @@
    "title": "Agency For Development Of Video Content",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2906,7 +3141,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -2915,7 +3150,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -2924,7 +3159,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours"
+    "not re-verified for 226 hours"
    ]
   },
   {
@@ -2932,7 +3167,7 @@
    "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Restructure Rewrite Content, Storyboarding With Producti",
    "deadline": "2026-11-05",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2940,7 +3175,7 @@
    "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Restructure Rewrite Content, Storyboarding With Producti",
    "deadline": "2026-11-04",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2948,7 +3183,7 @@
    "title": "Tender For Empanelment/Rate-Listing Of Authorized And Experienced Firms/Ngos For Flex, Hoardings, Posters, Vinyl, Leafle",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2958,7 +3193,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2968,7 +3203,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2978,7 +3213,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2988,7 +3223,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2997,7 +3232,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3006,7 +3241,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3014,7 +3249,7 @@
    "title": "Tender For Empanelment Of Advertising Agencies For Publication Of Advertisements In Newspapers And Periodicals The Adver",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3024,7 +3259,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3033,7 +3268,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3042,7 +3277,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3051,7 +3286,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3060,7 +3295,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3069,7 +3304,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3078,7 +3313,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3087,7 +3322,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3095,7 +3330,7 @@
    "title": "Tender For Social Media Content Creation And Digital Marketing Of Uttarakhand Tourism",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3104,7 +3339,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3113,7 +3348,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3122,7 +3357,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3130,7 +3365,7 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, C Aign Management, Basic Reporting And Analytics;",
    "deadline": "2026-10-24",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3139,7 +3374,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3147,7 +3382,7 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, C Aign M",
    "deadline": "2026-11-04",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3156,7 +3391,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3165,7 +3400,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3174,7 +3409,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3182,7 +3417,7 @@
    "title": "Tender For Temporary Infrastructure, Superstructure, Fabrication Of Pandal/ Stalls / Gates / Decoration Of Stage And Dis",
    "deadline": "2026-12-03",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3191,7 +3426,7 @@
    "title": "Tender For Temporary Infrastructure, Superstructure, Fabrication Of Pandal/ Stalls / Gates / Decoration Of Stage And Dis",
    "deadline": "2026-12-03",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3199,7 +3434,7 @@
    "title": "Tender For Appointment of an Integrated Agency for Social Media Management, Digital Marketing, International Outreach, S",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3208,7 +3443,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3217,7 +3452,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3225,7 +3460,7 @@
    "title": "Tender For Rfp For Social Media Management Service",
    "deadline": "2026-11-06",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3234,7 +3469,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3242,7 +3477,7 @@
    "title": "Tender For Provision Of Otm Accommodation At Hayuliang Under Ge P Lohitpur",
    "deadline": "2026-11-09",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3252,7 +3487,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3261,7 +3496,7 @@
    "title": "Tender For Supply Of Various Glass Ware & Plastic Ware Items At Skims, Soura, Srinagar On One Year Rate Contract Basis",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3270,7 +3505,7 @@
    "title": "Tender For Providing Hybrid Hearing/ Streaming Equipments At Delhi District Courts",
    "deadline": "2026-10-31",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3279,7 +3514,7 @@
    "title": "Tender For Purchase Of Portable Ultrasound Machine At Rajeev Gandhi Sports Medicine Center",
    "deadline": "2026-10-23",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3289,7 +3524,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3299,7 +3534,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3308,7 +3543,7 @@
    "title": "Bids Are invited for Intrusion Detection Fence System For Magazine",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3318,7 +3553,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3328,7 +3563,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours"
+    "not re-verified for 225 hours"
    ]
   },
   {
@@ -3336,7 +3571,7 @@
    "title": "Tender For Wanakbori Thermal Power Station Supply of Chemicals for Cooling water treatment including real time monitorin",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3346,7 +3581,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3356,7 +3591,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3366,7 +3601,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3375,7 +3610,7 @@
    "title": "Bids Are invited for Sitc Of Dynamic Digital Display For Immigration Counters",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3385,7 +3620,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3395,7 +3630,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3404,7 +3639,7 @@
    "title": "Provision of Battery Energy Storage System (BESS) for Power back up for Climatic Chamber",
    "deadline": "2026-11-06",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3413,7 +3648,7 @@
    "title": "Bids Are invited for Hiring Of Consultants - Milestone/Deliverable Based - Architectural Engineering Design Consultant; ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3422,7 +3657,7 @@
    "title": "Supply Of LC gate Electronic Slave telephone & Master Telephone of Electronic LC Gate => Limited",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3432,7 +3667,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3441,7 +3676,7 @@
    "title": "Bids Are invited for Lte Fleid Controller With Smart Antina",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3450,7 +3685,7 @@
    "title": "Supply Of Telephones and Server for Emergency communication",
    "deadline": "2026-10-21",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3460,7 +3695,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3470,7 +3705,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3480,7 +3715,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3490,7 +3725,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3498,7 +3733,7 @@
    "title": "Supply Of DOUBLE ACTING HINGES SIZE 100 MM for LHB AC Entrance communication door",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3508,7 +3743,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3518,7 +3753,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours"
+    "not re-verified for 225 hours"
    ]
   },
   {
@@ -3527,7 +3762,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3536,7 +3771,7 @@
    "title": "Tender For Engagement Of Agency For Providing Mobile Communication Facility To Dhbvnl Officers Officials",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3545,7 +3780,7 @@
    "title": "Provision of Voice Logging Facility Through VHF Communication at Stations in LJN Division",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3554,7 +3789,7 @@
    "title": "Tender For Supply Of Copper Communication Control Flexible Trailing Cable,As Per The Technical Specification Enclosed",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3563,7 +3798,7 @@
    "title": "Bids Are invited for Conet Communication Protocol Card With Multimode Simplex Fiber Cables",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3573,7 +3808,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3583,7 +3818,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3603,7 +3838,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3613,7 +3848,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3622,7 +3857,7 @@
    "title": "Bids Are Invited For Communication Complex For Fy 2026-27",
    "deadline": "2026-11-13",
    "reasons": [
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3632,7 +3867,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3642,7 +3877,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours"
+    "not re-verified for 225 hours"
    ]
   },
   {
@@ -3651,7 +3886,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3661,7 +3896,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3671,7 +3906,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3690,7 +3925,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3700,7 +3935,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 219 hours",
+    "not re-verified for 225 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3710,7 +3945,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   },
   {
@@ -3719,7 +3954,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3727,7 +3962,7 @@
    "title": "Tender For Request For Expression Of Interest (Eoi): Shortlisting Of Public Relations (Pr) Agencies For The National Mis",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3735,7 +3970,7 @@
    "title": "Tender For Empanelment Of Professional Agency/Ies For Media Monitoring And Analysis System For Print, Electronic, Digita",
    "deadline": "2026-10-25",
    "reasons": [
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3744,7 +3979,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -3753,7 +3988,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 191 hours"
+    "not re-verified for 198 hours"
    ]
   }
  ],
