@@ -1,11 +1,11 @@
 {
- "checked_at": "2026-10-22T04:17:14Z",
+ "checked_at": "2026-10-22T10:01:28Z",
  "published": 155,
  "held_back": 460,
  "held_reasons": {
   "not relevant (goods, works or auction)": 181,
   "not relevant (fit under 3)": 69,
-  "closed": 312,
+  "closed": 311,
   "not re-verified recently": 314,
   "no closing date stated": 4,
   "never verified against the source": 4
@@ -276,7 +276,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -285,7 +285,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -294,7 +294,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -320,7 +320,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -329,7 +329,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -339,7 +339,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -462,7 +462,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 116 hours"
+    "not re-verified for 122 hours"
    ]
   },
   {
@@ -503,7 +503,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 149 hours"
+    "not re-verified for 155 hours"
    ]
   },
   {
@@ -643,7 +643,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 121 hours"
+    "not re-verified for 127 hours"
    ]
   },
   {
@@ -652,7 +652,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -662,7 +662,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 121 hours"
+    "not re-verified for 127 hours"
    ]
   },
   {
@@ -671,7 +671,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -738,7 +738,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -747,7 +747,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 121 hours",
+    "not re-verified for 127 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -765,7 +765,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -775,7 +775,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -809,7 +809,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 163 hours"
+    "not re-verified for 169 hours"
    ]
   },
   {
@@ -850,7 +850,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours",
+    "not re-verified for 102 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -860,7 +860,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -934,7 +934,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours",
+    "not re-verified for 108 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -944,7 +944,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -969,7 +969,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours"
+    "not re-verified for 108 hours"
    ]
   },
   {
@@ -986,7 +986,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours"
+    "not re-verified for 108 hours"
    ]
   },
   {
@@ -1003,7 +1003,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours",
+    "not re-verified for 108 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1013,7 +1013,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours"
+    "not re-verified for 108 hours"
    ]
   },
   {
@@ -1022,7 +1022,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours"
+    "not re-verified for 108 hours"
    ]
   },
   {
@@ -1031,7 +1031,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours",
+    "not re-verified for 108 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1041,7 +1041,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 97 hours"
+    "not re-verified for 102 hours"
    ]
   },
   {
@@ -1058,7 +1058,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours"
+    "not re-verified for 108 hours"
    ]
   },
   {
@@ -1075,7 +1075,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 163 hours"
+    "not re-verified for 169 hours"
    ]
   },
   {
@@ -1174,7 +1174,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1184,7 +1184,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1193,7 +1193,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1202,7 +1202,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1211,7 +1211,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1220,7 +1220,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1229,7 +1229,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1238,7 +1238,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1247,7 +1247,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours",
+    "not re-verified for 138 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1257,7 +1257,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1266,7 +1266,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1276,7 +1276,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1285,7 +1285,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1294,7 +1294,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1303,7 +1303,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1312,7 +1312,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1321,7 +1321,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1330,7 +1330,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1339,7 +1339,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours"
+    "not re-verified for 108 hours"
    ]
   },
   {
@@ -1348,7 +1348,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1357,7 +1357,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1366,7 +1366,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1376,7 +1376,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1393,7 +1393,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1402,7 +1402,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1412,7 +1412,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1421,7 +1421,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1430,7 +1430,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1439,7 +1439,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1456,7 +1456,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1466,7 +1466,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1476,7 +1476,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1485,7 +1485,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1495,7 +1495,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1528,7 +1528,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1537,7 +1537,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 139 hours",
+    "not re-verified for 145 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1547,7 +1547,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1573,7 +1573,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1631,7 +1631,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 139 hours"
+    "not re-verified for 145 hours"
    ]
   },
   {
@@ -1648,7 +1648,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1675,7 +1675,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1693,7 +1693,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1702,7 +1702,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 139 hours"
+    "not re-verified for 145 hours"
    ]
   },
   {
@@ -1711,7 +1711,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1721,7 +1721,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -1762,7 +1762,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1772,7 +1772,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours",
+    "not re-verified for 138 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1782,7 +1782,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1791,7 +1791,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 106 hours"
+    "not re-verified for 112 hours"
    ]
   },
   {
@@ -1800,7 +1800,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 132 hours"
+    "not re-verified for 138 hours"
    ]
   },
   {
@@ -1809,7 +1809,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1827,7 +1827,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1861,7 +1861,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1871,7 +1871,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 121 hours",
+    "not re-verified for 127 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1881,7 +1881,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -1899,7 +1899,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 163 hours",
+    "not re-verified for 169 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1909,7 +1909,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 163 hours"
+    "not re-verified for 169 hours"
    ]
   },
   {
@@ -1934,7 +1934,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 149 hours"
+    "not re-verified for 155 hours"
    ]
   },
   {
@@ -1952,7 +1952,7 @@
    "deadline": "2026-10-18",
    "reasons": [
     "closed",
-    "not re-verified for 102 hours",
+    "not re-verified for 108 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -1991,9 +1991,8 @@
   {
    "id": "cppp-14156660",
    "title": "BRANDING AND FABRICATION",
-   "deadline": "2026-10-21",
+   "deadline": "2026-10-26",
    "reasons": [
-    "closed",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2003,7 +2002,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours"
+    "not re-verified for 172 hours"
    ]
   },
   {
@@ -2012,7 +2011,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2022,7 +2021,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2032,7 +2031,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 166 hours",
+    "not re-verified for 172 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2042,7 +2041,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 192 hours",
+    "not re-verified for 198 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2052,7 +2051,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 192 hours",
+    "not re-verified for 198 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2061,7 +2060,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Selection Of Service Provider For Coding & Decod",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2070,7 +2069,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2078,7 +2077,7 @@
    "title": "Bids Are invited for Venue Prep , Catering For Participants Guests , Guest Hospitality And Felicitation , Branding And P",
    "deadline": "2026-10-23",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2086,7 +2085,7 @@
    "title": "Tender For Engagement Of Advertising Agency For Initial Public Offering (Ipo) Of India Infrastructure Finance Company Li",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2094,7 +2093,7 @@
    "title": "Bids Are Invited For Paper Fs 75 Gsm, Paper A4 75 Gsm, Register 300 Pages, Register 200 Pages, Register 500 Pages, Regis",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2103,7 +2102,7 @@
    "title": "Bids Are invited for Sudarshan Qty 01",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2112,7 +2111,7 @@
    "title": "Bids Are invited for Optical Fibre Cable Network And Allied Communication System As Per Specifications",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2121,7 +2120,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V – Inspection, Overhauling And Commissioning Of Actuators Of High Pressure Valves In Boiler ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 209 hours",
+    "not re-verified for 214 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2130,7 +2129,7 @@
    "title": "Development, Inegration, Enhancements, Operation and Maintenance of Forest department web portal",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 209 hours"
+    "not re-verified for 214 hours"
    ]
   },
   {
@@ -2138,7 +2137,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-V - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27Tt",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 209 hours",
+    "not re-verified for 214 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2147,7 +2146,7 @@
    "title": "Ttps – Mech.Ii – Tm Ii – Unit-Iv - Overhauling Of Boiler Feed Pumps And Deaerator System During Annual Overhaul 2026-27T",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 209 hours",
+    "not re-verified for 214 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2156,7 +2155,7 @@
    "title": "Tender For Upgradation, Redesign & Maintenance Of Official Website",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 209 hours"
+    "not re-verified for 214 hours"
    ]
   },
   {
@@ -2164,7 +2163,7 @@
    "title": "Tender For Development Of Official Website For Mahagenco Rel Along With 3 Years Amc",
    "deadline": "2026-11-16",
    "reasons": [
-    "not re-verified for 209 hours"
+    "not re-verified for 214 hours"
    ]
   },
   {
@@ -2172,7 +2171,7 @@
    "title": "Bids Are invited for Custom Bid For Services - Total 07 Quantity Of Mobilization And Demobilization For Deployment And E",
    "deadline": "2026-10-29",
    "reasons": [
-    "not re-verified for 209 hours",
+    "not re-verified for 214 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2181,7 +2180,7 @@
    "title": "Tender For Hiring Of Agency For The Work Of Website Updation Maintenance Social Media Management Digital Media Managemen",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 209 hours"
+    "not re-verified for 214 hours"
    ]
   },
   {
@@ -2189,7 +2188,7 @@
    "title": "Registration/Empanelment Of Private Cultural Troupes And Individual Artistes Under Central Bureau Of Communication, Patn",
    "deadline": "2026-11-09",
    "reasons": [
-    "not re-verified for 209 hours",
+    "not re-verified for 214 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2199,7 +2198,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2209,7 +2208,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2219,7 +2218,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2229,7 +2228,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2239,7 +2238,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2249,7 +2248,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2259,7 +2258,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2269,7 +2268,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 218 hours",
+    "not re-verified for 224 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2279,7 +2278,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 197 hours",
+    "not re-verified for 202 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2288,7 +2287,7 @@
    "title": "Tender For Empanelment Of Vendors, Printers, Suppliers, And Service Providers Stationery, Printing, Electronics (Acs, Co",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 197 hours",
+    "not re-verified for 202 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2298,7 +2297,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 197 hours",
+    "not re-verified for 202 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2307,7 +2306,7 @@
    "title": "Supply Of Vestibules (UIC Type Elastomer Flange Connection for inter-communication between intermediate cabs)",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 197 hours",
+    "not re-verified for 202 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2316,7 +2315,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V - Strengthening Of Structural Supports, Rectification Of Defects In The Hangers Rods At 56 ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2325,7 +2324,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V - Repairing Of Worn-Out Skin Casing Inside The Dog-House And Coutant Bottom Area In Boiler ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2334,7 +2333,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V - Overhauling Of Load Hangers Of Critical Pipe Lines & Headers Of Boiler During Overhaul Fo",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2343,7 +2342,7 @@
    "title": "Ttps – Mech.Ii - Bm – Unit V – Replacement Of Worn-Out Supports Of Eco. Hoppers During Overhaul For The Year 2026 - 2027",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2352,7 +2351,7 @@
    "title": "Tender for Redisgn, Development, Hosting and Maintenance of Existing Website for Yogi Vemana University, Kadapa",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2361,7 +2360,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2369,7 +2368,7 @@
    "title": "Bids Are invited for Conduct Of Trg For Local Youth For Radio Stn At Bn",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2379,7 +2378,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2388,7 +2387,7 @@
    "title": "REQUEST FOR PROPOSAL (RFP) FOR SELECTION OF A PROFESSIONAL AGENCY FOR MANAGEMENT OF SOCIAL MEDIA ACCOUNTS, CONTENT PRODU",
    "deadline": "2026-11-12",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2396,7 +2395,7 @@
    "title": "Bids Are invited for Hiring Of Multimedia Creative Consultants - Manpower Based - Social Media Manager Team Lead; On Sit",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2405,7 +2404,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2414,7 +2413,7 @@
    "title": "Bids Are invited for Event Or Seminar Or Workshop Or Exhibition Or Expo Management Service - National; As Per Rfp; As Pe",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2422,7 +2421,7 @@
    "title": "Bids Are invited for Repair, Maintenance, And Installation Of Plant/ Systems/Equipments (Version 2) - 132 Kv Substation;",
    "deadline": "2026-10-24",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2432,7 +2431,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2441,7 +2440,7 @@
    "title": "Bids Are invited for Educational Software Portals For Enhanced Learning And Firewall Hardware",
    "deadline": "2026-10-31",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2450,7 +2449,7 @@
    "title": "Bids Are invited for Sitc Of Audio Video Conferencing System For Conference Room At Telephone Bhavan Ctd Kolkata",
    "deadline": "2026-10-24",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2460,7 +2459,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2469,7 +2468,7 @@
    "title": "Tender For Renovation Of Office Store Room At O/O The Agm, La Communication Division, Kahilipara, Aegcl",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2479,7 +2478,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 209 hours"
+    "not re-verified for 214 hours"
    ]
   },
   {
@@ -2487,7 +2486,7 @@
    "title": "Tender for Tender for Picture Archieving And Communication System Picture Archieving And Communication System At Hamidia",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 209 hours",
+    "not re-verified for 214 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2497,7 +2496,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 240 hours",
+    "not re-verified for 245 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2507,7 +2506,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2517,7 +2516,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2527,7 +2526,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2537,7 +2536,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2547,7 +2546,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2557,7 +2556,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2567,7 +2566,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 226 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -2576,7 +2575,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2586,7 +2585,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2595,7 +2594,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2604,7 +2603,7 @@
    "title": "Tender For Hosting, Comprehensive Management And Maintenance Of Bihar Museum Society, Patna Website",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2613,7 +2612,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2622,7 +2621,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2631,7 +2630,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2640,7 +2639,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2649,7 +2648,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2658,7 +2657,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2668,7 +2667,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2677,7 +2676,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2687,7 +2686,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2696,7 +2695,7 @@
    "title": "Tender For Non-Comprehensive Annual Maintenance Contract (Amc) For Composite Curing Aerospace- Grade Lab Scale Autoclave",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2705,7 +2704,7 @@
    "title": "Tender For Hosting, Comprehensive Management And Maintenance Of Bihar Museum Website",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2714,7 +2713,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2724,7 +2723,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2734,7 +2733,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2744,7 +2743,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 226 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -2753,7 +2752,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2762,7 +2761,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2771,7 +2770,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2779,7 +2778,7 @@
    "title": "Bids Are Invited For Custom Bid For Services - Request For Proposal For Hosting & Maintenance Of Scilal Website And Emai",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2788,7 +2787,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2797,7 +2796,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2826,7 +2825,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2836,7 +2835,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2846,7 +2845,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2856,7 +2855,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2865,7 +2864,7 @@
    "title": "Provision of miscellaneous Signal and Telecommunication facilities for operational monitoring, communication and safety ",
    "deadline": "2026-11-02",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2875,7 +2874,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2885,7 +2884,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -2895,7 +2894,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2905,7 +2904,7 @@
    "deadline": "2026-10-20",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2915,7 +2914,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2925,7 +2924,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -2935,7 +2934,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2944,7 +2943,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2953,7 +2952,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2961,7 +2960,7 @@
    "title": "Tender For Design, Development, Implementation, Testing, Commissioning, Data Migration And Support Of The Open Access Sc",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2969,7 +2968,7 @@
    "title": "Bids Are Invited For Hiring Of Agency For It Projects- Milestone Basis, Development And Maintenance Of New And Existing ",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2978,7 +2977,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -2986,7 +2985,7 @@
    "title": "Tender For For Selection Of Agency/Agencies For Development & Maintenance Of Website Of Chittaranjan Seva Sadan College ",
    "deadline": "2026-11-18",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -2994,7 +2993,7 @@
    "title": "Tender For Amd Kintex Ultrascale Xcku060 Or Equivalent Fpga Development Board, For More Details Refer Our Website Http//",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3004,7 +3003,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3013,7 +3012,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3022,7 +3021,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3030,7 +3029,7 @@
    "title": "Tender For Development And Maintenance Of New And Existing Creda Website, Dashboard, Android Apps, And Online Projects O",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3038,7 +3037,7 @@
    "title": "Tender for Pre-Examination and Post-Examination Data Processing and Results Processing, Digitization of reverification r",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3046,7 +3045,7 @@
    "title": "REQUEST FOR PROPOSAL (RFP) Selection Of Agency For Design, Development, Deployment, Hosting, Security Audit And Maintena",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3055,7 +3054,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3064,7 +3063,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3073,7 +3072,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3082,7 +3081,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3091,7 +3090,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3100,7 +3099,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3109,7 +3108,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3118,7 +3117,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3128,7 +3127,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3138,7 +3137,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3148,7 +3147,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3158,7 +3157,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3168,7 +3167,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3178,7 +3177,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3188,7 +3187,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3197,7 +3196,7 @@
    "title": "Tender For Selection Of Supplies Of Material Items For Implementation Of Vbgramg Schemes All Area Of Jemari Gram Panchay",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3207,7 +3206,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3217,7 +3216,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3227,7 +3226,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3237,7 +3236,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3246,7 +3245,7 @@
    "deadline": "2026-10-17",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3254,7 +3253,7 @@
    "title": "Agency For Development Of Video Content",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3263,7 +3262,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3272,7 +3271,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3281,7 +3280,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours"
+    "not re-verified for 260 hours"
    ]
   },
   {
@@ -3289,7 +3288,7 @@
    "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Restructure Rewrite Content, Storyboarding With Producti",
    "deadline": "2026-11-05",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3297,7 +3296,7 @@
    "title": "Bids Are invited for E-Learning Content Development - Non-Igot; Restructure Rewrite Content, Storyboarding With Producti",
    "deadline": "2026-11-04",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3305,7 +3304,7 @@
    "title": "Tender For Empanelment/Rate-Listing Of Authorized And Experienced Firms/Ngos For Flex, Hoardings, Posters, Vinyl, Leafle",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3315,7 +3314,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3325,7 +3324,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3335,7 +3334,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3345,7 +3344,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3354,7 +3353,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3363,7 +3362,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3372,7 +3371,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3382,7 +3381,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3391,7 +3390,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3400,7 +3399,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3409,7 +3408,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3418,7 +3417,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3427,7 +3426,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3436,7 +3435,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3445,7 +3444,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3453,7 +3452,7 @@
    "title": "Tender For Social Media Content Creation And Digital Marketing Of Uttarakhand Tourism",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3462,7 +3461,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3471,7 +3470,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3480,7 +3479,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3488,7 +3487,7 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, C Aign Management, Basic Reporting And Analytics;",
    "deadline": "2026-10-24",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3497,7 +3496,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3505,7 +3504,7 @@
    "title": "Bids Are invited for Hiring Of Social Media Agency - Content Creation, Content Response And Content Moderation, C Aign M",
    "deadline": "2026-11-04",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3514,7 +3513,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3523,7 +3522,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3532,7 +3531,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3540,7 +3539,7 @@
    "title": "Tender For Temporary Infrastructure, Superstructure, Fabrication Of Pandal/ Stalls / Gates / Decoration Of Stage And Dis",
    "deadline": "2026-12-03",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3549,7 +3548,7 @@
    "title": "Tender For Temporary Infrastructure, Superstructure, Fabrication Of Pandal/ Stalls / Gates / Decoration Of Stage And Dis",
    "deadline": "2026-12-03",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3558,7 +3557,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3567,7 +3566,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3576,7 +3575,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3584,7 +3583,7 @@
    "title": "Tender For Rfp For Social Media Management Service",
    "deadline": "2026-11-06",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -3593,7 +3592,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3601,7 +3600,7 @@
    "title": "Tender For Provision Of Otm Accommodation At Hayuliang Under Ge P Lohitpur",
    "deadline": "2026-11-09",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3611,7 +3610,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3620,7 +3619,7 @@
    "title": "Tender For Supply Of Various Glass Ware & Plastic Ware Items At Skims, Soura, Srinagar On One Year Rate Contract Basis",
    "deadline": "2026-10-27",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3629,7 +3628,7 @@
    "title": "Tender For Providing Hybrid Hearing/ Streaming Equipments At Delhi District Courts",
    "deadline": "2026-10-31",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3638,7 +3637,7 @@
    "title": "Tender For Purchase Of Portable Ultrasound Machine At Rajeev Gandhi Sports Medicine Center",
    "deadline": "2026-10-23",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3648,7 +3647,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3658,7 +3657,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3667,7 +3666,7 @@
    "title": "Bids Are invited for Intrusion Detection Fence System For Magazine",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3677,7 +3676,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3687,7 +3686,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours"
+    "not re-verified for 260 hours"
    ]
   },
   {
@@ -3695,7 +3694,7 @@
    "title": "Tender For Wanakbori Thermal Power Station Supply of Chemicals for Cooling water treatment including real time monitorin",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3705,7 +3704,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3715,7 +3714,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3725,7 +3724,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3734,7 +3733,7 @@
    "title": "Bids Are invited for Sitc Of Dynamic Digital Display For Immigration Counters",
    "deadline": "2026-10-30",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3744,7 +3743,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3754,7 +3753,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3763,7 +3762,7 @@
    "title": "Provision of Battery Energy Storage System (BESS) for Power back up for Climatic Chamber",
    "deadline": "2026-11-06",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3772,7 +3771,7 @@
    "title": "Bids Are invited for Hiring Of Consultants - Milestone/Deliverable Based - Architectural Engineering Design Consultant; ",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3781,7 +3780,7 @@
    "title": "Supply Of LC gate Electronic Slave telephone & Master Telephone of Electronic LC Gate => Limited",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3791,7 +3790,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3801,7 +3800,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3811,7 +3810,7 @@
    "deadline": "2026-10-21",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3821,7 +3820,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3831,7 +3830,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3841,7 +3840,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3851,7 +3850,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -3859,7 +3858,7 @@
    "title": "Supply Of DOUBLE ACTING HINGES SIZE 100 MM for LHB AC Entrance communication door",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3869,7 +3868,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3879,7 +3878,7 @@
    "deadline": "2026-10-11",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours"
+    "not re-verified for 260 hours"
    ]
   },
   {
@@ -3888,7 +3887,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3897,7 +3896,7 @@
    "title": "Tender For Engagement Of Agency For Providing Mobile Communication Facility To Dhbvnl Officers Officials",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3906,7 +3905,7 @@
    "title": "Provision of Voice Logging Facility Through VHF Communication at Stations in LJN Division",
    "deadline": "2026-11-03",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -3915,7 +3914,7 @@
    "title": "Tender For Supply Of Copper Communication Control Flexible Trailing Cable,As Per The Technical Specification Enclosed",
    "deadline": "2026-10-22",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3924,7 +3923,7 @@
    "title": "Bids Are invited for Conet Communication Protocol Card With Multimode Simplex Fiber Cables",
    "deadline": "2026-10-26",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3934,7 +3933,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3944,7 +3943,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3964,7 +3963,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3974,7 +3973,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3983,7 +3982,7 @@
    "title": "Bids Are Invited For Communication Complex For Fy 2026-27",
    "deadline": "2026-11-13",
    "reasons": [
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -3993,7 +3992,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 227 hours",
+    "not re-verified for 232 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -4003,7 +4002,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours"
+    "not re-verified for 260 hours"
    ]
   },
   {
@@ -4012,7 +4011,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -4022,7 +4021,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -4032,7 +4031,7 @@
    "deadline": "2026-10-16",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -4051,7 +4050,7 @@
    "deadline": "2026-10-14",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours",
+    "not re-verified for 207 hours",
     "not relevant (goods, works or auction)"
    ]
   },
@@ -4061,7 +4060,7 @@
    "deadline": "2026-10-10",
    "reasons": [
     "closed",
-    "not re-verified for 254 hours",
+    "not re-verified for 260 hours",
     "not relevant (fit under 3)"
    ]
   },
@@ -4071,7 +4070,7 @@
    "deadline": "2026-10-13",
    "reasons": [
     "closed",
-    "not re-verified for 226 hours"
+    "not re-verified for 232 hours"
    ]
   },
   {
@@ -4080,7 +4079,7 @@
    "deadline": "2026-10-15",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -4088,7 +4087,7 @@
    "title": "Tender For Request For Expression Of Interest (Eoi): Shortlisting Of Public Relations (Pr) Agencies For The National Mis",
    "deadline": "2026-10-28",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -4096,7 +4095,7 @@
    "title": "Tender For Empanelment Of Professional Agency/Ies For Media Monitoring And Analysis System For Print, Electronic, Digita",
    "deadline": "2026-10-25",
    "reasons": [
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -4105,7 +4104,7 @@
    "deadline": "2026-10-19",
    "reasons": [
     "closed",
-    "not re-verified for 201 hours"
+    "not re-verified for 207 hours"
    ]
   },
   {
@@ -4114,7 +4113,7 @@
    "deadline": "2026-10-12",
    "reasons": [
     "closed",
-    "not re-verified for 226 hours"
+    "not re-verified for 232 hours"
    ]
   }
  ],
