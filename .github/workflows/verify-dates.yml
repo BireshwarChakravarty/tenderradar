@@ -5,8 +5,10 @@ name: Audit published tenders
 # parser. Nothing is committed. The run fails, and GitHub emails the owner,
 # if anything is wrong.
 on:
-  schedule:
-    - cron: '17 22 * * *'      # 03:47 IST, between scrape runs
+  # ON HOLD since 24 Oct 2026: schedule removed so nothing runs automatically.
+  # To resume, restore:
+  #   schedule:
+  #   - cron: '17 22 * * *'      # 03:47 IST, between scrape runs
   workflow_dispatch: {}
 
 permissions:
