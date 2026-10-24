@@ -1,8 +1,10 @@
 name: TenderRadar Daily Digest
 
 on:
-  schedule:
-    - cron: '30 2 * * *'       # 8:00 AM IST
+  # ON HOLD since 24 Oct 2026: schedule removed so nothing runs automatically.
+  # To resume, restore:
+  #   schedule:
+  #   - cron: '30 2 * * *'       # 8:00 AM IST
   workflow_dispatch: {}
 
 permissions:
