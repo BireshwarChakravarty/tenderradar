@@ -1,18 +1,18 @@
 {
  "meta": {
   "schema": 2,
-  "last_updated": "2026-10-24T03:52:07Z",
+  "last_updated": "2026-10-24T08:49:02Z",
   "total": 154,
   "open": 154,
   "min_score": 6.0,
   "oldest_check": "2026-10-20T16:31:55Z",
   "held_back": 507,
   "last_run": {
-   "started": "2026-10-24T03:47:11Z",
+   "started": "2026-10-24T08:44:07Z",
    "ok": false,
    "error": "CPPP could not be read: <urlopen error timed out> | CPPP could not be read: <urlopen error timed out>",
    "pruned": 0,
-   "finished": "2026-10-24T03:52:07Z"
+   "finished": "2026-10-24T08:49:02Z"
   }
  },
  "tenders": [
